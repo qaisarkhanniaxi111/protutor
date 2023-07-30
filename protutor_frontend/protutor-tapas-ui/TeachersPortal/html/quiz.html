@@ -1,0 +1,1826 @@
+@include('/tutor/common/header')
+@include('/tutor/common/sidebar')
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, shrink-to-fit=no">
+    <link rel="shortcut icon" href="assets/images/favicon.png">
+    <title>Teachers Portal : Quiz</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"/>
+    <link rel="stylesheet" href="assets/css/custom.css">
+  </head>
+  <body>
+
+ <div class="site-wrap">
+
+  <!-- Side-bar -->
+
+  <!-- Container -->
+  <section class="wrapper">
+    <div class="page-title">
+      <h1>Quiz</h1>
+    </div>
+
+    <div>
+      <ul class="nav tab-nav">
+
+        <span class="active" data-bs-toggle="tab" data-bs-target="#tab-1"></span>
+
+        <li class="nav-item">
+          <button data-bs-toggle="tab" data-bs-target="#tab-2">
+            <span><i class="fa-solid fa-square-poll-horizontal"></i></span> Quizzes <small>12</small>
+        </button>
+        </li>
+        <li class="nav-item">
+          <button data-bs-toggle="tab" data-bs-target="#tab-3">
+            <span><i class="fa-solid fa-plus"></i></span> Create Quiz
+        </button>
+        </li>
+        <li class="nav-item">
+          <button data-bs-toggle="tab" data-bs-target="#tab-4">
+            <span><i class="fa-solid fa-envelope-open"></i></span> Drafts <small>10</small>
+        </button>
+        </li>
+        <li class="nav-item">
+          <button data-bs-toggle="tab" data-bs-target="#tab-5">
+            <span><i class="fa-solid fa-angles-up"></i></span> Upcoming <small>15</small>
+        </button>
+        </li>
+        <li class="nav-item">
+          <button data-bs-toggle="tab" data-bs-target="#tab-6">
+            <span><i class="fa-solid fa-check-double"></i></span> Completed
+        </button>
+        </li>
+      </ul>
+      <div class="tab-content pt-3">
+        <div class="tab-pane fade show active" id="tab-1">
+          <div class="box">
+            <div class="tab-title">
+              <h2>Quiz Activity</h2>
+              <h3>Recent Quiz Activities</h3>
+            </div>
+            <div class="table-responsive">
+              <table class="table quiz-table">
+                <tr>
+                  <td>Quiz Title</td>
+                  <td>Class / Grade</td>
+                  <td>Course</td>
+                  <td>Start Date & Time</td>
+                  <td>End Date & Time</td>
+                  <td>Total Students</td>
+                  <td>Total Attended</td>
+                  <td>Results in %</td>
+                  <td>
+                    <span class="table-tag">Upcoming</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Quiz Title</td>
+                  <td>Class / Grade</td>
+                  <td>Course</td>
+                  <td>Start Date & Time</td>
+                  <td>End Date & Time</td>
+                  <td>Total Students</td>
+                  <td>Total Attended</td>
+                  <td>Results in %</td>
+                  <td>
+                    <span class="table-tag">Upcoming</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Quiz Title</td>
+                  <td>Class / Grade</td>
+                  <td>Course</td>
+                  <td>Start Date & Time</td>
+                  <td>End Date & Time</td>
+                  <td>Total Students</td>
+                  <td>Total Attended</td>
+                  <td>Results in %</td>
+                  <td>
+                    <span class="table-tag">Upcoming</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Quiz Title</td>
+                  <td>Class / Grade</td>
+                  <td>Course</td>
+                  <td>Start Date & Time</td>
+                  <td>End Date & Time</td>
+                  <td>Total Students</td>
+                  <td>Total Attended</td>
+                  <td>Results in %</td>
+                  <td>
+                    <span class="table-tag">Upcoming</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Quiz Title</td>
+                  <td>Class / Grade</td>
+                  <td>Course</td>
+                  <td>Start Date & Time</td>
+                  <td>End Date & Time</td>
+                  <td>Total Students</td>
+                  <td>Total Attended</td>
+                  <td>Results in %</td>
+                  <td>
+                    <span class="table-tag">Upcoming</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Quiz Title</td>
+                  <td>Class / Grade</td>
+                  <td>Course</td>
+                  <td>Start Date & Time</td>
+                  <td>End Date & Time</td>
+                  <td>Total Students</td>
+                  <td>Total Attended</td>
+                  <td>Results in %</td>
+                  <td>
+                    <span class="table-tag">Upcoming</span>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="tab-2">
+          <div class="box">
+            <div class="tab-title flex">
+              <div>
+                <h2>Quizzes</h2>
+                <h3>All Tutor's Quizzes</h3>
+              </div>
+              <div class="quiz-filter filter-action">Filters <i class="fa-solid fa-filter"></i></div>
+            </div>
+            <div class="table-responsive">
+              <table class="table quiz-table">
+                <thead>
+                  <tr>
+                    <th>
+                      <span class="table-title">Quiz Title <i class="fa-solid fa-sort"></i></span>
+                      <span class="table-inp"><input type="text" placeholder="Enter Quiz Title to Search"></span>
+                    </th>
+                    <th>
+                      <span class="table-title">Class / Grade <i class="fa-solid fa-sort"></i></span>
+                      <span class="table-inp">
+                        <select name="" id="">
+                          <option value="">Select Grade / Class</option>
+                        </select>
+                      </span>
+                    </th>
+                    <th>
+                      <span class="table-title">Course <i class="fa-solid fa-sort"></i></span>
+                      <span class="table-inp">
+                        <select name="" id="">
+                          <option value="">Select Course</option>
+                        </select>
+                      </span>
+                    </th>
+                    <th>
+                      <span class="table-title">Tutor's Name <i class="fa-solid fa-sort"></i></span>
+                      <span class="table-inp"><input type="text" placeholder="Enter Name to Search"></span>
+                    </th>
+                    <th>
+                      <span class="table-title">Quiz Status <i class="fa-solid fa-sort"></i></span>
+                      <span class="table-inp">
+                        <span class="table-inp">
+                          <select name="" id="">
+                            <option value="">Select Quiz Status</option>
+                          </select>
+                        </span>
+                      </span>
+                    </th>
+                    <th>
+                      <span class="table-title">Actions</span>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Quiz Title</td>
+                    <td>Class / Grade</td>
+                    <td>Course</td>
+                    <td>Tutor's Name</td>
+                    <td>Scheduled - Published</td>
+                    <td>
+                      <a class="tableLink" href="" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-eye"></i></a>
+                      <a class="tableLink" href=""><i class="fa-regular fa-pen-to-square"></i></a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Quiz Title</td>
+                    <td>Class / Grade</td>
+                    <td>Course</td>
+                    <td>Tutor's Name</td>
+                    <td>Scheduled - Published</td>
+                    <td>
+                      <a class="tableLink" href="" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-eye"></i></a>
+                      <a class="tableLink" href=""><i class="fa-regular fa-pen-to-square"></i></a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Quiz Title</td>
+                    <td>Class / Grade</td>
+                    <td>Course</td>
+                    <td>Tutor's Name</td>
+                    <td>Scheduled - Published</td>
+                    <td>
+                      <a class="tableLink" href="" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-eye"></i></a>
+                      <a class="tableLink" href=""><i class="fa-regular fa-pen-to-square"></i></a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Quiz Title</td>
+                    <td>Class / Grade</td>
+                    <td>Course</td>
+                    <td>Tutor's Name</td>
+                    <td>Scheduled - Published</td>
+                    <td>
+                      <a class="tableLink" href="" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-eye"></i></a>
+                      <a class="tableLink" href=""><i class="fa-regular fa-pen-to-square"></i></a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Quiz Title</td>
+                    <td>Class / Grade</td>
+                    <td>Course</td>
+                    <td>Tutor's Name</td>
+                    <td>Scheduled - Published</td>
+                    <td>
+                      <a class="tableLink" href="" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-eye"></i></a>
+                      <a class="tableLink" href=""><i class="fa-regular fa-pen-to-square"></i></a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Quiz Title</td>
+                    <td>Class / Grade</td>
+                    <td>Course</td>
+                    <td>Tutor's Name</td>
+                    <td>Scheduled - Published</td>
+                    <td>
+                      <a class="tableLink" href="" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-eye"></i></a>
+                      <a class="tableLink" href=""><i class="fa-regular fa-pen-to-square"></i></a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Quiz Title</td>
+                    <td>Class / Grade</td>
+                    <td>Course</td>
+                    <td>Tutor's Name</td>
+                    <td>Scheduled - Published</td>
+                    <td>
+                      <a class="tableLink" href="" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-eye"></i></a>
+                      <a class="tableLink" href=""><i class="fa-regular fa-pen-to-square"></i></a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="tab-3">
+          <div class="box">
+            <div class="tab-title">
+              <h2>New Quiz</h2>
+              <h3>Test IQ</h3>
+            </div>
+
+            <div class="quiz-creation">
+              <div class="container">
+                <div class="row justify-content-center">
+                  <div class="col-lg-7">
+                    <!-- Nav tabs -->
+                      <ul class="nav nav-tabs2" style="display: none;">
+                        <li class="nav-item">
+                          <a class="nav-link active" data-bs-toggle="tab" href="#qt-1"></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" data-bs-toggle="tab" href="#qt-2"></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" data-bs-toggle="tab" href="#qt-3"></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" data-bs-toggle="tab" href="#qt-4"></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" data-bs-toggle="tab" href="#qt-5"></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" data-bs-toggle="tab" href="#qt-6"></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" data-bs-toggle="tab" href="#qt-7"></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" data-bs-toggle="tab" href="#qt-8"></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" data-bs-toggle="tab" href="#qt-9"></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" data-bs-toggle="tab" href="#qt-10"></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" data-bs-toggle="tab" href="#qt-11"></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" data-bs-toggle="tab" href="#qt-12"></a>
+                        </li>
+                      </ul>
+
+                      <!-- Tab panes -->
+                      <div class="tab-content">
+
+                        <div class="tab-pane container active" id="qt-1">
+                          <div class="">
+                            <div class="quiz-inp-wrap mt-0">
+                              <span class="quiz-inp-icon"><i class="fa-solid fa-heading"></i></span>
+                              <input class="quiz-inp" type="text" name="" id="" placeholder="Enter Quiz Name / Title">
+                            </div>
+                            <div class="quiz-inp-wrap">
+                              <span class="quiz-inp-icon"><i class="fa-solid fa-star"></i></span>
+                              <select class="quiz-inp" name="" id="">
+                                @foreach($teaches_levels as $t)
+                                <option value="">{{$t->teaches_level}}</option>
+                                @endforeach
+                              </select>
+                            </div>
+                            <div class="quiz-inp-wrap">
+                              <span class="quiz-inp-icon"><i class="fa-solid fa-book-bookmark"></i></span>
+                              <select class="quiz-inp" name="" id="">
+                                @foreach($subjects as $sub)
+                                <option value="">{{$sub->subject}}</option>
+                                @endforeach
+                              </select>
+                            </div>
+                            <div class="create-btn">
+                              <a class="theme-btn grey"><i class="fa-solid fa-angle-left"></i> Back</a>
+                              <a class="theme-btn grey btnNext2">Next <i class="fa-solid fa-angle-right"></i></a>
+                            </div>
+
+                          </div>
+                        </div>
+
+                        <div class="tab-pane container fade" id="qt-2">
+                          <div class="">
+                            <div class="quiz-inp-wrap mt-0">
+                              <label for=""><i class="fa-solid fa-scale-balanced"></i> Type in Instructions for Quiz</label>
+                              <textarea class="quiz-inp" name="" id=""></textarea>
+                            </div>
+                            <div class="create-btn">
+                              <a class="theme-btn grey btnPrevious2"><i class="fa-solid fa-angle-left"></i> Back</a>
+                              <a class="theme-btn grey btnNext2">Next <i class="fa-solid fa-angle-right"></i></a>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="tab-pane container fade" id="qt-3">
+                          <div class="">
+                            <div class="quiz-inp-wrap mt-0">
+                              <span class="quiz-inp-icon"><i class="fa-solid fa-file-invoice"></i></span>
+                              <select class="quiz-inp" name="" id="">
+                                <option value="">Select Question Type</option>
+                                <option value="">Multiple Choice Questions</option>
+                                <option value="">True / False</option>
+                                <option value="">Fill-in-the-Blanks</option>
+                                <option value="">Multiple Answers</option>
+                                <option value="">Numerical Answer</option>
+                                <option value="">Short Answer</option>
+                                <option value="">Long Answer</option>
+                              </select>
+                            </div>
+                            <p class="pt-3 text-end"><strong>1 of 1 Quiz Question</strong></p>
+                            <div class="create-btn">
+                              <a class="theme-btn grey btnPrevious2"><i class="fa-solid fa-angle-left"></i> Back</a>
+                              <a class="theme-btn btnNext2"><i class="fa-solid fa-plus"></i> Add Question</a>
+                              <a class="theme-btn grey btnNext2">Next <i class="fa-solid fa-angle-right"></i></a>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="tab-pane container fade" id="qt-4">
+                          <div class="">
+                            <div class="quiz-inp-wrap mt-0">
+                              <span class="quiz-inp-icon"><i class="fa-solid fa-file-invoice"></i></span>
+                              <select class="quiz-inp" name="" id="">
+                                <option value="">Multiple Choice Questions</option>
+                              </select>
+                            </div>
+                            <p class="pt-3 text-end"><strong>1 of 1 Quiz Question</strong></p>
+
+                            <div class="qt-fill">
+                              <ul>
+                                <li>
+                                  <div class="qt-fill-left">
+                                    <span class="qt-fill-icon"><i class="fa-solid fa-question"></i></span>
+                                    <span><input class="qt-fill-inp" type="text" placeholder="Enter Quiz Question"></span>
+                                  </div>
+                                </li>
+                                <li>
+                                  <div class="qt-fill-left">
+                                    <span class="qt-fill-icon"><i class="fa-solid fa-sliders"></i></span>
+                                    <span><input class="qt-fill-inp" type="text" placeholder="Enter Option 1"></span>
+                                  </div>
+                                  <div class="qt-fill-right">
+                                    <label class="radio-field">
+                                      <input type="radio" name="x1">
+                                      <span class="checkmark"></span>
+                                    </label>
+                                    <div class="ms-2">Correct Answer</div>
+                                  </div>
+                                </li>
+                                <li>
+                                  <div class="qt-fill-left">
+                                    <span class="qt-fill-icon"><i class="fa-solid fa-sliders"></i></span>
+                                    <span><input class="qt-fill-inp" type="text" placeholder="Enter Option 2"></span>
+                                  </div>
+                                  <div class="qt-fill-right">
+                                    <label class="radio-field">
+                                      <input type="radio" name="x1">
+                                      <span class="checkmark"></span>
+                                    </label>
+                                    <div class="ms-2">Correct Answer</div>
+                                  </div>
+                                </li>
+                                <li>
+                                  <div class="qt-fill-left">
+                                    <span class="qt-fill-icon"><i class="fa-solid fa-sliders"></i></span>
+                                    <span><input class="qt-fill-inp" type="text" placeholder="Enter Option 3"></span>
+                                  </div>
+                                  <div class="qt-fill-right">
+                                    <label class="radio-field">
+                                      <input type="radio" name="x1">
+                                      <span class="checkmark"></span>
+                                    </label>
+                                    <div class="ms-2">Correct Answer</div>
+                                  </div>
+                                </li>
+                                <li>
+                                  <div class="qt-fill-left">
+                                    <span class="qt-fill-icon"><i class="fa-solid fa-sliders"></i></span>
+                                    <span><input class="qt-fill-inp" type="text" placeholder="Enter Option 4"></span>
+                                  </div>
+                                  <div class="qt-fill-right">
+                                    <label class="radio-field">
+                                      <input type="radio" name="x1">
+                                      <span class="checkmark"></span>
+                                    </label>
+                                    <div class="ms-2">Correct Answer</div>
+                                  </div>
+                                </li>
+                              </ul>
+                            </div>
+
+                            <div class="create-btn">
+                              <a class="theme-btn grey btnPrevious2"><i class="fa-solid fa-angle-left"></i> Back</a>
+                              <a class="theme-btn btnNext2"><i class="fa-solid fa-plus"></i> Add Question</a>
+                              <a class="theme-btn grey btnNext2">Next <i class="fa-solid fa-angle-right"></i></a>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="tab-pane container fade" id="qt-5">
+                          <div>
+                            <div class="quiz-inp-wrap mt-0">
+                              <span class="quiz-inp-icon"><i class="fa-solid fa-file-invoice"></i></span>
+                              <select class="quiz-inp" name="" id="">
+                                <option value="">True / False</option>
+                              </select>
+                            </div>
+                            <p class="pt-3 text-end"><strong>2 of 2 Quiz Question</strong></p>
+
+                            <div class="qt-fill">
+                              <ul>
+                                <li>
+                                  <div class="qt-fill-left">
+                                    <span class="qt-fill-icon"><i class="fa-solid fa-question"></i></span>
+                                    <span><input class="qt-fill-inp" type="text" placeholder="Enter Quiz Question"></span>
+                                  </div>
+                                </li>
+                                <li>
+                                  <div class="qt-fill-left">
+                                    <span class="qt-fill-icon"><i class="fa-solid fa-sliders"></i></span>
+                                    <span><input class="qt-fill-inp" type="text" value="True"></span>
+                                  </div>
+                                  <div class="qt-fill-right">
+                                    <label class="radio-field">
+                                      <input type="radio" name="x1">
+                                      <span class="checkmark"></span>
+                                    </label>
+                                    <div class="ms-2">Correct Answer</div>
+                                  </div>
+                                </li>
+                                <li>
+                                  <div class="qt-fill-left">
+                                    <span class="qt-fill-icon"><i class="fa-solid fa-sliders"></i></span>
+                                    <span><input class="qt-fill-inp" type="text" value="False"></span>
+                                  </div>
+                                  <div class="qt-fill-right">
+                                    <label class="radio-field">
+                                      <input type="radio" name="x1">
+                                      <span class="checkmark"></span>
+                                    </label>
+                                    <div class="ms-2">Correct Answer</div>
+                                  </div>
+                                </li>
+                              </ul>
+                            </div>
+
+                            <div class="create-btn">
+                              <a class="theme-btn grey btnPrevious2"><i class="fa-solid fa-angle-left"></i> Back</a>
+                              <a class="theme-btn btnNext2"><i class="fa-solid fa-plus"></i> Add Question</a>
+                              <a class="theme-btn grey btnNext2">Next <i class="fa-solid fa-angle-right"></i></a>
+                            </div>
+                          </div>
+                        </div>
+
+
+                        <div class="tab-pane container fade" id="qt-6">
+                          <div>
+                            <div class="quiz-inp-wrap mt-0">
+                              <span class="quiz-inp-icon"><i class="fa-solid fa-file-invoice"></i></span>
+                              <select class="quiz-inp" name="" id="">
+                                <option value="">Multiple Answers</option>
+                              </select>
+                            </div>
+                            <p class="pt-3 text-end"><strong>3 of 3 Quiz Question</strong></p>
+
+                            <div class="qt-fill">
+                              <ul>
+                                <li>
+                                  <div class="qt-fill-left">
+                                    <span class="qt-fill-icon"><i class="fa-solid fa-question"></i></span>
+                                    <span><input class="qt-fill-inp" type="text" placeholder="Enter Quiz Question"></span>
+                                  </div>
+                                </li>
+                                <li>
+                                  <div class="qt-fill-left">
+                                    <span class="qt-fill-icon"><i class="fa-solid fa-sliders"></i></span>
+                                    <span><input class="qt-fill-inp" type="text" value="Enter Option 1"></span>
+                                  </div>
+                                  <div class="qt-fill-right">
+                                    <label class="radio-field">
+                                      <input type="radio" name="x1">
+                                      <span class="checkmark"></span>
+                                    </label>
+                                    <div class="ms-2">Correct Answer</div>
+                                  </div>
+                                </li>
+                                <li>
+                                  <div class="qt-fill-left">
+                                    <span class="qt-fill-icon"><i class="fa-solid fa-sliders"></i></span>
+                                    <span><input class="qt-fill-inp" type="text" value="Enter Option 2"></span>
+                                  </div>
+                                  <div class="qt-fill-right">
+                                    <label class="radio-field">
+                                      <input type="radio" name="x1">
+                                      <span class="checkmark"></span>
+                                    </label>
+                                    <div class="ms-2">Correct Answer</div>
+                                  </div>
+                                </li>
+                                <li>
+                                  <div class="qt-fill-left">
+                                    <span class="qt-fill-icon"><i class="fa-solid fa-sliders"></i></span>
+                                    <span><input class="qt-fill-inp" type="text" value="Enter Option 3"></span>
+                                  </div>
+                                  <div class="qt-fill-right">
+                                    <label class="radio-field">
+                                      <input type="radio" name="x1">
+                                      <span class="checkmark"></span>
+                                    </label>
+                                    <div class="ms-2">Correct Answer</div>
+                                  </div>
+                                </li>
+                                <li>
+                                  <div class="qt-fill-left">
+                                    <span class="qt-fill-icon"><i class="fa-solid fa-sliders"></i></span>
+                                    <span><input class="qt-fill-inp" type="text" value="Enter Option 4"></span>
+                                  </div>
+                                  <div class="qt-fill-right">
+                                    <label class="radio-field">
+                                      <input type="radio" name="x1">
+                                      <span class="checkmark"></span>
+                                    </label>
+                                    <div class="ms-2">Correct Answer</div>
+                                  </div>
+                                </li>
+                              </ul>
+                            </div>
+
+                            <div class="create-btn">
+                              <a class="theme-btn grey btnPrevious2"><i class="fa-solid fa-angle-left"></i> Back</a>
+                              <a class="theme-btn btnNext2"><i class="fa-solid fa-plus"></i> Add Question</a>
+                              <a class="theme-btn grey btnNext2">Next <i class="fa-solid fa-angle-right"></i></a>
+                            </div>
+                          </div>
+                        </div>
+
+
+                        <div class="tab-pane container fade" id="qt-7">
+                          <div>
+                            <div class="quiz-inp-wrap mt-0">
+                              <span class="quiz-inp-icon"><i class="fa-solid fa-file-invoice"></i></span>
+                              <select class="quiz-inp" name="" id="">
+                                <option value="">Fill-in-the-Blanks</option>
+                              </select>
+                            </div>
+                            <p class="pt-3 text-end"><strong>4 of 4 Quiz Question</strong></p>
+
+                            <div class="qt-fill">
+                              <ul>
+                                <li>
+                                  <div class="qt-fill-left">
+                                    <span class="qt-fill-icon"><i class="fa-solid fa-question"></i></span>
+                                    <span><input class="qt-fill-inp" type="text" placeholder="Enter Quiz Question"></span>
+                                  </div>
+                                </li>
+                                <li>
+                                  <div class="qt-fill-left">
+                                    <span class="qt-fill-icon"><i class="fa-solid fa-sliders"></i></span>
+                                    <span><input class="qt-fill-inp" type="text" value="Right Answer" readonly></span>
+                                  </div>
+                                  <div class="qt-fill-right">
+                                    <div class="ms-2">Only Visible to Tutor</div>
+                                  </div>
+                                </li>
+                              </ul>
+                            </div>
+
+                            <div class="create-btn">
+                              <a class="theme-btn grey btnPrevious2"><i class="fa-solid fa-angle-left"></i> Back</a>
+                              <a class="theme-btn btnNext2"><i class="fa-solid fa-plus"></i> Add Question</a>
+                              <a class="theme-btn grey btnNext2">Next <i class="fa-solid fa-angle-right"></i></a>
+                            </div>
+                          </div>
+                      </div>
+
+
+                      <div class="tab-pane container fade" id="qt-8">
+                        <div>
+                          <div class="quiz-inp-wrap mt-0">
+                            <span class="quiz-inp-icon"><i class="fa-solid fa-file-invoice"></i></span>
+                            <select class="quiz-inp" name="" id="">
+                              <option value="">Numerical Answer</option>
+                            </select>
+                          </div>
+                          <p class="pt-3 text-end"><strong>5 of 5 Quiz Question</strong></p>
+
+                          <div class="qt-fill">
+                            <ul>
+                              <li>
+                                <div class="qt-fill-left">
+                                  <span class="qt-fill-icon"><i class="fa-solid fa-question"></i></span>
+                                  <span><input class="qt-fill-inp" type="text" placeholder="Enter Quiz Question"></span>
+                                </div>
+                              </li>
+                              <li>
+                                <div class="qt-fill-left">
+                                  <span class="qt-fill-icon"><i class="fa-solid fa-sliders"></i></span>
+                                  <span>
+                                    <select class="qt-fill-inp" name="" id="" style="width: 100%;">
+                                      <option value="">Select Type of Numerical Answer</option>
+                                    </select>
+                                  </span>
+                                </div>
+                              </li>
+                              <li>
+                                <div class="qt-fill-left">
+                                  <span class="qt-fill-icon"><i class="fa-solid fa-sliders"></i></span>
+                                  <span><input class="qt-fill-inp" type="text" value="Right Answer" readonly></span>
+                                </div>
+                                <div class="qt-fill-right">
+                                  <div class="ms-2">Only Visible to Tutor</div>
+                                </div>
+                              </li>
+                            </ul>
+                          </div>
+
+                          <div class="create-btn">
+                            <a class="theme-btn grey btnPrevious2"><i class="fa-solid fa-angle-left"></i> Back</a>
+                            <a class="theme-btn btnNext2"><i class="fa-solid fa-plus"></i> Add Question</a>
+                            <a class="theme-btn grey btnNext2">Next <i class="fa-solid fa-angle-right"></i></a>
+                          </div>
+                        </div>
+                    </div>
+
+
+                    <div class="tab-pane container fade" id="qt-9">
+                      <div>
+                        <div class="quiz-inp-wrap mt-0">
+                          <span class="quiz-inp-icon"><i class="fa-solid fa-file-invoice"></i></span>
+                          <select class="quiz-inp" name="" id="">
+                            <option value="">Short Answer</option>
+                          </select>
+                        </div>
+                        <p class="pt-3 text-end"><strong>6 of 6 Quiz Question</strong></p>
+
+                        <div class="qt-fill">
+                          <ul>
+                            <li>
+                              <div class="qt-fill-left">
+                                <span class="qt-fill-icon"><i class="fa-solid fa-question"></i></span>
+                                <span><input class="qt-fill-inp" type="text" placeholder="Enter Quiz Question"></span>
+                              </div>
+                            </li>
+                            <li>
+                              <div class="qt-fill-left">
+                                <span class="qt-fill-icon"><i class="fa-solid fa-sliders"></i></span>
+                                <span><input class="qt-fill-inp" type="text" value="Right Answer"></span>
+                              </div>
+                              <div class="qt-fill-right">
+                                <div class="ms-2">Only Visible to Tutor</div>
+                              </div>
+                            </li>
+                          </ul>
+                        </div>
+
+                        <div class="create-btn">
+                          <a class="theme-btn grey btnPrevious2"><i class="fa-solid fa-angle-left"></i> Back</a>
+                          <a class="theme-btn btnNext2"><i class="fa-solid fa-plus"></i> Add Question</a>
+                          <a class="theme-btn grey btnNext2">Next <i class="fa-solid fa-angle-right"></i></a>
+                        </div>
+                      </div>
+                  </div>
+
+                  <div class="tab-pane container fade" id="qt-10">
+                    <div>
+                      <div class="quiz-inp-wrap mt-0">
+                        <span class="quiz-inp-icon"><i class="fa-solid fa-file-invoice"></i></span>
+                        <select class="quiz-inp" name="" id="">
+                          <option value="">Long Answer</option>
+                        </select>
+                      </div>
+                      <p class="pt-3 text-end"><strong>7 of 7 Quiz Question</strong></p>
+
+                      <div class="qt-fill">
+                        <ul>
+                          <li>
+                            <div class="qt-fill-left">
+                              <span class="qt-fill-icon"><i class="fa-solid fa-question"></i></span>
+                              <span><input class="qt-fill-inp" type="text" placeholder="Enter Quiz Question"></span>
+                            </div>
+                          </li>
+                          <li>
+                            <div class="qt-fill-left">
+                              <span class="qt-fill-icon"><i class="fa-solid fa-sliders"></i></span>
+                              <span><input class="qt-fill-inp" type="text" value="Right Answer"></span>
+                            </div>
+                            <div class="qt-fill-right">
+                              <div class="ms-2">Only Visible to Tutor</div>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+
+                      <div class="create-btn">
+                        <a class="theme-btn grey btnPrevious2"><i class="fa-solid fa-angle-left"></i> Back</a>
+                        <a class="theme-btn btnNext2"><i class="fa-solid fa-plus"></i> Add Question</a>
+                        <a class="theme-btn grey btnNext2">Next <i class="fa-solid fa-angle-right"></i></a>
+                      </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane container fade" id="qt-11">
+                  <div>
+                    <div class="qt-fill for-settings">
+                      <ul>
+                        <li>
+                          <div class="qt-fill-left">
+                            <span><input class="qt-fill-inp ps-0" type="text" value="Quiz Progress Bar" readonly></span>
+                          </div>
+                          <div class="qt-fill-right">
+                            <label class="radio-field ms-2">
+                              <input type="checkbox" name="x1">
+                              <span class="checkmark"></span>
+                            </label>
+                            <!-- <div class="ms-2">Show a progress bar under your quiz</div> -->
+                          </div>
+                        </li>
+                        <li>
+                          <div class="qt-fill-left">
+                            <span><input class="qt-fill-inp ps-0" type="text" value="Randomize Questions" readonly></span>
+                          </div>
+                          <div class="qt-fill-right">
+                            <label class="radio-field">
+                              <input type="checkbox" name="x1">
+                              <span class="checkmark"></span>
+                            </label>
+                            <!-- <div class="ms-2">Show questions in a random order</div> -->
+                          </div>
+                        </li>
+                        <li>
+                          <div class="qt-fill-left">
+                            <span><input class="qt-fill-inp ps-0" type="text" value="Quiz Timer" readonly></span>
+                          </div>
+                          <div class="qt-fill-right">
+                            <span style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#quiztimer"><i class="fa-solid fa-gear"></i></span>
+                            <label class="radio-field ms-2">
+                              <input type="checkbox" name="x1">
+                              <span class="checkmark"></span>
+                            </label>
+                            <!-- <div class="ms-2">Show a back button under your quiz</div> -->
+                          </div>
+                        </li>
+                        <li>
+                          <div class="qt-fill-left">
+                            <span><input class="qt-fill-inp ps-0" type="text" value="Auto Advance" readonly></span>
+                          </div>
+                          <div class="qt-fill-right">
+                            <label class="radio-field">
+                              <input type="checkbox" name="x1">
+                              <span class="checkmark"></span>
+                            </label>
+                            <!-- <div class="ms-2">Automatically advance to the next question</div> -->
+                          </div>
+                        </li>
+                        <li>
+                          <div class="qt-fill-left">
+                            <span><input class="qt-fill-inp ps-0" type="text" value="Quiz Tries" readonly></span>
+                          </div>
+                          <div class="qt-fill-right">
+                            <span style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#quiztries"><i class="fa-solid fa-gear"></i></span>
+                            <label class="radio-field ms-2">
+                              <input type="checkbox" name="x1">
+                              <span class="checkmark"></span>
+                            </label>
+                            <!-- <div class="ms-2">Will allow students to attempt quiz multiple times</div> -->
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="create-btn">
+                      <a class="theme-btn grey btnPrevious2"><i class="fa-solid fa-angle-left"></i> Back</a>
+                      <a class="theme-btn grey btnNext2">Next <i class="fa-solid fa-angle-right"></i></a>
+                    </div>
+                  </div>
+              </div>
+
+
+                <div class="tab-pane container fade" id="qt-12">
+                  <div>
+                    <h2 class="text-center"><i class="fa-solid fa-file-invoice"></i> Quiz Generated</h2>
+                    <div class="create-btn">
+                      <a class="theme-btn grey btnPrevious2"><i class="fa-solid fa-angle-left"></i> Back</a>
+                      <a class="theme-btn blue" data-bs-toggle="modal" data-bs-target="#exampleModal">Preview</a>
+                      <a class="theme-btn red" data-bs-toggle="modal" data-bs-target="#delQuiz">Delete</a>
+                      <a class="theme-btn green" data-bs-toggle="modal" data-bs-target="#pubQuiz">Publish</a>
+                    </div>
+                  </div>
+              </div>
+
+                      </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="slide-wrap">
+              <div class="sliderN owl-carousel">
+                 <div class="item">
+                  <div class="quiz-temp"></div>
+                 </div>
+                 <div class="item">
+                  <div class="quiz-temp"></div>
+                 </div>
+                 <div class="item">
+                  <div class="quiz-temp"></div>
+                 </div>
+                 <div class="item">
+                  <div class="quiz-temp"></div>
+                 </div>
+                 <div class="item">
+                  <div class="quiz-temp"></div>
+                 </div>
+                 <div class="item">
+                  <div class="quiz-temp"></div>
+                 </div>
+                 <div class="item">
+                  <div class="quiz-temp"></div>
+                 </div>
+                 <div class="item">
+                  <div class="quiz-temp"></div>
+                 </div>
+              </div>
+              <div class="slide-count" id="counter"></div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="tab-pane fade" id="tab-4">
+          <div class="box">
+            <div class="tab-title flex">
+              <div>
+                <h2>Quizzes</h2>
+                <h3>All Tutor's Quizzes</h3>
+              </div>
+              <div class="quiz-filter filter-action">Filters <i class="fa-solid fa-filter"></i></div>
+            </div>
+            <div class="table-responsive">
+              <table class="table quiz-table">
+                <thead>
+                  <tr>
+                    <th>
+                      <span class="table-title">Quiz Title <i class="fa-solid fa-sort"></i></span>
+                      <span class="table-inp"><input type="text" placeholder="Enter Quiz Title to Search"></span>
+                    </th>
+                    <th>
+                      <span class="table-title">Class / Grade <i class="fa-solid fa-sort"></i></span>
+                      <span class="table-inp">
+                        <select name="" id="">
+                          <option value="">Select Grade / Class</option>
+                        </select>
+                      </span>
+                    </th>
+                    <th>
+                      <span class="table-title">Course <i class="fa-solid fa-sort"></i></span>
+                      <span class="table-inp">
+                        <select name="" id="">
+                          <option value="">Select Course</option>
+                        </select>
+                      </span>
+                    </th>
+                    <th>
+                      <span class="table-title">Tutor's Name <i class="fa-solid fa-sort"></i></span>
+                      <span class="table-inp"><input type="text" placeholder="Enter Name to Search"></span>
+                    </th>
+                    <th>
+                      <span class="table-title">Actions</span>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Quiz Title</td>
+                    <td>Class / Grade</td>
+                    <td>Course</td>
+                    <td>Tutor's Name</td>
+                    <td>
+                      <a class="tableLink" href=""><i class="fa-regular fa-pen-to-square"></i></a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Quiz Title</td>
+                    <td>Class / Grade</td>
+                    <td>Course</td>
+                    <td>Tutor's Name</td>
+                    <td>
+                      <a class="tableLink" href=""><i class="fa-regular fa-pen-to-square"></i></a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Quiz Title</td>
+                    <td>Class / Grade</td>
+                    <td>Course</td>
+                    <td>Tutor's Name</td>
+                    <td>
+                      <a class="tableLink" href=""><i class="fa-regular fa-pen-to-square"></i></a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Quiz Title</td>
+                    <td>Class / Grade</td>
+                    <td>Course</td>
+                    <td>Tutor's Name</td>
+                    <td>
+                      <a class="tableLink" href=""><i class="fa-regular fa-pen-to-square"></i></a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Quiz Title</td>
+                    <td>Class / Grade</td>
+                    <td>Course</td>
+                    <td>Tutor's Name</td>
+                    <td>
+                      <a class="tableLink" href=""><i class="fa-regular fa-pen-to-square"></i></a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Quiz Title</td>
+                    <td>Class / Grade</td>
+                    <td>Course</td>
+                    <td>Tutor's Name</td>
+                    <td>
+                      <a class="tableLink" href=""><i class="fa-regular fa-pen-to-square"></i></a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Quiz Title</td>
+                    <td>Class / Grade</td>
+                    <td>Course</td>
+                    <td>Tutor's Name</td>
+                    <td>
+                      <a class="tableLink" href=""><i class="fa-regular fa-pen-to-square"></i></a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="tab-pane fade" id="tab-5">
+          <div class="box">
+            <div class="tab-title flex">
+              <div>
+                <h2>Upcoming Quizzes</h2>
+                <h3>All Published & Scheduled Quizzes List</h3>
+              </div>
+              <div class="quiz-filter filter-action">Filters <i class="fa-solid fa-filter"></i></div>
+            </div>
+            <div class="table-responsive">
+              <table class="table quiz-table">
+                <thead>
+                  <tr>
+                    <th>
+                      <span class="table-title">Quiz Title <i class="fa-solid fa-sort"></i></span>
+                      <span class="table-inp"><input type="text" placeholder="Enter Quiz Title to Search"></span>
+                    </th>
+                    <th>
+                      <span class="table-title">Class / Grade <i class="fa-solid fa-sort"></i></span>
+                      <span class="table-inp">
+                        <select name="" id="">
+                          <option value="">Select Grade / Class</option>
+                        </select>
+                      </span>
+                    </th>
+                    <th>
+                      <span class="table-title">Course <i class="fa-solid fa-sort"></i></span>
+                      <span class="table-inp">
+                        <select name="" id="">
+                          <option value="">Select Course</option>
+                        </select>
+                      </span>
+                    </th>
+                    <th>
+                      <span class="table-title">Start Date & Time <i class="fa-solid fa-sort"></i></span>
+                      <span class="table-inp"><input type="text" placeholder="Enter Name to Search"></span>
+                    </th>
+                    <th>
+                      <span class="table-title">End Date & Time <i class="fa-solid fa-sort"></i></span>
+                      <span class="table-inp"><input type="text" placeholder="Enter Name to Search"></span>
+                    </th>
+                    <th>
+                      <span class="table-title">Actions</span>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Quiz Title</td>
+                    <td>Class / Grade</td>
+                    <td>Course</td>
+                    <td>20-10-2021 | 10:00 PM</td>
+                    <td>21-10-2021 | 10:00 PM</td>
+                    <td>
+                      <a class="tableLink" href="" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-regular fa-eye"></i></a>
+                      <a class="tableLink grey" href=""><i class="fa-regular fa-pen-to-square"></i></a>
+                      <a class="tableLink yellow" href=""><i class="fa-brands fa-firstdraft"></i></a>
+                      <a class="tableLink blue" href=""><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Quiz Title</td>
+                    <td>Class / Grade</td>
+                    <td>Course</td>
+                    <td>20-10-2021 | 10:00 PM</td>
+                    <td>21-10-2021 | 10:00 PM</td>
+                    <td>
+                      <a class="tableLink" href="" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-regular fa-eye"></i></a>
+                      <a class="tableLink grey" href=""><i class="fa-regular fa-pen-to-square"></i></a>
+                      <a class="tableLink yellow" href=""><i class="fa-brands fa-firstdraft"></i></a>
+                      <a class="tableLink blue" href=""><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Quiz Title</td>
+                    <td>Class / Grade</td>
+                    <td>Course</td>
+                    <td>20-10-2021 | 10:00 PM</td>
+                    <td>21-10-2021 | 10:00 PM</td>
+                    <td>
+                      <a class="tableLink" href="" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-regular fa-eye"></i></a>
+                      <a class="tableLink grey" href=""><i class="fa-regular fa-pen-to-square"></i></a>
+                      <a class="tableLink yellow" href=""><i class="fa-brands fa-firstdraft"></i></a>
+                      <a class="tableLink blue" href=""><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Quiz Title</td>
+                    <td>Class / Grade</td>
+                    <td>Course</td>
+                    <td>20-10-2021 | 10:00 PM</td>
+                    <td>21-10-2021 | 10:00 PM</td>
+                    <td>
+                      <a class="tableLink" href="" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-regular fa-eye"></i></a>
+                      <a class="tableLink grey" href=""><i class="fa-regular fa-pen-to-square"></i></a>
+                      <a class="tableLink yellow" href=""><i class="fa-brands fa-firstdraft"></i></a>
+                      <a class="tableLink blue" href=""><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Quiz Title</td>
+                    <td>Class / Grade</td>
+                    <td>Course</td>
+                    <td>20-10-2021 | 10:00 PM</td>
+                    <td>21-10-2021 | 10:00 PM</td>
+                    <td>
+                      <a class="tableLink" href="" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-regular fa-eye"></i></a>
+                      <a class="tableLink grey" href=""><i class="fa-regular fa-pen-to-square"></i></a>
+                      <a class="tableLink yellow" href=""><i class="fa-brands fa-firstdraft"></i></a>
+                      <a class="tableLink blue" href=""><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Quiz Title</td>
+                    <td>Class / Grade</td>
+                    <td>Course</td>
+                    <td>20-10-2021 | 10:00 PM</td>
+                    <td>21-10-2021 | 10:00 PM</td>
+                    <td>
+                      <a class="tableLink" href="" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-regular fa-eye"></i></a>
+                      <a class="tableLink grey" href=""><i class="fa-regular fa-pen-to-square"></i></a>
+                      <a class="tableLink yellow" href=""><i class="fa-brands fa-firstdraft"></i></a>
+                      <a class="tableLink blue" href=""><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="tab-pane fade" id="tab-6">
+          <div class="box">
+            <div class="tab-title flex">
+              <div>
+                <h2>Completed Quizzes</h2>
+                <h3>All Completed Quizzes List</h3>
+              </div>
+              <div class="quiz-filter filter-action">Filters <i class="fa-solid fa-filter"></i></div>
+            </div>
+            <div class="table-responsive">
+              <table class="table quiz-table">
+                <thead>
+                  <tr>
+                    <th>
+                      <span class="table-title">Quiz Title <i class="fa-solid fa-sort"></i></span>
+                      <span class="table-inp"><input type="text" placeholder="Enter Quiz Title to Search"></span>
+                    </th>
+                    <th>
+                      <span class="table-title">Class / Grade <i class="fa-solid fa-sort"></i></span>
+                      <span class="table-inp">
+                        <select name="" id="">
+                          <option value="">Select Grade / Class</option>
+                        </select>
+                      </span>
+                    </th>
+                    <th>
+                      <span class="table-title">Course <i class="fa-solid fa-sort"></i></span>
+                      <span class="table-inp">
+                        <select name="" id="">
+                          <option value="">Select Course</option>
+                        </select>
+                      </span>
+                    </th>
+                    <th>
+                      <span class="table-title">Completed on & Time <i class="fa-solid fa-sort"></i></span>
+                      <span class="table-inp"><input type="text" placeholder="Enter Name to Search"></span>
+                    </th>
+                    <th>
+                      <span class="table-title">Actions</span>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Quiz Title</td>
+                    <td>Class / Grade</td>
+                    <td>Course</td>
+                    <td>20-10-2021 | 10:00 PM</td>
+                    <td>
+                      <a class="tableLink" href="" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-regular fa-eye"></i></a>
+                      <a class="tableLink grey" href=""><i class="fa-regular fa-pen-to-square"></i></a>
+                      <a class="tableLink green" href=""><i class="fa-regular fa-clock"></i></a>
+                      <a class="tableLink blue" href=""><i class="fa-solid fa-pen-clip"></i></a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Quiz Title</td>
+                    <td>Class / Grade</td>
+                    <td>Course</td>
+                    <td>20-10-2021 | 10:00 PM</td>
+                    <td>
+                      <a class="tableLink" href="" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-regular fa-eye"></i></a>
+                      <a class="tableLink grey" href=""><i class="fa-regular fa-pen-to-square"></i></a>
+                      <a class="tableLink green" href=""><i class="fa-regular fa-clock"></i></a>
+                      <a class="tableLink blue" href=""><i class="fa-solid fa-pen-clip"></i></a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Quiz Title</td>
+                    <td>Class / Grade</td>
+                    <td>Course</td>
+                    <td>20-10-2021 | 10:00 PM</td>
+                    <td>
+                      <a class="tableLink" href="" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-regular fa-eye"></i></a>
+                      <a class="tableLink grey" href=""><i class="fa-regular fa-pen-to-square"></i></a>
+                      <a class="tableLink green" href=""><i class="fa-regular fa-clock"></i></a>
+                      <a class="tableLink blue" href=""><i class="fa-solid fa-pen-clip"></i></a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Quiz Title</td>
+                    <td>Class / Grade</td>
+                    <td>Course</td>
+                    <td>20-10-2021 | 10:00 PM</td>
+                    <td>
+                      <a class="tableLink" href="" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-regular fa-eye"></i></a>
+                      <a class="tableLink grey" href=""><i class="fa-regular fa-pen-to-square"></i></a>
+                      <a class="tableLink green" href=""><i class="fa-regular fa-clock"></i></a>
+                      <a class="tableLink blue" href=""><i class="fa-solid fa-pen-clip"></i></a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Quiz Title</td>
+                    <td>Class / Grade</td>
+                    <td>Course</td>
+                    <td>20-10-2021 | 10:00 PM</td>
+                    <td>
+                      <a class="tableLink" href="" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-regular fa-eye"></i></a>
+                      <a class="tableLink grey" href=""><i class="fa-regular fa-pen-to-square"></i></a>
+                      <a class="tableLink green" href=""><i class="fa-regular fa-clock"></i></a>
+                      <a class="tableLink blue" href=""><i class="fa-solid fa-pen-clip"></i></a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Quiz Title</td>
+                    <td>Class / Grade</td>
+                    <td>Course</td>
+                    <td>20-10-2021 | 10:00 PM</td>
+                    <td>
+                      <a class="tableLink" href="" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-regular fa-eye"></i></a>
+                      <a class="tableLink grey" href=""><i class="fa-regular fa-pen-to-square"></i></a>
+                      <a class="tableLink green" href=""><i class="fa-regular fa-clock"></i></a>
+                      <a class="tableLink blue" href=""><i class="fa-solid fa-pen-clip"></i></a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+  <!-- Container -->
+
+  <!-- Footer -->
+  <footer class="site-footer">
+     <div class="container-fluid">
+        <div class="row">
+          <div class="col-xl-4">
+            <p>+00 000 000 000 <span>support@tutorsonline.com</span></p>
+          </div>
+          <div class="col-xl-4">
+            <p class="text-center">All Rights Reserved by Tutors Online</p>
+          </div>
+          <div class="col-xl-4">
+            <p class="text-end">Designed & Developed With Love by Coding Pro</p>
+          </div>
+        </div>
+     </div>
+  </footer>
+  <!-- Footer -->
+
+</div>
+
+
+<div class="modal common-modal modal-full" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header center">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <div class="modal-body">
+          <!-- Nav tabs -->
+          <ul class="nav nav-tabs" style="display: none;">
+            <li class="nav-item">
+              <a class="nav-link active" data-bs-toggle="tab" href="#home"></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-bs-toggle="tab" href="#menu1"></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-bs-toggle="tab" href="#menu2"></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-bs-toggle="tab" href="#menu3"></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-bs-toggle="tab" href="#menu4"></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-bs-toggle="tab" href="#menu5"></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-bs-toggle="tab" href="#menu6"></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-bs-toggle="tab" href="#menu7"></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-bs-toggle="tab" href="#menu8"></a>
+            </li>
+          </ul>
+
+          <!-- Tab panes -->
+          <div class="tab-content">
+            <div class="tab-pane active" id="home">
+              <div class="quiz-head"><h5><i class="fa-solid fa-scale-balanced"></i> Quiz Instructions</h5></div>
+              <div class="container">
+                <div class="container-in">
+                  <p class="text-large text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </div>
+              </div>
+              <div class="tab-btn-group">
+                <a class="theme-btn red" href="" data-bs-toggle="modal" data-bs-target="#delQuiz">Delete</a>
+                <a class="theme-btn green" href="" data-bs-toggle="modal" data-bs-target="#pubQuiz">Publish</a>
+                <a class="btnNext theme-btn grey">Next <i class="fa-solid fa-angle-right"></i></a>
+              </div>
+            </div>
+
+            <div class="tab-pane fade" id="menu1">
+              <div class="quiz-head"><h5><i class="fa-solid fa-file-invoice"></i> 1 of 8 Quiz Question</h5></div>
+              <div class="container">
+                <div class="container-in">
+                  <div class="row justify-content-center">
+                    <div class="col-lg-7">
+                      <div class="questions">
+                        <div class="questions-time"><i class="fa-solid fa-clock"></i> 13 M : 20 S</div>
+                        <div class="questions-list">
+                          <ul>
+                            <li><span>?</span> Name of the Current American President?</li>
+                            <li><span>A</span> George Washington</li>
+                            <li><span>B</span> James K. Polk</li>
+                            <li><span>C</span> Joseph R. Biden Jr.</li>
+                            <li><span>D</span> Herbert Hoover</li>
+                          </ul>
+                        </div>
+                        <div class="select-ans">
+                          <p>Select correct answer</p>
+                          <div class="opt-ans">
+                              <label for="">
+                                <span class="num">A</span>
+                                <input type="radio" name="1">
+                                <span class="checkmark"></span>
+                              </label>
+                              <label for="">
+                                <span class="num">B</span>
+                                <input type="radio" name="1">
+                                <span class="checkmark"></span>
+                              </label>
+                              <label for="">
+                                <span class="num">C</span>
+                                <input type="radio" name="1">
+                                <span class="checkmark"></span>
+                              </label>
+                              <label for="">
+                                <span class="num">D</span>
+                                <input type="radio" name="1">
+                                <span class="checkmark"></span>
+                              </label>
+                          </div>
+                        </div>
+                        <p class="pt-2">Select one of the option form the given ones</p>
+                        <div class="question-progress">
+                          <span class="pro-percentage">0%</span>
+                          <div class="question-progress-bar"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="tab-btn-group">
+                <a class="btnPrevious theme-btn grey"><i class="fa-solid fa-angle-left"></i> Back</a>
+                <a class="theme-btn red" href="" data-bs-toggle="modal" data-bs-target="#delQuiz">Delete</a>
+                <a class="theme-btn green" href="" data-bs-toggle="modal" data-bs-target="#pubQuiz">Publish</a>
+                <a class="btnNext theme-btn grey">Next <i class="fa-solid fa-angle-right"></i></a>
+              </div>
+            </div>
+
+            <div class="tab-pane fade" id="menu2">
+              <div class="quiz-head"><h5><i class="fa-solid fa-file-invoice"></i> 2 of 8 Quiz Question</h5></div>
+              <div class="container">
+                <div class="container-in">
+                  <div class="row justify-content-center">
+                    <div class="col-lg-7">
+                      <div class="questions">
+                        <div class="questions-list">
+                          <ul>
+                            <li><span>?</span> Is two plus two equals to four?</li>
+                            <li><span>A</span> True</li>
+                            <li><span>B</span> False</li>
+                          </ul>
+                        </div>
+                        <div class="select-ans">
+                          <p>Select correct answer</p>
+                          <div class="opt-ans">
+                              <label for="">
+                                <span class="num">A</span>
+                                <input type="radio" name="1">
+                                <span class="checkmark"></span>
+                              </label>
+                              <label for="">
+                                <span class="num">B</span>
+                                <input type="radio" name="1">
+                                <span class="checkmark"></span>
+                              </label>
+                          </div>
+                        </div>
+                        <p class="pt-2">Select one of the option form the given ones</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="tab-btn-group">
+                <a class="btnPrevious theme-btn grey"><i class="fa-solid fa-angle-left"></i> Back</a>
+                <a class="theme-btn red" href="" data-bs-toggle="modal" data-bs-target="#delQuiz">Delete</a>
+                <a class="theme-btn green" href="" data-bs-toggle="modal" data-bs-target="#pubQuiz">Publish</a>
+                <a class="btnNext theme-btn grey">Next <i class="fa-solid fa-angle-right"></i></a>
+              </div>
+            </div>
+
+
+            <div class="tab-pane fade" id="menu3">
+              <div class="quiz-head"><h5><i class="fa-solid fa-file-invoice"></i> 3 of 8 Quiz Question</h5></div>
+
+              <div class="container">
+                <div class="container-in">
+                  <div class="row justify-content-center">
+                    <div class="col-lg-7">
+                      <div class="questions">
+                        <div class="questions-list">
+                          <ul>
+                            <li><span>?</span> Name of the Current American President?</li>
+                            <li><span>A</span> George Washington</li>
+                            <li><span>B</span> James K. Polk</li>
+                            <li><span>C</span> Joseph R. Biden Jr.</li>
+                            <li><span>D</span> Herbert Hoover</li>
+                          </ul>
+                        </div>
+                        <div class="select-ans">
+                          <p>Select correct answer</p>
+                          <div class="opt-ans">
+                              <label for="">
+                                <span class="num">A</span>
+                                <input type="radio" name="2">
+                                <span class="checkmark"></span>
+                              </label>
+                              <label for="">
+                                <span class="num">B</span>
+                                <input type="radio" name="2">
+                                <span class="checkmark"></span>
+                              </label>
+                              <label for="">
+                                <span class="num">C</span>
+                                <input type="radio" name="2">
+                                <span class="checkmark"></span>
+                              </label>
+                              <label for="">
+                                <span class="num">D</span>
+                                <input type="radio" name="2">
+                                <span class="checkmark"></span>
+                              </label>
+                          </div>
+                        </div>
+                        <p class="pt-2">Select one of the option form the given ones</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tab-btn-group">
+                <a class="btnPrevious theme-btn grey"><i class="fa-solid fa-angle-left"></i> Back</a>
+                <a class="theme-btn red" href="" data-bs-toggle="modal" data-bs-target="#delQuiz">Delete</a>
+                <a class="theme-btn green" href="" data-bs-toggle="modal" data-bs-target="#pubQuiz">Publish</a>
+                <a class="btnNext theme-btn grey">Next <i class="fa-solid fa-angle-right"></i></a>
+              </div>
+            </div>
+
+
+            <div class="tab-pane fade" id="menu4">
+              <div class="quiz-head"><h5><i class="fa-solid fa-file-invoice"></i> 4 of 8 Quiz Question</h5></div>
+
+              <div class="container">
+                <div class="container-in">
+                  <div class="row justify-content-center">
+                    <div class="col-lg-7">
+                      <div class="questions">
+                        <div class="questions-list">
+                          <ul>
+                            <li><span>?</span> Name of the Current American President?</li>
+                          </ul>
+                        </div>
+                        <div class="select-ans">
+                          <p>Enter Correct Answer</p>
+                          <div class="opt-ans half">
+                              <input class="inpTxt" type="text" name="" id="" placeholder="Enter Correct Answer Here">
+                          </div>
+                        </div>
+                        <p class="pt-2">Type one or two words answer in the given space</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tab-btn-group">
+                <a class="btnPrevious theme-btn grey"><i class="fa-solid fa-angle-left"></i> Back</a>
+                <a class="theme-btn red" href="" data-bs-toggle="modal" data-bs-target="#delQuiz">Delete</a>
+                <a class="theme-btn green" href="" data-bs-toggle="modal" data-bs-target="#pubQuiz">Publish</a>
+                <a class="btnNext theme-btn grey">Next <i class="fa-solid fa-angle-right"></i></a>
+              </div>
+            </div>
+
+            <div class="tab-pane fade" id="menu5">
+              <div class="quiz-head"><h5><i class="fa-solid fa-file-invoice"></i> 5 of 8 Quiz Question</h5></div>
+
+              <div class="container">
+                <div class="container-in">
+                  <div class="row justify-content-center">
+                    <div class="col-lg-7">
+                      <div class="questions">
+                        <div class="questions-list">
+                          <ul>
+                            <li><span>?</span> When America was discovered?</li>
+                          </ul>
+                        </div>
+                        <div class="select-ans">
+                          <p>Enter Correct Answer</p>
+                          <div class="opt-ans half">
+                              <input class="inpTxt" type="text" name="" id="" placeholder="Enter Correct Answer Here">
+                          </div>
+                        </div>
+                        <p class="pt-2">Type your answer in date format eg. MM DD YYYY</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tab-btn-group">
+                <a class="btnPrevious theme-btn grey"><i class="fa-solid fa-angle-left"></i> Back</a>
+                <a class="theme-btn red" href="" data-bs-toggle="modal" data-bs-target="#delQuiz">Delete</a>
+                <a class="theme-btn green" href="" data-bs-toggle="modal" data-bs-target="#pubQuiz">Publish</a>
+                <a class="btnNext theme-btn grey">Next <i class="fa-solid fa-angle-right"></i></a>
+              </div>
+            </div>
+
+            <div class="tab-pane fade" id="menu6">
+              <div class="quiz-head"><h5><i class="fa-solid fa-file-invoice"></i> 6 of 8 Quiz Question</h5></div>
+
+              <div class="container">
+                <div class="container-in">
+                  <div class="row justify-content-center">
+                    <div class="col-lg-7">
+                      <div class="questions">
+                        <div class="questions-list">
+                          <ul>
+                            <li><span>?</span> What is Human-Centered Design?</li>
+                          </ul>
+                        </div>
+                        <div class="select-ans auto">
+                          <p class="pb-2">Enter Correct Answer</p>
+                          <div class="opt-ans half">
+                            <textarea class="inpTxt" name="" id="" placeholder="Enter Correct Answer Here"></textarea>
+                          </div>
+                        </div>
+                        <p class="pt-2">Type short answer in the given space</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tab-btn-group">
+                <a class="btnPrevious theme-btn grey"><i class="fa-solid fa-angle-left"></i> Back</a>
+                <a class="theme-btn red" href="" data-bs-toggle="modal" data-bs-target="#delQuiz">Delete</a>
+                <a class="theme-btn green" href="" data-bs-toggle="modal" data-bs-target="#pubQuiz">Publish</a>
+                <a class="btnNext theme-btn grey">Next <i class="fa-solid fa-angle-right"></i></a>
+              </div>
+            </div>
+
+            <div class="tab-pane fade" id="menu7">
+              <div class="quiz-head"><h5><i class="fa-solid fa-file-invoice"></i> 7 of 8 Quiz Question</h5></div>
+
+              <div class="container">
+                <div class="container-in">
+                  <div class="row justify-content-center">
+                    <div class="col-lg-7">
+                      <div class="questions">
+                        <div class="questions-list">
+                          <ul>
+                            <li><span>?</span> What is Human-Centered Design?</li>
+                          </ul>
+                        </div>
+                        <div class="select-ans auto">
+                          <p class="pb-2">Enter Correct Answer</p>
+                          <div class="opt-ans half">
+                            <textarea class="inpTxt" name="" id="" placeholder="Enter Correct Answer Here"></textarea>
+                          </div>
+                        </div>
+                        <p class="pt-2">Type short answer in the given space</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tab-btn-group">
+                <a class="btnPrevious theme-btn grey"><i class="fa-solid fa-angle-left"></i> Back</a>
+                <a class="theme-btn red" href="" data-bs-toggle="modal" data-bs-target="#delQuiz">Delete</a>
+                <a class="theme-btn green" href="" data-bs-toggle="modal" data-bs-target="#pubQuiz">Publish</a>
+                <a class="btnNext theme-btn grey">Next <i class="fa-solid fa-angle-right"></i></a>
+              </div>
+            </div>
+
+            <div class="tab-pane fade" id="menu8">
+              <div class="quiz-head"><h5><i class="fa-solid fa-file-invoice"></i> 8 of 8 Quiz Question</h5></div>
+
+              <div class="container">
+                <div class="container-in">
+                  <div class="row justify-content-center">
+                    <div class="col-lg-7">
+                      <div class="questions">
+                        <div class="questions-list">
+                          <ul>
+                            <li><span>?</span> What is Human-Centered Design?</li>
+                          </ul>
+                        </div>
+                        <div class="select-ans auto">
+                          <p class="pb-2">Enter Correct Answer</p>
+                          <div class="txt-opt">
+                            <span><strong>B</strong></span> <span><em>I</em></span> <span><u>U</u></span>
+                          </div>
+                          <div class="opt-ans half">
+                            <textarea class="inpTxt-alt" name="" id="" placeholder="Enter Correct Answer Here"></textarea>
+                          </div>
+                        </div>
+                        <p class="pt-2">Type elaborative answer in the given space</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tab-btn-group">
+                <a class="btnPrevious theme-btn grey"><i class="fa-solid fa-angle-left"></i> Back</a>
+                <a class="theme-btn red" href="" data-bs-toggle="modal" data-bs-target="#delQuiz">Delete</a>
+                <a class="theme-btn green" href="" data-bs-toggle="modal" data-bs-target="#pubQuiz">Publish</a>
+                <a class="btnNext theme-btn red" data-bs-dismiss="modal">Close</a>
+              </div>
+            </div>
+
+          </div>
+      </div>
+
+      <div class="modal-footer"></div>
+
+    </div>
+  </div>
+</div>
+
+
+
+<div class="modal common-modal fade" id="delQuiz">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5>Delete Quiz</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure, you want to delete this Quiz</p>
+      </div>
+      <div class="modal-footer center">
+        <button type="button" data-bs-dismiss="modal" class="theme-btn btn-round blue">Close</button>
+        <button type="button" data-bs-dismiss="modal" class="theme-btn btn-round red">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal common-modal fade" id="pubQuiz">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5>Publish Quiz</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure, you want to Publish this quiz</p>
+      </div>
+      <div class="modal-footer center">
+        <button type="button" data-bs-dismiss="modal" class="theme-btn btn-round blue">Close</button>
+        <button type="button" data-bs-dismiss="modal" class="theme-btn btn-round green">Publish</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="modal common-modal fade" id="quiztimer">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5>Quiz Timer Configure</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="inp-group mt-0">
+          <label for="">Time Allowed for Each Question</label>
+          <input class="inp" type="text" placeholder="Enter in Seconds">
+        </div>
+      </div>
+      <div class="modal-footer center">
+        <button type="button" data-bs-dismiss="modal" class="theme-btn btn-round green">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal common-modal fade" id="quiztries">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5>Quiz Tries</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="inp-group mt-0">
+          <label for="">How many times student can try to answer same question</label>
+          <input class="inp" type="text" placeholder="Enter Tries (1-3)">
+        </div>
+      </div>
+      <div class="modal-footer center">
+        <button type="button" data-bs-dismiss="modal" class="theme-btn btn-round green">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/tilt.js@1.2.1/dest/tilt.jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+  <script src="./assets/js/custom.js"></script>
+  <script>
+    $(".sliderN")
+  .on("initialized.owl.carousel changed.owl.carousel", function(e) {
+    if (!e.namespace) {
+      return;
+    }
+    $("#counter").text(
+      e.relatedTarget.relative(e.item.index) + 1 + "/" + e.item.count
+    );
+  })
+  .owlCarousel({
+    items: 4,
+    margin: 30,
+    loop: true,
+    nav: true,
+    responsive:{
+        0:{
+            items:1
+        },
+        600:{
+            items:3
+        },
+        1000:{
+            items:4
+        }
+    }
+  });
+  </script>
+  </body>
+</html>
+
+@include('/tutor/common/footer')

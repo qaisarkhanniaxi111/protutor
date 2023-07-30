@@ -1,0 +1,646 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, shrink-to-fit=no">
+    <link rel="shortcut icon" href="assets/images/favicon.png">
+    <title>Teachers Portal : Profile</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/custom.css">
+  </head>
+  <body>
+
+ <div class="site-wrap"> 
+
+  <!-- Header -->
+  <section class="header">
+    <div class="header-left">
+      <div class="logo"><img src="./assets/images/logo.png" alt=""></div> 
+      <div class="nav-expand"><img src="./assets/images/nav.png" alt=""></div>
+    </div>
+    <div class="header-right">
+      <div class="search">
+        <input class="search-inp" type="text" placeholder="Search">
+        <span class="inp-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
+      </div>
+      <div class="notific-bar">
+        <div class="notific-bell">
+          <i class="fa-solid fa-bell"></i>
+          <span class="notific-dot"></span>
+        </div>
+        <div class="user-pic">
+          <div class="user-thumb"><img src="https://images.pexels.com/photos/3586798/pexels-photo-3586798.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt=""></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Header -->
+
+  <!-- Side-bar -->
+  <section class="side-bar">
+    <ul>
+      <li><a href="index.html"><span><i class="fa-brands fa-hive"></i></span> <span>Home</span></a></li>
+      <li><a class="active" href="profile.html"><span><i class="fa-solid fa-user"></i></span> <span>Profile</span></a></li>
+      <li><a href="library.html"><span><i class="fa-solid fa-book-bookmark"></i></span> <span>Library</span></a></li>
+      <li><a href="calendar.html"><span><i class="fa-solid fa-calendar-days"></i></span> <span>Calendar</span></a></li>
+      <li><a href="quiz.html"><span><i class="fa-solid fa-square-poll-horizontal"></i></span> <span>Quiz</span></a></li>
+      <li><a href="teaching-orders.html"><span><i class="fa-solid fa-chalkboard-user"></i></span> <span>Teaching Orders</span></a></li>
+      <li><a href="chat.html"><span><i class="fa-solid fa-message"></i></span> <span>Chat</span></a></li>
+      <li><a href="earnings.html"><span><i class="fa-solid fa-sack-dollar"></i></span> <span>Earnings</span></a></li>
+    </ul>
+    <hr>
+    <ul>
+      <li><a href="support.html"><span><i class="fa-solid fa-circle-question"></i></span> <span>Support</span></a></li>
+      <li><a href="settings.html"><span><i class="fa-solid fa-gear"></i></span> <span>Settings</span></a></li>
+      <li><a href=""><span><i class="fa-solid fa-arrow-right-from-bracket"></i></span> <span>Logout</span></a></li>
+      <li><a href="info.html"><span><i class="fa-solid fa-circle-info"></i></span> <span>Info</span></a></li>
+    </ul>
+  </section>
+  <!-- Side-bar -->
+
+  <!-- Container -->
+  <section class="wrapper">
+    <div class="page-title">
+      <h1>Profile</h1>
+    </div>
+
+    <div>
+          <ul class="nav tab-nav">
+            <li class="nav-item">
+              <button class="active" data-bs-toggle="tab" data-bs-target="#tab-1">
+                <span>me</span> About
+            </button>
+            </li>
+            <li class="nav-item">
+              <button data-bs-toggle="tab" data-bs-target="#tab-2">
+                <span><i class="fa-solid fa-images"></i></span> Photo
+            </button>
+            </li>
+            <li class="nav-item">
+              <button data-bs-toggle="tab" data-bs-target="#tab-3">
+                <span><i class="fa-solid fa-align-left"></i></span> Description
+            </button>
+            </li>
+            <li class="nav-item">
+                <button data-bs-toggle="tab" data-bs-target="#tab-4">
+                  <span><i class="fa-solid fa-video"></i></span> Video
+              </button>
+              </li>
+              <li class="nav-item">
+                <button data-bs-toggle="tab" data-bs-target="#tab-5">
+                  <span><i class="fa-regular fa-object-group"></i></span> Background
+              </button>
+              </li>
+          </ul>
+
+          <div class="tab-content pt-3">
+
+            <div class="tab-pane fade show active" id="tab-1">
+                <div class="box">
+                    <div class="tab-title">
+                        <h2>About</h2>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-lg-9">
+                            <div class="bg-block">
+                                <div class="bg-block-main">
+                                    <div class="inp-group mt-0">
+                                        <label for="">First Name</label>
+                                        <input class="inp" type="text" placeholder="First Name">
+                                    </div>
+                                    <div class="inp-group">
+                                        <label for="">Last Name</label>
+                                        <input class="inp" type="text" placeholder="Last Name">
+                                    </div>
+                                    <div class="inp-group">
+                                        <label for="">Country of origin</label>
+                                        <select class="inp" name="" id="">
+                                            <option value="">Country-1</option>
+                                            <option value="">Country-2</option>
+                                            <option value="">Country-3</option>
+                                        </select>
+                                    </div>
+                                    <div class="inp-group">
+                                        <label for="">Email</label>
+                                        <input class="inp" type="email" placeholder="uniquename@domain.com">
+                                    </div>
+                                </div>
+                                <div class="inp-group">
+                                    <p class="info-txt">Cannot edit First Name, Last Name, Country of origin and email - Please contact admin to change this information</p>
+                                </div>
+                            </div>
+                            <div class="bg-block-main">
+                                <div class="inp-group">
+                                    <label for="">Describe your teaching experience</label>
+                                    <select class="inp" name="" id="">
+                                        <option value="">I have formal teaching experience</option>
+                                    </select>
+                                </div>
+                                <div class="inp-group">
+                                    <label for="">Describe your current situation</label>
+                                    <select class="inp" name="" id="">
+                                        <option value="">I have another teaching job</option>
+                                    </select>
+                                </div>
+                                <div class="inp-group">
+                                    <label for="">Timezone</label>
+                                    <select class="inp" name="" id="">
+                                        <option value="">Asia/Karachi</option>
+                                    </select>
+                                </div>
+                                <div class="inp-group">
+                                    <label for="">Phone Number</label>
+                                    <input class="inp" type="text" placeholder="+00 000 000 000">
+                                </div>
+                                <div class="inp-group">
+                                    <label for="">Hourly rate - USD ($)</label>
+                                    <input class="inp" type="text" placeholder="12">
+                                </div>
+                            </div>
+                            <div class="bg-block mt-4">
+                                <h5 class="text-center">Subjects Taught</h5>
+                                <p class="info-txt">You can select up to 20 subjects. Some subjects may require a knowledge quiz in the next step.</p>
+
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="subject-single">MATH</div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="subject-single">SCIENCE</div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="subject-single">BUSINESS</div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="subject-single">ENGINEERING & TECHNOLOGY</div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="subject-single">ARTS & HUMANITIES</div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="subject-single">SOCIAL SCIENCE</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="save-changes">
+                        <button>Save Changes</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="tab-2">
+                <div class="box">
+                  <div class="tab-title">
+                    <h2>Profile Photo</h2>
+                    <h3>Make a great first impression</h3>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <div class="profile-photo">
+                        <div class="profile-photo-top">
+                          <div class="profile-photo-left"><img src="https://images.pexels.com/photos/4420634/pexels-photo-4420634.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt=""></div>
+                          <div class="profile-photo-right">
+                            <div class="line-1"></div>
+                            <div class="line"></div>
+                            <div class="line"></div>
+                            <div class="mt-4">
+                              <div class="line"></div>
+                              <div class="line"></div>
+                              <div class="line"></div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row mt-4">
+                          <div class="col-6">
+                            <div class="frame"></div>
+                          </div>
+                          <div class="col-6">
+                            <div class="frame"></div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="capture">
+                        <button><i class="fa-solid fa-camera-retro"></i> Capture Photo</button>
+                        <span class="txt-orange">Capture profile photo using webcam</span>
+                      </div>
+                      <div class="up-image">
+                        <p>Or upload image in JPG or PNG format not exceeding 5MB in size <br> <span>UPLOAD IMAGE</span></p>
+                        <input type="file">
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="photo-list-wrap">
+                        <div class="photo-list">
+                          <h3>Tips for an amazing profile photo</h3>
+                          <ul>
+                            <li>
+                              <div class="photo-list-single"><img src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt=""></div>
+                            </li>
+                            <li>
+                              <div class="photo-list-single"><img src="https://images.pexels.com/photos/6976943/pexels-photo-6976943.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt=""></div>
+                            </li>
+                            <li>
+                              <div class="photo-list-single"><img src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt=""></div>
+                            </li>
+                          </ul>
+                        </div>
+                        <div class="photo-list-txt">
+                          <ul>
+                            <li>Smile and look at the camera</li>
+                            <li>Frame your head and shoulders</li>
+                            <li>Your photo is centered and upright</li>
+                            <li>Use neutral lighting and background</li>
+                            <li>Your face and eyes are fully visible (except for religious reasons)</li>
+                            <li>Avoid logos or contact information</li>
+                            <li>You are the only person in the photo</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="save-changes">
+                    <button>Save Changes</button>
+                  </div>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="tab-3">
+                <div class="box">
+                  <div class="tab-title">
+                    <h2>Profile Description</h2>
+                    <h3>Update or create a new profile headline and description. It will appear on your tutor card on the “Find tutors” page.</h3>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-lg-8">
+                      <div class="pro-desc">
+                        <h4>Description for students</h4>
+                        <div class="pro-desc-in">
+                          <div class="pro-desc-left">
+                            <div class="profile-photo-left"><img src="https://images.pexels.com/photos/4420634/pexels-photo-4420634.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt=""></div>
+                          </div>
+                          <div class="pro-desc-right">
+                            <div class="inp-box mt-0">
+                              <label for="">First Name & Last Name of Tutor</label>
+                              <input class="inp-box-inp" type="text" placeholder="Certified tutor with extensive experience">
+                              <p class="info-txt text-start">Good example: “Certified tutor with 5 years of experience”</p>
+                            </div>
+                            <div class="inp-box">
+                              <label for="">About the tutor</label>
+                              <textarea class="inp-box-inp" name="" id="">I am a qualified ESL teacher with 3 years’ experience. I have experience teaching students of all levels and ages. Prior to my teaching career, I worked predominantly in large corporates, thus giving me extensive experience in business meetings and public speaking. My qualifications include, a (B.S.) a 120-hour TEFL certification and a 320-hour TEFL Diploma. 
+                                
+My lesson plans are diligent and creative. My teaching methodologies are chosen to suit the students specific learning needs. It is my goal to combine my range of experience with my ability to be an enthusiastic, engaging and fun teacher with a great sense of empathy and love for the English language. 
+
+I like to achieve good pronunciation for fluency by instilling confidence in my students.
+                              </textarea>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="save-changes">
+                    <button>Save Changes</button>
+                  </div>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="tab-4">
+                <div class="box">
+                  <div class="tab-title">
+                    <h2>Profile Introduction Video</h2>
+                    <h3>Now introduce yourself to students!</h3>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <div class="pro-desc">
+                        <div class="inp-box mt-0">
+                          <label for="">Video Link</label>
+                          <input class="inp-box-inp" type="text" placeholder="https://vimeo.com/video_id">
+                          <p class="info-txt text-start">Good example: “Certified tutor with 5 years of experience”</p>
+                        </div>
+                        <div class="inp-box">
+                          <label for="">Video Preview</label>
+                          <div class="vid-prev">
+                            <div class="vid-icon"><i class="fa-solid fa-play"></i></div>
+                          </div>
+                          <div class="pt-3">
+                            <button class="link-bdr">Preview</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="photo-list-wrap">
+                        <div class="photo-list-txt">
+                          <h2>Tips for an amazing introduction video</h2>
+                          <h2 class="pt-4">Technical</h2>
+                          <ul class="pt-2">
+                            <li>Keep your video between 30 seconds and 2 minutes long</li>
+                            <li>Record in a horizontal mode</li>
+                            <li>Position the camera at eye level</li>
+                            <li>Use neutral lighting and background</li>
+                            <li>Your face and eyes are fully visible (except for religious reasons)</li>
+                            <li>No logos, links or contact details</li>
+                            <li>No slideshows or presentations</li>
+                          </ul>
+                          <h2 class="pt-4">Content</h2>
+                          <ul class="pt-2">
+                            <li>Greet your students warmly</li>
+                            <li>Highlight any teaching certification</li>
+                            <li>Present your tutoring experience</li>
+                            <li>Invite students to book a lesson</li>
+                          </ul>
+                          <h2 class="pt-4">Example</h2>
+                          <ul class="pt-2">
+                            <li>Profile introduction video example</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="save-changes">
+                    <button>Save Changes</button>
+                  </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="tab-5">
+                <div class="box">
+                  <div class="tab-title">
+                    <h2>Profile Verification</h2>
+                  </div>
+                  <div class="row justify-content-center">
+                    <div class="col-lg-7">
+                      <div class="box">
+                        <div class="verify-stat">
+                          <div class="verify-stat-icon"><i class="fa-solid fa-circle-check"></i></div>
+                          <div class="verify-stat-txt">
+                            <h5>Verified</h5>
+                            <p>See a blue verification badge next to your name on the “Find tutors” page</p>
+                          </div>
+                        </div>
+                        <div class="verify-stat green">
+                          <div class="verify-stat-icon"><i class="fa-solid fa-lock"></i></div>
+                          <div class="verify-stat-txt">
+                            <h5>Safe</h5>
+                            <p>We do not store your documents on our servers after verification is complete</p>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="mt-5 box">
+                        <div class="inp-block">
+                          <h5>Education</h5>
+                          <div class="block-inp-wrap">
+                            <label for="">University</label>
+                            <input class="block-inp" type="text" placeholder="">
+                          </div>
+                          <div class="block-inp-wrap">
+                            <label for="">Degree</label>
+                            <input class="block-inp" type="text" placeholder="">
+                          </div>
+                          <div class="block-inp-wrap">
+                            <label for="">Degree Type</label>
+                            <select class="block-inp" name="" id="">
+                              <option value="">Degree Type</option>
+                            </select>
+                          </div>
+                          <div class="block-inp-wrap">
+                            <label for="">Specialization</label>
+                            <input class="block-inp" type="text" placeholder="">
+                          </div>
+                          <div class="block-inp-wrap">
+                            <label for="">Year of Study</label>
+                            <div class="row">
+                              <div class="col-6">
+                                <select class="block-inp" name="" id="">
+                                  <option value="">Start Year</option>
+                                </select>
+                              </div>
+                              <div class="col-6">
+                                <select class="block-inp" name="" id="">
+                                  <option value="">End Year</option>
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="block-inp-wrap">
+                            <div class="verify-stat gery">
+                              <div class="verify-stat-icon"><i class="fa-solid fa-file-lines"></i></div>
+                              <div class="verify-stat-txt">
+                                <h5>Degree Verification</h5>
+                                <p>Upload most recent degree/certificate for profile verification</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="up-image">
+                            <p class="txt-blue"><i class="fa-solid fa-upload"></i></p>
+                            <p class="txt-green">JPG or PNG format maximum size of 20MB <br> <span>UPLOAD IMAGE</span></p>
+                            <input type="file">
+                          </div>
+                          <div class="add-btn"><i class="fa-solid fa-circle-plus"></i> Add Education</div>
+                          <hr>
+                          <div class="block-inp-wrap text-center">
+                            <button class="link-bdr">Save</button>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="mt-5 box">
+                        <div class="inp-block">
+                          <h5>Certification</h5>
+                          <div class="block-inp-wrap">
+                            <label for="">Certificate</label>
+                            <input class="block-inp" type="text" placeholder="">
+                          </div>
+                          <div class="block-inp-wrap">
+                            <label for="">Description</label>
+                            <input class="block-inp" type="text" placeholder="">
+                          </div>
+                          <div class="block-inp-wrap">
+                            <label for="">Issued By</label>
+                            <input class="block-inp" type="text" placeholder="">
+                          </div>
+                          <div class="block-inp-wrap">
+                            <label for="">Year of Study</label>
+                            <div class="row">
+                              <div class="col-6">
+                                <select class="block-inp" name="" id="">
+                                  <option value="">Start Year</option>
+                                </select>
+                              </div>
+                              <div class="col-6">
+                                <select class="block-inp" name="" id="">
+                                  <option value="">End Year</option>
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="block-inp-wrap">
+                            <div class="verify-stat gery">
+                              <div class="verify-stat-icon"><i class="fa-solid fa-file-lines"></i></div>
+                              <div class="verify-stat-txt">
+                                <h5>Get a "Certificate Verified" Badge</h5>
+                                <p>Upload your certificate to increase the credibility of your profile. </p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="up-image">
+                            <p class="txt-blue"><i class="fa-solid fa-upload"></i></p>
+                            <p class="txt-green">JPG or PNG format maximum size of 20MB <br> <span>UPLOAD Certificate</span></p>
+                            <input type="file">
+                          </div>
+                          <div class="add-btn"><i class="fa-solid fa-circle-plus"></i> Add another certificate</div>
+                          <hr>
+                          <div class="block-inp-wrap text-center">
+                            <button class="link-bdr">Save</button>
+                          </div>
+                        </div>
+                      </div>
+
+
+                      <div class="mt-5 box">
+                        <div class="inp-block">
+                          <h5>Experience</h5>
+                          <div class="block-inp-wrap">
+                            <label for="">Company</label>
+                            <input class="block-inp" type="text" placeholder="">
+                          </div>
+                          <div class="block-inp-wrap">
+                            <label for="">Position</label>
+                            <input class="block-inp" type="text" placeholder="">
+                          </div>
+                          <div class="block-inp-wrap">
+                            <label for="">Period of Employment</label>
+                            <div class="row">
+                              <div class="col-6">
+                                <select class="block-inp" name="" id="">
+                                  <option value="">Start Year</option>
+                                </select>
+                              </div>
+                              <div class="col-6">
+                                <select class="block-inp" name="" id="">
+                                  <option value="">End Year</option>
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="add-btn"><i class="fa-solid fa-circle-plus"></i> Add another Experience</div>
+                          <hr>
+                          <div class="block-inp-wrap text-center">
+                            <button class="link-bdr">Save</button>
+                          </div>
+                        </div>
+                      </div>
+
+
+                      <div class="mt-5 box">
+                        <div class="inp-block">
+                          <h5>Identity Verification</h5>
+                          <div class="block-inp-wrap">
+                            <label for="">Issued by Country</label>
+                            <input class="block-inp" type="text" placeholder="">
+                          </div>
+                          <div class="block-inp-wrap">
+                            <label for="">Type of Document</label>
+                            <select class="block-inp" name="" id="">
+                              <option value="">Type of Document</option>
+                            </select>
+                          </div>
+                          <div class="block-inp-wrap">
+                            <label for="">Document identification number</label>
+                            <input class="block-inp" type="text" placeholder="">
+                          </div>
+                          <div class="block-inp-wrap">
+                            <label for="">Document expiry date</label>
+                            <div class="row">
+                              <div class="col-6">
+                                <select class="block-inp" name="" id="">
+                                  <option value="">Select Day</option>
+                                </select>
+                              </div>
+                              <div class="col-6">
+                                <select class="block-inp" name="" id="">
+                                  <option value="">Select Year</option>
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="block-inp-wrap">
+                            <div class="verify-stat gery">
+                              <div class="verify-stat-icon"><i class="fa-solid fa-file-lines"></i></div>
+                              <div class="verify-stat-txt">
+                                <h5>Identity Document</h5>
+                                <p>Upload Identity Document for profile verification</p>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="row">
+                            <div class="col-lg-6">
+                              <div class="up-image">
+                                <p class="txt-blue"><i class="fa-solid fa-upload"></i></p>
+                                <p class="txt-green">JPG or PNG format maximum size of 20MB <br> <span>UPLOAD Front</span></p>
+                                <input type="file">
+                              </div>
+                            </div>
+                            <div class="col-lg-6">
+                              <div class="up-image">
+                                <p class="txt-blue"><i class="fa-solid fa-upload"></i></p>
+                                <p class="txt-green">JPG or PNG format maximum size of 20MB <br> <span>UPLOAD Back</span></p>
+                                <input type="file">
+                              </div>
+                            </div>
+                          </div>
+                          <hr>
+                          <div class="block-inp-wrap text-center">
+                            <button class="link-bdr">Save</button>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+          </div>
+    </div>
+  </section>
+  <!-- Container -->
+
+  <!-- Footer -->
+  <footer class="site-footer">
+     <div class="container-fluid">
+        <div class="row">
+          <div class="col-xl-4">
+            <p>+00 000 000 000 <span>support@tutorsonline.com</span></p>
+          </div>
+          <div class="col-xl-4">
+            <p class="text-center">All Rights Reserved by Tutors Online</p>
+          </div>
+          <div class="col-xl-4">
+            <p class="text-end">Designed & Developed With Love by Coding Pro</p>
+          </div>
+        </div>
+     </div>
+  </footer>
+  <!-- Footer -->
+
+</div>  
+
+
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>    
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/tilt.js@1.2.1/dest/tilt.jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+  <script src="./assets/js/custom.js"></script>  
+  </body>
+</html>

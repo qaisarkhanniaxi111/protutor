@@ -1,0 +1,1677 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, shrink-to-fit=no">
+    <link rel="shortcut icon" href="assets/images/favicon.png">
+    <title>Price Slabs</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/custom.css">
+  </head>
+  <body>
+
+
+  <div class="site-wrap">
+    <div class="login-head">
+        <div class="login-head-left">
+          <img src="./assets/images/logo-dark.svg" alt="">
+          <div class="mobClick">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+        <div class="login-head-right">
+            <div class="notific">
+                <i class="fa-regular fa-bell"></i>
+                <span class="notific-count">10</span>
+            </div>
+            <div class="profile-dropdown">
+                <div class="dropdown">
+                    <div class="dropdown-toggle" data-bs-toggle="dropdown">
+                        <span class="profile-dropdown-img"><img src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt=""></span>
+                        <span class="btn-txt">Super Admin</span>
+                    </div>
+                    <ul class="dropdown-menu">
+                      <li><a class="" href="#"><i class="fa-regular fa-user"></i> Edit Profile</a></li>
+                      <li><a class="" href="#"><i class="fa-solid fa-arrow-right-from-bracket"></i> Log Out</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <div class="dashboard-wrap">
+        <div class="sidebar">
+            <div class="accordion" id="sideNav">
+                <div class="acc-item">
+                  <a class="full-link" href="dashboard.html"></a>
+                    <div class="acc-button collapsed" data-bs-toggle="collapse">
+                        <span class="nav-icon"><i class="fa-solid fa-box"></i></span>
+                        Dashboard
+                    </div>
+                </div>
+
+                <div class="acc-item">
+                  <div class="acc-button collapsed" data-bs-toggle="collapse" data-bs-target="#menu-1" aria-expanded="true">
+                    <span class="nav-icon"><i class="fa-solid fa-users"></i></span>
+                    Manage Users
+                  </div>
+                  <div id="menu-1" class="accordion-collapse collapse" data-bs-parent="#sideNav">
+                    <div class="acc-body">
+                      <ul>
+                        <li><a href="user-dashboard.html">Users</a></li>
+                        <li><a href="manage-students.html">Manage Students</a></li>
+                        <li><a href="manage-tutors.html">Manage Tutors</a></li>
+                        <li><a href="tutors-review.html">Tutors Review</a></li>
+                        <li><a href="manage-admin-users.html">Manage Admin Users</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="acc-item">
+                  <div class="acc-button collapsed" data-bs-toggle="collapse" data-bs-target="#menu-2" aria-expanded="false">
+                    <span class="nav-icon"><i class="fa-solid fa-people-group"></i></span>
+                    Group Classes
+                  </div>
+                  <div id="menu-2" class="accordion-collapse collapse" data-bs-parent="#sideNav">
+                    <div class="acc-body">
+                      <ul>
+                        <li><a href="group-classess.html">Group Classess</a></li>
+                        <li><a href="package-classes.html">Package Classes</a></li>
+                        <li><a href="quiz.html">Quiz</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="acc-item">
+                    <div class="acc-button collapsed" data-bs-toggle="collapse" data-bs-target="#menu-3" aria-expanded="false">
+                      <span class="nav-icon"><i class="fa-solid fa-file-lines"></i></span>
+                      Manage Orders
+                    </div>
+                    <div id="menu-3" class="accordion-collapse collapse" data-bs-parent="#sideNav">
+                      <div class="acc-body">
+                        <ul>
+                          <li><a href="all-orders.html">All Orders</a></li>
+                          <li><a href="lesson-orders.html">Lesson Orders</a></li>
+                          <li><a href="subscription-orders.html">Subscription Orders</a></li>
+                          <li><a href="classes-orders.html">Classes Orders</a></li>
+                          <li><a href="package-Orders.html">Package Orders</a></li>
+                          <li><a href="wallet-orders.html">Wallet Orders</a></li>
+                          <li><a href="gift-card-orders.html">Gift Card Orders</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                </div>
+
+                <div class="acc-item">
+                    <div class="acc-button collapsed" data-bs-toggle="collapse" data-bs-target="#menu-4" aria-expanded="false">
+                      <span class="nav-icon"><i class="fa-solid fa-clipboard-list"></i></span>
+                      Report Logs
+                    </div>
+                    <div id="menu-4" class="accordion-collapse collapse" data-bs-parent="#sideNav">
+                      <div class="acc-body">
+                        <ul>
+                          <li><a href="report-logs.html">Report Logs</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                </div>
+
+                <div class="acc-item">
+                    <div class="acc-button collapsed" data-bs-toggle="collapse" data-bs-target="#menu-5" aria-expanded="false">
+                      <span class="nav-icon"><i class="fa-solid fa-user-shield"></i></span>
+                      Tutor Preferences
+                    </div>
+                    <div id="menu-5" class="accordion-collapse collapse" data-bs-parent="#sideNav">
+                      <div class="acc-body">
+                        <ul>
+                          <li><a href="accents.html">Accents</a></li>
+                          <li><a href="teaches-level.html">Teaches Level</a></li>
+                          <li><a href="learner-ages.html">Learner Ages</a></li>
+                          <li><a href="lesson-includes.html">Lesson Includes</a></li>
+                          <li><a href="subjects.html">Subjects</a></li>
+                          <li><a href="text-prepration.html">Text Prepration</a></li>
+                          <li><a href="spoken-language.html">Spoken Language</a></li>
+                          <li><a href="teaching-language.html">Teaching Language</a></li>
+                          <li><a href="issues-report-option.html">Issues Report Option</a></li>
+                          <li><a href="price-slabs.html">Price Slabs</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                </div>
+
+                <div class="acc-item">
+                    <div class="acc-button" data-bs-toggle="collapse" data-bs-target="#menu-6" aria-expanded="false">
+                      <span class="nav-icon"><i class="fa-solid fa-gear"></i></span>
+                      Settings
+                    </div>
+                    <div id="menu-6" class="accordion-collapse collapse show" data-bs-parent="#sideNav">
+                      <div class="acc-body">
+                        <ul>
+                          <li><a class="active" href="general-settings.html">General Settings</a></li>
+                          <li><a href="pwa-settings.html">PWA Settings</a></li>
+                          <li><a href="meetings-tools.html">Meetings Tools</a></li>
+                          <li><a href="payment-methods.html">Payment Methods</a></li>
+                          <li><a href="social-platforms.html">Social Platforms</a></li>
+                          <li><a href="discount-coupons.html">Discount Coupons</a></li>
+                          <li><a href="commission-settings.html">Commission Settings</a></li>
+                          <li><a href="currency-management.html">Currency Management</a></li>
+                          <li><a href="themes-management.html">Themes Management</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                </div>
+
+                <div class="acc-item">
+                    <div class="acc-button collapsed" data-bs-toggle="collapse" data-bs-target="#menu-7" aria-expanded="false">
+                      <span class="nav-icon"><i class="fa-solid fa-layer-group"></i></span>
+                      Manage CMS
+                    </div>
+                    <div id="menu-7" class="accordion-collapse collapse" data-bs-parent="#sideNav">
+                      <div class="acc-body">
+                        <ul>
+                          <li><a href="home-page-slide.html">Home Page Slide</a></li>
+                          <li><a href="content-pages.html">Content Pages</a></li>
+                          <li><a href="content-blocks.html">Content Blocks</a></li>
+                          <li><a href="navigation.html">Navigation</a></li>
+                          <li><a href="countries.html">Countries</a></li>
+                          <li><a href="videos-content.html">Videos Content</a></li>
+                          <li><a href="testimonials.html">Testimonials </a></li>
+                          <li><a href="language-label.html">Language Label</a></li>
+                          <li><a href="faqs-categories.html">FAQs Categories</a></li>
+                          <li><a href="manage-faqs.html">Manage FAQs</a></li>
+                          <li><a href="email-templates.html">Email Templates</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                </div>
+
+                <div class="acc-item">
+                    <div class="acc-button collapsed" data-bs-toggle="collapse" data-bs-target="#menu-8" aria-expanded="false">
+                      <span class="nav-icon"><i class="fa-solid fa-blog"></i></span>
+                      Manage Blogs
+                    </div>
+                    <div id="menu-8" class="accordion-collapse collapse" data-bs-parent="#sideNav">
+                      <div class="acc-body">
+                        <ul>
+                          <li><a href="">Not Available</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                </div>
+
+                <div class="acc-item">
+                    <div class="acc-button collapsed" data-bs-toggle="collapse" data-bs-target="#menu-9" aria-expanded="false">
+                      <span class="nav-icon"><i class="fa-solid fa-seedling"></i></span>
+                      Manage SEO
+                    </div>
+                    <div id="menu-9" class="accordion-collapse collapse" data-bs-parent="#sideNav">
+                      <div class="acc-body">
+                        <ul>
+                          <li><a href="">Not Available</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                </div>
+
+                <div class="acc-item">
+                    <div class="acc-button collapsed" data-bs-toggle="collapse" data-bs-target="#menu-10" aria-expanded="false">
+                      <span class="nav-icon"><i class="fa-solid fa-chart-pie"></i></span>
+                      Report Performance
+                    </div>
+                    <div id="menu-10" class="accordion-collapse collapse" data-bs-parent="#sideNav">
+                      <div class="acc-body">
+                        <ul>
+                          <li><a href="lesson-top-subject.html">Lesson Top Subject</a></li>
+                          <li><a href="classes-top-subject.html">Classes Top Subject</a></li>
+                          <li><a href="tutor-performance.html">Tutor Performance</a></li>
+                          <li><a href="lesson-stats.html">Lesson Stats</a></li>
+                          <li><a href="sales-report.html">Sales Report</a></li>
+                          <li><a href="settlements.html">Settlements </a></li>
+                        </ul>
+                      </div>
+                    </div>
+                </div>
+
+                <div class="acc-item">
+                    <div class="acc-button collapsed" data-bs-toggle="collapse" data-bs-target="#menu-11" aria-expanded="false">
+                      <span class="nav-icon"><i class="fa-solid fa-flask"></i></span>
+                      Request Logs
+                    </div>
+                    <div id="menu-11" class="accordion-collapse collapse" data-bs-parent="#sideNav">
+                      <div class="acc-body">
+                        <ul>
+                          <li><a href="tutor-request.html">Tutor Request</a></li>
+                          <li><a href="withdrawal-request.html">Withdrawal Request</a></li>
+                          <li><a href="gdpr-Request.html">GDPR Request</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                </div>
+
+                <!-- <div class="acc-item">
+                    <div class="acc-button collapsed" data-bs-toggle="collapse" data-bs-target="#menu-12" aria-expanded="false">
+                      <span class="nav-icon"><i class="fa-solid fa-user-tie"></i></span>
+                      Manage Admin
+                    </div>
+                    <div id="menu-12" class="accordion-collapse collapse" data-bs-parent="#sideNav">
+                      <div class="acc-body">
+                        <ul>
+                          <li><a href="">Not Available</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                </div> -->
+
+                <div class="acc-item">
+                    <div class="acc-button collapsed" data-bs-toggle="collapse" data-bs-target="#menu-13" aria-expanded="false">
+                      <span class="nav-icon"><i class="fa-solid fa-bullhorn"></i></span>
+                      Affiliates
+                    </div>
+                    <div id="menu-13" class="accordion-collapse collapse" data-bs-parent="#sideNav">
+                      <div class="acc-body">
+                        <ul>
+                          <li><a href="affiliates.html">Affiliates</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                </div>
+              </div>
+        </div>
+
+        <div class="main-wrapper">
+          <div class="roles-container">
+            <div class="roles-left">
+                <ul class="nav d-block tabLeft">
+                    <li class="nav-item">
+                      <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab-1">General</button>
+                    </li>
+                    <li class="nav-item">
+                      <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-2">Local</button>
+                    </li>
+                    <li class="nav-item">
+                      <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-3">SEO</button>
+                    </li>
+                    <li class="nav-item">
+                      <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-4">Options</button>
+                    </li>
+                    <li class="nav-item">
+                      <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-5">Live Chat</button>
+                    </li>
+                    <li class="nav-item">
+                      <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-6">Third Party</button>
+                    </li>
+                    <li class="nav-item">
+                      <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-7">Email</button>
+                    </li>
+                    <li class="nav-item">
+                      <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-8">Media</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-9">Server</button>
+                    </li>
+                    <li class="nav-item">
+                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-10">Security</button>
+                    </li>
+                </ul>
+            </div>
+            <div class="roles-right">
+                <div class="tab-content" id="myTabContent">
+
+                    <div class="tab-pane fade show active" id="tab-1">
+                        <div class="inner-tab">
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item">
+                                  <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#basic">Basic</button>
+                                </li>
+                                <li class="nav-item">
+                                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#advance">Advance</button>
+                                </li>
+                              </ul>
+                              <div class="tab-content" id="myTabContent">
+                                <div class="tab-pane fade show active" id="basic">
+                                    <div class="form-area">
+                                        <div class="inp-outer mt-0">
+                                            <label for="">Site Owner</label>
+                                            <input class="input" type="text" placeholder="Gabriel">
+                                        </div>
+                                        <div class="inp-outer">
+                                            <label for="">Telephone</label>
+                                            <input class="input" type="text" placeholder="Gabriel">
+                                        </div>
+                                        <div class="inp-outer">
+                                            <label for="">Privacy Policy Page</label>
+                                            <select class="input" name="" id="">
+                                                <option value="">Select</option>
+                                            </select>
+                                        </div>
+                                        <div class="inp-outer">
+                                            <label for="">Terms & Condition Page</label>
+                                            <select class="input" name="" id="">
+                                                <option value="">Select</option>
+                                            </select>
+                                        </div>
+                                        <div class="inp-outer">
+                                            <label for="">Cookies Policy Page</label>
+                                            <select class="input" name="" id="">
+                                                <option value="">Select</option>
+                                            </select>
+                                        </div>
+            
+                                        <div class="roll-list inp-outer">
+                                            <ul class="pt-0">
+                                                <li>
+                                                    <label class="custom-check" for="">
+                                                        <input type="checkbox">
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                    <span class="check-txt">Cookies Policy <br> <small>Cookies Policies Section Will Be Shown On Frontend</small> </span>
+                                                </li>
+                                            </ul>
+                                        </div>
+            
+                                        <div class="inp-outer">
+                                            <button class="site-link sm">Save</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="advance">
+                                    <div class="form-area">
+                                        <div class="inp-outer mt-0">
+                                            <label for="">Site Name</label>
+                                            <input class="input" type="text" placeholder="Gabriel">
+                                        </div>
+                                        <div class="inp-outer">
+                                            <label for="">Email</label>
+                                            <input class="input" type="text" placeholder="Gabriel">
+                                        </div>
+                                        <div class="inp-outer">
+                                            <label for="">Address</label>
+                                            <input class="input" type="text" placeholder="Gabriel">
+                                        </div>
+                                        <div class="inp-outer">
+                                            <label for="">Cookies Policy Text</label>
+                                            <input class="input" type="text" placeholder="Gabriel">
+                                        </div>
+            
+                                        <div class="inp-outer">
+                                            <button class="site-link sm">Save</button>
+                                        </div>
+                                    </div>
+                                </div>
+                              </div>
+                        </div>
+                    </div>
+
+
+                    <div class="tab-pane fade" id="tab-2">
+                       <div class="form-area-outer">
+                          <div class="form-area">
+                            <div class="inp-outer mt-0">
+                                <label for="">Default Site Language</label>
+                                <select class="input" name="" id="">
+                                    <option value="">Select</option>
+                                </select>
+                            </div>
+                            <div class="inp-outer">
+                                <label for="">Country</label>
+                                <select class="input" name="" id="">
+                                    <option value="">Select</option>
+                                </select>
+                            </div>
+                            <div class="inp-outer">
+                                <label for="">Default Site Currency</label>
+                                <select class="input" name="" id="">
+                                    <option value="">Select</option>
+                                </select>
+                            </div>
+                            <div class="inp-outer">
+                                <button class="site-link sm">Save</button>
+                            </div>
+                          </div>
+                       </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="tab-3">
+                       <div class="form-area-outer">
+                          <div class="form-area">
+                            <div class="roll-list inp-outer mt-0">
+                                <ul class="pt-0">
+                                    <li>
+                                        <label class="custom-check" for="">
+                                            <input type="checkbox">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                        <span class="check-txt">Enable Language Code To Site URLs <br> <small>Language Code To Site URLs Examples</small> </span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="inp-outer">
+                                <label for="">Site Tracker Code</label>
+                                <textarea name="" id="" class="input"></textarea>
+                            </div>
+                            <p><small>The Site Tracker Script, Used To Track And Analyze Data About How People Are Getting To Your Website. E.g., Google Analytics. http://www.google.com/analytics/</small></p>
+                            <div class="inp-outer">
+                                <button class="site-link sm">Save</button>
+                            </div>
+                          </div>
+                       </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="tab-4">
+                       <div class="form-area-outer">
+
+                        
+                        <ul class="nav nav-tabs nav-tabs-first d-none">
+                            <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#tab-nxt-1"></a></li>
+                            <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#tab-nxt-2"></a></li>
+                            <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#tab-nxt-3"></a></li>
+                            <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#tab-nxt-4"></a></li>
+                            <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#tab-nxt-5"></a></li>
+                            <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#tab-nxt-6"></a></li>
+                            <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#tab-nxt-7"></a></li>
+                            <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#tab-nxt-8"></a></li>
+                            <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#tab-nxt-9"></a></li>
+                            <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#tab-nxt-10"></a></li>
+                        </ul>
+                        
+                        <div class="tab-content">
+
+                            <div class="tab-pane active" id="tab-nxt-1">
+                                <!--  -->
+                                <div class="form-area-block">
+                                    <div class="form-area-title">Admin</div>
+                                    <div class="form-area">
+                                        <div class="inp-outer mt-0">
+                                            <label for="">Default Items Per Page*</label>
+                                            <input class="input" type="text" placeholder="">
+                                            <p><small>Set number of records shown per page in admin listings (users, Orders, Etc)</small></p>
+                                        </div>
+                                        <div class="inp-outer">
+                                            <label for="">Processing Fees*</label>
+                                            <input class="input" type="text" placeholder="">
+                                        </div>
+                                        <div class="inp-outer">
+                                            <label for="">Affiliate Commission Fees(%)*</label>
+                                            <input class="input" type="text" placeholder="">
+                                        </div>
+                                        <div class="inp-outer">
+                                            <label for="">Terms & Condition Page</label>
+                                            <select class="input" name="" id="">
+                                                <option value="">Select</option>
+                                            </select>
+                                        </div>
+                                        <div class="inp-outer">
+                                            <label for="">Cookies Policy Page</label>
+                                            <select class="input" name="" id="">
+                                                <option value="">Select</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-area-title mt-4">Notes</div>
+                                    <div class="form-area">
+                                        <div class="roll-list inp-outer mt-0">
+                                            <ul class="pt-0">
+                                                <li>
+                                                    <label class="custom-check" for="">
+                                                        <input type="checkbox">
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                    <span class="check-txt">Enable Notes</span>
+                                                </li>
+                                                <li>
+                                                    <label class="custom-check" for="">
+                                                        <input type="checkbox">
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                    <span class="check-txt">Enable Newsletter Subscription</span>
+                                                </li>
+                                                <li>
+                                                    <label class="custom-check" for="">
+                                                        <input type="checkbox">
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                    <span class="check-txt">Enable Free Trial</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <div class="inp-outer">
+                                        <button class="site-link btnNext sm">Next</button>
+                                    </div>
+                                </div>
+                                <!--  -->
+                            </div>
+
+                            <div class="tab-pane fade" id="tab-nxt-2">
+                                <!--  -->
+                                <div class="form-area-block">
+                                    <div class="form-area-title">Report/Escalate Issue Time Post Session Completion</div>
+                                    <div class="form-area">
+                                        <div class="inp-outer mt-0">
+                                            <label for="">Minimum Gift Card Order</label>
+                                            <input class="input" type="text" placeholder="">
+                                            <p><small>Minimum amount to purchase a gift card.</small></p>
+                                        </div>
+                                        <div class="inp-outer">
+                                            <label for="">Report Issue Duration</label>
+                                            <input class="input" type="text" placeholder="">
+                                            <p><small>Hours till learners can report the issue post session completion.</small></p>
+                                        </div>
+                                        <div class="inp-outer">
+                                            <label for="">Issue Escalation Duration</label>
+                                            <input class="input" type="text" placeholder="">
+                                            <p><small>Hours till learners can escalate the issue to admin post resolution by tutor.</small></p>
+                                        </div>
+                                        <div class="inp-outer">
+                                            <label for="">Issue Escalation Duration</label>
+                                            <input class="input" type="text" placeholder="">
+                                            <p><small>Hours till learners can escalate the issue to admin post resolution by tutor.</small></p>
+                                        </div>
+                                    </div>
+                                    <div class="inp-outer">
+                                        <button class="site-link sm btnPrevious">Back</button>
+                                        <button class="site-link sm btnNext">Next</button>
+                                    </div>
+                                </div>
+                                <!--  -->
+                            </div>
+
+                            <div class="tab-pane fade" id="tab-nxt-3">
+                                <!--  -->
+                                <div class="form-area-block">
+                                    <div class="form-area-title">Group Classes/Packages</div>
+                                    <div class="form-area">
+                                        <div class="inp-outer mt-0">
+                                            <label for="">Package Cancel Duration*</label>
+                                            <input class="input" type="text" placeholder="">
+                                            <p><small>Hours till a package can be canceled by a tutor or learner.</small></p>
+                                        </div>
+                                        <div class="inp-outer">
+                                            <label for="">Minutes before the group class can be canceled*</label>
+                                            <input class="input" type="text" placeholder="">
+                                            <p><small>Hours till cancellation is available before class start time.</small></p>
+                                        </div>
+                                        <div class="inp-outer">
+                                            <label for="">Class Refund Duration*</label>
+                                            <input class="input" type="text" placeholder="">
+                                            <p><small>Duration(hours) before/After which the class refund will be issued to learners.</small></p>
+                                        </div>
+                                        <div class="inp-outer">
+                                            <label for="">Class Refund Percentage After Duration*</label>
+                                            <input class="input" type="text" placeholder="">
+                                            <p><small>Refund percentage to be issued after the duration set in Class Refund Duration field.</small></p>
+                                        </div>
+                                        <div class="inp-outer">
+                                            <label for="">Class Refund Percentage Before Duration*</label>
+                                            <input class="input" type="text" placeholder="">
+                                            <p><small>Refund percentage to be issued before the duration set in Class Refund Duration field.</small></p>
+                                        </div>
+                                        <div class="inp-outer">
+                                            <label for="">End Class Duration*</label>
+                                            <input class="input" type="text" placeholder="">
+                                            <p><small>Duration After Tutor Can End Class (in Minutes)</small></p>
+                                        </div>
+                                        <div class="inp-outer">
+                                            <label for="">Class Booking Duration*</label>
+                                            <input class="input" type="text" placeholder="">
+                                            <p><small>Minutes before the group class can be booked.</small></p>
+                                        </div>
+                                        <div class="inp-outer">
+                                            <label for="">Class Max Learners*</label>
+                                            <input class="input" type="text" placeholder="">
+                                            <p><small>Maximum number of users who can join a group class.</small></p>
+                                        </div>
+                                        <div class="inp-outer">
+                                            <label for="">Lesson Duration For Group Classes*</label>
+                                            <div class="lesson-select">
+                                                <div class="lesson-select-single">
+                                                    <label class="custom-check" for="">
+                                                        <input type="radio" name="1">
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                    <span class="lblTxt">15</span>
+                                                </div>
+                                                <div class="lesson-select-single">
+                                                    <label class="custom-check" for="">
+                                                        <input type="radio" name="1">
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                    <span class="lblTxt">30</span>
+                                                </div>
+                                                <div class="lesson-select-single">
+                                                    <label class="custom-check" for="">
+                                                        <input type="radio" name="1">
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                    <span class="lblTxt">45</span>
+                                                </div>
+                                                <div class="lesson-select-single">
+                                                    <label class="custom-check" for="">
+                                                        <input type="radio" name="1">
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                    <span class="lblTxt">60</span>
+                                                </div>
+                                                <div class="lesson-select-single">
+                                                    <label class="custom-check" for="">
+                                                        <input type="radio" name="1">
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                    <span class="lblTxt">75</span>
+                                                </div>
+                                                <div class="lesson-select-single">
+                                                    <label class="custom-check" for="">
+                                                        <input type="radio" name="1">
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                    <span class="lblTxt">90</span>
+                                                </div>
+                                                <div class="lesson-select-single">
+                                                    <label class="custom-check" for="">
+                                                        <input type="radio" name="1">
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                    <span class="lblTxt">120</span>
+                                                </div>
+                                            </div>
+                                            <p><small>Select time durations to be allowed for lessons in the platform.</small></p>
+                                        </div>
+                                    </div>
+                                    <div class="inp-outer">
+                                        <button class="site-link sm btnPrevious">Back</button>
+                                        <button class="site-link sm btnNext">Next</button>
+                                    </div>
+                                </div>
+                                <!--  -->
+                            </div>
+
+                            <div class="tab-pane fade" id="tab-nxt-4">
+                                <!--  -->
+                                <div class="form-area-block">
+                                    <div class="form-area-title">Tutor Dashboard</div>
+                                    <div class="form-area">
+                                        <div class="inp-outer mt-0">
+                                            <label for="">Lesson Duration For Group Classes*</label>
+                                            <div class="lesson-select">
+                                                <div class="lesson-select-single">
+                                                    <label class="custom-check" for="">
+                                                        <input type="radio" name="2">
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                    <span class="lblTxt">15</span>
+                                                </div>
+                                                <div class="lesson-select-single">
+                                                    <label class="custom-check" for="">
+                                                        <input type="radio" name="2">
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                    <span class="lblTxt">30</span>
+                                                </div>
+                                                <div class="lesson-select-single">
+                                                    <label class="custom-check" for="">
+                                                        <input type="radio" name="2">
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                    <span class="lblTxt">45</span>
+                                                </div>
+                                                <div class="lesson-select-single">
+                                                    <label class="custom-check" for="">
+                                                        <input type="radio" name="2">
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                    <span class="lblTxt">60</span>
+                                                </div>
+                                                <div class="lesson-select-single">
+                                                    <label class="custom-check" for="">
+                                                        <input type="radio" name="2">
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                    <span class="lblTxt">75</span>
+                                                </div>
+                                                <div class="lesson-select-single">
+                                                    <label class="custom-check" for="">
+                                                        <input type="radio" name="2">
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                    <span class="lblTxt">90</span>
+                                                </div>
+                                                <div class="lesson-select-single">
+                                                    <label class="custom-check" for="">
+                                                        <input type="radio" name="2">
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                    <span class="lblTxt">120</span>
+                                                </div>
+                                            </div>
+                                            <p><small>Select time durations to be allowed for lessons in the platform.</small></p>
+                                        </div>
+
+                                        <div class="inp-outer">
+                                            <label for="">Default Lesson Duration*</label>
+                                            <div class="lesson-select">
+                                                <div class="lesson-select-single">
+                                                    <label class="custom-check" for="">
+                                                        <input type="radio" name="3">
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                    <span class="lblTxt">15</span>
+                                                </div>
+                                                <div class="lesson-select-single">
+                                                    <label class="custom-check" for="">
+                                                        <input type="radio" name="3">
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                    <span class="lblTxt">30</span>
+                                                </div>
+                                                <div class="lesson-select-single">
+                                                    <label class="custom-check" for="">
+                                                        <input type="radio" name="3">
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                    <span class="lblTxt">45</span>
+                                                </div>
+                                                <div class="lesson-select-single">
+                                                    <label class="custom-check" for="">
+                                                        <input type="radio" name="3">
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                    <span class="lblTxt">60</span>
+                                                </div>
+                                                <div class="lesson-select-single">
+                                                    <label class="custom-check" for="">
+                                                        <input type="radio" name="3">
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                    <span class="lblTxt">75</span>
+                                                </div>
+                                                <div class="lesson-select-single">
+                                                    <label class="custom-check" for="">
+                                                        <input type="radio" name="3">
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                    <span class="lblTxt">90</span>
+                                                </div>
+                                                <div class="lesson-select-single">
+                                                    <label class="custom-check" for="">
+                                                        <input type="radio" name="3">
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                    <span class="lblTxt">120</span>
+                                                </div>
+                                            </div>
+                                            <p><small>Select time durations to be allowed for lessons in the platform.</small></p>
+                                        </div>
+
+                                        <div class="inp-outer">
+                                            <label for="">Trial Lesson Duration*</label>
+                                            <div class="lesson-select">
+                                                <div class="lesson-select-single">
+                                                    <label class="custom-check" for="">
+                                                        <input type="radio" name="4">
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                    <span class="lblTxt">15</span>
+                                                </div>
+                                                <div class="lesson-select-single">
+                                                    <label class="custom-check" for="">
+                                                        <input type="radio" name="4">
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                    <span class="lblTxt">30</span>
+                                                </div>
+                                                <div class="lesson-select-single">
+                                                    <label class="custom-check" for="">
+                                                        <input type="radio" name="4">
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                    <span class="lblTxt">45</span>
+                                                </div>
+                                                <div class="lesson-select-single">
+                                                    <label class="custom-check" for="">
+                                                        <input type="radio" name="4">
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                    <span class="lblTxt">60</span>
+                                                </div>
+                                                <div class="lesson-select-single">
+                                                    <label class="custom-check" for="">
+                                                        <input type="radio" name="4">
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                    <span class="lblTxt">75</span>
+                                                </div>
+                                                <div class="lesson-select-single">
+                                                    <label class="custom-check" for="">
+                                                        <input type="radio" name="4">
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                    <span class="lblTxt">90</span>
+                                                </div>
+                                                <div class="lesson-select-single">
+                                                    <label class="custom-check" for="">
+                                                        <input type="radio" name="4">
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                    <span class="lblTxt">120</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="inp-outer">
+                                            <label for="">End Lesson Duration*</label>
+                                            <input class="input" type="text" placeholder="">
+                                            <p><small>Duration after a tutor can end lesson (in minutes)</small></p>
+                                        </div>
+
+                                        <div class="inp-outer">
+                                            <label for="">Max Teacher Request Attempt*</label>
+                                            <input class="input" type="text" placeholder="">
+                                            <p><small>Maximum number of times a user can request to become a tutor on the platform. .</small></p>
+                                        </div>
+
+                                        <div class="inp-outer">
+                                            <label for="">Lesson Reschedule Duration*</label>
+                                            <input class="input" type="text" placeholder="">
+                                            <p><small>Hours till rescheduling is available before lesson start time.</small></p>
+                                        </div>
+
+                                        <div class="inp-outer">
+                                            <label for="">Lesson Cancel Duration*</label>
+                                            <input class="input" type="text" placeholder="">
+                                            <p><small>Hours till cancellation is available before lesson start time.</small></p>
+                                        </div>
+
+                                        <div class="inp-outer">
+                                            <label for="">Lesson Refund Duration*</label>
+                                            <input class="input" type="text" placeholder="">
+                                            <p><small>Duration(hours) before/After which the lesson refund will be issued to learners</small></p>
+                                        </div>
+
+                                        <div class="inp-outer">
+                                            <label for="">Lesson Refund Percentage After Duration*</label>
+                                            <input class="input" type="text" placeholder="">
+                                            <p><small>Refund percentage to be issued after the duration set in Lesson Refund Duration field.</small></p>
+                                        </div>
+
+                                        <div class="inp-outer">
+                                            <label for="">Lesson Refund Percentage Before Duration*</label>
+                                            <input class="input" type="text" placeholder="">
+                                            <p><small>Refund percentage to be issued before the duration set in Lesson Refund Duration field.</small></p>
+                                        </div>
+
+                                        <div class="inp-outer">
+                                            <label for="">Unschedule Lesson Refund Percentage*</label>
+                                            <input class="input" type="text" placeholder="">
+                                            <p><small>mount to be refunded if lesson is canceled in unscheduled status</small></p>
+                                        </div>
+
+                                    </div>
+                                    <div class="inp-outer">
+                                        <button class="site-link sm btnPrevious">Back</button>
+                                        <button class="site-link sm btnNext">Next</button>
+                                    </div>
+                                </div>
+                                <!--  -->
+                            </div>
+
+                            <div class="tab-pane fade" id="tab-nxt-5">
+                                <!--  -->
+                                <div class="form-area-block">
+                                    <div class="form-area-title">Account</div>
+                                    <div class="form-area">
+                                        <div class="roll-list inp-outer mt-0">
+                                            <ul class="pt-0">
+                                                <li>
+                                                    <label class="custom-check" for="">
+                                                        <input type="checkbox">
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                    <span class="check-txt">Activate Admin Approval After Registration (sign Up) <br> <small>On Enabling This Feature, Admin Need To Approve Each Learner After Registration (learner Cannot Login Until Admin Approves)</small> </span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="roll-list inp-outer">
+                                            <ul class="pt-0">
+                                                <li>
+                                                    <label class="custom-check" for="">
+                                                        <input type="checkbox">
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                    <span class="check-txt">Activate Email Verification After Registration <br> <small>User Need To Verify Their Email Address Provided During Registration</small> </span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="roll-list inp-outer">
+                                            <ul class="pt-0">
+                                                <li>
+                                                    <label class="custom-check" for="">
+                                                        <input type="checkbox">
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                    <span class="check-txt">Activate Auto Login After Registration <br> <small>On Enabling This Feature, Users Will Be Automatically Logged-in After Registration</small> </span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="roll-list inp-outer">
+                                            <ul class="pt-0">
+                                                <li>
+                                                    <label class="custom-check" for="">
+                                                        <input type="checkbox">
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                    <span class="check-txt">Activate Sending Welcome Mail After Registration <br> <small>On Enabling This Feature, Users Will Receive A Welcome Mail After Registration.</small> </span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="form-area-title mt-4">Withdrawal</div>
+                                    <div class="form-area">
+                                        <div class="inp-outer mt-0">
+                                            <label for="">Minimum Withdrawal Amount [USD]*</label>
+                                            <input class="input" type="text" placeholder="">
+                                            <p><small>Minimum amount allowed for withdrawal on the platform.</small></p>
+                                        </div>
+                                        <div class="inp-outer">
+                                            <label for="">Minimum Interval [days]*</label>
+                                            <input class="input" type="text" placeholder="">
+                                            <p><small>The Minimum Interval In Days Between Two Withdrawal Requests.</small></p>
+                                        </div>
+                                    </div>
+                                    <div class="form-area-title mt-4">Reviews</div>
+                                    <div class="form-area">
+                                        <div class="inp-outer mt-0">
+                                            <label for="">Allow Reviews*</label>
+                                            <div class="lesson-select">
+                                                <div class="lesson-select-single">
+                                                    <label class="custom-check" for="">
+                                                        <input type="radio" name="5">
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                    <span class="lblTxt">Yes</span>
+                                                </div>
+                                                <div class="lesson-select-single">
+                                                    <label class="custom-check" for="">
+                                                        <input type="radio" name="5">
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                    <span class="lblTxt">No</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="inp-outer">
+                                            <label for="">Default Review Status</label>
+                                            <div class="lesson-select">
+                                                <div class="lesson-select-single">
+                                                    <label class="custom-check" for="">
+                                                        <input type="radio" name="6">
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                    <span class="lblTxt">Pending</span>
+                                                </div>
+                                                <div class="lesson-select-single">
+                                                    <label class="custom-check" for="">
+                                                        <input type="radio" name="6">
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                    <span class="lblTxt">Approved</span>
+                                                </div>
+                                            </div>
+                                            <p><small>Set The Default Review Order Status When A New Review Is Placed</small></p>
+                                        </div>
+                                    </div>
+                                    <div class="inp-outer">
+                                        <button class="site-link sm btnPrevious">Back</button>
+                                        <button class="site-link sm btnNext">Next</button>
+                                    </div>
+                                </div>
+                                <!--  -->
+                            </div>
+
+                            <div class="tab-pane fade" id="tab-nxt-6">
+                                <!--  -->
+                                <div class="form-area-block">
+                                    <div class="form-area-title">Checkout</div>
+                                    <div class="form-area">
+                                        <div class="roll-list inp-outer mt-0">
+                                            <ul class="pt-0">
+                                                <li>
+                                                    <label class="custom-check" for="">
+                                                        <input type="checkbox">
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                    <span class="check-txt">Activate Live Payment Transaction Mode <br> <small>Activate Live Payment Transaction Mode Set Transaction Mode To Live Environment</small> </span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-area-title mt-4">Notifications</div>
+                                    <div class="form-area">
+                                        <div class="inp-outer mt-0">
+                                            <label for="">Enable unread messages notifications*</label>
+                                            <div class="lesson-select">
+                                                <div class="lesson-select-single">
+                                                    <label class="custom-check" for="">
+                                                        <input type="radio" name="7">
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                    <span class="lblTxt">Yes</span>
+                                                </div>
+                                                <div class="lesson-select-single">
+                                                    <label class="custom-check" for="">
+                                                        <input type="radio" name="7">
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                    <span class="lblTxt">No</span>
+                                                </div>
+                                            </div>
+                                            <p><small>Enable Email Notifications For Unread Messages.</small></p>
+                                        </div>
+                                        <div class="inp-outer">
+                                            <label for="">Unread Messages Notify Duration[mins]*</label>
+                                            <input class="input" type="text" placeholder="">
+                                            <p><small>Unread Duration for messages after which users will get an email notification. Recommended Duration: 10 Minutes</small></p>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-area-title mt-4">Attachments</div>
+                                    <div class="form-area">
+                                        <div class="inp-outer mt-0">
+                                            <label for="">Delete Attachment Duration[mins]*</label>
+                                            <input class="input" type="text" placeholder="">
+                                            <p><small>The Duration Until The Users Are Allowed To Delete Sent Attachments In Messages</small></p>
+                                        </div>
+                                    </div>
+
+                                    <div class="inp-outer">
+                                        <button class="site-link sm btnPrevious">Back</button>
+                                        <button class="site-link sm">Save</button>
+                                    </div>
+                                </div>
+                                <!--  -->
+                            </div>
+
+                        </div>
+
+
+                       </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="tab-5">
+                       <div class="form-area-outer">
+                          <div class="form-area">
+                            <div class="inp-outer mt-0">
+                                <label for="">Activate Live Chat*</label>
+                                <div class="lesson-select">
+                                    <div class="lesson-select-single">
+                                        <label class="custom-check" for="">
+                                            <input type="radio" name="8">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                        <span class="lblTxt">Pending</span>
+                                    </div>
+                                    <div class="lesson-select-single">
+                                        <label class="custom-check" for="">
+                                            <input type="radio" name="8">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                        <span class="lblTxt">Approved</span>
+                                    </div>
+                                </div>
+                                <p><small>Activate 3rd Party Live Chat.</small></p>
+                            </div>
+                            <div class="inp-outer">
+                                <label for="">Live Chat Code*</label>
+                                <textarea class="input" name="" id=""></textarea>
+                                <p><small>Live Chat Script/Code Provided By The 3rd Party Api For Integration.</small></p>
+                            </div>
+                            <div class="inp-outer">
+                                <button class="site-link sm">Save</button>
+                            </div>
+                          </div>
+                       </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="tab-6">
+                       <div class="form-area-outer">
+                          <div class="form-area">
+
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs nav-tabs-first2 d-none">
+                                <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#home">Home</a></li>
+                                <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#menu1">Menu 1</a></li>
+                            </ul>
+                            
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="home">
+                                    <div class="form-area-block">
+                                        <div class="form-area-title">Facebook Login</div>
+                                        <div class="form-area">
+                                            <div class="inp-outer mt-0">
+                                                <label for="">Facebook App ID</label>
+                                                <input class="input" type="text" placeholder="">
+                                                <p><small>The Application ID Used In Login And Post.</small></p>
+                                            </div>
+                                            <div class="inp-outer">
+                                                <label for="">Facebook App Secret</label>
+                                                <input class="input" type="text" placeholder="">
+                                                <p><small>The Facebook Secret Key Used For Authentication And Other Facebook Related Plugins Support.</small></p>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-area-title mt-4">Newsletter Subscription</div>
+                                        <div class="form-area">
+                                            <div class="inp-outer mt-0">
+                                                <label for="">Mailchimp Key</label>
+                                                <input class="input" type="text" placeholder="">
+                                                <p><small>This Is The Mailchimp Application Key Used In Subscribe And Send Newsletters</small></p>
+                                            </div>
+                                            <div class="inp-outer">
+                                                <label for="">Mailchimp List ID</label>
+                                                <input class="input" type="text" placeholder="">
+                                                <p><small>The Mailchimp Subscribers List ID.</small></p>
+                                            </div>
+                                            <div class="inp-outer">
+                                                <label for="">Mailchimp Server Prefix</label>
+                                                <input class="input" type="text" placeholder="">
+                                                <p><small>Enter Mailchimp Server Prefix from your account</small></p>
+                                            </div>
+                                        </div>
+                                        <div class="inp-outer">
+                                            <button class="site-link sm btnNext2">Next</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane fade" id="menu1">
+                                   <div class="form-area-block">
+                                      <div class="form-area-title">Google Analytics</div>
+                                      <div class="form-area">
+                                        <div class="inp-outer mt-0">
+                                            <label for="">Google Analytics Table ID</label>
+                                            <input class="input" type="text" placeholder="">
+                                            <p><small>Google Analytics Table ID Example: 88137179</small></p>
+                                        </div>
+                                      </div>
+
+                                      <div class="form-area-title mt-4">Google Recaptcha</div>
+                                      <div class="form-area">
+                                        <div class="inp-outer mt-0">
+                                            <label for="">Site Key</label>
+                                            <input class="input" type="text" placeholder="">
+                                            <p><small>The Application Site Key Used For Google Recaptcha.</small></p>
+                                        </div>
+                                        <div class="inp-outer">
+                                            <label for="">Secret Key</label>
+                                            <input class="input" type="text" placeholder="">
+                                            <p><small>The Application Secret Key Used For Google Recaptcha.</small></p>
+                                        </div>
+                                      </div>
+
+                                      <div class="form-area-title mt-4">Google Client JSON</div>
+                                      <div class="form-area">
+                                        <div class="inp-outer mt-0">
+                                            <label for="">Google Client JSON</label>
+                                            <textarea class="input" name="" id=""></textarea>
+                                            <p><small>Google JSON Message Google Credentials Not Authorized Click Here To Authorized</small></p>
+                                        </div>
+                                      </div>
+
+                                      <div class="inp-outer">
+                                        <button class="site-link sm btnPrevious2">Previous</button>
+                                        <button class="site-link sm">Save</button>
+                                      </div>
+                                   </div>
+                                </div>
+                            </div>
+
+                            
+                          </div>
+                       </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="tab-7">
+                       <div class="form-area-outer">
+                          <div class="form-area">
+                            <div class="inp-outer mt-0">
+                                <label for="">From Email*</label>
+                                <input class="input" type="text" placeholder="">
+                            </div>
+
+                            <div class="inp-outer">
+                                <label for="">Reply To Email Address*</label>
+                                <input class="input" type="text" placeholder="">
+                            </div>
+
+                            <div class="inp-outer">
+                                <label for="">Send Email*</label>
+                                <div class="lesson-select">
+                                    <div class="lesson-select-single">
+                                        <label class="custom-check" for="">
+                                            <input type="radio" name="3y">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                        <span class="lblTxt">Yes</span>
+                                    </div>
+                                    <div class="lesson-select-single">
+                                        <label class="custom-check" for="">
+                                            <input type="radio" name="3y">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                        <span class="lblTxt">No</span>
+                                    </div>
+                                </div>
+                                <p><small>Click Here to test email. This Will Send Test Email To Site Owner Email ID - info@myonlinetutor.co</small></p>
+                            </div>
+
+                            <div class="inp-outer">
+                                <label for="">Contact Email Address*</label>
+                                <input class="input" type="text" placeholder="">
+                            </div>
+
+                            <div class="inp-outer">
+                                <label for="">Send SMTP Email*</label>
+                                <div class="lesson-select">
+                                    <div class="lesson-select-single">
+                                        <label class="custom-check" for="">
+                                            <input type="radio" name="4y">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                        <span class="lblTxt">Yes</span>
+                                    </div>
+                                    <div class="lesson-select-single">
+                                        <label class="custom-check" for="">
+                                            <input type="radio" name="4y">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                        <span class="lblTxt">No</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="inp-outer">
+                                <label for="">SMTP Host*</label>
+                                <input class="input" type="text" placeholder="">
+                            </div>
+
+                            <div class="inp-outer">
+                                <label for="">SMTP Port*</label>
+                                <input class="input" type="text" placeholder="">
+                            </div>
+
+                            <div class="inp-outer">
+                                <label for="">SMTP Username*</label>
+                                <input class="input" type="text" placeholder="">
+                            </div>
+
+                            <div class="inp-outer">
+                                <label for="">SMTP Password</label>
+                                <input class="input" type="text" placeholder="">
+                            </div>
+
+                            <div class="inp-outer">
+                                <label for="">SMTP Secure*</label>
+                                <div class="lesson-select">
+                                    <div class="lesson-select-single">
+                                        <label class="custom-check" for="">
+                                            <input type="radio" name="5y">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                        <span class="lblTxt">TLS</span>
+                                    </div>
+                                    <div class="lesson-select-single">
+                                        <label class="custom-check" for="">
+                                            <input type="radio" name="5y">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                        <span class="lblTxt">SSL</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="inp-outer">
+                                <button class="site-link sm">Save</button>
+                            </div>
+                          </div>
+                       </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="tab-8">
+                       <div class="form-area-outer">
+                          <div class="form-area">
+
+                            <div class="media">
+                                <div class="row">
+                                    <div class="col-sm-6 col-lg-4">
+                                        <div class="media-single">
+                                            <div class="media-single-head">
+                                                <p>Admin Logo</p>
+                                                <div class="photo-upload">
+                                                    <button class="site-link small">Upload File</button>
+                                                    <input type="file">
+                                                </div>
+                                                <p><small>Dimensions 142*45</small></p>
+                                            </div>
+                                            <div class="uploaded-photo">
+                                                <span class="uploaded-photo-close"><i class="fa-solid fa-circle-xmark"></i></span>
+                                                <img src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1260&amp;h=750&amp;dpr=1" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-lg-4">
+                                        <div class="media-single">
+                                            <div class="media-single-head">
+                                                <p>Admin Logo</p>
+                                                <div class="photo-upload">
+                                                    <button class="site-link small">Upload File</button>
+                                                    <input type="file">
+                                                </div>
+                                                <p><small>Dimensions 142*45</small></p>
+                                            </div>
+                                            <div class="uploaded-photo">
+                                                <span class="uploaded-photo-close"><i class="fa-solid fa-circle-xmark"></i></span>
+                                                <img src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1260&amp;h=750&amp;dpr=1" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-lg-4">
+                                        <div class="media-single">
+                                            <div class="media-single-head">
+                                                <p>Admin Logo</p>
+                                                <div class="photo-upload">
+                                                    <button class="site-link small">Upload File</button>
+                                                    <input type="file">
+                                                </div>
+                                                <p><small>Dimensions 142*45</small></p>
+                                            </div>
+                                            <div class="uploaded-photo">
+                                                <span class="uploaded-photo-close"><i class="fa-solid fa-circle-xmark"></i></span>
+                                                <img src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1260&amp;h=750&amp;dpr=1" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-lg-4">
+                                        <div class="media-single">
+                                            <div class="media-single-head">
+                                                <p>Admin Logo</p>
+                                                <div class="photo-upload">
+                                                    <button class="site-link small">Upload File</button>
+                                                    <input type="file">
+                                                </div>
+                                                <p><small>Dimensions 142*45</small></p>
+                                            </div>
+                                            <div class="uploaded-photo">
+                                                <span class="uploaded-photo-close"><i class="fa-solid fa-circle-xmark"></i></span>
+                                                <img src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1260&amp;h=750&amp;dpr=1" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-lg-4">
+                                        <div class="media-single">
+                                            <div class="media-single-head">
+                                                <p>Admin Logo</p>
+                                                <div class="photo-upload">
+                                                    <button class="site-link small">Upload File</button>
+                                                    <input type="file">
+                                                </div>
+                                                <p><small>Dimensions 142*45</small></p>
+                                            </div>
+                                            <div class="uploaded-photo">
+                                                <span class="uploaded-photo-close"><i class="fa-solid fa-circle-xmark"></i></span>
+                                                <img src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1260&amp;h=750&amp;dpr=1" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-lg-4">
+                                        <div class="media-single">
+                                            <div class="media-single-head">
+                                                <p>Admin Logo</p>
+                                                <div class="photo-upload">
+                                                    <button class="site-link small">Upload File</button>
+                                                    <input type="file">
+                                                </div>
+                                                <p><small>Dimensions 142*45</small></p>
+                                            </div>
+                                            <div class="uploaded-photo">
+                                                <span class="uploaded-photo-close"><i class="fa-solid fa-circle-xmark"></i></span>
+                                                <img src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1260&amp;h=750&amp;dpr=1" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-lg-4">
+                                        <div class="media-single">
+                                            <div class="media-single-head">
+                                                <p>Admin Logo</p>
+                                                <div class="photo-upload">
+                                                    <button class="site-link small">Upload File</button>
+                                                    <input type="file">
+                                                </div>
+                                                <p><small>Dimensions 142*45</small></p>
+                                            </div>
+                                            <div class="uploaded-photo">
+                                                <span class="uploaded-photo-close"><i class="fa-solid fa-circle-xmark"></i></span>
+                                                <img src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1260&amp;h=750&amp;dpr=1" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-lg-4">
+                                        <div class="media-single">
+                                            <div class="media-single-head">
+                                                <p>Admin Logo</p>
+                                                <div class="photo-upload">
+                                                    <button class="site-link small">Upload File</button>
+                                                    <input type="file">
+                                                </div>
+                                                <p><small>Dimensions 142*45</small></p>
+                                            </div>
+                                            <div class="uploaded-photo">
+                                                <span class="uploaded-photo-close"><i class="fa-solid fa-circle-xmark"></i></span>
+                                                <img src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1260&amp;h=750&amp;dpr=1" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="inp-outer">
+                                <button class="site-link sm">Save</button>
+                            </div>
+                          </div>
+                       </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="tab-9">
+                       <div class="form-area-outer">
+                          <div class="form-area">
+                            <div class="inp-outer mt-0">
+                                <label for="">Use SSLl*</label>
+                                <div class="lesson-select">
+                                    <div class="lesson-select-single">
+                                        <label class="custom-check" for="">
+                                            <input type="radio" name="3x">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                        <span class="lblTxt">Yes</span>
+                                    </div>
+                                    <div class="lesson-select-single">
+                                        <label class="custom-check" for="">
+                                            <input type="radio" name="3x">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                        <span class="lblTxt">No</span>
+                                    </div>
+                                </div>
+                                <p><small>Note: To Use Ssl, Check With Your Host.</small></p>
+                            </div>
+
+                            <div class="inp-outer">
+                                <label for="">Maintenance Mode*</label>
+                                <div class="lesson-select">
+                                    <div class="lesson-select-single">
+                                        <label class="custom-check" for="">
+                                            <input type="radio" name="4x">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                        <span class="lblTxt">Yes</span>
+                                    </div>
+                                    <div class="lesson-select-single">
+                                        <label class="custom-check" for="">
+                                            <input type="radio" name="4x">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                        <span class="lblTxt">No</span>
+                                    </div>
+                                </div>
+                                <p><small>Note: To Use Ssl, Check With Your Host.</small></p>
+                            </div>
+
+                            <div class="inp-outer">
+                                <button class="site-link sm">Save</button>
+                            </div>
+                          </div>
+                       </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="tab-10">
+                        <div class="form-area-outer">
+                           <div class="form-area">
+                            <div class="inp-outer mt-0">
+                                <label for="">Remember Me Days For Admin*</label>
+                                <input class="input" type="text" placeholder="">
+                                <p><small>Remember my password for admin login - No. of days</small></p>
+                            </div>
+
+                            <div class="inp-outer">
+                                <label for="">Remember Me Days For User*</label>
+                                <input class="input" type="text" placeholder="">
+                                <p><small>Remember my password for user login - No. of days</small></p>
+                            </div>
+
+                            <div class="inp-outer">
+                                <label for="">Remember Me Security For Admin*</label>
+                                <select class="input" name="" id="">
+                                    <option value="">Select</option>
+                                </select>
+                                <p><small>Moderate - (Sytem will not check IP address for the session) High - (Sytem will check IP address for the session)</small></p>
+                            </div>
+
+                            <div class="inp-outer">
+                                <label for="">Remember Me Security For User*</label>
+                                <select class="input" name="" id="">
+                                    <option value="">Select</option>
+                                </select>
+                                <p><small>Moderate - (Sytem will not check IP address for the session) High - (Sytem will check IP address for the session)</small></p>
+                            </div>
+
+                            <div class="inp-outer">
+                                <button class="site-link sm">Save</button>
+                            </div>
+                          </div>
+                        </div>
+                     </div>
+
+
+                </div>
+            </div>
+          </div>
+        </div>
+
+    </div>
+
+  </div>  
+
+
+<div class="modal theme-modal fade" id="modal-4">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="fw-500">Preference Setup</h5>
+            <div class="btn-close" data-bs-dismiss="modal" aria-label="Close"></div>
+        </div>
+        <div class="modal-body ps-5 pe-5">
+            <div class="inp-outer">
+                <label for="">Preference Identifier</label>
+                <input class="input" type="text" placeholder="">
+            </div>
+           <div class="modal-btn-group">
+            <a class="site-link sm" href="" data-bs-dismiss="modal">Save</a>
+           </div>
+        </div>
+      </div>
+    </div>
+</div>  
+
+
+<div class="modal theme-modal fade" id="modal-3">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="fw-500">Edit Preference</h5>
+            <div class="btn-close" data-bs-dismiss="modal" aria-label="Close"></div>
+        </div>
+        <div class="modal-body ps-5 pe-5">
+            <div class="inp-outer">
+                <label for="">Preference Identifier</label>
+                <input class="input" type="text" placeholder="">
+            </div>
+           <div class="modal-btn-group">
+            <a class="site-link sm" href="" data-bs-dismiss="modal">Save</a>
+           </div>
+        </div>
+      </div>
+    </div>
+</div>  
+
+<div class="modal theme-modal fade" id="modal-2">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <!-- <div class="btn-close" data-bs-dismiss="modal" aria-label="Close"></div> -->
+        <div class="modal-body">
+           <div class="text-center">
+                <div class="success-icon red mb-3"><i class="fa-solid fa-trash-can"></i></div>
+                <h5 class="fw-600">Deleted</h5>
+                <p>You’ve deleted this review</p>
+           </div>
+           <div class="modal-btn-group">
+            <a class="site-link sm bdr grey" href="" data-bs-dismiss="modal">Okay</a>
+           </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+<div class="modal theme-modal fade" id="modal-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <!-- <div class="btn-close" data-bs-dismiss="modal" aria-label="Close"></div> -->
+        <div class="modal-body">
+           <div class="text-center">
+                <div class="success-icon red mb-3"><i class="fa-solid fa-trash-can"></i></div>
+                <h5 class="fw-600">Delete this Review</h5>
+                <p>Are you sure you want to delete this review?</p>
+           </div>
+           <div class="modal-btn-group">
+            <a class="site-link sm bdr grey" href="" data-bs-dismiss="modal">Cancel</a>
+            <a class="site-link sm red" href="" data-bs-toggle="modal" data-bs-target="#modal-2">Delete</a>
+           </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>    
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/tilt.js@1.2.1/dest/tilt.jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+  <script src="./assets/js/custom.js"></script>  
+  </body>
+</html>

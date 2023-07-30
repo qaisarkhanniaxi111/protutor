@@ -1,0 +1,492 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, shrink-to-fit=no">
+    <link rel="shortcut icon" href="assets/images/favicon.png">
+    <title>Teachers Portal : Library</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/custom.css">
+  </head>
+  <body>
+
+ <div class="site-wrap"> 
+
+  <!-- Header -->
+  <section class="header">
+    <div class="header-left">
+      <div class="logo"><img src="./assets/images/logo.png" alt=""></div> 
+      <div class="nav-expand"><img src="./assets/images/nav.png" alt=""></div>
+    </div>
+    <div class="header-right">
+      <div class="search">
+        <input class="search-inp" type="text" placeholder="Search">
+        <span class="inp-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
+      </div>
+      <div class="notific-bar">
+        <div class="notific-bell">
+          <i class="fa-solid fa-bell"></i>
+          <span class="notific-dot"></span>
+        </div>
+        <div class="user-pic">
+          <div class="user-thumb"><img src="https://images.pexels.com/photos/3586798/pexels-photo-3586798.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt=""></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Header -->
+
+  <!-- Side-bar -->
+  <section class="side-bar">
+    <ul>
+      <li><a href="index.html"><span><i class="fa-brands fa-hive"></i></span> <span>Home</span></a></li>
+      <li><a href="profile.html"><span><i class="fa-solid fa-user"></i></span> <span>Profile</span></a></li>
+      <li><a class="active" href="library.html"><span><i class="fa-solid fa-book-bookmark"></i></span> <span>Library</span></a></li>
+      <li><a href="calendar.html"><span><i class="fa-solid fa-calendar-days"></i></span> <span>Calendar</span></a></li>
+      <li><a href="quiz.html"><span><i class="fa-solid fa-square-poll-horizontal"></i></span> <span>Quiz</span></a></li>
+      <li><a href="teaching-orders.html"><span><i class="fa-solid fa-chalkboard-user"></i></span> <span>Teaching Orders</span></a></li>
+      <li><a href="chat.html"><span><i class="fa-solid fa-message"></i></span> <span>Chat</span></a></li>
+      <li><a href="earnings.html"><span><i class="fa-solid fa-sack-dollar"></i></span> <span>Earnings</span></a></li>
+    </ul>
+    <hr>
+    <ul>
+      <li><a href="support.html"><span><i class="fa-solid fa-circle-question"></i></span> <span>Support</span></a></li>
+      <li><a href="settings.html"><span><i class="fa-solid fa-gear"></i></span> <span>Settings</span></a></li>
+      <li><a href=""><span><i class="fa-solid fa-arrow-right-from-bracket"></i></span> <span>Logout</span></a></li>
+      <li><a href="info.html"><span><i class="fa-solid fa-circle-info"></i></span> <span>Info</span></a></li>
+    </ul>
+  </section>
+  <!-- Side-bar -->
+
+  <!-- Container -->
+  <section class="wrapper">
+    <div class="page-title">
+      <h1>Library</h1>
+    </div>
+
+    <div>
+      <ul class="nav tab-nav">
+        <li class="nav-item">
+          <button class="active" data-bs-toggle="tab" data-bs-target="#tab-1">
+            <span><i class="fa-solid fa-earth-americas"></i></span> Public Library
+        </button>
+        </li>
+        <li class="nav-item">
+          <button data-bs-toggle="tab" data-bs-target="#tab-2">
+            <span><i class="fa-solid fa-server"></i></span> Personal Library
+        </button>
+        </li>
+      </ul>
+
+      <div class="tab-content pt-3">
+        <div class="tab-pane fade show active" id="tab-1">
+          <div class="box">
+            <div class="tab-title">
+              <h2>Explore</h2>
+              <h3>Let's See What Inspires You</h3>
+           </div>
+           <div class="row">
+            <div class="col-lg-4">
+              <div class="block-inp-wrap mt-0">
+                <label for="">Grade</label>
+                <select class="block-inp" name="" id="">
+                  <option value="">Select Grade</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="block-inp-wrap mt-0">
+                <label for="">Subject</label>
+                <select class="block-inp" name="" id="">
+                  <option value="">Select Subject</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="block-inp-wrap mt-0">
+                <label for="">Resource Type</label>
+                <select class="block-inp" name="" id="">
+                  <option value="">Select Resource Type</option>
+                </select>
+              </div>
+            </div>
+           </div>
+           <div class="block-inp-wrap text-center"><a class="theme-btn blue" href="explore-library.html"><i class="fa-regular fa-file-lines"></i> Explore Library</a></div>
+          </div>
+
+          <div class="box p-0 mt-4">
+            <div class="library-wrap">
+              <div class="library-left">
+                <div class="row">
+                  <div class="col-sm-6 col-lg-3">
+                    <div class="library-single">
+                      <div class="library-single-title">Grade</div>
+                      <ul>
+                        <li class="select">
+                          <span><i class="fa-solid fa-folder"></i> Grade 1</span>
+                          <span><i class="fa-solid fa-caret-right"></i></span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="col-sm-6 col-lg-3">
+                    <div class="library-single">
+                      <div class="library-single-title">Subject</div>
+                      <ul>
+                        <li class="select">
+                          <span><i class="fa-solid fa-folder"></i> English</span>
+                          <span><i class="fa-solid fa-caret-right"></i></span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="col-sm-6 col-lg-3">
+                    <div class="library-single">
+                      <div class="library-single-title">Resource Type</div>
+                      <ul>
+                        <li class="select">
+                          <span><i class="fa-solid fa-folder"></i> Subject Name</span>
+                          <span><i class="fa-solid fa-caret-right"></i></span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="col-sm-6 col-lg-3">
+                    <div class="library-single">
+                      <div class="library-single-title">Files</div>
+                      <ul>
+                        <li>
+                          <span><i class="fa-regular fa-file-lines"></i> File Name</span>
+                          <span><i class="fa-solid fa-caret-right"></i></span>
+                        </li>
+                        <li>
+                          <span><i class="fa-regular fa-file-lines"></i> File Name</span>
+                          <span><i class="fa-solid fa-caret-right"></i></span>
+                        </li>
+                        <li class="act">
+                          <span><i class="fa-regular fa-file-lines"></i> File Name</span>
+                          <span><i class="fa-solid fa-caret-right"></i></span>
+                        </li>
+                        <li>
+                          <span><i class="fa-regular fa-file-lines"></i> File Name</span>
+                          <span><i class="fa-solid fa-caret-right"></i></span>
+                        </li>
+                        <li>
+                          <span><i class="fa-regular fa-file-lines"></i> File Name</span>
+                          <span><i class="fa-solid fa-caret-right"></i></span>
+                        </li>
+                        <li>
+                          <span><i class="fa-regular fa-file-lines"></i> File Name</span>
+                          <span><i class="fa-solid fa-caret-right"></i></span>
+                        </li>
+                        <li>
+                          <span><i class="fa-regular fa-file-lines"></i> File Name</span>
+                          <span><i class="fa-solid fa-caret-right"></i></span>
+                        </li>
+                        <li>
+                          <span><i class="fa-regular fa-file-lines"></i> File Name</span>
+                          <span><i class="fa-solid fa-caret-right"></i></span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="library-right">
+                <div class="file-image"><img src="https://images.pexels.com/photos/4792288/pexels-photo-4792288.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt=""></div>
+                <p class="text-center pt-3">File Name</p>
+                <div class="file-info">
+                  <ul>
+                    <li><span><strong>File Size</strong></span> <span>1.2 MB</span></li>
+                    <li><span><strong>Created</strong></span> <span>23/10/2021 - 2:33 PM</span></li>
+                    <li><span><strong>Modified</strong></span> <span>23/10/2021 - 2:33 PM</span></li>
+                    <li><span><strong>Last Viewed</strong></span> <span>23/10/2021 - 2:33 PM</span></li>
+                    <li><span><strong>Dimensions</strong></span> <span>- -</span></li>
+                  </ul>
+                </div>
+                <div class="library-btn">
+                  <div class="row">
+                    <div class="col-6"><a class="link-bdr" href="">View File</a></div>
+                    <div class="col-6"><a class="link-bdr" href="">Download</a></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+
+        <div class="tab-pane fade" id="tab-2">
+          <div class="box p-0">
+            <div class="library-wrap">
+              <div class="library-left">
+                <div class="row">
+                  <div class="col-lg-3">
+                    <div class="library-single">
+                      <ul>
+                        <li class="select">
+                          <span><i class="fa-solid fa-folder"></i> Presentations</span>
+                          <span><i class="fa-solid fa-caret-right"></i></span>
+                        </li>
+                        <li>
+                          <span><i class="fa-solid fa-folder"></i> Videos</span>
+                          <span><i class="fa-solid fa-caret-right"></i></span>
+                        </li>
+                        <li>
+                          <span><i class="fa-solid fa-folder"></i> Lesson Plans</span>
+                          <span><i class="fa-solid fa-caret-right"></i></span>
+                        </li>
+                        <li>
+                          <span><i class="fa-solid fa-folder"></i> Documents</span>
+                          <span><i class="fa-solid fa-caret-right"></i></span>
+                        </li>
+                        <li>
+                          <span><i class="fa-solid fa-folder"></i> Personal</span>
+                          <span><i class="fa-solid fa-caret-right"></i></span>
+                        </li>
+                        <li>
+                          <span><i class="fa-solid fa-folder"></i> Favourite</span>
+                          <span><i class="fa-solid fa-caret-right"></i></span>
+                        </li>
+                        <li>
+                          <span><i class="fa-solid fa-folder"></i> Assignments</span>
+                          <span><i class="fa-solid fa-caret-right"></i></span>
+                        </li>
+                        <li>
+                          <span><i class="fa-solid fa-folder"></i> Handouts</span>
+                          <span><i class="fa-solid fa-caret-right"></i></span>
+                        </li>
+                      </ul>
+
+                      <div class="library-upload">
+                        <a data-bs-toggle="modal" data-bs-target="#addFolder" href=""><i class="fa-solid fa-plus"></i> Add Folder</a>
+                        <a data-bs-toggle="modal" data-bs-target="#addFile" href=""><i class="fa-solid fa-upload"></i> Upload File</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-3">
+                    <div class="library-single">
+                      <ul>
+                        <li>
+                          <span><i class="fa-solid fa-folder"></i> Grade 1</span>
+                          <span><i class="fa-solid fa-caret-right"></i></span>
+                        </li>
+                        <li class="select">
+                          <span><i class="fa-solid fa-folder"></i> Grade 2</span>
+                          <span><i class="fa-solid fa-caret-right"></i></span>
+                        </li>
+                        <li>
+                          <span><i class="fa-solid fa-folder"></i> Grade 3</span>
+                          <span><i class="fa-solid fa-caret-right"></i></span>
+                        </li>
+                        <li>
+                          <span><i class="fa-solid fa-folder"></i> Grade 4</span>
+                          <span><i class="fa-solid fa-caret-right"></i></span>
+                        </li>
+                        <li>
+                          <span><i class="fa-solid fa-folder"></i> Grade 5</span>
+                          <span><i class="fa-solid fa-caret-right"></i></span>
+                        </li>
+                        <li>
+                          <span><i class="fa-solid fa-folder"></i> Grade 6</span>
+                          <span><i class="fa-solid fa-caret-right"></i></span>
+                        </li>
+                        <li>
+                          <span><i class="fa-solid fa-folder"></i> Grade 7</span>
+                          <span><i class="fa-solid fa-caret-right"></i></span>
+                        </li>
+                        <li>
+                          <span><i class="fa-solid fa-folder"></i> Grade 8</span>
+                          <span><i class="fa-solid fa-caret-right"></i></span>
+                        </li>
+                      </ul>
+                      <div class="library-upload">
+                        <a data-bs-toggle="modal" data-bs-target="#addFolder" href=""><i class="fa-solid fa-plus"></i> Add Folder</a>
+                        <a data-bs-toggle="modal" data-bs-target="#addFile" href=""><i class="fa-solid fa-upload"></i> Upload File</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-3">
+                    <div class="library-single">
+                      <ul>
+                        <li>
+                          <span><i class="fa-solid fa-folder"></i> Subject Name</span>
+                          <span><i class="fa-solid fa-caret-right"></i></span>
+                        </li>
+                        <li>
+                          <span><i class="fa-solid fa-folder"></i> Subject Name</span>
+                          <span><i class="fa-solid fa-caret-right"></i></span>
+                        </li>
+                        <li>
+                          <span><i class="fa-solid fa-folder"></i> Subject Name</span>
+                          <span><i class="fa-solid fa-caret-right"></i></span>
+                        </li>
+                        <li class="select">
+                          <span><i class="fa-solid fa-folder"></i> Subject Name</span>
+                          <span><i class="fa-solid fa-caret-right"></i></span>
+                        </li>
+                        <li>
+                          <span><i class="fa-solid fa-folder"></i> Subject Name</span>
+                          <span><i class="fa-solid fa-caret-right"></i></span>
+                        </li>
+                        <li>
+                          <span><i class="fa-solid fa-folder"></i> Subject Name</span>
+                          <span><i class="fa-solid fa-caret-right"></i></span>
+                        </li>
+                        <li>
+                          <span><i class="fa-solid fa-folder"></i> Subject Name</span>
+                          <span><i class="fa-solid fa-caret-right"></i></span>
+                        </li>
+                        <li>
+                          <span><i class="fa-solid fa-folder"></i> Subject Name</span>
+                          <span><i class="fa-solid fa-caret-right"></i></span>
+                        </li>
+                      </ul>
+                      <div class="library-upload">
+                        <a data-bs-toggle="modal" data-bs-target="#addFolder" href=""><i class="fa-solid fa-plus"></i> Add Folder</a>
+                        <a data-bs-toggle="modal" data-bs-target="#addFile" href=""><i class="fa-solid fa-upload"></i> Upload File</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-3">
+                    <div class="library-single">
+                      <ul>
+                        <li>
+                          <span><i class="fa-regular fa-file-lines"></i> File Name</span>
+                          <span><i class="fa-solid fa-caret-right"></i></span>
+                        </li>
+                        <li>
+                          <span><i class="fa-regular fa-file-lines"></i> File Name</span>
+                          <span><i class="fa-solid fa-caret-right"></i></span>
+                        </li>
+                        <li class="act">
+                          <span><i class="fa-regular fa-file-lines"></i> File Name</span>
+                          <span><i class="fa-solid fa-caret-right"></i></span>
+                        </li>
+                        <li>
+                          <span><i class="fa-regular fa-file-lines"></i> File Name</span>
+                          <span><i class="fa-solid fa-caret-right"></i></span>
+                        </li>
+                        <li>
+                          <span><i class="fa-regular fa-file-lines"></i> File Name</span>
+                          <span><i class="fa-solid fa-caret-right"></i></span>
+                        </li>
+                        <li>
+                          <span><i class="fa-regular fa-file-lines"></i> File Name</span>
+                          <span><i class="fa-solid fa-caret-right"></i></span>
+                        </li>
+                        <li>
+                          <span><i class="fa-regular fa-file-lines"></i> File Name</span>
+                          <span><i class="fa-solid fa-caret-right"></i></span>
+                        </li>
+                        <li>
+                          <span><i class="fa-regular fa-file-lines"></i> File Name</span>
+                          <span><i class="fa-solid fa-caret-right"></i></span>
+                        </li>
+                      </ul>
+                      <div class="library-upload">
+                        <a data-bs-toggle="modal" data-bs-target="#addFolder" href=""><i class="fa-solid fa-plus"></i> Add Folder</a>
+                        <a data-bs-toggle="modal" data-bs-target="#addFile" href=""><i class="fa-solid fa-upload"></i> Upload File</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="library-right">
+                <div class="file-image"><img src="https://images.pexels.com/photos/4792288/pexels-photo-4792288.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt=""></div>
+                <p class="text-center pt-3">File Name</p>
+                <div class="file-info">
+                  <ul>
+                    <li><span><strong>File Size</strong></span> <span>1.2 MB</span></li>
+                    <li><span><strong>Created</strong></span> <span>23/10/2021 - 2:33 PM</span></li>
+                    <li><span><strong>Modified</strong></span> <span>23/10/2021 - 2:33 PM</span></li>
+                    <li><span><strong>Last Viewed</strong></span> <span>23/10/2021 - 2:33 PM</span></li>
+                    <li><span><strong>Dimensions</strong></span> <span>- -</span></li>
+                  </ul>
+                </div>
+                <div class="library-btn">
+                  <div class="row">
+                    <div class="col-6"><a class="link-bdr" href="">View File</a></div>
+                    <div class="col-6"><a class="link-bdr" href="">Download</a></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+       </div>
+      </div>
+    </div>
+  </section>
+  <!-- Container -->
+
+  <!-- Footer -->
+  <footer class="site-footer">
+     <div class="container-fluid">
+        <div class="row">
+          <div class="col-xl-4">
+            <p>+00 000 000 000 <span>support@tutorsonline.com</span></p>
+          </div>
+          <div class="col-xl-4">
+            <p class="text-center">All Rights Reserved by Tutors Online</p>
+          </div>
+          <div class="col-xl-4">
+            <p class="text-end">Designed & Developed With Love by Coding Pro</p>
+          </div>
+        </div>
+     </div>
+  </footer>
+  <!-- Footer -->
+
+</div>  
+
+
+<div class="modal common-modal fade" id="addFolder">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5>Add Folder</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="inp-group mt-0">
+          <label for="">Folder Name</label>
+          <input class="inp" type="text" placeholder="Enter Folder Name">
+        </div>
+      </div>
+      <div class="modal-footer center">
+        <button type="button" data-bs-dismiss="modal" class="theme-btn btn-round green">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal common-modal fade" id="addFile">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5>Upload File</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="inp-group mt-0">
+          <label for="">Select File to Upload</label>
+          <input class="inp" type="file">
+        </div>
+      </div>
+      <div class="modal-footer center">
+        <button type="button" data-bs-dismiss="modal" class="theme-btn btn-round green">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>    
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/tilt.js@1.2.1/dest/tilt.jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+  <script src="./assets/js/custom.js"></script>  
+  </body>
+</html>

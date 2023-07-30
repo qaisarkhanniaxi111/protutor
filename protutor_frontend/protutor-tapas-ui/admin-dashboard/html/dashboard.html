@@ -1,0 +1,895 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, shrink-to-fit=no">
+    <link rel="shortcut icon" href="assets/images/favicon.png">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/custom.css">
+  </head>
+  <body>
+
+
+  <div class="site-wrap">
+    <div class="login-head">
+        <div class="login-head-left">
+          <img src="./assets/images/logo-dark.svg" alt="">
+          <div class="mobClick">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+        <div class="login-head-right">
+            <div class="notific">
+                <i class="fa-regular fa-bell"></i>
+                <span class="notific-count">10</span>
+            </div>
+            <div class="profile-dropdown">
+                <div class="dropdown">
+                    <div class="dropdown-toggle" data-bs-toggle="dropdown">
+                        <span class="profile-dropdown-img"><img src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt=""></span>
+                        <span class="btn-txt">Super Admin</span>
+                    </div>
+                    <ul class="dropdown-menu">
+                      <li><a class="" href="#"><i class="fa-regular fa-user"></i> Edit Profile</a></li>
+                      <li><a class="" href="#"><i class="fa-solid fa-arrow-right-from-bracket"></i> Log Out</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <div class="dashboard-wrap">
+        <div class="sidebar">
+            <div class="accordion" id="sideNav">
+                <div class="acc-item">
+                  <a class="full-link" href="dashboard.html"></a>
+                    <div class="acc-button" data-bs-toggle="collapse">
+                        <span class="nav-icon"><i class="fa-solid fa-box"></i></span>
+                        Dashboard
+                    </div>
+                </div>
+
+                <div class="acc-item">
+                  <div class="acc-button collapsed" data-bs-toggle="collapse" data-bs-target="#menu-1" aria-expanded="true">
+                    <span class="nav-icon"><i class="fa-solid fa-users"></i></span>
+                    Manage Users
+                  </div>
+                  <div id="menu-1" class="accordion-collapse collapse" data-bs-parent="#sideNav">
+                    <div class="acc-body">
+                      <ul>
+                        <li><a href="user-dashboard.html">Users</a></li>
+                        <li><a href="manage-students.html">Manage Students</a></li>
+                        <li><a href="manage-tutors.html">Manage Tutors</a></li>
+                        <li><a href="tutors-review.html">Tutors Review</a></li>
+                        <li><a href="manage-admin-users.html">Manage Admin Users</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="acc-item">
+                  <div class="acc-button collapsed" data-bs-toggle="collapse" data-bs-target="#menu-2" aria-expanded="false">
+                    <span class="nav-icon"><i class="fa-solid fa-people-group"></i></span>
+                    Group Classes
+                  </div>
+                  <div id="menu-2" class="accordion-collapse collapse" data-bs-parent="#sideNav">
+                    <div class="acc-body">
+                      <ul>
+                        <li><a href="group-classess.html">Group Classess</a></li>
+                        <li><a href="package-classes.html">Package Classes</a></li>
+                        <li><a href="quiz.html">Quiz</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="acc-item">
+                    <div class="acc-button collapsed" data-bs-toggle="collapse" data-bs-target="#menu-3" aria-expanded="false">
+                      <span class="nav-icon"><i class="fa-solid fa-file-lines"></i></span>
+                      Manage Orders
+                    </div>
+                    <div id="menu-3" class="accordion-collapse collapse" data-bs-parent="#sideNav">
+                      <div class="acc-body">
+                        <ul>
+                          <li><a href="all-orders.html">All Orders</a></li>
+                          <li><a href="lesson-orders.html">Lesson Orders</a></li>
+                          <li><a href="subscription-orders.html">Subscription Orders</a></li>
+                          <li><a href="classes-orders.html">Classes Orders</a></li>
+                          <li><a href="package-Orders.html">Package Orders</a></li>
+                          <li><a href="wallet-orders.html">Wallet Orders</a></li>
+                          <li><a href="gift-card-orders.html">Gift Card Orders</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                </div>
+
+                <div class="acc-item">
+                    <div class="acc-button collapsed" data-bs-toggle="collapse" data-bs-target="#menu-4" aria-expanded="false">
+                      <span class="nav-icon"><i class="fa-solid fa-clipboard-list"></i></span>
+                      Report Logs
+                    </div>
+                    <div id="menu-4" class="accordion-collapse collapse" data-bs-parent="#sideNav">
+                      <div class="acc-body">
+                        <ul>
+                          <li><a href="report-logs.html">Report Logs</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                </div>
+
+                <div class="acc-item">
+                    <div class="acc-button collapsed" data-bs-toggle="collapse" data-bs-target="#menu-5" aria-expanded="false">
+                      <span class="nav-icon"><i class="fa-solid fa-user-shield"></i></span>
+                      Tutor Preferences
+                    </div>
+                    <div id="menu-5" class="accordion-collapse collapse" data-bs-parent="#sideNav">
+                      <div class="acc-body">
+                        <ul>
+                          <li><a href="accents.html">Accents</a></li>
+                          <li><a href="teaches-level.html">Teaches Level</a></li>
+                          <li><a href="learner-ages.html">Learner Ages</a></li>
+                          <li><a href="lesson-includes.html">Lesson Includes</a></li>
+                          <li><a href="subjects.html">Subjects</a></li>
+                          <li><a href="text-prepration.html">Text Prepration</a></li>
+                          <li><a href="spoken-language.html">Spoken Language</a></li>
+                          <li><a href="teaching-language.html">Teaching Language</a></li>
+                          <li><a href="issues-report-option.html">Issues Report Option</a></li>
+                          <li><a href="price-slabs.html">Price Slabs</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                </div>
+
+                <div class="acc-item">
+                    <div class="acc-button collapsed" data-bs-toggle="collapse" data-bs-target="#menu-6" aria-expanded="false">
+                      <span class="nav-icon"><i class="fa-solid fa-gear"></i></span>
+                      Settings
+                    </div>
+                    <div id="menu-6" class="accordion-collapse collapse" data-bs-parent="#sideNav">
+                      <div class="acc-body">
+                        <ul>
+                          <li><a href="general-settings.html">General Settings</a></li>
+                          <li><a href="pwa-settings.html">PWA Settings</a></li>
+                          <li><a href="meetings-tools.html">Meetings Tools</a></li>
+                          <li><a href="payment-methods.html">Payment Methods</a></li>
+                          <li><a href="social-platforms.html">Social Platforms</a></li>
+                          <li><a href="discount-coupons.html">Discount Coupons</a></li>
+                          <li><a href="commission-settings.html">Commission Settings</a></li>
+                          <li><a href="currency-management.html">Currency Management</a></li>
+                          <li><a href="themes-management.html">Themes Management</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                </div>
+
+                <div class="acc-item">
+                    <div class="acc-button collapsed" data-bs-toggle="collapse" data-bs-target="#menu-7" aria-expanded="false">
+                      <span class="nav-icon"><i class="fa-solid fa-layer-group"></i></span>
+                      Manage CMS
+                    </div>
+                    <div id="menu-7" class="accordion-collapse collapse" data-bs-parent="#sideNav">
+                      <div class="acc-body">
+                        <ul>
+                          <li><a href="home-page-slide.html">Home Page Slide</a></li>
+                          <li><a href="content-pages.html">Content Pages</a></li>
+                          <li><a href="content-blocks.html">Content Blocks</a></li>
+                          <li><a href="navigation.html">Navigation</a></li>
+                          <li><a href="countries.html">Countries</a></li>
+                          <li><a href="videos-content.html">Videos Content</a></li>
+                          <li><a href="testimonials.html">Testimonials </a></li>
+                          <li><a href="language-label.html">Language Label</a></li>
+                          <li><a href="faqs-categories.html">FAQs Categories</a></li>
+                          <li><a href="manage-faqs.html">Manage FAQs</a></li>
+                          <li><a href="email-templates.html">Email Templates</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                </div>
+
+                <div class="acc-item">
+                    <div class="acc-button collapsed" data-bs-toggle="collapse" data-bs-target="#menu-8" aria-expanded="false">
+                      <span class="nav-icon"><i class="fa-solid fa-blog"></i></span>
+                      Manage Blogs
+                    </div>
+                    <div id="menu-8" class="accordion-collapse collapse" data-bs-parent="#sideNav">
+                      <div class="acc-body">
+                        <ul>
+                          <li><a href="">Not Available</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                </div>
+
+                <div class="acc-item">
+                    <div class="acc-button collapsed" data-bs-toggle="collapse" data-bs-target="#menu-9" aria-expanded="false">
+                      <span class="nav-icon"><i class="fa-solid fa-seedling"></i></span>
+                      Manage SEO
+                    </div>
+                    <div id="menu-9" class="accordion-collapse collapse" data-bs-parent="#sideNav">
+                      <div class="acc-body">
+                        <ul>
+                          <li><a href="">Not Available</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                </div>
+
+                <div class="acc-item">
+                    <div class="acc-button collapsed" data-bs-toggle="collapse" data-bs-target="#menu-10" aria-expanded="false">
+                      <span class="nav-icon"><i class="fa-solid fa-chart-pie"></i></span>
+                      Report Performance
+                    </div>
+                    <div id="menu-10" class="accordion-collapse collapse" data-bs-parent="#sideNav">
+                      <div class="acc-body">
+                        <ul>
+                          <li><a href="lesson-top-subject.html">Lesson Top Subject</a></li>
+                          <li><a href="classes-top-subject.html">Classes Top Subject</a></li>
+                          <li><a href="tutor-performance.html">Tutor Performance</a></li>
+                          <li><a href="lesson-stats.html">Lesson Stats</a></li>
+                          <li><a href="sales-report.html">Sales Report</a></li>
+                          <li><a href="settlements.html">Settlements </a></li>
+                        </ul>
+                      </div>
+                    </div>
+                </div>
+
+                <div class="acc-item">
+                    <div class="acc-button collapsed" data-bs-toggle="collapse" data-bs-target="#menu-11" aria-expanded="false">
+                      <span class="nav-icon"><i class="fa-solid fa-flask"></i></span>
+                      Request Logs
+                    </div>
+                    <div id="menu-11" class="accordion-collapse collapse" data-bs-parent="#sideNav">
+                      <div class="acc-body">
+                        <ul>
+                          <li><a href="tutor-request.html">Tutor Request</a></li>
+                          <li><a href="withdrawal-request.html">Withdrawal Request</a></li>
+                          <li><a href="gdpr-Request.html">GDPR Request</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                </div>
+
+                <!-- <div class="acc-item">
+                    <div class="acc-button collapsed" data-bs-toggle="collapse" data-bs-target="#menu-12" aria-expanded="false">
+                      <span class="nav-icon"><i class="fa-solid fa-user-tie"></i></span>
+                      Manage Admin
+                    </div>
+                    <div id="menu-12" class="accordion-collapse collapse" data-bs-parent="#sideNav">
+                      <div class="acc-body">
+                        <ul>
+                          <li><a href="">Not Available</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                </div> -->
+
+                <div class="acc-item">
+                    <div class="acc-button collapsed" data-bs-toggle="collapse" data-bs-target="#menu-13" aria-expanded="false">
+                      <span class="nav-icon"><i class="fa-solid fa-bullhorn"></i></span>
+                      Affiliates
+                    </div>
+                    <div id="menu-13" class="accordion-collapse collapse" data-bs-parent="#sideNav">
+                      <div class="acc-body">
+                        <ul>
+                          <li><a href="affiliates.html">Affiliates</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                </div>
+              </div>
+        </div>
+
+        <div class="main-wrapper">
+           <div class="dashboard-head">
+            <h5 class="fw-600">ACCOUNT OVERVIEW</h5>
+            <div class="dashboard-toggle">
+                <span>Show Dashboard Values</span>
+                <label class="switch ms-1">
+                    <input type="checkbox" id="value-check">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+           </div>
+           <div class="class-sort mt-3 mb-0">
+            <div class="row">
+                <div class="col-6 col-lg-3">
+                    <div class="inp-outer m-0">
+                        <select class="input" name="" id="">
+                          <option value="">Sort from</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <div class="inp-outer m-0">
+                        <select class="input" name="" id="">
+                          <option value="">To</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+          </div>
+
+          <div class="dash-stats">
+            <div class="row">
+                <div class="col-6 col-lg-3">
+                    <div class="dash-stats-single">
+                        <h5>Lesson Revenue</h5>
+                        <div class="dash-stats-txt">
+                            <div>
+                                <span class="val">20,000</span>
+                                <span class="hid">******</span>
+                            </div>
+                            <div><i class="fa-solid fa-chart-line"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <div class="dash-stats-single">
+                        <h5>Classes Revenue </h5>
+                        <div class="dash-stats-txt">
+                            <div>
+                                <span class="val">10,000</span>
+                                <span class="hid">******</span>
+                            </div>
+                            <div><i class="fa-solid fa-chart-line"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <div class="dash-stats-single">
+                        <h5>Admin Earnings</h5>
+                        <div class="dash-stats-txt">
+                            <div>
+                                <span class="val">20,500</span>
+                                <span class="hid">******</span>
+                            </div>
+                            <div><i class="fa-solid fa-dollar-sign"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <div class="dash-stats-single">
+                        <h5>Total Lesson</h5>
+                        <div class="dash-stats-txt">
+                            <div>
+                                <span class="val">20,800</span>
+                                <span class="hid">******</span>
+                            </div>
+                            <div><i class="fa-regular fa-calendar"></i></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-6 col-lg-3">
+                    <div class="dash-stats-single">
+                        <h5>Total Classes</h5>
+                        <div class="dash-stats-txt">
+                            <div>
+                                <span class="val">3,000</span>
+                                <span class="hid">******</span>
+                            </div>
+                            <div><i class="fa-solid fa-file-pen"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <div class="dash-stats-single">
+                        <h5>Canceled Lessons</h5>
+                        <div class="dash-stats-txt">
+                            <div>
+                                <span class="val">500</span>
+                                <span class="hid">******</span>
+                            </div>
+                            <div><i class="fa-regular fa-calendar-xmark"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <div class="dash-stats-single">
+                        <h5>Completed Lessons</h5>
+                        <div class="dash-stats-txt">
+                            <div>
+                                <span class="val">3000</span>
+                                <span class="hid">******</span>
+                            </div>
+                            <div><i class="fa-solid fa-file-shield"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <div class="dash-stats-single">
+                        <h5>Unscheduled Lessons</h5>
+                        <div class="dash-stats-txt">
+                            <div>
+                                <span class="val">07</span>
+                                <span class="hid">******</span>
+                            </div>
+                            <div><i class="fa-solid fa-calendar-days"></i></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-6 col-lg-3">
+                    <div class="dash-stats-single">
+                        <h5>Completed Classes</h5>
+                        <div class="dash-stats-txt">
+                            <div>
+                                <span class="val">20,000</span>
+                                <span class="hid">******</span>
+                            </div>
+                            <div><i class="fa-solid fa-business-time"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <div class="dash-stats-single">
+                        <h5>Canceled Classes</h5>
+                        <div class="dash-stats-txt">
+                            <div>
+                                <span class="val">20,000</span>
+                                <span class="hid">******</span>
+                            </div>
+                            <div><i class="fa-solid fa-plug-circle-xmark"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <div class="dash-stats-single">
+                        <h5>Canceled Lessons</h5>
+                        <div class="dash-stats-txt">
+                            <div>
+                                <span class="val">20,000</span>
+                                <span class="hid">******</span>
+                            </div>
+                            <div><i class="fa-solid fa-folder-minus"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <div class="dash-stats-single">
+                        <h5>No of Quiz Created</h5>
+                        <div class="dash-stats-txt">
+                            <div>
+                                <span class="val">577</span>
+                                <span class="hid">******</span>
+                            </div>
+                            <div><i class="fa-solid fa-trophy"></i></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-6 col-lg-3">
+                    <div class="dash-stats-single">
+                        <h5>Total Number of users</h5>
+                        <div class="dash-stats-txt">
+                            <div>
+                                <span class="val">21,456</span>
+                                <span class="hid">******</span>
+                            </div>
+                            <div><i class="fa-solid fa-users"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <div class="dash-stats-single">
+                        <h5>Total Number of Students</h5>
+                        <div class="dash-stats-txt">
+                            <div>
+                                <span class="val">20,000</span>
+                                <span class="hid">******</span>
+                            </div>
+                            <div><i class="fa-solid fa-user-tie"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <div class="dash-stats-single">
+                        <h5>Total Number of Tutors</h5>
+                        <div class="dash-stats-txt">
+                            <div>
+                                <span class="val">1,456</span>
+                                <span class="hid">******</span>
+                            </div>
+                            <div><i class="fa-solid fa-user-graduate"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <div class="dash-stats-single">
+                        <h5>Total Number of Tutors Request</h5>
+                        <div class="dash-stats-txt">
+                            <div>
+                                <span class="val">700</span>
+                                <span class="hid">******</span>
+                            </div>
+                            <div><i class="fa-solid fa-tower-observation"></i></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="stat-more text-center mt-5">
+                <button class="site-link small">View All User</button>
+            </div>
+
+            <div class="statics">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#tabs-1">Commission from Lesson</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#tabs-2">Commission from Classes</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#tabs-3">Total Sign Ups</button>
+                    </li>
+                  </ul>
+                  <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="tabs-1">
+                        <div class="chart-area">
+                            <canvas id="myChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="tabs-2">
+                      <div class="chart-area">
+                        <canvas id="myChart2"></canvas>
+                      </div>
+                    </div>
+                    <div class="tab-pane fade" id="tabs-3">
+                      <div class="chart-area">
+                        <canvas id="myChart3"></canvas>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+
+            <div class="subject-search">
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="class-sort mt-5 mb-0">
+                    <div class="row">
+                        <div class="col-6 col-lg-4">
+                            <div class="inp-outer m-0">
+                                <select class="input" name="" id="">
+                                  <option value="">Sort from</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-6 col-lg-4">
+                            <div class="inp-outer m-0">
+                                <select class="input" name="" id="">
+                                  <option value="">To</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="subject-search-single">
+                    <h3>Top Class Subjects (All)</h3>
+                    <p>No record found.</p>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="class-sort mt-5 mb-0">
+                    <div class="row">
+                        <div class="col-6 col-lg-4">
+                            <div class="inp-outer m-0">
+                                <select class="input" name="" id="">
+                                  <option value="">Sort from</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-6 col-lg-4">
+                            <div class="inp-outer m-0">
+                                <select class="input" name="" id="">
+                                  <option value="">To</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="subject-search-single">
+                    <h3>Top Lesson Subjects (All)</h3>
+                    <ul>
+                      <li>History <span>31 sold</span></li>
+                      <li>Physics <span>8 sold</span></li>
+                      <li>Maths <span>6 sold</span></li>
+                      <li>English <span>5 sold</span></li>
+                      <li>Accounting <span>4 sold</span></li>
+                      <li>Algebra <span>3 sold</span></li>
+                      <li>Arabic <span>3 sold</span></li>
+                      <li>Marketing <span>2 sold</span></li>
+                      <li>Geography <span>2 sold</span></li>
+                      <li>Business English <span>1 sold</span></li>
+                      <li>Spanish <span>1 sold</span></li>
+                      <li>French <span>1 sold</span></li>
+                      <li>Art <span>1 sold</span></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="subject-search">
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="class-sort mt-5 mb-0">
+                    <div class="row">
+                        <div class="col-6 col-lg-4">
+                            <div class="inp-outer m-0">
+                                <select class="input" name="" id="">
+                                  <option value="">Sort from</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-6 col-lg-4">
+                            <div class="inp-outer m-0">
+                                <select class="input" name="" id="">
+                                  <option value="">To</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="subject-search-single">
+                    <h3>Visitors Statistics</h3>
+                    <p>No record found.</p>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="class-sort mt-5 mb-0">
+                    <div class="row">
+                        <div class="col-6 col-lg-4">
+                            <div class="inp-outer m-0">
+                                <select class="input" name="" id="">
+                                  <option value="">Sort from</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-6 col-lg-4">
+                            <div class="inp-outer m-0">
+                                <select class="input" name="" id="">
+                                  <option value="">To</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="subject-search-single">
+                    <h3>Traffic(All)</h3>
+                    <p>No record found.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="chart-outer">
+                  <h3>Age Groups</h3>
+                  <div class="pie-wrap">
+                    <canvas id="myChart4"></canvas>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="chart-outer">
+                  <h3>Gender</h3>
+                  <div class="pie-wrap">
+                    <canvas id="myChart5"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+    </div>
+
+  </div>  
+
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>    
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/tilt.js@1.2.1/dest/tilt.jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+  <script src="./assets/js/custom.js"></script>  
+  <script>
+    const xValues = ['01-2023', '02-2023', '03-2023', '04-2023', '05-2023'];
+    new Chart("myChart", {
+      type: "line",
+      data: {
+        labels: xValues,
+        datasets: [{ 
+          data: [400,100,200,50,150],
+          borderColor: "#FB9A99",
+          fill: false
+        }, { 
+          data: [200,300,250,100,50],
+          borderColor: "#A6CEE3",
+          fill: false
+        }, { 
+          data: [20,50,200,100,350],
+          borderColor: "#B2DF8A",
+          fill: false
+        },{ 
+          data: [100,250,200,30,80],
+          borderColor: "#1F78B4",
+          fill: false
+        },{ 
+          data: [50,80,70,30,80],
+          borderColor: "#FFB703",
+          fill: false
+        }]
+      },
+      options: {
+        legend: {display: false},
+        scales: {
+        xAxes: [{
+            gridLines: {
+              color: "rgba(0, 0, 0, 0.03)",
+            }
+        }],
+        yAxes: [{
+            gridLines: {
+              color: "rgba(0, 0, 0, 0.03)",
+            }   
+        }]
+    }
+      }
+    });
+
+
+    const xValues2 = ['01-2023', '02-2023', '03-2023', '04-2023', '05-2023'];
+    new Chart("myChart2", {
+      type: "line",
+      data: {
+        labels: xValues2,
+        datasets: [{ 
+          data: [400,100,200,50,150],
+          borderColor: "#FB9A99",
+          fill: false
+        }, { 
+          data: [200,300,250,100,50],
+          borderColor: "#A6CEE3",
+          fill: false
+        }, { 
+          data: [20,50,200,100,350],
+          borderColor: "#B2DF8A",
+          fill: false
+        },{ 
+          data: [100,250,200,30,80],
+          borderColor: "#1F78B4",
+          fill: false
+        },{ 
+          data: [50,80,70,30,80],
+          borderColor: "#FFB703",
+          fill: false
+        }]
+      },
+      options: {
+        legend: {display: false},
+        scales: {
+        xAxes: [{
+            gridLines: {
+              color: "rgba(0, 0, 0, 0.03)",
+            }
+        }],
+        yAxes: [{
+            gridLines: {
+              color: "rgba(0, 0, 0, 0.03)",
+            }   
+        }]
+    }
+      }
+    });
+
+
+    const xValues3 = ['01-2023', '02-2023', '03-2023', '04-2023', '05-2023'];
+    new Chart("myChart3", {
+      type: "line",
+      data: {
+        labels: xValues3,
+        datasets: [{ 
+          data: [400,100,200,50,150],
+          borderColor: "#FB9A99",
+          fill: false
+        }, { 
+          data: [200,300,250,100,50],
+          borderColor: "#A6CEE3",
+          fill: false
+        }, { 
+          data: [20,50,200,100,350],
+          borderColor: "#B2DF8A",
+          fill: false
+        },{ 
+          data: [100,250,200,30,80],
+          borderColor: "#1F78B4",
+          fill: false
+        },{ 
+          data: [50,80,70,30,80],
+          borderColor: "#FFB703",
+          fill: false
+        }]
+      },
+      options: {
+        legend: {display: false},
+        scales: {
+        xAxes: [{
+            gridLines: {
+              color: "rgba(0, 0, 0, 0.03)",
+            }
+        }],
+        yAxes: [{
+            gridLines: {
+              color: "rgba(0, 0, 0, 0.03)",
+            }   
+        }]
+    }
+      }
+    });
+
+    new Chart("myChart4", {
+      type: "pie",
+      data: {
+        labels: [
+          '15-30',
+          '31-46',
+          '47-62',
+          '62 and above'
+        ],
+        datasets: [{
+          label: 'My First Dataset',
+          data: [300, 50, 100, 200],
+          backgroundColor: [
+            '#FF692C',
+            '#7C2B0A',
+            '#993F1A',
+            '#FF9858'
+          ],
+        }],
+      },
+      options:{
+        legend: {
+            align:'center',
+            position: 'right',
+          },
+          hoverOffset: 4,
+      }
+    });
+
+    new Chart("myChart5", {
+      type: "pie",
+      data: {
+        labels: [
+          'Male',
+          'Female'
+        ],
+        datasets: [{
+          label: 'My First Dataset',
+          data: [300, 200],
+          backgroundColor: [
+            '#FF692C',
+            '#993F1A'
+          ],
+        }],
+      },
+      options:{
+        legend: {
+            align:'center',
+            position: 'right',
+          },
+          hoverOffset: 4,
+      }
+    });
+  </script>
+  </body>
+</html>
