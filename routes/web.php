@@ -6,6 +6,7 @@ use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Admin\UserdetailController;
 use App\Http\Controllers\Tutor\TutorController;
+use App\Http\Controllers\Tutor\GroupLessonController;
 
 /*
 |--------------------------------------------------------------------------
@@ -98,6 +99,7 @@ Route::post('/deleteQuestion', [TutorController::class, 'deleteQuestion']);
 Route::post('/republishQuiz', [TutorController::class, 'republishQuiz']);
 Route::post('/filterData', [TutorController::class, 'filterData']);
 Route::get('/tutorgrouplessons', [TutorController::class, 'tutorquizgrouplessons']);
+Route::post('/tutorgrouplessons/store', [GroupLessonController::class, 'storeGroupLesson'])->name('store.groupLesson');
 
 });
 
