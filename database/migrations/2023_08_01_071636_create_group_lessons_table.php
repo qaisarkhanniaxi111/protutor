@@ -15,6 +15,7 @@ class CreateGroupLessonsTable extends Migration
     {
         Schema::create('group_lessons', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('tutor_id')->references('id')->on('users')->onDelete('cascade');
             $table->integer('subject_id');
             $table->integer('teacher_level_id');
             $table->foreign('subject_id')->references('id')->on('subjects')->onDelete('cascade');
@@ -26,6 +27,7 @@ class CreateGroupLessonsTable extends Migration
             $table->date('registration_end_date');
             $table->date('class_start_date');
             $table->date('class_end_date');
+            $table->boolean('is_completed')->default(0);
             $table->timestamps();
         });
     }
