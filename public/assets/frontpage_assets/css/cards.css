@@ -1,0 +1,47 @@
+#cards {
+  height: 2000px;
+  background: #ffffff;
+  margin-top: 500px;
+
+}
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+
+.card .frame-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 25px;
+  background-color: transparent;
+  flex-direction: column;
+}
+
+.card .text-wrapper {
+  flex-direction: column;
+}
+
+.card .text-wrapper {
+  color: #2c2c2c;
+  font-family: "Poppins-SemiBold", Helvetica;
+  font-size: 36px;
+  padding-left: 35px;
+  font-weight: 600;
+  letter-spacing: 0;
+  position: relative;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+.card .div {
+  display: flex;
+  gap: 20px;
+  padding-left: 40px;
+}
+
+
+

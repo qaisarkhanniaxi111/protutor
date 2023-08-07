@@ -1,0 +1,9 @@
+#lesson_details_container {
+    padding: 50px 0px 50px 0px;
+}
+#lesson_details_table th {
+    width: 20%;
+}
+#lesson_details_table td {
+    width: 80%;
+}

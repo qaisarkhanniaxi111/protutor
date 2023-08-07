@@ -349,4 +349,9 @@ class TutorController extends \App\Http\Controllers\Controller
       return view("games/index2");
     }
 
+    public function openChat()
+    {
+        return view('tutor.chat');
+    }
+
 }

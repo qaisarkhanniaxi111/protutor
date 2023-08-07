@@ -35,7 +35,7 @@ Route::get('/clear-cache', function() {
 
 //fronend route
 Route::get('/', [FrontendController::class, 'homepage']);
-Route::any('/login', [FrontendController::class, 'login']);
+Route::any('/login', [FrontendController::class, 'login'])->name('login');
 Route::any('/signup', [FrontendController::class, 'signup']);
 Route::any('/student-signup', [FrontendController::class, 'student_signup']);
 Route::any('/verify-user/{token}', [FrontendController::class, 'verifyUser']);
@@ -45,6 +45,7 @@ Route::any('/tutor-signup/{userid}', [FrontendController::class, 'tutor_details_
 Route::any('/submit_tutor_signup', [FrontendController::class, 'submit_tutor_signup']);
 Route::any('/tutor-detail/{tutorid}', [FrontendController::class, 'tutor_detail_single_page']);
 Route::any('/group', [FrontendController::class, 'groupclasses']);
+Route::any('/group/details/{groupLesson}', [FrontendController::class, 'openGroupDetails'])->name('group.details');
 Route::get('/game1', [TutorController::class, 'game']);
 Route::get('/gamet', [TutorController::class, 'game2']);
 
@@ -98,6 +99,9 @@ Route::post('/deleteQuestion', [TutorController::class, 'deleteQuestion']);
 Route::post('/republishQuiz', [TutorController::class, 'republishQuiz']);
 Route::post('/filterData', [TutorController::class, 'filterData']);
 Route::get('/tutorgrouplessons', [TutorController::class, 'tutorquizgrouplessons']);
+
+Route::get('/tutor/chat', [TutorController::class, 'openChat'])->name('tutor.chat');
+
 
 });
 
