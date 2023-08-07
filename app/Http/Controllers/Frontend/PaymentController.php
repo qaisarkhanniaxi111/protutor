@@ -11,7 +11,7 @@ class PaymentController extends Controller
     public function index()
     {
         $user = auth()->user();
-        return view('tutor.payment', ['intent' => $user->createSetupIntent()]);
+        return view('frontend.payment', ['intent' => $user->createSetupIntent()]);
     }
     public function charge(Request $request)
     {

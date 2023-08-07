@@ -71,7 +71,8 @@ Route::post('/filterDataStudentQuiz', [DashboardController::class, 'filterData']
 
 Route::post('/savequizquestionanswergame', [DashboardController::class, 'savequizquestionanswergame']);
 
-
+Route::get('payment/', [PaymentController::class,'index'])->name('payment');
+Route::post('payment/charge', [PaymentController::class,'charge'])->name('payment.charge');
 
 
 });
@@ -105,8 +106,7 @@ Route::get('deleteGroupLesson/{id}', [GroupLessonController::class,'deleteGroupL
 Route::get('showGroupLesson/{id}', [GroupLessonController::class,'showGroupLesson'])->name('show.groupLesson');
 Route::get('editGroupLesson/{id}', [GroupLessonController::class,'editGroupLesson'])->name('edit.groupLesson');
 Route::post('updateGroupLesson/', [GroupLessonController::class,'updateGroupLesson'])->name('update.groupLesson');
-Route::get('payment/', [PaymentController::class,'index'])->name('payment');
-Route::post('payment/charge', [PaymentController::class,'charge'])->name('payment.charge');
+
 
 });
 
