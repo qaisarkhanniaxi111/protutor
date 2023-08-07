@@ -21,9 +21,9 @@ use App\Http\Controllers\Tutor\GroupLessonController;
 */
 
 
-/*Route::get('/', function () {
+Route::get('/', function () {
     return view('welcome');
-});*/
+});
 
 //Clear Cache facade value:
 Route::get('/clear-cache', function() {
