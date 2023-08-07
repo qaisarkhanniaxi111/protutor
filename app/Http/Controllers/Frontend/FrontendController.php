@@ -22,6 +22,7 @@ use App\Models\Homepage;
 use App\Models\Notifications;
 use App\Models\Become_a_tutor;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Mail;
 use Illuminate\Support\Str;
 
@@ -277,17 +278,18 @@ public function login(Request $req)
 
 				if(md5($req->input('password')) == $user->password)
 				{
+					Auth::loginUsingId($user->id);
           echo $user->user_status;
 					if($user->role==3)
 					{
-						\Session::flush();
-						\Session::put('tutorid', $user->id);
-						\Session::put('tutordata', $user);
-						\Session::save();
+						// \Session::flush();
+						Session::put('tutorid', $user->id);
+						Session::put('tutordata', $user);
+						Session::save();
 					return redirect('/tutordashboard')->with('success_msg',__('You are login successfully'));
 				  }
 					else {
-						\Session::flush();
+						// \Session::flush();
 						\Session::put('userid', $user->id);
 						\Session::put('userdata', $user);
 						\Session::save();
