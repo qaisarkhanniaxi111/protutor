@@ -5,7 +5,9 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Admin\UserdetailController;
+use App\Http\Controllers\Frontend\PaymentController;
 use App\Http\Controllers\Tutor\TutorController;
+use App\Http\Controllers\Tutor\GroupLessonController;
 
 /*
 |--------------------------------------------------------------------------
@@ -98,7 +100,14 @@ Route::post('/editSubmitQuestion', [TutorController::class, 'editSubmitQuestion'
 Route::post('/deleteQuestion', [TutorController::class, 'deleteQuestion']);
 Route::post('/republishQuiz', [TutorController::class, 'republishQuiz']);
 Route::post('/filterData', [TutorController::class, 'filterData']);
-Route::get('/tutorgrouplessons', [TutorController::class, 'tutorquizgrouplessons']);
+Route::get('/tutorgrouplessons', [TutorController::class, 'tutorquizgrouplessons'])->name('index.groupLesson');
+Route::post('/tutorgrouplessons/store', [GroupLessonController::class, 'storeGroupLesson'])->name('store.groupLesson');
+Route::get('deleteGroupLesson/{id}', [GroupLessonController::class,'deleteGroupLesson'])->name('delete.groupLesson');
+Route::get('showGroupLesson/{id}', [GroupLessonController::class,'showGroupLesson'])->name('show.groupLesson');
+Route::get('editGroupLesson/{id}', [GroupLessonController::class,'editGroupLesson'])->name('edit.groupLesson');
+Route::post('updateGroupLesson/', [GroupLessonController::class,'updateGroupLesson'])->name('update.groupLesson');
+Route::get('payment/', [PaymentController::class,'index'])->name('payment');
+Route::post('payment/charge', [PaymentController::class,'charge'])->name('payment.charge');
 
 Route::get('/tutor/chat', [TutorController::class, 'openChat'])->name('tutor.chat');
 
