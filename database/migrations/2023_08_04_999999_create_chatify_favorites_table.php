@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGalleriesTable extends Migration
+class CreateChatifyFavoritesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateGalleriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('galleries', function (Blueprint $table) {
-            $table->id();
-            $table->text('image');
-            $table->integer('image_type');
+        Schema::create('ch_favorites', function (Blueprint $table) {
+            $table->uuid('id')->primary();
+            $table->bigInteger('user_id');
+            $table->bigInteger('favorite_id');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateGalleriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('galleries');
+        Schema::dropIfExists('ch_favorites');
     }
 }

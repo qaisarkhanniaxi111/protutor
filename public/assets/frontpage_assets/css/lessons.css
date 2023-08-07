@@ -1,0 +1,79 @@
+.hero-container {
+  margin: 0;
+  padding: 0;
+}
+
+.lesson-btns {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+  padding-left: 24px;
+  padding-right: 24px;
+  width: 1272px;
+  align-items: center;
+  flex-direction: row;
+  justify-content: flex-start;
+  padding-bottom: 64px;
+  padding-top: 96px;
+}
+.btns-box {
+  display: inline-flex;
+  padding: 5px;
+
+  align-items: flex-start;
+  border-radius: 6px;
+  background: #fff;
+  box-shadow: 10px 10px 35px 0px rgba(0, 0, 0, 0.15);
+}
+.private-lesson a {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  color: #ff6c0b;
+  display: block;
+}
+.group-classes a {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  font-family: "Poppins";
+  color: rgba(44, 44, 44, 0.8);
+  display: block;
+}
+.private-lesson {
+  background-color: #fff;
+  height: 56px;
+  padding: 16px 24px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.group-classes {
+  background-color: #ff6c0b;
+  height: 56px;
+  padding: 16px 24px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 5px;
+}
+
+.text-online {
+  width: 100%;
+  max-width: 992px;
+  color: var(--f, #2c2c2c);
+  font-family: "Poppins";
+  font-style: normal;
+  font-size: 58px;
+  font-weight: 600;
+  line-height: 110%;
+}
+.tagline {
+  color: #2c2c2c;
+  font-family: "Poppins";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 32px;
+  opacity: 0.800000011920929;
+}

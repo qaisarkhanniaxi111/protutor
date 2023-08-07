@@ -21,9 +21,9 @@ use App\Http\Controllers\Tutor\GroupLessonController;
 */
 
 
-/*Route::get('/', function () {
+Route::get('/', function () {
     return view('welcome');
-});*/
+});
 
 //Clear Cache facade value:
 Route::get('/clear-cache', function() {
@@ -37,7 +37,7 @@ Route::get('/clear-cache', function() {
 
 //fronend route
 Route::get('/', [FrontendController::class, 'homepage']);
-Route::any('/login', [FrontendController::class, 'login']);
+Route::any('/login', [FrontendController::class, 'login'])->name('login');
 Route::any('/signup', [FrontendController::class, 'signup']);
 Route::any('/student-signup', [FrontendController::class, 'student_signup']);
 Route::any('/verify-user/{token}', [FrontendController::class, 'verifyUser']);
@@ -47,6 +47,7 @@ Route::any('/tutor-signup/{userid}', [FrontendController::class, 'tutor_details_
 Route::any('/submit_tutor_signup', [FrontendController::class, 'submit_tutor_signup']);
 Route::any('/tutor-detail/{tutorid}', [FrontendController::class, 'tutor_detail_single_page']);
 Route::any('/group', [FrontendController::class, 'groupclasses']);
+Route::any('/group/details/{groupLesson}', [FrontendController::class, 'openGroupDetails'])->name('group.details');
 Route::get('/game1', [TutorController::class, 'game']);
 Route::get('/gamet', [TutorController::class, 'game2']);
 
@@ -106,6 +107,9 @@ Route::get('deleteGroupLesson/{id}', [GroupLessonController::class,'deleteGroupL
 Route::get('showGroupLesson/{id}', [GroupLessonController::class,'showGroupLesson'])->name('show.groupLesson');
 Route::get('editGroupLesson/{id}', [GroupLessonController::class,'editGroupLesson'])->name('edit.groupLesson');
 Route::post('updateGroupLesson/', [GroupLessonController::class,'updateGroupLesson'])->name('update.groupLesson');
+
+
+Route::get('/tutor/chat', [TutorController::class, 'openChat'])->name('tutor.chat');
 
 
 });

@@ -15,11 +15,12 @@ class CreateGroupLessonsTable extends Migration
     {
         Schema::create('group_lessons', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('tutor_id')->references('id')->on('users')->onDelete('cascade');
+            $table->unsignedBigInteger('tutor_id');
             $table->integer('subject_id');
-            $table->integer('teacher_level_id');
+            $table->integer('teach_level_id');
+            $table->foreign('tutor_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('subject_id')->references('id')->on('subjects')->onDelete('cascade');
-            $table->foreign('teacher_level_id')->references('id')->on('teaches_levels')->onDelete('cascade');
+            $table->foreign('teach_level_id')->references('id')->on('teaches_levels')->onDelete('cascade');
             $table->string('title');
             $table->integer('participants');
             $table->decimal('price', 9, 2);
