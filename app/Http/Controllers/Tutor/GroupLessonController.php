@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Tutor;
 use App\Models\GroupLesson;
 use App\Models\Galleries;
 use App\Http\Controllers\Controller;
+use App\Models\Gallery;
 use App\Models\Tutors;
 use Illuminate\Http\Request;
 
@@ -31,7 +32,7 @@ class GroupLessonController extends Controller
         $newGroupLesson = new GroupLesson;
         $newGroupLesson->tutor_id = session()->get("tutorid");
         $newGroupLesson->title = $request['title'];
-        $newGroupLesson->teacher_level_id = $request['teaches_level'];
+        $newGroupLesson->teach_level_id = $request['teaches_level'];
         $newGroupLesson->subject_id = $request['subject'];
         $newGroupLesson->participants = $request['total_Participants'];
         $newGroupLesson->price = $request['price'];
@@ -45,12 +46,14 @@ class GroupLessonController extends Controller
             $newGallery = new Galleries;
             $fileName = $request->file('image')->getClientOriginalName();
             $newName = time() . $fileName;
-            $request->file('image')->move(public_path('group_lessons/images/'), $newName);
-            $url = asset('group_lessons/images/' . $newName);
+            $request->file('image')->move(storage_path('app/public/group_lessons/images/'),$newName);
+            $url = $newName;
             $newGallery->image = $url;
             $newGallery->image_type = 1;
+            $newGallery->group_lesson_id = $newGroupLesson->id;
             $newGallery->save();
         }
+        session()->flash('groupLessonCreated','Created');
         return redirect(route('index.groupLesson'));
     }
 
@@ -74,10 +77,11 @@ class GroupLessonController extends Controller
         $newGroupLesson = GroupLesson::find($request['GroupLessonId']);
         $newGroupLesson->tutor_id = session()->get("tutorid");
         $newGroupLesson->title = $request['title'];
-        $newGroupLesson->teacher_level_id = $request['teaches_level'];
+        $newGroupLesson->teach_level_id = $request['teaches_level'];
         $newGroupLesson->subject_id = $request['subject'];
         $newGroupLesson->participants = $request['total_Participants'];
         $newGroupLesson->price = $request['price'];
+        $newGroupLesson->is_completed = $request['status'];
         $newGroupLesson->registration_start_date = $request['register_Start_Date'];
         $newGroupLesson->registration_end_date = $request['register_End_Date'];
         $newGroupLesson->class_start_date = $request['class_Start_Date'];
@@ -96,7 +100,7 @@ class GroupLessonController extends Controller
             $subj = $tutor->getSubjects($tutorid);
             $teaches_levels = $tutor->teaches_levels();
             $data = compact('showGroupLesson', 'subj', 'teaches_levels');
-            return view('tutor.viewGroupLesson')->with($data);
+            return view('tutor.GroupLesson.show')->with($data);
         }
     }
     public function editGroupLesson($id)
@@ -109,15 +113,21 @@ class GroupLessonController extends Controller
             $subj = $tutor->getSubjects($tutorid);
             $teaches_levels = $tutor->teaches_levels();
             $data = compact('editGroupLesson', 'subj', 'teaches_levels', 'id');
-            return view('tutor.editGroupLesson')->with($data);
+            session()->flash('groupLessonCreated','Updated');
+            return view('tutor.GroupLesson.edit')->with($data);
         }
     }
 
     public function deleteGroupLesson($id)
     {
-        $deleteLineItem = GroupLesson::find($id)->delete();
+        $deleteLineItem = GroupLesson::find($id);
         if ($deleteLineItem) {
+            $groupLessonId = $deleteLineItem->id;
+            Gallery::find($groupLessonId)->delete();
+            $deleteLineItem->delete();
             return redirect(route('index.groupLesson'));
         }
     }
+
+   
 }

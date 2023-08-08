@@ -80,7 +80,9 @@
 
                 <div class="row">
                     <div class="text-center">
-                        <form action="#">
+                        <form action="{{ route('payment') }}">
+                            <input type="number" name="price" value="{{ number_format($groupLesson->price, 0) }}" hidden>
+                            <input type="number" name="group_lesson_id" value="{{ $groupLesson->id }}" hidden>
                             <button class="btn btn-primary btn-lg">Pay with Stripe</button>
                         </form>
                     </div>
