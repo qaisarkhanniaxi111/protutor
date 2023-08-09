@@ -15,6 +15,8 @@
       </div>
           
           <br>
+          <img src="{{ $gallery['image'] }}" alt="">
+          
           <img src="" alt="" width="300px">
           <div class="quiz-inp-wrap mt-0">
               <span class="quiz-inp-icon"><i class="fa-solid fa-heading"></i></span>

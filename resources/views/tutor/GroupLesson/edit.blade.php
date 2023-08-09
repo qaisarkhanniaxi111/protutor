@@ -4,7 +4,7 @@
 
 <div class="wrapper bg-light">
 
-<form action="{{ route('update.groupLesson') }}" method="POST">
+<form action="{{ route('update.groupLesson') }}" method="POST" enctype="multipart/form-data">
 @csrf
 <div class="container">
   <div class="row justify-content-center">
@@ -15,6 +15,11 @@
       </div>
           
           <br>
+          <div class="row">
+            <div class="col"><input type="file" name="image" class="form-control"></div>
+            <div class="col"><img src="{{ $gallery['image'] }}" alt=""></div>
+          </div>
+          
           <div class="quiz-inp-wrap mt-0">
               <span class="quiz-inp-icon"><i class="fa-solid fa-heading"></i></span>
               <input class="quiz-inp" type="text" name="title" id="quiztitle"
