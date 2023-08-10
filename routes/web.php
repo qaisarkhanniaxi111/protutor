@@ -73,7 +73,8 @@ Route::post('/filterDataStudentQuiz', [DashboardController::class, 'filterData']
 
 Route::post('/savequizquestionanswergame', [DashboardController::class, 'savequizquestionanswergame']);
 
-
+Route::get('payment/', [PaymentController::class,'index'])->name('payment');
+Route::post('payment/charge/{groupLesson}', [PaymentController::class,'charge'])->name('payment.charge');
 
 
 });
@@ -102,13 +103,21 @@ Route::post('/deleteQuestion', [TutorController::class, 'deleteQuestion']);
 Route::post('/republishQuiz', [TutorController::class, 'republishQuiz']);
 Route::post('/filterData', [TutorController::class, 'filterData']);
 Route::get('/tutorgrouplessons', [TutorController::class, 'tutorquizgrouplessons'])->name('index.groupLesson');
+
+// create , complete and uncomplete routes 
+Route::get('/tutorgrouplessons/create', [GroupLessonController::class, 'createGroupLesson'])->name('create.groupLesson');
+Route::get('/tutorgrouplessons/complete', [GroupLessonController::class, 'completeGroupLesson'])->name('complete.groupLesson');
+Route::get('/tutorgrouplessons/uncomplete', [GroupLessonController::class, 'uncompleteGroupLesson'])->name('uncomplete.groupLesson');
+
+
 Route::post('/tutorgrouplessons/store', [GroupLessonController::class, 'storeGroupLesson'])->name('store.groupLesson');
 Route::get('deleteGroupLesson/{id}', [GroupLessonController::class,'deleteGroupLesson'])->name('delete.groupLesson');
 Route::get('showGroupLesson/{id}', [GroupLessonController::class,'showGroupLesson'])->name('show.groupLesson');
 Route::get('editGroupLesson/{id}', [GroupLessonController::class,'editGroupLesson'])->name('edit.groupLesson');
 Route::post('updateGroupLesson/', [GroupLessonController::class,'updateGroupLesson'])->name('update.groupLesson');
-Route::get('payment/', [PaymentController::class,'index'])->name('payment');
-Route::post('payment/charge', [PaymentController::class,'charge'])->name('payment.charge');
+
+
+
 
 Route::prefix('tutor')->as('tutor.')->group(function() {
 

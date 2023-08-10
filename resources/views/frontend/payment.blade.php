@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>payment</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <style>
     .StripeElement {
         background-color: white;
@@ -27,9 +28,21 @@
 </style>
 </head>
 <body>
-  <form action="{{ route('payment.charge') }}" method="POST" id="subscribe-form">
-    <input type="number" name="amount" id="amount">
-    <input id="card-holder-name" type="text"><label for="card-holder-name">Card Holder Name</label>
+    <div class="container mt-5">
+        <div class="row">
+     <div class="col-10 col-md-6 mx-auto mt-5">   
+        <div class="card">
+            <div class="card-body">
+
+            
+  <form action="{{ route('payment.charge',$groupLessonId) }}" method="POST" id="subscribe-form">
+    <div class="row">
+        <div class="col"><h3>Amount</h3></div>
+        <div class="col text-end"><h3>{{ $price }} {{ config('protutor.currency') }}</h3></div>
+    </div>
+    <input type="number" name="amount" value="{{ $price }}" hidden>
+    <label for="card-holder-name">Card Holder Name</label>
+    <input id="card-holder-name" type="text" class="form-control">
     @csrf
     <div class="form-row">
         <label for="card-element">Credit or debit card</label>
@@ -50,10 +63,15 @@
         <button  id="card-button" data-secret="{{ $intent->client_secret }}" class="btn btn-lg btn-success btn-block">SUBMIT</button>
     </div>
 </form>
+</div>
+</div>
+</div>
+</div>
+</div>
 </body>
 <script src="https://js.stripe.com/v3/"></script>
 <script>
-    var stripe = Stripe('{{ env('STRIPE_KEY') }}');
+    var stripe = Stripe('{{ config('services.stripe.key') }}');
     var elements = stripe.elements();
     var style = {
         base: {

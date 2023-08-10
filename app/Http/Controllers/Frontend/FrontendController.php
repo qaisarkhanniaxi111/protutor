@@ -22,6 +22,7 @@ use App\Models\Homepage;
 use App\Models\Notifications;
 use App\Models\Become_a_tutor;
 use App\Models\GroupLesson;
+use App\Models\Payment;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Mail;
@@ -475,8 +476,16 @@ class FrontendController extends Controller
         $teachLevel = $groupLesson->teachLevel;
         $subject = $groupLesson->subject;
         $gallery = $groupLesson->gallery;
+        $payment='';
+        if($user_id=auth()->user()->id){
+            $check_payment = Payment::where('student_id',$user_id)->where('group_lesson_id',$groupLesson->id)->get();
+            if(!empty($check_payment->toArray())){
+                $payment=$check_payment->toArray();
+            }
+            
+        }
 
-        return view('frontend.grouplessondetails', compact('groupLesson', 'tutor', 'teachLevel', 'subject', 'gallery'));
+        return view('frontend.grouplessondetails', compact('groupLesson', 'tutor', 'teachLevel', 'subject', 'gallery','payment'));
     }
 
 }

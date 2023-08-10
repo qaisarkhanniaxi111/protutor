@@ -9,7 +9,7 @@ class Gallery extends Model
 {
     use HasFactory;
 
-    public $uploadsDir = '/storage/app/public/group_lessons/images/';
+    public $uploadsDir = '/storage/group_lessons/images/';
 
     protected $fillable = ['image', 'image_type'];
 
