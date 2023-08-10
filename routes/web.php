@@ -6,6 +6,7 @@ use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Admin\UserdetailController;
 use App\Http\Controllers\Frontend\PaymentController;
+use App\Http\Controllers\Tutor\EarningController;
 use App\Http\Controllers\Tutor\TutorController;
 use App\Http\Controllers\Tutor\GroupLessonController;
 
@@ -109,7 +110,17 @@ Route::post('updateGroupLesson/', [GroupLessonController::class,'updateGroupLess
 Route::get('payment/', [PaymentController::class,'index'])->name('payment');
 Route::post('payment/charge', [PaymentController::class,'charge'])->name('payment.charge');
 
-Route::get('/tutor/chat', [TutorController::class, 'openChat'])->name('tutor.chat');
+Route::prefix('tutor')->as('tutor.')->group(function() {
+
+    Route::get('chat', [TutorController::class, 'openChat'])->name('chat');
+
+    Route::prefix('earnings')->as('earnings.')->controller(EarningController::class)->group(function() {
+        Route::get('/', 'openEarningPage')->name('index');
+        Route::get('clearence', 'openClearencePage')->name('clearence');
+    });
+
+});
+
 
 
 });

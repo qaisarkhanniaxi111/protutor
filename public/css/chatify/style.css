@@ -4,6 +4,7 @@ body {
   padding: 0;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    overflow-y: hidden;
 }
 
 :root {
@@ -97,13 +98,16 @@ body {
   border-radius: 0px;
 }
 .messenger-headTitle {
-  margin: 0rem 0.7rem;
+  margin: 0px 0px 0px 12px !important;
+
 }
 .messenger {
   display: inline-flex;
   width: 100%;
   height: 100%;
   font-family: sans-serif;
+  border-radius: 7px !important;
+  overflow: hidden !important;
 }
 .messenger-listView {
   display: flex;
@@ -117,13 +121,34 @@ body {
   background: transparent;
   width: 45%;
   min-width: 200px;
-  overflow: auto;
+  overflow-y: auto;
+  background-color: #FFB703 !important;
+  position: relative;
+}
+
+.messenger-listView::-webkit-scrollbar {
+  width: 7px;
+  background-color: transparent;
+  /* display: none; */
+}
+
+.messenger-listView::-webkit-scrollbar-thumb {
+  background-color: #FFB703;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
 }
 .messenger-listView .m-header {
-  height: var(--listView-header-height);
+  /* height: var(--listView-header-height); */
+  position: sticky;
+  top: 0;
+  background-color: #FFB703 !important;
+  z-index: 100;
+  padding-bottom: 10px !important;
 }
 .messenger-listView .m-header > nav {
-  padding: var(--headers-padding);
+  /* padding: var(--headers-padding); */
+  padding: .8rem 1rem 1rem 1rem;
+
+
 }
 .messenger-messagingView {
   display: flex;
@@ -134,13 +159,19 @@ body {
 }
 .messenger-messagingView .m-header {
   padding: var(--headers-padding);
+  position: sticky !important;
+  top: 0;
 }
 .messenger-messagingView .m-body {
   position: relative;
   padding-top: 15px;
   overflow-x: hidden;
   overflow-y: auto;
-  height: 100%;
+  height: 100% !important;
+  background-image: url('/images/whatsaap-wallpaper.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size:cover;
 }
 .m-header {
   font-weight: 600;
@@ -172,6 +203,8 @@ body {
   padding: 8px 10px;
   border-radius: 6px;
   outline: none;
+  box-shadow: 0px 0px 6px #00000029 !important;
+  background-color: white !important;
 }
 .messenger-listView-tabs {
   display: inline-flex;
@@ -206,7 +239,7 @@ body {
 }
 .messenger-tab {
   overflow: auto;
-  height: calc(100vh - var(--listView-header-height) - 2px);
+  /* height: calc(100vh - var(--listView-header-height) - 2px); */
   display: none;
   position: relative;
 }
@@ -230,11 +263,29 @@ body {
 }
 .messenger-list-item {
   margin: 0;
-  width: 100%;
+  /* width: 100%; */
   cursor: pointer;
   transition: background 0.1s;
+  width: 95%;
+  margin: 0px auto;
+  background-color: white;
+  margin-bottom: 10px !important;
+  border-radius: 4px !important;
+  padding: 0px !important;
 }
-.m-list-active span,
+.messenger-list-item-saved{
+  width: 100%;
+  border-radius: 0px !important;
+  background-color: transparent !important;
+  margin-bottom: 0px !important;
+}
+.m-list-active{
+  width: 97.5%;
+  margin: 0px 0px 0px auto;
+  border-radius: 4px 0px 0px 4px !important;
+  background-color: #EFFAFF;
+}
+/* .m-list-active span,
 .m-list-active p {
   color: #fff !important;
 }
@@ -250,25 +301,47 @@ body {
 }
 .m-list-active .activeStatus {
   border-color: var(--primary-color) !important;
-}
+} */
 .messenger-list-item td {
-  padding: 10px;
+  padding:5px 10px !important;
+
 }
 .messenger-list-item tr > td:first-child {
   padding-right: 0;
   width: 55px;
 }
+.messenger-list-item-saved td{
+ margin-top: 5px !important;
+}
+.messenger-list-item-saved td p{
+  margin-bottom: 4px;
+  font-size: 14px;
+  font-weight: 600 !important;
+  margin-bottom: -6px;
+}
 .messenger-list-item td p {
   margin-bottom: 4px;
   font-size: 14px;
+  font-weight: 600 !important;
+  margin-bottom: -6px;
 }
 .messenger-list-item td p span {
   float: right;
+  color: black !important;
+  font-weight: 500 !important;
 }
 .messenger-list-item td span {
-  color: #cacaca;
+  color: black;
   font-weight: 400;
   font-size: 12px;
+}
+.messenger-list-item:hover {
+  background-color: rgba(255, 255, 255, 0.16) !important;
+  box-shadow: 0px 0px 6px #00000029 !important;
+}
+
+.m-list-active:hover .messenger-list-item td p span,  {
+ color: black !important;
 }
 .messenger-list-item td b {
   float: right;
@@ -296,8 +369,8 @@ body {
   height: 100px;
 }
 .av-m {
-  width: 45px;
-  height: 45px;
+  width: 35px;
+  height: 35px;
 }
 .av-s {
   width: 32px !important;
@@ -353,11 +426,16 @@ body {
   font-size: 12px;
   text-align: center;
   z-index: 1;
+
+
 }
 .messenger-title > span {
   position: relative;
-  padding: 0px 10px;
+  padding: 4px 10px;
   z-index: 1;
+  border-radius: 4px !important;
+  font-weight: 600 !important;
+  color: black;
 }
 .messenger-title::before {
   content: "";
@@ -375,12 +453,15 @@ body {
   overflow: auto;
   width: 40%;
   min-width: 200px;
+  background-color: #FFB703 !important;
 }
 .messenger-infoView nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: var(--headers-padding);
+  padding: 14px 1rem;
+  border-bottom: 1px solid #ccc;
+
 }
 .messenger-infoView nav a {
   color: var(--primary-color);
@@ -397,7 +478,7 @@ body {
   margin: auto;
   margin-top: 15px;
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 600 !important;
 }
 .messenger-infoView-btns a {
   display: block;
@@ -416,6 +497,7 @@ body {
 }
 .messenger-infoView-btns a.danger {
   color: #ff5555;
+  font-weight: 600 !important;
 }
 .messenger-infoView-btns a.danger:hover {
   background: rgba(255, 85, 85, 0.11);
@@ -680,9 +762,10 @@ body {
   transform: translate(-50%, -50%);
 }
 .message-hint span {
-  padding: 3px 10px;
+  padding: 5px 15px;
   border-radius: 20px;
   display: inline-block;
+  font-size: 12px !important;
 }
 .upload-avatar-details {
   font-size: 14px;
@@ -958,7 +1041,7 @@ div.loadingPlaceholder-date {
 
 .imageModal-close {
   position: absolute;
-  top: 15px;
+  top: 100px;
   right: 35px;
   color: #f1f1f1;
   font-size: 40px;
@@ -968,7 +1051,7 @@ div.loadingPlaceholder-date {
 
 .imageModal-close:hover,
 .imageModal-close:focus {
-  color: #bbb;
+  color: white;
   text-decoration: none;
   cursor: pointer;
 }
@@ -1023,7 +1106,7 @@ div.loadingPlaceholder-date {
 */
 @media (max-width: 1060px) {
   .messenger-infoView {
-    position: fixed;
+    /* position: fixed; */
     right: 0;
     top: 0;
     bottom: 0;
@@ -1037,23 +1120,30 @@ div.loadingPlaceholder-date {
   .messenger-listView {
     position: fixed;
     left: 0;
-    top: 0;
+    top: 80px;
     bottom: 0;
-    max-width: 334px;
+    /* max-width: 334px; */
+    width: 100%;
   }
-  .listView-x {
+  /* .listView-x {
     display: block;
-  }
+  } */
   .show-listView {
     display: inline-block;
   }
+  .m-list-active {
+    width: 95%;
+    margin: 0px auto;
+    border-radius: 4px !important;
+    background-color: white;
+}
 }
 @media (max-width: 680px) {
   .messenger-messagingView {
-    position: fixed;
+    /* position: fixed;
     top: 0;
-    left: 0;
-    height: 100%;
+    left: 0; */
+    height: 100% !important;
   }
   .messenger-infoView {
     display: none;

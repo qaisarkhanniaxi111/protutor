@@ -465,7 +465,7 @@ class FrontendController extends Controller
 
     public function groupclasses()
     {
-        $groupLessons = GroupLesson::all();
+        $groupLessons = GroupLesson::with(['teachLevel', 'subject', 'tutor', 'gallery'])->get();
         return view("frontend.grouplessons", compact('groupLessons'));
     }
 

@@ -1,6 +1,6 @@
 {{-- -------------------- Saved Messages -------------------- --}}
 @if($get == 'saved')
-    <table class="messenger-list-item" data-contact="{{ Auth::user()->id }}">
+    <table class="messenger-list-item messenger-list-item-saved mb-0 pb-0 messenger-list-item-saved-heading" data-contact="{{ Auth::user()->id }}">
         <tr data-action="0">
             {{-- Avatar side --}}
             <td>
@@ -10,8 +10,8 @@
             </td>
             {{-- center side --}}
             <td>
-                <p data-id="{{ Auth::user()->id }}" data-type="user">Saved Messages <span>You</span></p>
-                <span>Save messages secretly</span>
+                <p data-id="{{ Auth::user()->id }}" data-type="user" style="margin-bottom:-5px !important">Saved Messages <span>You</span></p>
+                <span  class="text-white">Save messages secretly</span>
             </td>
         </tr>
     </table>
@@ -23,7 +23,7 @@
 $lastMessageBody = mb_convert_encoding($lastMessage->body, 'UTF-8', 'UTF-8');
 $lastMessageBody = strlen($lastMessageBody) > 30 ? mb_substr($lastMessageBody, 0, 30, 'UTF-8').'..' : $lastMessageBody;
 ?>
-<table class="messenger-list-item" data-contact="{{ $user->id }}">
+<table class="messenger-list-item mt-1 pt-1" data-contact="{{ $user->id }}">
     <tr data-action="0">
         {{-- Avatar side --}}
         <td style="position: relative">
@@ -35,7 +35,7 @@ $lastMessageBody = strlen($lastMessageBody) > 30 ? mb_substr($lastMessageBody, 0
         </div>
         </td>
         {{-- center side --}}
-        <td>
+        <td style="padding-left:0px !important">
         <p data-id="{{ $user->id }}" data-type="user">
             {{ strlen($user->name) > 12 ? trim(substr($user->name,0,12)).'..' : $user->name }}
             <span class="contact-item-time" data-time="{{$lastMessage->created_at}}">{{ $lastMessage->timeAgo }}</span></p>
@@ -64,7 +64,7 @@ $lastMessageBody = strlen($lastMessageBody) > 30 ? mb_substr($lastMessageBody, 0
 
 {{-- -------------------- Search Item -------------------- --}}
 @if($get == 'search_item')
-<table class="messenger-list-item" data-contact="{{ $user->id }}">
+<table class="messenger-list-item " data-contact="{{ $user->id }}">
     <tr data-action="0">
         {{-- Avatar side --}}
         <td>
