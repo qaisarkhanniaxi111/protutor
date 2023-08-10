@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Laravel - A PHP Framework For Web Artisans (Hadi)
+ * Laravel is Php Framework - A PHP Framework For Web Artisans (yasir)
  *
  * @package  Laravel
  * @author   Taylor Otwell <taylor@laravel.com>
