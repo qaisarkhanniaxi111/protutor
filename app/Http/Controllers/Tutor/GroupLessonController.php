@@ -30,6 +30,7 @@ class GroupLessonController extends Controller
 
             ]
         );
+
         $newGroupLesson = new GroupLesson;
         $newGroupLesson->tutor_id = session()->get("tutorid");
         $newGroupLesson->title = $request['title'];
@@ -54,7 +55,8 @@ class GroupLessonController extends Controller
             $newGallery->group_lesson_id = $newGroupLesson->id;
             $newGallery->save();
         }
-        session()->flash('groupLessonCreated', 'Created');
+        session()->flash('alert-success', 'Group Lesson Created Successfully');
+
         return redirect(route('index.groupLesson'));
     }
 
@@ -109,7 +111,13 @@ class GroupLessonController extends Controller
             $updateGallery->group_lesson_id = $updateGroupLesson->id;
             $updateGallery->save();
         }
-        return redirect(route('index.groupLesson'));
+
+        if ($updateGroupLesson->is_completed == 1) {
+            return redirect(route('complete.groupLesson'));
+        }
+        else {
+            return redirect(route('index.groupLesson'));
+        }
     }
 
     public function showGroupLesson($id)
@@ -161,7 +169,13 @@ class GroupLessonController extends Controller
                 $deleteGallery->delete();
             }
             $groupLesson->delete();
-            return redirect(route('index.groupLesson'));
+
+            if ($groupLesson->is_completed == 1) {
+                return redirect(route('complete.groupLesson'));
+            }
+            else {
+                return redirect(route('index.groupLesson'));
+            }
         }
     }
 
@@ -179,22 +193,20 @@ class GroupLessonController extends Controller
         $subj = $tutor->getSubjects($tutorid);
 
         $teaches_levels = $tutor->teaches_levels();
-        return view("tutor.GroupLesson.createGroupLesson", ["teaches_levels" => $teaches_levels, "subjects" => $subj, "groupLessons" => $groupLessons, "groupLessonsCompleted" => $groupLessonsCompleted]);
+
+        return view("tutor.GroupLesson.create", ["teaches_levels" => $teaches_levels, "subjects" => $subj, "groupLessons" => $groupLessons, "groupLessonsCompleted" => $groupLessonsCompleted]);
     }
     public function completeGroupLesson()
     {
         $tutorid = Session::get("tutorid");
         $tutor = new Tutors();
 
-        $groupLessons = GroupLesson::where('tutor_id', $tutorid)->where('is_completed', 0)->get();
-        $groupLessonsCompleted = GroupLesson::where('tutor_id', $tutorid)->where('is_completed', 1)->get();
-        $groupLessons = $groupLessons->toArray();
-        $groupLessonsCompleted = $groupLessonsCompleted->toArray();
+        $groupLessons = GroupLesson::where('tutor_id', $tutorid)->where('is_completed', 1)->get();
 
         $subj = $tutor->getSubjects($tutorid);
 
         $teaches_levels = $tutor->teaches_levels();
-        return view("tutor.GroupLesson.CompletedGroupLesson", ["teaches_levels" => $teaches_levels, "subjects" => $subj, "groupLessons" => $groupLessons, "groupLessonsCompleted" => $groupLessonsCompleted]);
+        return view("tutor.GroupLesson.completed", ["teaches_levels" => $teaches_levels, "subjects" => $subj, "groupLessons" => $groupLessons]);
     }
     public function uncompleteGroupLesson()
     {
@@ -202,13 +214,10 @@ class GroupLessonController extends Controller
         $tutor = new Tutors();
 
         $groupLessons = GroupLesson::where('tutor_id', $tutorid)->where('is_completed', 0)->get();
-        $groupLessonsCompleted = GroupLesson::where('tutor_id', $tutorid)->where('is_completed', 1)->get();
-        $groupLessons = $groupLessons->toArray();
-        $groupLessonsCompleted = $groupLessonsCompleted->toArray();
 
         $subj = $tutor->getSubjects($tutorid);
 
         $teaches_levels = $tutor->teaches_levels();
-        return view("tutor.GroupLesson.UncompletedGroupLesson", ["teaches_levels" => $teaches_levels, "subjects" => $subj, "groupLessons" => $groupLessons, "groupLessonsCompleted" => $groupLessonsCompleted]);
+        return view("tutor.GroupLesson.uncompleted", ["teaches_levels" => $teaches_levels, "subjects" => $subj, "groupLessons" => $groupLessons, "groupLessons" => $groupLessons]);
     }
 }

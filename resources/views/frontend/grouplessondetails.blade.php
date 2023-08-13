@@ -11,11 +11,19 @@
     <div class="page-title">
         <div class="container">
             <h1>Group Lesson Details</h1>
-            @if (!empty($payment))
-                <h1>UnPaid</h1>
-            @else
-                <h1 class="badge">Paid</h1>
-            @endif
+
+            <div class="mt-2">
+                @if (auth()->check())
+                    @if (auth()->user()->role == 4)
+                        @if ($paymentStatus == 'paid')
+                            <h3><span class="badge bg-success">Paid</span></h3>
+                        @elseif ($paymentStatus == 'unpaid' || $paymentStatus == '')
+                            <h3><span class="badge bg-danger">Unpaid</span></h3>
+                        @endif
+                    @endif
+                @endif
+            </div>
+
         </div>
     </div>
 
@@ -24,97 +32,84 @@
         <div class="row">
             <div class="col-12">
                 @if ($groupLesson)
-                    <table class="table" id="lesson_details_table">
-                        <thead>
-                            <tr>
-                                <th scope="col">Course Thumbnail</th>
-                                <td><img src="{{ $gallery ? $gallery->image : '' }}" alt="course img" width="150"></td>
-                            </tr>
-                            <tr>
-                                <th scope="col">Title</th>
-                                <td>{{ $groupLesson ? $groupLesson->title : '' }}</td>
-                            </tr>
 
-                            <tr>
-                                <th scope="col">Tutor</th>
-                                <td>{{ $tutor ? $tutor->fullname : '' }}</td>
-                            </tr>
+                    <img src="{{ $gallery ? $gallery->image : '' }}" alt="course img" style="width: 100%; height:50%">
 
-                            <tr>
-                                <th scope="col">Teach Level</th>
-                                <td>{{ $teachLevel ? $teachLevel->teaches_level : '' }}</td>
-                            </tr>
+                    <div class="row">
+                        <table class="table" id="lesson_details_table" style="margin-top: 5%">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Title</th>
+                                    <td>{{ $groupLesson ? $groupLesson->title : '' }}</td>
+                                </tr>
 
-                            <tr>
-                                <th scope="col">Subject</th>
-                                <td>{{ $subject ? $subject->subject : '' }}</td>
-                            </tr>
+                                <tr>
+                                    <th scope="col">Tutor</th>
+                                    <td>{{ $tutor ? $tutor->fullname : '' }}</td>
+                                </tr>
 
-                            <tr>
-                                <th scope="col">Participants</th>
-                                <td>{{ $groupLesson ? $groupLesson->participants : '' }}</td>
-                            </tr>
+                                <tr>
+                                    <th scope="col">Teach Level</th>
+                                    <td>{{ $teachLevel ? $teachLevel->teaches_level : '' }}</td>
+                                </tr>
 
-                            <tr>
-                                <th scope="col">Price per student</th>
-                                <td>{{ $groupLesson ? number_format($groupLesson->price, 2) : '' }}</td>
-                            </tr>
+                                <tr>
+                                    <th scope="col">Subject</th>
+                                    <td>{{ $subject ? $subject->subject : '' }}</td>
+                                </tr>
 
-                            <tr>
-                                <th scope="col">Registration Start Date</th>
-                                <td>{{ $groupLesson ? date('d-m-Y', strtotime($groupLesson->registration_start_date)) : '' }}
-                                </td>
-                            </tr>
+                                <tr>
+                                    <th scope="col">Participants</th>
+                                    <td>{{ $groupLesson ? $groupLesson->participants : '' }}</td>
+                                </tr>
 
-                            <tr>
-                                <th scope="col">Registration End Date</th>
-                                <td>{{ $groupLesson ? date('d-m-Y', strtotime($groupLesson->registration_end_date)) : '' }}
-                                </td>
-                            </tr>
+                                <tr>
+                                    <th scope="col">Price per student</th>
+                                    <td>{{ $groupLesson ? number_format($groupLesson->price, 2) : '' }}</td>
+                                </tr>
 
-                            <tr>
-                                <th scope="col">Class Start Date</th>
-                                <td>{{ $groupLesson ? date('d-m-Y', strtotime($groupLesson->class_start_date)) : '' }}</td>
-                            </tr>
+                                <tr>
+                                    <th scope="col">Registration Start Date</th>
+                                    <td>{{ $groupLesson ? date('m-d-Y', strtotime($groupLesson->registration_start_date)) : '' }}
+                                    </td>
+                                </tr>
 
-                            <tr>
-                                <th scope="col">Class End Date</th>
-                                <td>{{ $groupLesson ? date('d-m-Y', strtotime($groupLesson->class_end_date)) : '' }}</td>
-                            </tr>
+                                <tr>
+                                    <th scope="col">Registration End Date</th>
+                                    <td>{{ $groupLesson ? date('m-d-Y', strtotime($groupLesson->registration_end_date)) : '' }}
+                                    </td>
+                                </tr>
 
-                            </tbody>
-                    </table>
+                                <tr>
+                                    <th scope="col">Class Start Date</th>
+                                    <td>{{ $groupLesson ? date('m-d-Y', strtotime($groupLesson->class_start_date)) : '' }}</td>
+                                </tr>
 
+                                <tr>
+                                    <th scope="col">Class End Date</th>
+                                    <td>{{ $groupLesson ? date('m-d-Y', strtotime($groupLesson->class_end_date)) : '' }}</td>
+                                </tr>
 
-                    @if (!empty($payment))
-                        <h1 class="text-center mt-5 text-primary">Payment Details</h1>
-                        {{-- {{ print_r($payment) }} --}}
-                        <table class="table"  id="lesson_details_table">
-                            <tr>
-                                <th scope="col">Transaction ID</th>
-                                <td>{{ $payment[0]['transaction_id'] }}</td>
-                            </tr>
-                            <tr>
-                                <th scope="col">Amount</th>
-                                <td>{{ $payment[0]['amount'] }}{{ $payment[0]['currency'] }}</td>
-                            </tr>
-                            <tr>
-                                <th scope="col">Payment Date</th>
-                                <td>{{ date('d-m-Y', strtotime($payment[0]['updated_at'])) }}</td>
-                                
-                            </tr>
+                                </tbody>
                         </table>
-                    @else
-                        <div class="row">
-                            <div class="text-center">
-                                <form action="{{ route('payment') }}">
-                                    <input type="number" name="price"
-                                        value="{{ number_format($groupLesson->price, 0) }}" hidden>
-                                    <input type="number" name="group_lesson_id" value="{{ $groupLesson->id }}" hidden>
-                                    <button class="btn btn-primary btn-lg">Pay with Stripe</button>
-                                </form>
-                            </div>
-                        </div>
+                    </div>
+
+
+                    @if (auth()->check())
+                        @if (auth()->user()->role == 4)
+                            @if ($paymentStatus == 'unpaid' || $paymentStatus == '')
+                                <div class="row mt-5">
+                                    <div class="text-center">
+                                        <form action="{{ route('payment') }}">
+                                            <input type="number" name="price"
+                                                value="{{ number_format($groupLesson->price, 0) }}" hidden>
+                                            <input type="number" name="group_lesson_id" value="{{ $groupLesson->id }}" hidden>
+                                            <button class="btn btn-primary btn-lg">Pay with Stripe</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            @endif
+                        @endif
                     @endif
                 @else
                     <h3 class="text-danger text-center">No lesson found.</h3>

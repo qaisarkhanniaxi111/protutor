@@ -37,7 +37,7 @@
           </div>
           <div class="user-pic">
             <div class="user-thumb">
-              <img src="/images/{{(isset($getData[0]->profile_img) ? $getData[0]->profile_img : '') }}" alt="User Image"></div>
+              <img src="{{ asset('assets/student/images/user-img.jpg') }}" alt="User Image"></div>
           </div>
         </div>
       </div>

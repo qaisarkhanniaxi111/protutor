@@ -15,9 +15,9 @@ class StudentSeeder extends Seeder
     public function run()
     {
         User::create([
-            'first_name' => 'student',
+            'first_name' => 'student 1',
             'last_name' => 'st',
-            'email' => 'student@example.com',
+            'email' => 'student1@example.com',
             'email_verified_at' => now(),
             'role' => 4,
             'user_status' => 1,

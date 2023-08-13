@@ -225,8 +225,8 @@ overflow-y: hidden;
         @if (count($groupLessons) > 0)
             @foreach ($groupLessons as $groupLesson)
 
-            <div class="card-wrapper ">
-                <div class="slider-card ">
+            <div class="card-wrapper">
+                <div class="slider-card">
                     {{-- {{ asset('assets/frontpage_assets/images/Rectangle_4436.png') }} --}}
                     @if ($gallery = $groupLesson->gallery)
                         @if ($gallery->image)
@@ -386,7 +386,20 @@ overflow-y: hidden;
   </section>
 
 <!-- Footer Section -->
-  <div class="footer">
+@include('/frontend/common/footer')
+<script type="text/javascript">
+  $(document).ready(function(){
+    $(".redirect_tutor_url").click(function(){
+        var id = $(this).attr("data-id");
+        var APP_URL = {!! json_encode(url('/')) !!}
+        var full_url = APP_URL+'/tutor-detail/'+id;
+        window.location.href = full_url;
+    });
+  });
+</script>
+
+ {{-- wajid designed footer  --}}
+  {{-- <div class="footer">
 	<div class="footer-content">
 		<div class="footer1" style="margin-right:81px"> <img src="groupp/image 2.png" style="width: 100px;height: 34px;flex-shrink: 0;">
 			<br>
@@ -420,4 +433,4 @@ overflow-y: hidden;
 		</div>
 	</div>
 	<div class="copyright" style="margin-top:85px;margin-left:562px"> Copyright © 2023 all right reserved ProTutor </div>
-</div>
+  </div> --}}

@@ -16,7 +16,7 @@ $getVal =  end($parts);
     <li><a  class="<?php echo ($getVal =='tutorquiz') ? 'active' : '' ?>" href="/tutorquiz"><span><i class="fa-solid fa-square-poll-horizontal"></i></span> <span>Quiz</span></a></li>
     <li><a  class="<?php echo ($getVal =='tutorgrouplessons') ? 'active' : '' ?>" href="/tutorgrouplessons"><span><i class="fa-solid fa-square-poll-horizontal"></i></span> <span>Group Lessons</span></a></li>
     <li><a href="teaching-orders.html"><span><i class="fa-solid fa-chalkboard-user"></i></span> <span>Teaching Orders</span></a></li>
-    <li><a href="{{ route('chatify') }}"><span><i class="fa-solid fa-message"></i></span> <span>Chat</span></a></li>
+    <li><a href="{{ route('chat') }}"><span><i class="fa-solid fa-message"></i></span> <span>Chat</span></a></li>
 
       <li><a href="{{ route('tutor.earnings.index') }}"><span><i class="fa-solid fa-sack-dollar"></i></span> <span>Earnings</span></a></li>
 

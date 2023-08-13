@@ -21,15 +21,17 @@ class PaymentController extends Controller
     {
         $tutor = $groupLesson->tutor;
         $amount = $request['amount'] * 100;
+
         $paymentMethodId = $request['payment_method'];
         $user = auth()->user();
         $user->createOrGetStripeCustomer();
         $paymentMethod = $user->addPaymentMethod($paymentMethodId);
 
-        $user->charge(
+        $transaction = $user->charge(
             $amount,
             $paymentMethod->id
         );
+
         $tutor_id = $tutor->id;
         $group_lesson_id = $groupLesson->id;
         $std_id = auth()->user()->id;
@@ -42,12 +44,12 @@ class PaymentController extends Controller
         $newPayment->tutor_id = $tutor_id;
         $newPayment->group_lesson_id = $group_lesson_id;
         $newPayment->currency = $currency;
-        $newPayment->transaction_id = $payment_id;
-        $newPayment->amount = $request['amount'];
+        $newPayment->transaction_id = $transaction ? $transaction->id: '';
+
+        $newPayment->amount = $request->amount;
 
         $newPayment->save();
 
-
-        echo "<h1>Payment Done..";
+        return redirect()->route('group.details', $groupLesson->id);
     }
 }

@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Admin\UserdetailController;
+use App\Http\Controllers\Dashboard\SpendingController;
 use App\Http\Controllers\Frontend\PaymentController;
 use App\Http\Controllers\Tutor\EarningController;
 use App\Http\Controllers\Tutor\TutorController;
@@ -73,6 +74,10 @@ Route::post('/filterDataStudentQuiz', [DashboardController::class, 'filterData']
 
 Route::post('/savequizquestionanswergame', [DashboardController::class, 'savequizquestionanswergame']);
 
+Route::prefix('student')->as('student.')->group(function() {
+    Route::get('spendings', [SpendingController::class, 'openStudentSpendings'])->name('spendings');
+});
+
 Route::get('payment/', [PaymentController::class,'index'])->name('payment');
 Route::post('payment/charge/{groupLesson}', [PaymentController::class,'charge'])->name('payment.charge');
 
@@ -104,9 +109,9 @@ Route::post('/republishQuiz', [TutorController::class, 'republishQuiz']);
 Route::post('/filterData', [TutorController::class, 'filterData']);
 Route::get('/tutorgrouplessons', [TutorController::class, 'tutorquizgrouplessons'])->name('index.groupLesson');
 
-// create , complete and uncomplete routes 
+// create , complete and uncomplete routes
 Route::get('/tutorgrouplessons/create', [GroupLessonController::class, 'createGroupLesson'])->name('create.groupLesson');
-Route::get('/tutorgrouplessons/complete', [GroupLessonController::class, 'completeGroupLesson'])->name('complete.groupLesson');
+Route::get('/tutorgrouplessons/completed', [GroupLessonController::class, 'completeGroupLesson'])->name('complete.groupLesson');
 Route::get('/tutorgrouplessons/uncomplete', [GroupLessonController::class, 'uncompleteGroupLesson'])->name('uncomplete.groupLesson');
 
 
@@ -121,7 +126,7 @@ Route::post('updateGroupLesson/', [GroupLessonController::class,'updateGroupLess
 
 Route::prefix('tutor')->as('tutor.')->group(function() {
 
-    Route::get('chat', [TutorController::class, 'openChat'])->name('chat');
+    // Route::get('chat', [TutorController::class, 'openChat'])->name('chat');
 
     Route::prefix('earnings')->as('earnings.')->controller(EarningController::class)->group(function() {
         Route::get('/', 'openEarningPage')->name('index');

@@ -30,6 +30,11 @@ class GroupLesson extends Model
         return $this->belongsTo(User::class, 'tutor_id', 'id');
     }
 
+    public function student()
+    {
+        return $this->belongsTo(User::class, 'student_id', 'id');
+    }
+
     public function gallery()
     {
         return $this->hasOne(Gallery::class, 'group_lesson_id', 'id');

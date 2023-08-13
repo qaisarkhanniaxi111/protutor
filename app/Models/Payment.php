@@ -19,6 +19,16 @@ class Payment extends Model
 
     public function setAmountAttribute($value)
     {
-        return $value * 100;
+        $this->attributes["amount"] = $value * 100;
+    }
+
+    public function tutor()
+    {
+        return $this->belongsTo(User::class, 'tutor_id', 'id');
+    }
+
+    public function groupLesson()
+    {
+        return $this->belongsTo(GroupLesson::class, 'group_lesson_id', 'id');
     }
 }

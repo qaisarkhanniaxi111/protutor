@@ -121,6 +121,7 @@ class FrontendController extends Controller
 			$user = new User();
 			$user->first_name=$req->first_name;
 			$user->last_name=$req->last_name;
+            $user->name = $req->first_name.' '.$req->last_name;
 			$user->email=$req->email;
 			$user->role=$role;
 			$user->remember_token=$remember_token;
@@ -132,6 +133,7 @@ class FrontendController extends Controller
 					"student_no"=>   $user->id,
 					"first_name"=>  $req->first_name,
 					"last_name"=>  $req->last_name,
+                    'name' => $req->first_name.' '.$req->last_name,
 					"country"=>  '',
 					"email"=>  $req->email,
 					"phone"=>  '',
@@ -476,16 +478,23 @@ class FrontendController extends Controller
         $teachLevel = $groupLesson->teachLevel;
         $subject = $groupLesson->subject;
         $gallery = $groupLesson->gallery;
-        $payment='';
-        if($user_id=auth()->user()->id){
-            $check_payment = Payment::where('student_id',$user_id)->where('group_lesson_id',$groupLesson->id)->get();
-            if(!empty($check_payment->toArray())){
-                $payment=$check_payment->toArray();
-            }
-            
+        $student = $groupLesson ? $groupLesson->student: '';
+
+        $student = auth()->user();
+
+        $paymentStatus = null;
+
+        $payments = Payment::where('student_id', $student->id)
+                        ->where('group_lesson_id', $groupLesson->id)
+                        ->count();
+
+        if ($payments > 0) {
+
+            $paymentStatus = 'paid';
+
         }
 
-        return view('frontend.grouplessondetails', compact('groupLesson', 'tutor', 'teachLevel', 'subject', 'gallery','payment'));
+        return view('frontend.grouplessondetails', compact('groupLesson', 'tutor', 'teachLevel', 'subject', 'gallery','paymentStatus', 'student'));
     }
 
 }

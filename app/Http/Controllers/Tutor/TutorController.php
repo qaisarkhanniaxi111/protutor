@@ -309,14 +309,14 @@ class TutorController extends \App\Http\Controllers\Controller
       }
       }
 
-      if(isset($data["enddate"]));
-      {
-        $enddate=$data["enddate"];
-        if($enddate!="")
+        if(isset($data["enddate"]));
         {
-        $filter.=" and DATE(enddate)<='$enddate' ";
-      }
-      }
+            $enddate=$data["enddate"];
+            if($enddate!="")
+            {
+                $filter.=" and DATE(enddate)<='$enddate' ";
+            }
+        }
       }
 
       $tutor=new Tutors();
@@ -331,8 +331,6 @@ class TutorController extends \App\Http\Controllers\Controller
 
     public function tutorquizgrouplessons()
     {
-
-
       $tutorid=Session::get("tutorid");
       $tutor=new Tutors();
 
@@ -345,7 +343,7 @@ class TutorController extends \App\Http\Controllers\Controller
 
       $teaches_levels=$tutor->teaches_levels();
 
-      return view("tutor.GroupLesson.index",["teaches_levels"=>$teaches_levels,"subjects"=>$subj,"groupLessons"=>$groupLessons,"groupLessonsCompleted"=>$groupLessonsCompleted]);
+      return view("tutor.GroupLesson.uncompleted",["teaches_levels"=>$teaches_levels,"subjects"=>$subj,"groupLessons"=>$groupLessons,"groupLessonsCompleted"=>$groupLessonsCompleted]);
     }
 
     public function game()
