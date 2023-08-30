@@ -114,8 +114,8 @@
                                                         <td>{{ $subject->subject }}</td>
                                                     @endif
                                                 @endforeach
-                                                <td>{{ $groupLesson['registration_start_date'] }}</td>
-                                                <td>{{ $groupLesson['registration_end_date'] }}</td>
+                                                <td>{{ $groupLesson['class_start_date'] }}</td>
+                                                <td>{{ $groupLesson['class_end_date'] }}</td>
                                                 <td>{{ $groupLesson['participants'] }}</td>
                                                 <td>
                                                     <a href="{{ route('show.groupLesson', $groupLesson['id']) }}"

@@ -291,14 +291,26 @@ class FrontendController extends Controller
                             \Session::put('tutorid', $user->id);
                             \Session::put('tutordata', $user);
                             \Session::save();
-                        return redirect('/tutordashboard')->with('success_msg',__('You are login successfully'));
+
+                            if (session()->has('group_lesson_detail_page_url')) {
+                                return redirect(session()->get('group_lesson_detail_page_url'));
+                            }
+                            else {
+                                return redirect('/tutordashboard')->with('success_msg',__('You are login successfully'));
+                            }
                     }
                         else {
                             // \Session::flush();
                             \Session::put('userid', $user->id);
                             \Session::put('userdata', $user);
                             \Session::save();
-                        return redirect('/dashboard')->with('success_msg',__('You are login successfully'));
+
+                            if (session()->has('group_lesson_detail_page_url')) {
+                                return redirect(session()->get('group_lesson_detail_page_url'));
+                            }
+                            else {
+                                return redirect('/dashboard')->with('success_msg',__('You are login successfully'));
+                            }
                         }
                     }else{
                         return redirect('/login')->with('error_msg', __('Please enter the correct password'));
@@ -466,35 +478,19 @@ class FrontendController extends Controller
 
     }
 
-    public function groupclasses()
+
+    public function checkUserIsLogin()
     {
-        $groupLessons = GroupLesson::with(['teachLevel', 'subject', 'tutor', 'gallery'])->get();
-        return view("frontend.grouplessons", compact('groupLessons'));
-    }
-
-    public function openGroupDetails(GroupLesson $groupLesson)
-    {
-        $tutor = $groupLesson->tutor;
-        $teachLevel = $groupLesson->teachLevel;
-        $subject = $groupLesson->subject;
-        $gallery = $groupLesson->gallery;
-        $student = $groupLesson ? $groupLesson->student: '';
-
-        $student = auth()->user();
-
-        $paymentStatus = null;
-
-        $payments = Payment::where('student_id', $student->id)
-                        ->where('group_lesson_id', $groupLesson->id)
-                        ->count();
-
-        if ($payments > 0) {
-
-            $paymentStatus = 'paid';
-
+        if (auth()->check()) {
+            return response([
+                'status' => true
+            ], 201);
         }
-
-        return view('frontend.grouplessondetails', compact('groupLesson', 'tutor', 'teachLevel', 'subject', 'gallery','paymentStatus', 'student'));
+        else {
+            return response([
+                'status' => false
+            ], 401);
+        }
     }
 
 }

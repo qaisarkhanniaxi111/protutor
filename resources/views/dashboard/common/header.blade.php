@@ -37,7 +37,7 @@
           </div>
           <div class="user-pic">
             <div class="user-thumb">
-              <img src="{{ asset('assets/student/images/user-img.jpg') }}" alt="User Image"></div>
+              <img src="{{ auth()->user() ? auth()->user()->avatar: '' }}" alt="User Image"></div>
           </div>
         </div>
       </div>

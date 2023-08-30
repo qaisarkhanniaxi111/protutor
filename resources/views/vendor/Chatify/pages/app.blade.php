@@ -1,5 +1,14 @@
-@include('/tutor/common/header')
-@include('/tutor/common/sidebar')
+@if (auth()->check())
+    @if ($user = auth()->user())
+        @if ($user->role == 3)
+            @include('/tutor/common/header')
+            @include('/tutor/common/sidebar')
+        @elseif ($user->role == 4)
+            @include('/dashboard/common/header')
+            @include('/dashboard/common/sidebar')
+        @endif
+    @endif
+@endif
 
 <!-- Container -->
 <section class="wrapper">

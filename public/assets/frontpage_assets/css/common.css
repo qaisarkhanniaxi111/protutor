@@ -7,3 +7,18 @@
 #lesson_details_table td {
     width: 80%;
 }
+#lesson_details_container tbody, td, tfoot, th, thead, tr {
+    border-style: none;
+}
+.splitscreen {
+    display: flex;
+}
+
+.splitscreen .left {
+    flex: 1;
+    text-align: right;
+    margin-right: 5%;
+}
+.splitscreen .right {
+    flex: 1;
+}

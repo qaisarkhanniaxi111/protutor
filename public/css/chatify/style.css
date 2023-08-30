@@ -238,10 +238,11 @@ body {
   border-bottom: 2px solid var(--primary-color);
 }
 .messenger-tab {
-  overflow: auto;
-  /* height: calc(100vh - var(--listView-header-height) - 2px); */
-  display: none;
-  position: relative;
+    overflow: auto;
+    /* height: calc(100vh - var(--listView-header-height) - 2px); */
+    display: none;
+    position: relative;
+    overflow: visible;
 }
 .add-to-favorite {
   display: none;
@@ -756,10 +757,11 @@ body {
   text-align: center;
 }
 .center-el {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+    position: absolute;
+    left: 50%;
+    top: 55px;
+    transform: translate(-50%, -50%);
+    width: 100%;
 }
 .message-hint span {
   padding: 5px 15px;

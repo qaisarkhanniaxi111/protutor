@@ -1,6 +1,8 @@
 @include('/tutor/common/header')
 @include('/tutor/common/sidebar')
-<!doctype html>
+
+
+{{-- <!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -11,7 +13,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"/>
     <link rel="stylesheet" href="assets/css/custom.css">
-  </head>
+  </head> --}}
+
   <style>
 
 
@@ -70,12 +73,12 @@
 </style>
   <body>
 
- <div class="site-wrap">
+ {{-- <div class="site-wrap" style="background: #ECECEC"> --}}
 
   <!-- Side-bar -->
 
   <!-- Container -->
-  <section class="wrapper">
+  <section class="wrapper" style="background: #ECECEC">
     <div class="page-title">
       <h1>Quiz</h1>
     </div>

@@ -23,7 +23,7 @@ class CreateGroupLessonsTable extends Migration
             $table->foreign('teach_level_id')->references('id')->on('teaches_levels')->onDelete('cascade');
             $table->string('title');
             $table->integer('participants');
-            $table->decimal('price', 9, 2);
+            $table->bigInteger('price');
             $table->date('registration_start_date');
             $table->date('registration_end_date');
             $table->date('class_start_date');

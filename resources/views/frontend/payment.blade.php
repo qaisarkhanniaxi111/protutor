@@ -42,7 +42,7 @@
     </div>
     <input type="number" name="amount" value="{{ $price }}" hidden>
     <label for="card-holder-name">Card Holder Name</label>
-    <input id="card-holder-name" type="text" class="form-control">
+    <input id="card-holder-name" type="text" class="form-control" placeholder="Enter name"><br>
     @csrf
     <div class="form-row">
         <label for="card-element">Credit or debit card</label>
@@ -104,7 +104,7 @@
     const clientSecret = cardButton.dataset.secret;
     cardButton.addEventListener('click', async (e) => {
         e.preventDefault();
-        console.log("attempting");
+
         const { setupIntent, error } = await stripe.confirmCardSetup(
             clientSecret, {
                 payment_method: {
@@ -117,6 +117,7 @@
             var errorElement = document.getElementById('card-errors');
             errorElement.textContent = error.message;
         } else {
+            // console.log(elements)
             paymentMethodHandler(setupIntent.payment_method);
         }
     });

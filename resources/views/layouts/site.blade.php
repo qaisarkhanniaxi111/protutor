@@ -41,7 +41,7 @@
                     <li><a href="{{url('/become-a-tutor')}}">Become a tutor</a></li>
                     <li><a href="{{url('/group')}}">Group Lesson</a></li>
                     <li style="background: #ff6c0b;margin-right: 5px;font-family: 'Inter', sans-serif;border-radius: 5px;color: white !important;"><a style="color: white !important;" href="{{url('/signup')}}">Sign Up</a></li>
-                    <li><a href="{{url('/login')}}">Login</a></li>
+                    <li><a href="{{url('/login')}}">{{ auth()->check() ? 'Dashboard': 'Login' }}</a></li>
 				</ul>
 			</div>
 		</div>

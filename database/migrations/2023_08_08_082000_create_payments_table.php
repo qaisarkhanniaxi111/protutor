@@ -15,10 +15,8 @@ class CreatePaymentsTable extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('student_id');
             $table->unsignedBigInteger('tutor_id');
             $table->unsignedBigInteger('group_lesson_id');
-            $table->foreign('student_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('tutor_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('group_lesson_id')->references('id')->on('group_lessons')->onDelete('cascade');
             $table->string('currency');

@@ -1,24 +1,7 @@
 @include('/tutor/common/header')
 @include('/tutor/common/sidebar')
-<!doctype html>
-<html lang="en">
+@include('tutor.common.styles')
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, shrink-to-fit=no">
-    <link rel="shortcut icon" href="assets/images/favicon.png">
-    <title>Teachers Portal : Quiz</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
-    <link rel="stylesheet" href="assets/css/custom.css">
-
-    {{-- DataTable CSS  --}}
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css" />
-
-</head>
 <style>
     .image-label {
         position: relative;
@@ -89,187 +72,185 @@
     <!-- Container -->
     <section class="wrapper">
         <div class="page-title">
-            <h1>Create Group Lesson</h1>
+            <h1>Group Lessons</h1>
         </div>
 
         <div>
+
             @include('tutor.GroupLesson.header')
+
             <div class="tab-content pt-3">
 
-            {{-- Create Group Lessons  --}}
+             <div class="tab-pane fade show active" id="tab-1">
 
-              <div class="tab-pane fade show active" id="tab-3">
+                <div class="box">
+                    <form action="{{ route('store.groupLesson') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-7">
 
-                    <div id="q-new1">
-                        <br>
-                        <div class="box">
-                            <form action="{{ route('store.groupLesson') }}" method="POST" enctype="multipart/form-data">
-                                @csrf
-                                <div class="container">
-                                    <div class="row justify-content-center">
-                                        <div class="col-lg-7">
+                                    <div class="quiz-inp-wrap">
+                                        <input type="file" name="image" id="groupimage"
+                                            placeholder="">
+                                        <p class="text-danger">
+                                            @error('image')
+                                                {{ $message }}
+                                            @enderror
+                                        </p>
+                                    </div>
+                                    <br>
+                                    <div class="quiz-inp-wrap mt-0">
+                                        <span class="quiz-inp-icon"><i class="fa-solid fa-heading"></i></span>
+                                        <input class="quiz-inp" type="text" name="title" id="quiztitle"
+                                            placeholder="Enter Title" value="{{ old('title') }}">
+                                        <p class="text-danger">
+                                            @error('title')
+                                                {{ $message }}
+                                            @enderror
+                                        </p>
+                                    </div>
+                                    <div class="quiz-inp-wrap">
+                                        <span class="quiz-inp-icon"><i class="fa-solid fa-star"></i></span>
+                                        <select required class="quiz-inp" name="teaches_level" id="teaches_level">
+                                            <option value="" disabled selected>Choose Option</option>
+                                            @foreach ($teaches_levels as $teach_level)
+                                                <option value="{{ $teach_level->id }}">
+                                                    {{ $teach_level->teaches_level }}
+                                                </option>
+                                            @endforeach
 
-                                            <div class="quiz-inp-wrap">
-                                                <input type="file" name="image" id="groupimage"
-                                                    placeholder="">
-                                                <p class="text-danger">
-                                                    @error('image')
-                                                        {{ $message }}
-                                                    @enderror
-                                                </p>
-                                            </div>
-                                            <br>
-                                            <div class="quiz-inp-wrap mt-0">
-                                                <span class="quiz-inp-icon"><i class="fa-solid fa-heading"></i></span>
-                                                <input class="quiz-inp" type="text" name="title" id="quiztitle"
-                                                    placeholder="Enter Title" value="{{ old('title') }}">
-                                                <p class="text-danger">
-                                                    @error('title')
-                                                        {{ $message }}
-                                                    @enderror
-                                                </p>
-                                            </div>
-                                            <div class="quiz-inp-wrap">
-                                                <span class="quiz-inp-icon"><i class="fa-solid fa-star"></i></span>
-                                                <select required class="quiz-inp" name="teaches_level" id="teaches_level">
-                                                    <option value="" disabled selected>Choose Option</option>
-                                                    @foreach ($teaches_levels as $teach_level)
-                                                        <option value="{{ $teach_level->id }}">
-                                                            {{ $teach_level->teaches_level }}
-                                                        </option>
-                                                    @endforeach
+                                        </select>
+                                        <p class="text-danger">
+                                            @error('teaches_level')
+                                                {{ $message }}
+                                            @enderror
+                                        </p>
+                                    </div>
+                                    <div class="quiz-inp-wrap">
+                                        <span class="quiz-inp-icon"><i class="fa-solid fa-book-bookmark"></i></span>
+                                        <select class="quiz-inp" name="subject" id="subjectt">
+                                            <option value="" disabled selected>Choose Option</option>
+                                            @foreach ($subjects as $subject)
+                                                <option value="{{ $subject->id }}">{{ $subject->subject }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                        <p class="text-danger">
+                                            @error('subject')
+                                                {{ $message }}
+                                            @enderror
+                                        </p>
+                                    </div>
+                                    <br>
+                                    <div class="quiz-inp-wrap mt-0">
+                                        <span class="quiz-inp-icon"><i class="fa-solid fa-person"></i></span>
+                                        <input class="quiz-inp" type="number" name="total_Participants"
+                                            id="totalparticipants" placeholder="Total Participants"
+                                            value="{{ old('total_Participants') }}">
+                                        <p class="text-danger">
+                                            @error('total_Participants')
+                                                {{ $message }}
+                                            @enderror
+                                        </p>
+                                    </div>
+                                    <br>
+                                    <div class="quiz-inp-wrap mt-0">
+                                        <span class="quiz-inp-icon"><i class="fa fa-tag"></i></span>
+                                        <input class="quiz-inp" type="number" name="price" id="priceperperson"
+                                            placeholder="Price per Person in dollars (e.g 15.0, 17)"
+                                            value="{{ old('price') }}">
 
-                                                </select>
-                                                <p class="text-danger">
-                                                    @error('teaches_level')
-                                                        {{ $message }}
-                                                    @enderror
-                                                </p>
-                                            </div>
-                                            <div class="quiz-inp-wrap">
-                                                <span class="quiz-inp-icon"><i class="fa-solid fa-book-bookmark"></i></span>
-                                                <select class="quiz-inp" name="subject" id="subjectt">
-                                                    <option value="" disabled selected>Choose Option</option>
-                                                    @foreach ($subjects as $subject)
-                                                        <option value="{{ $subject->id }}">{{ $subject->subject }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                                <p class="text-danger">
-                                                    @error('subject')
-                                                        {{ $message }}
-                                                    @enderror
-                                                </p>
-                                            </div>
-                                            <br>
-                                            <div class="quiz-inp-wrap mt-0">
-                                                <span class="quiz-inp-icon"><i class="fa-solid fa-person"></i></span>
-                                                <input class="quiz-inp" type="number" name="total_Participants"
-                                                    id="totalparticipants" placeholder="Total Participants"
-                                                    value="{{ old('total_Participants') }}">
-                                                <p class="text-danger">
-                                                    @error('total_Participants')
-                                                        {{ $message }}
-                                                    @enderror
-                                                </p>
-                                            </div>
-                                            <br>
-                                            <div class="quiz-inp-wrap mt-0">
-                                                <span class="quiz-inp-icon"><i class="fa fa-tag"></i></span>
-                                                <input class="quiz-inp" type="number" name="price" id="priceperperson"
-                                                    placeholder="Price per Person in dollars (e.g 15.0, 17)"
-                                                    value="{{ old('price') }}">
-
-                                                <p class="text-danger">
-                                                    @error('price')
-                                                        {{ $message }}
-                                                    @enderror
-                                                </p>
-                                            </div>
-                                            <br>
-                                            <div class="row">
-                                                <div class="col-lg-4 quiz-inp-wrap"><label>Register Start date</label>
-                                                </div>
-                                            </div>
-                                            <div class="quiz-inp-wrap">
-                                                <span class="quiz-inp-icon"><i class="fa-solid fa-calendar"></i></span>
-                                                <input class="quiz-inp" type="date" name="register_Start_Date"
-                                                    id="registerstartdate" placeholder="Start Date and Time"
-                                                    value="{{ old('register_Start_Date') }}">
-                                                <p class="text-danger">
-                                                    @error('register_Start_Date')
-                                                        {{ $message }}
-                                                    @enderror
-                                                </p>
-                                            </div>
-                                            <br>
-                                            <div class="row">
-                                                <div class="col-lg-4 quiz-inp-wrap"><label>Register End date</label>
-                                                </div>
-                                            </div>
-                                            <div class="quiz-inp-wrap">
-                                                <span class="quiz-inp-icon"><i class="fa-solid fa-calendar"></i></span>
-                                                <input class="quiz-inp" type="date" name="register_End_Date"
-                                                    id="registerenddate" placeholder="End Date and Time"
-                                                    value="{{ old('register_End_Date') }}">
-
-                                                <p class="text-danger">
-                                                    @error('register_End_Date')
-                                                        {{ $message }}
-                                                    @enderror
-                                                </p>
-                                            </div>
-                                            <br>
-
-                                            <div class="row">
-                                                <div class="col-lg-4 quiz-inp-wrap"><label>Classes Start date</label>
-                                                </div>
-                                            </div>
-                                            <div class="quiz-inp-wrap">
-                                                <span class="quiz-inp-icon"><i class="fa-solid fa-calendar"></i></span>
-                                                <input class="quiz-inp" type="date" name="class_Start_Date"
-                                                    id="classstartdate" placeholder="Start Date and Time"
-                                                    value="{{ old('class_Start_Date') }}">
-
-                                                <p class="text-danger">
-                                                    @error('class_Start_Date')
-                                                        {{ $message }}
-                                                    @enderror
-                                                </p>
-                                            </div>
-                                            <br>
-                                            <div class="row">
-                                                <div class="col-lg-4 quiz-inp-wrap"><label>Classes End date</label>
-                                                </div>
-                                            </div>
-                                            <div class="quiz-inp-wrap">
-                                                <span class="quiz-inp-icon"><i class="fa-solid fa-calendar"></i></span>
-                                                <input class="quiz-inp" type="date" name="class_End_Date"
-                                                    id="classenddate" placeholder="End Date and Time"
-                                                    value="{{ old('class_End_Date') }}">
-
-                                                <p class="text-danger">
-                                                    @error('class_End_Date')
-                                                        {{ $message }}
-                                                    @enderror
-                                                </p>
-                                            </div>
-
-                                            <div class="create-btn">
-                                                <div class="col-lg-1"></div>
-                                                <button class="theme-btn green" id="create">Create</button>
-                                            </div>
+                                        <p class="text-danger">
+                                            @error('price')
+                                                {{ $message }}
+                                            @enderror
+                                        </p>
+                                    </div>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-lg-4 quiz-inp-wrap"><label>Register Start date</label>
                                         </div>
                                     </div>
+                                    <div class="quiz-inp-wrap">
+                                        <span class="quiz-inp-icon"><i class="fa-solid fa-calendar"></i></span>
+                                        <input class="quiz-inp" type="date" name="register_Start_Date"
+                                            id="registerstartdate" placeholder="Start Date and Time"
+                                            value="{{ old('register_Start_Date') }}">
+                                        <p class="text-danger">
+                                            @error('register_Start_Date')
+                                                {{ $message }}
+                                            @enderror
+                                        </p>
+                                    </div>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-lg-4 quiz-inp-wrap"><label>Register End date</label>
+                                        </div>
+                                    </div>
+                                    <div class="quiz-inp-wrap">
+                                        <span class="quiz-inp-icon"><i class="fa-solid fa-calendar"></i></span>
+                                        <input class="quiz-inp" type="date" name="register_End_Date"
+                                            id="registerenddate" placeholder="End Date and Time"
+                                            value="{{ old('register_End_Date') }}">
+
+                                        <p class="text-danger">
+                                            @error('register_End_Date')
+                                                {{ $message }}
+                                            @enderror
+                                        </p>
+                                    </div>
+                                    <br>
+
+                                    <div class="row">
+                                        <div class="col-lg-4 quiz-inp-wrap"><label>Classes Start date</label>
+                                        </div>
+                                    </div>
+                                    <div class="quiz-inp-wrap">
+                                        <span class="quiz-inp-icon"><i class="fa-solid fa-calendar"></i></span>
+                                        <input class="quiz-inp" type="date" name="class_Start_Date"
+                                            id="classstartdate" placeholder="Start Date and Time"
+                                            value="{{ old('class_Start_Date') }}">
+
+                                        <p class="text-danger">
+                                            @error('class_Start_Date')
+                                                {{ $message }}
+                                            @enderror
+                                        </p>
+                                    </div>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-lg-4 quiz-inp-wrap"><label>Classes End date</label>
+                                        </div>
+                                    </div>
+                                    <div class="quiz-inp-wrap">
+                                        <span class="quiz-inp-icon"><i class="fa-solid fa-calendar"></i></span>
+                                        <input class="quiz-inp" type="date" name="class_End_Date"
+                                            id="classenddate" placeholder="End Date and Time"
+                                            value="{{ old('class_End_Date') }}">
+
+                                        <p class="text-danger">
+                                            @error('class_End_Date')
+                                                {{ $message }}
+                                            @enderror
+                                        </p>
+                                    </div>
+
+                                    <div class="create-btn">
+                                        <div class="col-lg-1"></div>
+                                        <button class="theme-btn green" id="create">Create</button>
+                                    </div>
                                 </div>
-                            </form>
+                            </div>
                         </div>
-                    </div>
+                    </form>
+                </div>
+              </div>
 
 
-               </div>
 
-            </div>
+
+        </div>
         </div>
 
     </section>
@@ -293,33 +274,17 @@
     </footer>
 
 
+
+
+
+
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/tilt.js@1.2.1/dest/tilt.jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
     <script src="./assets/js/custom.js"></script>
-
-    {{-- DataTable JavaScript  --}}
-    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
-    <script>
-        $("#create").click(function() {
-            groupimage = $("#groupimage").val()
-            grouptitle = $("#grouptitle").val()
-            teaches_level = $("#teaches_level").val()
-            subjectt = $("#subjectt").val()
-            totalparticipants = $("#totalparticipants").val()
-            priceperperson = $("#priceperperson").val()
-            registerstartdate = $("#registerstartdate").val()
-            registerenddate = $("#registerenddate").val()
-            classstartdate = $("#classstartdate").val()
-            classenddate = $("#classenddate").val()
-        });
-        let table = new DataTable('.DataTable', {
-            responsive: true
-        });
-    </script>
-
+    @include('tutor.common.scripts')
 
 </body>
 

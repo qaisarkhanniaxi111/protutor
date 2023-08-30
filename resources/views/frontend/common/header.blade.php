@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, shrink-to-fit=no">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="shortcut icon" href="assets/frontpage_assets/images/favicon.png">
     <title>@if(!empty($PageTitle )) {{$PageTitle}} @else ProTutor | Home  @endif</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
@@ -36,7 +37,19 @@
           <li><a href="{{url('/become-a-tutor')}}">Become a tutor</a></li>
           <li><a href="{{url('/group')}}">Group Lesson</a></li>
           <li style="background: #ff6c0b;margin-right: 5px;font-family: 'Inter', sans-serif;border-radius: 5px;color: white !important;"><a style="color: white !important;" href="{{url('/signup')}}">Sign Up</a></li>
-          <li><a href="{{url('/login')}}">Login</a></li>
+          <li><a href="
+          @if (auth()->user())
+              @if (auth()->user()->role == 3)
+                  {{ url('/tutordashboard') }}
+              @elseif (auth()->user()->role == 4)
+                  {{ url('/dashboard') }}
+              @else
+                  {{ url('/login') }}
+              @endif
+          @else
+            {{ url('/login') }}
+          @endif
+          ">{{ auth()->check() ? 'Dashboard': 'Login' }}</a></li>
         </ul>
       </div>
     </div>

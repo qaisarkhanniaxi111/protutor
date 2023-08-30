@@ -14,13 +14,24 @@ class SpendingController extends Controller
 
         if (auth()->check()) {
 
-            $student = auth()->user();
+            $studentId = auth()->id();
 
-            $payments = Payment::where('student_id', $student->id)
+            $payments = Payment::whereHas('studentPayments', function($query) use($studentId) {
+                            $query->where('student_id', $studentId);
+                        })
+                        ->notFetchInActivePayments()
                         ->get();
+
+            $totalSpentAmount = Payment::whereHas('studentPayments', function($query) use($studentId) {
+                $query->where('student_id', $studentId);
+            })
+            ->notFetchInActivePayments()
+            ->sum('amount');
+
+            $totalSpentAmountInCents = $totalSpentAmount / 100;
 
         }
 
-        return view('dashboard.spendings', compact('payments'));
+        return view('dashboard.spendings', compact('payments', 'totalSpentAmountInCents'));
     }
 }

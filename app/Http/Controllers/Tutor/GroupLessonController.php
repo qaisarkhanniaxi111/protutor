@@ -7,12 +7,117 @@ use App\Models\GroupLesson;
 use App\Models\Galleries;
 use App\Http\Controllers\Controller;
 use App\Models\Gallery;
+use App\Models\Payment;
+use App\Models\Rating;
+use App\Models\Subject;
+use App\Models\Teaches_level;
 use App\Models\Tutors;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 
 class GroupLessonController extends Controller
 {
+    public function groupclasses()
+    {
+        $todayDate = now()->format('Y-m-d');
+        $todayGroupLessons = GroupLesson::with(['teachLevel', 'subject', 'tutor', 'gallery'])->whereDate('class_start_date', $todayDate)->limit(4)->get();
+        $groupLessons = GroupLesson::with(['teachLevel', 'subject', 'tutor', 'gallery'])->simplePaginate(12);
+
+        $teaches_levels = Teaches_level::select('id', 'teaches_level')->get();
+        $teaches_levels = $teaches_levels->toArray();
+        $subjects = Subject::select('id', 'subject')->get();
+        $subjects = $subjects->toArray();
+
+        return view("frontend.grouplessons", compact('todayGroupLessons', 'groupLessons', 'teaches_levels', 'subjects'));
+    }
+
+    public function openGroupDetails(GroupLesson $groupLesson)
+    {
+        $tutor = $groupLesson->tutor;
+        $teachLevel = $groupLesson->teachLevel;
+        $subject = $groupLesson->subject;
+        $gallery = $groupLesson->gallery;
+        $student = $groupLesson ? $groupLesson->students: '';
+
+        $student = auth()->user();
+        $studentId = $student ? $student->id: '';
+
+        $paymentStatus = 'unpaid';
+        $payments = null;
+
+        if ($student) {
+            $payments = Payment::whereHas('studentPayments', function($query) use($studentId) {
+                    $query->where('student_id', $studentId);
+                })
+                ->notFetchInActivePayments()
+                ->where('group_lesson_id', $groupLesson->id)
+                ->count();
+        }
+
+        if ($payments > 0) {
+
+            $paymentStatus = 'paid';
+
+        }
+
+
+        $ratingStatus = false;
+        $ratingExists = false;
+
+        if (auth()->check()) {
+            if ($student->rating) {
+                $ratingExists = true;
+            }
+        }
+        // $ratingExists = $student->rating ? true: false;
+
+        $todayDate = Carbon::now();
+        $groupLessonEndDate = Carbon::parse($groupLesson->class_end_date);
+
+        if($groupLessonEndDate->lt($todayDate)){
+
+            if (! $ratingExists) {
+                $ratingStatus = true;
+            }
+
+        }
+
+        // calculate rating
+        $ratings = Rating::where('group_lesson_id', $groupLesson->id);
+        $rating = $ratings->get();
+
+        $count=0;
+        foreach ($rating as $countRating) {
+            $count+=$countRating->rating;
+        }
+        $numberOfRating=$ratings->count();
+        if($count<=0 || $numberOfRating<=0){
+            $groupLessonRating=0;
+        }else{
+
+            $groupLessonRating=$count/$numberOfRating;
+        }
+
+        $enrolledIntoGroupLesson = false;
+
+        if ($student) {
+            if ($student->studentEnrolledLessons) {
+                $enrolledIntoGroupLesson = $student->studentEnrolledLessons->find($groupLesson->id);
+
+                if ($enrolledIntoGroupLesson) {
+                    $enrolledIntoGroupLesson = true;
+                }
+            }
+        }
+
+        $currentGroupLessonUrl = request()->url();
+
+        session()->put('group_lesson_detail_page_url', $currentGroupLessonUrl);
+
+        return view('frontend.grouplessondetails', compact('groupLesson', 'tutor', 'teachLevel', 'subject', 'gallery','paymentStatus', 'student', 'ratingStatus', 'groupLessonRating', 'enrolledIntoGroupLesson'));
+    }
+
     public function storeGroupLesson(Request $request)
     {
         $request->validate(
@@ -220,4 +325,36 @@ class GroupLessonController extends Controller
         $teaches_levels = $tutor->teaches_levels();
         return view("tutor.GroupLesson.uncompleted", ["teaches_levels" => $teaches_levels, "subjects" => $subj, "groupLessons" => $groupLessons, "groupLessons" => $groupLessons]);
     }
+
+    // public function fetchGroupLessonParticipants($groupLessonId)
+    // {
+    //     $remainingGroupLessonParticipants = remainingGroupLessonParticipants($groupLessonId);
+
+    //     return response($remainingGroupLessonParticipants, 201);
+    // }
+
+    // public function enrolledGroupLessonParticipants($groupLessonId)
+    // {
+    //     $enrolledGroupLessonParticipants = totalEnrolledGroupLessonParticipants($groupLessonId);
+
+    //     return response($enrolledGroupLessonParticipants, 201);
+    // }
+
+    // public function enrolledGroupLessonParticipantsProfiles($groupLessonId)
+    // {
+    //     $groupLessonParticipants = groupLessonParticipantsInArray($groupLessonId);
+
+    //     // dd($groupLessonParticipants);
+    //     $groupLessonParticipantsProfiles = $groupLessonParticipants->map(function($val) {
+    //         return '/storage/group_lessons'. $val['avatar'];
+    //     });
+
+
+    //     // $groupLessonParticipantsProfiles = collect($groupLessonParticipantsProfiles)->toArray();
+
+    //     return response()->json($groupLessonParticipantsProfiles);
+    // }
+
+
+
 }
