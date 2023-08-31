@@ -8,20 +8,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, shrink-to-fit=no">
     <link rel="shortcut icon" href="assets/images/favicon.png">
     <title>Students Portal : Quiz</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"/>
-    <link rel="stylesheet" href="assets/css/custom.css">
+    <link rel="stylesheet" href="assets/css/custom.css"> --}}
   </head>
   <body>
 
- <div class="site-wrap">
+ {{-- <div class="site-wrap"> --}}
 
   <!-- Header -->
   <!-- Side-bar -->
 
   <!-- Container -->
-  <section class="wrapper">
+  <section class="wrapper" style="background: #ECECEC">
     <div class="page-title">
       <h1>Quiz</h1>
     </div>

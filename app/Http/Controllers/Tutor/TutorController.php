@@ -309,14 +309,14 @@ class TutorController extends \App\Http\Controllers\Controller
       }
       }
 
-      if(isset($data["enddate"]));
-      {
-        $enddate=$data["enddate"];
-        if($enddate!="")
+        if(isset($data["enddate"]));
         {
-        $filter.=" and DATE(enddate)<='$enddate' ";
-      }
-      }
+            $enddate=$data["enddate"];
+            if($enddate!="")
+            {
+                $filter.=" and DATE(enddate)<='$enddate' ";
+            }
+        }
       }
 
       $tutor=new Tutors();
@@ -331,21 +331,19 @@ class TutorController extends \App\Http\Controllers\Controller
 
     public function tutorquizgrouplessons()
     {
-
-
       $tutorid=Session::get("tutorid");
       $tutor=new Tutors();
 
-      $groupLessons=GroupLesson::where('tutor_id',$tutorid)->where('is_completed',0)->get();
-      $groupLessonsCompleted=GroupLesson::where('tutor_id',$tutorid)->where('is_completed',1)->get();
-      $groupLessons=$groupLessons->toArray();
-      $groupLessonsCompleted=$groupLessonsCompleted->toArray();
+    
+      $groupLessonsCompleted=GroupLesson::where('tutor_id',$tutorid)->orderBy('id','DESC')->paginate(8);
+     
+      
 
       $subj=$tutor->getSubjects($tutorid);
 
       $teaches_levels=$tutor->teaches_levels();
 
-      return view("tutor.GroupLesson.index",["teaches_levels"=>$teaches_levels,"subjects"=>$subj,"groupLessons"=>$groupLessons,"groupLessonsCompleted"=>$groupLessonsCompleted]);
+      return view("tutor.GroupLesson.index",["teaches_levels"=>$teaches_levels,"subjects"=>$subj,"groupLessonsCompleted"=>$groupLessonsCompleted]);
     }
 
     public function game()

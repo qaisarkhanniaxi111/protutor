@@ -5,10 +5,14 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Admin\UserdetailController;
+use App\Http\Controllers\Dashboard\SpendingController;
 use App\Http\Controllers\Frontend\PaymentController;
+use App\Http\Controllers\FrontEnd\RatingController;
 use App\Http\Controllers\Tutor\EarningController;
 use App\Http\Controllers\Tutor\TutorController;
 use App\Http\Controllers\Tutor\GroupLessonController;
+use App\Models\GroupLesson;
+use App\Models\Payment;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,11 +51,14 @@ Route::any('/find-a-tutor', [FrontendController::class, 'find_a_tutor']);
 Route::any('/tutor-signup/{userid}', [FrontendController::class, 'tutor_details_page']);
 Route::any('/submit_tutor_signup', [FrontendController::class, 'submit_tutor_signup']);
 Route::any('/tutor-detail/{tutorid}', [FrontendController::class, 'tutor_detail_single_page']);
-Route::any('/group', [FrontendController::class, 'groupclasses']);
-Route::any('/group/details/{groupLesson}', [FrontendController::class, 'openGroupDetails'])->name('group.details');
+Route::any('/group', [GroupLessonController::class, 'groupclasses']);
+Route::any('/group/details/{groupLesson}', [GroupLessonController::class, 'openGroupDetails'])->name('group.details');
 Route::get('/game1', [TutorController::class, 'game']);
 Route::get('/gamet', [TutorController::class, 'game2']);
 
+Route::post('/group/filtered', [RatingController::class, 'groupLessonFilter'])->name('groupLesson.filter');
+Route::post('/group/filtered2', [RatingController::class, 'TodayGroupLessonFilter'])->name('groupLesson.filter2');
+Route::post('/submit/review', [RatingController::class, 'submitReview'])->name('submit.review');
 
 Route::group(['middleware' => ['dashboardmiddleware']], function() {
 
@@ -73,9 +80,17 @@ Route::post('/filterDataStudentQuiz', [DashboardController::class, 'filterData']
 
 Route::post('/savequizquestionanswergame', [DashboardController::class, 'savequizquestionanswergame']);
 
-Route::get('payment/', [PaymentController::class,'index'])->name('payment');
-Route::post('payment/charge/{groupLesson}', [PaymentController::class,'charge'])->name('payment.charge');
+Route::prefix('student')->as('student.')->group(function() {
+    Route::get('spendings', [SpendingController::class, 'openStudentSpendings'])->name('spendings');
+});
 
+// Route::get('payment/', [PaymentController::class,'index'])->name('payment');
+Route::prefix('payments')->as('payments.')->controller(PaymentController::class)->group(function() {
+    Route::post('charge/{groupLesson}', 'charge')->name('charge');
+    Route::get('success', 'openSuccessPage')->name('success');
+    Route::get('withdraw', 'withdrawPayment')->name('withdraw');
+
+});
 
 });
 
@@ -104,9 +119,9 @@ Route::post('/republishQuiz', [TutorController::class, 'republishQuiz']);
 Route::post('/filterData', [TutorController::class, 'filterData']);
 Route::get('/tutorgrouplessons', [TutorController::class, 'tutorquizgrouplessons'])->name('index.groupLesson');
 
-// create , complete and uncomplete routes 
+// create , complete and uncomplete routes
 Route::get('/tutorgrouplessons/create', [GroupLessonController::class, 'createGroupLesson'])->name('create.groupLesson');
-Route::get('/tutorgrouplessons/complete', [GroupLessonController::class, 'completeGroupLesson'])->name('complete.groupLesson');
+Route::get('/tutorgrouplessons/completed', [GroupLessonController::class, 'completeGroupLesson'])->name('complete.groupLesson');
 Route::get('/tutorgrouplessons/uncomplete', [GroupLessonController::class, 'uncompleteGroupLesson'])->name('uncomplete.groupLesson');
 
 
@@ -121,12 +136,15 @@ Route::post('updateGroupLesson/', [GroupLessonController::class,'updateGroupLess
 
 Route::prefix('tutor')->as('tutor.')->group(function() {
 
-    Route::get('chat', [TutorController::class, 'openChat'])->name('chat');
+    // Route::get('chat', [TutorController::class, 'openChat'])->name('chat');
 
     Route::prefix('earnings')->as('earnings.')->controller(EarningController::class)->group(function() {
         Route::get('/', 'openEarningPage')->name('index');
         Route::get('clearence', 'openClearencePage')->name('clearence');
+        Route::get('withdraw', 'withdrawPayment')->name('withdraw');
     });
+
+
 
 });
 
@@ -225,3 +243,5 @@ Route::post('/forgetpassotpsubmit', [AdminController::class, 'forgetpassotpsubmi
 Route::get('/new-password', [AdminController::class, 'newpassword']);
 Route::post('/new-password2', [AdminController::class, 'newpassword2']);
 Route::get('/reset-password-success', [AdminController::class, 'resetpasswordsuccess']);
+
+Route::get('check-user-login-status', [FrontendController::class, 'checkUserIsLogin'])->name('check-user-login-status');

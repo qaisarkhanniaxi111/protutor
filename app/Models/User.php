@@ -14,6 +14,7 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable,Billable;
 
+    public $uploadsDir = '/images/';
     /**
      * The attributes that are mass assignable
      *
@@ -44,7 +45,17 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function getAvatarAttribute($value)
+    {
+        return $this->uploadsDir. $value;
+    }
+
     public function getFullNameAttribute()
+    {
+        return "{$this->first_name } {$this->last_name}";
+    }
+
+    public function getNameAttribute()
     {
         return "{$this->first_name } {$this->last_name}";
     }
@@ -52,5 +63,20 @@ class User extends Authenticatable
     public function teacherPayments()
     {
         return $this->hasMany(Payment::class, 'tutor_id', 'id');
+    }
+
+    public function studentPayments()
+    {
+        return $this->belongsToMany(Payment::class, 'payment_student', 'student_id', 'payment_id')->notFetchInActivePayments();
+    }
+
+    public function studentEnrolledLessons()
+    {
+        return $this->belongsToMany(GroupLesson::class, 'group_lesson_student', 'student_id', 'group_lesson_id');
+    }
+
+    public function rating()
+    {
+        return $this->hasOne(Rating::class, 'student_id', 'id');
     }
 }

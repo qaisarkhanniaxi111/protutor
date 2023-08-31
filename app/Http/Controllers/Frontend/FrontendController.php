@@ -121,6 +121,7 @@ class FrontendController extends Controller
 			$user = new User();
 			$user->first_name=$req->first_name;
 			$user->last_name=$req->last_name;
+            $user->name = $req->first_name.' '.$req->last_name;
 			$user->email=$req->email;
 			$user->role=$role;
 			$user->remember_token=$remember_token;
@@ -132,6 +133,7 @@ class FrontendController extends Controller
 					"student_no"=>   $user->id,
 					"first_name"=>  $req->first_name,
 					"last_name"=>  $req->last_name,
+                    'name' => $req->first_name.' '.$req->last_name,
 					"country"=>  '',
 					"email"=>  $req->email,
 					"phone"=>  '',
@@ -289,14 +291,26 @@ class FrontendController extends Controller
                             \Session::put('tutorid', $user->id);
                             \Session::put('tutordata', $user);
                             \Session::save();
-                        return redirect('/tutordashboard')->with('success_msg',__('You are login successfully'));
+
+                            if (session()->has('group_lesson_detail_page_url')) {
+                                return redirect(session()->get('group_lesson_detail_page_url'));
+                            }
+                            else {
+                                return redirect('/tutordashboard')->with('success_msg',__('You are login successfully'));
+                            }
                     }
                         else {
                             // \Session::flush();
                             \Session::put('userid', $user->id);
                             \Session::put('userdata', $user);
                             \Session::save();
-                        return redirect('/dashboard')->with('success_msg',__('You are login successfully'));
+
+                            if (session()->has('group_lesson_detail_page_url')) {
+                                return redirect(session()->get('group_lesson_detail_page_url'));
+                            }
+                            else {
+                                return redirect('/dashboard')->with('success_msg',__('You are login successfully'));
+                            }
                         }
                     }else{
                         return redirect('/login')->with('error_msg', __('Please enter the correct password'));
@@ -464,28 +478,19 @@ class FrontendController extends Controller
 
     }
 
-    public function groupclasses()
-    {
-        $groupLessons = GroupLesson::with(['teachLevel', 'subject', 'tutor', 'gallery'])->get();
-        return view("frontend.grouplessons", compact('groupLessons'));
-    }
 
-    public function openGroupDetails(GroupLesson $groupLesson)
+    public function checkUserIsLogin()
     {
-        $tutor = $groupLesson->tutor;
-        $teachLevel = $groupLesson->teachLevel;
-        $subject = $groupLesson->subject;
-        $gallery = $groupLesson->gallery;
-        $payment='';
-        if($user_id=auth()->user()->id){
-            $check_payment = Payment::where('student_id',$user_id)->where('group_lesson_id',$groupLesson->id)->get();
-            if(!empty($check_payment->toArray())){
-                $payment=$check_payment->toArray();
-            }
-            
+        if (auth()->check()) {
+            return response([
+                'status' => true
+            ], 201);
         }
-
-        return view('frontend.grouplessondetails', compact('groupLesson', 'tutor', 'teachLevel', 'subject', 'gallery','payment'));
+        else {
+            return response([
+                'status' => false
+            ], 401);
+        }
     }
 
 }

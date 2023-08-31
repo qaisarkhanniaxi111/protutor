@@ -12,6 +12,7 @@ class Userdetail extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    public $uploadsDir = '/storage/attachments/';
     /**
      * The attributes that are mass assignable.
      *
@@ -47,4 +48,9 @@ class Userdetail extends Authenticatable
      *
      * @var array<int, string>
      */
+
+     public function getProfileImgAttribute($value)
+     {
+         return $this->uploadsDir. $value;
+     }
 }

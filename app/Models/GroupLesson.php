@@ -15,6 +15,16 @@ class GroupLesson extends Model
         'class_end_date', 'is_completed', 'tutor_id'
     ];
 
+    public function getPriceAttribute($value)
+    {
+        return $value / 100;
+    }
+
+    public function setPriceAttribute($value)
+    {
+        $this->attributes["price"] = $value * 100;
+    }
+
     public function subject()
     {
         return $this->belongsTo(Subject::class);
@@ -30,9 +40,29 @@ class GroupLesson extends Model
         return $this->belongsTo(User::class, 'tutor_id', 'id');
     }
 
+    public function student()
+    {
+        return $this->belongsTo(User::class, 'student_id', 'id');
+    }
+
     public function gallery()
     {
         return $this->hasOne(Gallery::class, 'group_lesson_id', 'id');
+    }
+
+    public function enrolledStudents()
+    {
+        return $this->belongsToMany(User::class, 'group_lesson_student', 'group_lesson_id', 'student_id');
+    }
+
+    public function rating()
+    {
+        return $this->hasOne(Rating::class);
+    }
+
+    public function ratings()
+    {
+        return $this->hasMany(Rating::class);
     }
 
 }

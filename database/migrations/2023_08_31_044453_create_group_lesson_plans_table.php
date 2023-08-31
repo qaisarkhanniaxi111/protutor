@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePaymentsTable extends Migration
+class CreateGroupLessonPlansTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,13 @@ class CreatePaymentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('payments', function (Blueprint $table) {
+        Schema::create('group_lesson_plans', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('student_id');
-            $table->unsignedBigInteger('tutor_id');
             $table->unsignedBigInteger('group_lesson_id');
-            $table->foreign('student_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('tutor_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('group_lesson_id')->references('id')->on('group_lessons')->onDelete('cascade');
-            $table->string('currency');
-            $table->string('transaction_id')->unique();
-            $table->bigInteger('amount');
+            $table->string('type');
+            $table->string('time');
+            $table->date('date');
             $table->timestamps();
         });
     }
@@ -35,6 +31,6 @@ class CreatePaymentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('payments');
+        Schema::dropIfExists('group_lesson_plans');
     }
 }

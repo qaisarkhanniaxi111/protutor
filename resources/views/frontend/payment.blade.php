@@ -30,19 +30,19 @@
 <body>
     <div class="container mt-5">
         <div class="row">
-     <div class="col-10 col-md-6 mx-auto mt-5">   
+     <div class="col-10 col-md-6 mx-auto mt-5">
         <div class="card">
             <div class="card-body">
 
-            
+
   <form action="{{ route('payment.charge',$groupLessonId) }}" method="POST" id="subscribe-form">
     <div class="row">
         <div class="col"><h3>Amount</h3></div>
-        <div class="col text-end"><h3>{{ $price }} {{ config('protutor.currency') }}</h3></div>
+        <div class="col text-end"><h3>{{ config('protutor.currency') }}{{ $price }}</h3></div>
     </div>
     <input type="number" name="amount" value="{{ $price }}" hidden>
     <label for="card-holder-name">Card Holder Name</label>
-    <input id="card-holder-name" type="text" class="form-control">
+    <input id="card-holder-name" type="text" class="form-control" placeholder="Enter name"><br>
     @csrf
     <div class="form-row">
         <label for="card-element">Credit or debit card</label>
@@ -58,7 +58,7 @@
         {{ $error }}<br>
         @endforeach
     </div>
-    @endif
+    @endif <br>
     <div class="form-group text-center">
         <button  id="card-button" data-secret="{{ $intent->client_secret }}" class="btn btn-lg btn-success btn-block">SUBMIT</button>
     </div>
@@ -104,7 +104,7 @@
     const clientSecret = cardButton.dataset.secret;
     cardButton.addEventListener('click', async (e) => {
         e.preventDefault();
-        console.log("attempting");
+
         const { setupIntent, error } = await stripe.confirmCardSetup(
             clientSecret, {
                 payment_method: {
@@ -117,6 +117,7 @@
             var errorElement = document.getElementById('card-errors');
             errorElement.textContent = error.message;
         } else {
+            // console.log(elements)
             paymentMethodHandler(setupIntent.payment_method);
         }
     });
