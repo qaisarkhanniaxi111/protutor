@@ -22,7 +22,7 @@ class RatingController extends Controller
             $query->orderBy('title', $request->sort_by === 'ascending' ? 'ASC' : 'DESC');
         }
         if (!empty($request->date)) {
-            $query->whereDate('class_start_date', '<=', date('Y-m-d', strtotime($request->date) ));
+            $query->whereDate('class_start_date', '>=', date('Y-m-d', strtotime($request->date) ));
         }
         if (!empty($request->price)) {
             $priceRange = explode('-', $request->price);

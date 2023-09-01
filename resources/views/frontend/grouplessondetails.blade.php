@@ -120,6 +120,7 @@
                     <h3 class="text-danger text-center">No lesson found.</h3>
                 @endif
 
+                @if ($groupLessonPlan ? true : false)
                 <h1 class="h1-responsive">Group Lesson Plan</h1>
                 <div class="row mt-4 mb-5">
                     <div class="col-lg-9 mx-auto table-responsive">
@@ -130,20 +131,22 @@
                                 <th>Time</th>
                                 <th>Date</th>
                             </tr>
+                                
                             @php
                                 $i = 0;
                             @endphp
                             @foreach ($groupLessonPlan as $planItem)
-                            @endforeach
                             <tr>
                                 <td>{{ ++$i }}</td>
                                 <td>{{ $planItem ? $planItem['type'] : '' }}</td>
                                 <td>{{ $planItem ? $planItem['time'] : '' }}</td>
                                 <td>{{ $planItem ? $planItem['date'] : '' }}</td>
                             </tr>
+                            @endforeach
                         </table>
                     </div>
                 </div>
+                            @endif
 
 
                 @if ($paymentStatus == 'paid')
