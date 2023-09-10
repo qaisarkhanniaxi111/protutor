@@ -5,6 +5,13 @@
     <div class="page-title">
       <h1>Home</h1>
     </div>
+    @if (session('error_msg'))
+    <div class="alert alert-danger alert-dismissible"> 
+      {{session('error_msg')}}
+      <button type="button" class="btn-close" data-bs-dismiss="alert"><span aria-hidden="true"></span>
+      </button>
+    </div>
+    @endif
     <div class="home-section">
       <div class="home-left">
         <div class="row">

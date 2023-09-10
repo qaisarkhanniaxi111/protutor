@@ -7,6 +7,7 @@ $getVal =  end($parts);
   <ul>
     <li><a class="<?php echo ($getVal =='dashboard') ? 'active' : '' ?>" href="{{url('/dashboard')}}"><span><i class="fa-brands fa-hive"></i></span> <span>Home</span></a></li>
     <li><a class="<?php echo ($getVal =='profile') ? 'active' : '' ?>" href="{{url('/profile/about')}}"><span><i class="fa-solid fa-user"></i></span> <span>Profile</span></a></li>
+    <li><a class="<?php echo ($getVal =='calendar') ? 'active' : '' ?>" href="{{url('/calendar')}}"><span><i class="fa-solid fa-user"></i></span> <span>Calendar</span></a></li>
       <li><a href="javascript:void(0)"><span><i class="fa-solid fa-user-group"></i></span> <span>Tutors</span></a></li>
 
     <li><a href="javascript:void(0)"><span><i class="fa-solid fa-book-bookmark"></i></span> <span>Library</span></a></li>

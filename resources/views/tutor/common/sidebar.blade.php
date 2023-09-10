@@ -10,7 +10,7 @@ $getVal =  end($parts);
 
     <li><a href="javascript:void(0)"><span><i class="fa-solid fa-book-bookmark"></i></span> <span>Library</span></a></li>
     <?php if(isset($data->role) && $data->role ==3){ ?>
-      <li><a href="javascript:void(0)"><span><i class="fa-solid fa-calendar-days"></i></span> <span>Calendar</span></a></li>
+      <li><a class="<?php echo ($getVal =='calendar') ? 'active' : '' ?>" href="{{ route('calendar.index') }}"><span><i class="fa-solid fa-calendar-days"></i></span> <span>Calendar</span></a></li>
     <?php } ?>
 
     <li><a  class="<?php echo ($getVal =='tutorquiz') ? 'active' : '' ?>" href="/tutorquiz"><span><i class="fa-solid fa-square-poll-horizontal"></i></span> <span>Quiz</span></a></li>

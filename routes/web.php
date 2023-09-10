@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Admin\UserdetailController;
+use App\Http\Controllers\Dashboard\CalendarController;
 use App\Http\Controllers\Dashboard\SpendingController;
 use App\Http\Controllers\Frontend\PaymentController;
 use App\Http\Controllers\FrontEnd\RatingController;
@@ -71,6 +72,8 @@ Route::any('/delete_certificate/{id}', [DashboardController::class, 'deleteCerti
 Route::any('/delete_experience/{id}', [DashboardController::class, 'deleteExperience']);
 Route::any('/delete_identity/{id}', [DashboardController::class, 'deleteIdentity']);
 
+
+
 Route::get('/studentquiz', [DashboardController::class, 'quiz']);
 Route::get('/attemptquiz', [DashboardController::class, 'attemptQuiz']);
 Route::post('/startquiz', [DashboardController::class, 'startquiz']);
@@ -96,7 +99,7 @@ Route::prefix('payments')->as('payments.')->controller(PaymentController::class)
 
 Route::group(['middleware' => ['tutormiddleware']], function() {
 
-Route::any('/tutordashboard', [TutorController::class, 'dashboard']);
+Route::any('/tutordashboard', [TutorController::class, 'dashboard'])->name('tutor.dashboard');
 Route::any('/tutorquiz', [TutorController::class, 'quiz']);
 Route::any('/tutorlogout', [TutorController::class, 'logout']);
 
@@ -132,6 +135,12 @@ Route::get('editGroupLesson/{id}', [GroupLessonController::class,'editGroupLesso
 Route::post('updateGroupLesson/', [GroupLessonController::class,'updateGroupLesson'])->name('update.groupLesson');
 
 
+Route::any('/calendar', [CalendarController::class, 'calendar'])->name('calendar.index');
+Route::any('/getcalendar/{id}', [CalendarController::class, 'getcalendar']);
+Route::any('/get-event-by-id/{byid}', [CalendarController::class, 'getEventByid']);
+Route::any('/editcalendar', [CalendarController::class, 'editcalendar']);
+Route::any('/add-schedule', [CalendarController::class, 'addSchedule']);
+Route::any('/add-availability-schedule', [CalendarController::class, 'add_availability_Schedule']);
 
 
 Route::prefix('tutor')->as('tutor.')->group(function() {
@@ -141,7 +150,10 @@ Route::prefix('tutor')->as('tutor.')->group(function() {
     Route::prefix('earnings')->as('earnings.')->controller(EarningController::class)->group(function() {
         Route::get('/', 'openEarningPage')->name('index');
         Route::get('clearence', 'openClearencePage')->name('clearence');
-        Route::get('withdraw', 'withdrawPayment')->name('withdraw');
+        // Route::get('withdraw', 'withdrawPayment')->name('withdraw');
+        // new routes 
+        Route::get('withdraw', 'openWithdrawPaymentPage')->name('withdraw.index');
+        Route::post('withdraw', 'withdrawPayment')->name('withdraw.store');
     });
 
 
