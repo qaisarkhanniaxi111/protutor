@@ -28,8 +28,9 @@ class EarningController extends Controller
             $allPayments = Payment::where('tutor_id', $tutor->id)->notFetchInActivePayments()->get();
 
         }
+        $tutorAccountId=$tutor->account_id;
 
-        return view('tutor.earnings.index', compact('tutor', 'totalPendingClearenceBalance', 'totalAvailableBalance', 'allPayments'));
+        return view('tutor.earnings.index', compact('tutor', 'totalPendingClearenceBalance', 'totalAvailableBalance', 'allPayments','tutorAccountId'));
     }
 
     public function openClearencePage()

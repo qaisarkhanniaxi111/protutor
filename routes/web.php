@@ -6,7 +6,11 @@ use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Admin\UserdetailController;
 use App\Http\Controllers\Dashboard\CalendarController;
+use App\Http\Controllers\Dashboard\ProfileController;
+use App\Http\Controllers\Dashboard\SettingController;
 use App\Http\Controllers\Dashboard\SpendingController;
+use App\Http\Controllers\Dashboard\SupportController;
+use App\Http\Controllers\Dashboard\TeachingOrdersController;
 use App\Http\Controllers\Frontend\PaymentController;
 use App\Http\Controllers\FrontEnd\RatingController;
 use App\Http\Controllers\Tutor\EarningController;
@@ -83,6 +87,11 @@ Route::post('/filterDataStudentQuiz', [DashboardController::class, 'filterData']
 
 Route::post('/savequizquestionanswergame', [DashboardController::class, 'savequizquestionanswergame']);
 
+Route::any('/student/teachingorders', [TeachingOrdersController::class, 'studentOrders'])->name('student.orders');
+Route::any('/student/support', [SupportController::class, 'studentSupport'])->name('student.support');
+Route::any('/student/settings', [SettingController::class, 'student_settings'])->name('student.settings');
+Route::any('/student/change_password', [SettingController::class, 'student_change_password']);
+
 Route::prefix('student')->as('student.')->group(function() {
     Route::get('spendings', [SpendingController::class, 'openStudentSpendings'])->name('spendings');
 });
@@ -103,11 +112,11 @@ Route::any('/tutordashboard', [TutorController::class, 'dashboard'])->name('tuto
 Route::any('/tutorquiz', [TutorController::class, 'quiz']);
 Route::any('/tutorlogout', [TutorController::class, 'logout']);
 
-Route::any('/profile/{id?}', [DashboardController::class, 'profileUpdate']);
-Route::any('/delete_education/{id}', [DashboardController::class, 'deleteEducation']);
-Route::any('/delete_certificate/{id}', [DashboardController::class, 'deleteCertificate']);
-Route::any('/delete_experience/{id}', [DashboardController::class, 'deleteExperience']);
-Route::any('/delete_identity/{id}', [DashboardController::class, 'deleteIdentity']);
+// Route::any('/profile/{id?}', [DashboardController::class, 'profileUpdate']);
+// Route::any('/delete_education/{id}', [DashboardController::class, 'deleteEducation']);
+// Route::any('/delete_certificate/{id}', [DashboardController::class, 'deleteCertificate']);
+// Route::any('/delete_experience/{id}', [DashboardController::class, 'deleteExperience']);
+// Route::any('/delete_identity/{id}', [DashboardController::class, 'deleteIdentity']);
 
 Route::post('/createQuiz', [TutorController::class, 'createQuiz']);
 Route::post('/createQuizInstructions', [TutorController::class, 'createQuizInstructions']);
@@ -134,7 +143,7 @@ Route::get('showGroupLesson/{id}', [GroupLessonController::class,'showGroupLesso
 Route::get('editGroupLesson/{id}', [GroupLessonController::class,'editGroupLesson'])->name('edit.groupLesson');
 Route::post('updateGroupLesson/', [GroupLessonController::class,'updateGroupLesson'])->name('update.groupLesson');
 
-
+// calendar module 
 Route::any('/calendar', [CalendarController::class, 'calendar'])->name('calendar.index');
 Route::any('/getcalendar/{id}', [CalendarController::class, 'getcalendar']);
 Route::any('/get-event-by-id/{byid}', [CalendarController::class, 'getEventByid']);
@@ -142,6 +151,21 @@ Route::any('/editcalendar', [CalendarController::class, 'editcalendar']);
 Route::any('/add-schedule', [CalendarController::class, 'addSchedule']);
 Route::any('/add-availability-schedule', [CalendarController::class, 'add_availability_Schedule']);
 
+
+Route::any('/tutor/settings', [SettingController::class, 'settings'])->name('tutor.settings');
+Route::any('/tutor/change_password', [SettingController::class, 'change_password']);
+
+Route::any('/tutor/support', [SupportController::class, 'support'])->name('tutor.support');
+
+Route::any('/tutor/teachingorders', [TeachingOrdersController::class, 'teachingOrders'])->name('tutor.orders');
+
+
+// profile module 
+Route::any('/tutor/profile/{id?}', [ProfileController::class, 'profileUpdate']);
+Route::any('/tutor/delete_education/{id}', [ProfileController::class, 'deleteEducation']);
+Route::any('/tutor/delete_certificate/{id}', [ProfileController::class, 'deleteCertificate']);
+Route::any('/tutor/delete_experience/{id}', [ProfileController::class, 'deleteExperience']);
+Route::any('/tutor/delete_identity/{id}', [ProfileController::class, 'deleteIdentity']);
 
 Route::prefix('tutor')->as('tutor.')->group(function() {
 
