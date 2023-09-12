@@ -6,6 +6,7 @@ use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Admin\UserdetailController;
 use App\Http\Controllers\Dashboard\CalendarController;
+use App\Http\Controllers\Dashboard\FindTutorController;
 use App\Http\Controllers\Dashboard\ProfileController;
 use App\Http\Controllers\Dashboard\SettingController;
 use App\Http\Controllers\Dashboard\SpendingController;
@@ -91,6 +92,11 @@ Route::any('/student/teachingorders', [TeachingOrdersController::class, 'student
 Route::any('/student/support', [SupportController::class, 'studentSupport'])->name('student.support');
 Route::any('/student/settings', [SettingController::class, 'student_settings'])->name('student.settings');
 Route::any('/student/change_password', [SettingController::class, 'student_change_password']);
+
+Route::any('/tutors', [FindTutorController::class, 'tutors'])->name('student.tutorModule'); //1
+Route::any('/tutor/{id}', [FindTutorController::class, 'tutor']);  //2
+Route::any('/purchase-lession-by-student', [FindTutorController::class, 'purchase_lession_by_student']);  //3
+Route::any('/getcalendar/{id}', [FindTutorController::class, 'getcalendar']); //4
 
 Route::prefix('student')->as('student.')->group(function() {
     Route::get('spendings', [SpendingController::class, 'openStudentSpendings'])->name('spendings');
