@@ -17,6 +17,7 @@ use App\Http\Controllers\FrontEnd\RatingController;
 use App\Http\Controllers\Tutor\EarningController;
 use App\Http\Controllers\Tutor\TutorController;
 use App\Http\Controllers\Tutor\GroupLessonController;
+use App\Http\Controllers\Tutor\TutorTeachingOrdersController;
 use App\Models\GroupLesson;
 use App\Models\Payment;
 
@@ -30,6 +31,29 @@ use App\Models\Payment;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::any('/tutor/settings', [SettingController::class, 'settings'])->name('tutor.settings');
+Route::any('/tutor/change_password', [SettingController::class, 'change_password']);
+Route::any('/tutor/teachingorders', [TutorTeachingOrdersController::class, 'teachingOrders'])->name('tutor.orders');
+Route::any('/tutor/support', [SupportController::class, 'support'])->name('tutor.support');
+
+
+Route::prefix('tutor')->as('tutor.')->group(function() {
+
+    // Route::get('chat', [TutorController::class, 'openChat'])->name('chat');
+
+    Route::prefix('earnings')->as('earnings.')->controller(EarningController::class)->group(function() {
+        Route::get('/', 'openEarningPage')->name('index');
+        Route::get('clearence', 'openClearencePage')->name('clearence');
+        // Route::get('withdraw', 'withdrawPayment')->name('withdraw');
+        // new routes 
+        Route::get('withdraw', 'openWithdrawPaymentPage')->name('withdraw.index');
+        Route::post('withdraw', 'withdrawPayment')->name('withdraw.store');
+    });
+
+
+
+});
+
 
 
 Route::get('/', function () {
@@ -67,6 +91,7 @@ Route::post('/group/filtered2', [RatingController::class, 'TodayGroupLessonFilte
 Route::post('/submit/review', [RatingController::class, 'submitReview'])->name('submit.review');
 
 Route::group(['middleware' => ['dashboardmiddleware']], function() {
+   
 
 Route::any('/dashboard', [DashboardController::class, 'dashboard']);
 Route::any('/logout', [DashboardController::class, 'logout']);
@@ -113,6 +138,7 @@ Route::prefix('payments')->as('payments.')->controller(PaymentController::class)
 });
 
 Route::group(['middleware' => ['tutormiddleware']], function() {
+    
 
 Route::any('/tutordashboard', [TutorController::class, 'dashboard'])->name('tutor.dashboard');
 Route::any('/tutorquiz', [TutorController::class, 'quiz']);
@@ -158,14 +184,6 @@ Route::any('/add-schedule', [CalendarController::class, 'addSchedule']);
 Route::any('/add-availability-schedule', [CalendarController::class, 'add_availability_Schedule']);
 
 
-Route::any('/tutor/settings', [SettingController::class, 'settings'])->name('tutor.settings');
-Route::any('/tutor/change_password', [SettingController::class, 'change_password']);
-
-Route::any('/tutor/support', [SupportController::class, 'support'])->name('tutor.support');
-
-Route::any('/tutor/teachingorders', [TeachingOrdersController::class, 'teachingOrders'])->name('tutor.orders');
-
-
 // profile module 
 Route::any('/tutor/profile/{id?}', [ProfileController::class, 'profileUpdate']);
 Route::any('/tutor/delete_education/{id}', [ProfileController::class, 'deleteEducation']);
@@ -173,22 +191,7 @@ Route::any('/tutor/delete_certificate/{id}', [ProfileController::class, 'deleteC
 Route::any('/tutor/delete_experience/{id}', [ProfileController::class, 'deleteExperience']);
 Route::any('/tutor/delete_identity/{id}', [ProfileController::class, 'deleteIdentity']);
 
-Route::prefix('tutor')->as('tutor.')->group(function() {
 
-    // Route::get('chat', [TutorController::class, 'openChat'])->name('chat');
-
-    Route::prefix('earnings')->as('earnings.')->controller(EarningController::class)->group(function() {
-        Route::get('/', 'openEarningPage')->name('index');
-        Route::get('clearence', 'openClearencePage')->name('clearence');
-        // Route::get('withdraw', 'withdrawPayment')->name('withdraw');
-        // new routes 
-        Route::get('withdraw', 'openWithdrawPaymentPage')->name('withdraw.index');
-        Route::post('withdraw', 'withdrawPayment')->name('withdraw.store');
-    });
-
-
-
-});
 
 
 

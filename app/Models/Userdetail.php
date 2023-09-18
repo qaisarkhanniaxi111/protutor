@@ -12,7 +12,8 @@ class Userdetail extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    public $uploadsDir = '/storage/attachments/';
+    // public $uploadsDir = '/storage/attachments/';
+    public $uploadsDir = '';
     /**
      * The attributes that are mass assignable.
      *
