@@ -1,6 +1,6 @@
 @include('/frontend/common/header')
  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
- <link rel="stylesheet" href="{{url('/')}}/public/assets/frontpage_assets/css/tutor-signup.css">
+ <link rel="stylesheet" href="{{url('/')}}/assets/frontpage_assets/css/tutor-signup.css">
     <!-- start page title -->
     <div class="page-title">
         <div class="container">
@@ -21,12 +21,12 @@
                     <div class="profile">
                         <div class="profile-information">
                             <div class="profile-img">
-                                <img src="{{url('/')}}/public/assets/frontpage_assets/images/profile-circle.png" alt="profile-picture">
+                                <img src="{{url('/')}}/assets/frontpage_assets/images/profile-circle.png" alt="profile-picture">
                             </div>
                             <div class="profile-identity">
                                 <div class="identity">
                                     <h3 class="name">Myels S.</h3>
-                                    <img class="nationality" src="{{url('/')}}/public/assets/frontpage_assets/images/south.png" alt="language">
+                                    <img class="nationality" src="{{url('/')}}/assets/frontpage_assets/images/south.png" alt="language">
                                     <span class="verify"><i class="fa-solid fa-user-check"></i></span>
                                     <span class="status">
                                         <span class="active-badge">Online</span>
@@ -518,13 +518,13 @@
                         <h2>Manage yourself from your mobile device.</h2>
                         <p class="mb-3 text-start">There are many variations of passages of Lorem Ipsum avail the majority have suffered alteration in some form, by injected or randomised words which don't look </p>
                         <div class="button-group">
-                            <a class="" href=""><img src="{{url('/')}}/public/assets/frontpage_assets/images/app-store.png" alt=""></a>
-                            <a class="ms-md-3 ms-sm-0" href=""><img src="{{url('/')}}/public/assets/frontpage_assets/images/goole.png" alt=""></a>
+                            <a class="" href=""><img src="{{url('/')}}/assets/frontpage_assets/images/app-store.png" alt=""></a>
+                            <a class="ms-md-3 ms-sm-0" href=""><img src="{{url('/')}}/assets/frontpage_assets/images/goole.png" alt=""></a>
                         </div>
                     </div>
                 </div>
                     <div class="col-lg-5">
-                        <div class="apps-banner-right"><img src="{{url('/')}}/public/assets/frontpage_assets/images/phone.png" alt=""></div>
+                        <div class="apps-banner-right"><img src="{{url('/')}}/assets/frontpage_assets/images/phone.png" alt=""></div>
                     </div>
                 </div>
             </div>

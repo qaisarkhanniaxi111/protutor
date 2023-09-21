@@ -160,7 +160,7 @@
                         }
                         ?>
              </div>
-             <div class="tutor-list-img"><img src="{{ url('/') }}/public/images/{{$userdata_val->profile_img}}" alt=""></div>
+             <div class="tutor-list-img"><img src="{{ url('/') }}/images/{{$userdata_val->profile_img}}" alt=""></div>
              <div class="tutor-info">
                 <h5>{{$userdata_val->first_name.' '.$userdata_val->last_name}}</h5>
 
@@ -194,7 +194,7 @@
         foreach ($countryAll as $key => $value) { 
           if($userdata_val->country==$value->id){
              ?>       
-             <span><img src="{{url('/')}}/public/assets/frontpage_assets/flags/{{Str::lower($value->iso)}}.png" alt=""></span>
+             <span><img src="{{url('/')}}/assets/frontpage_assets/flags/{{Str::lower($value->iso)}}.png" alt=""></span>
              <span>
              </span>
              <?php 
@@ -251,13 +251,13 @@ There is no records.
                   <h2>Manage yourself from your mobile device.</h2>
                   <p class="text-start mb-3">There are many variations of passages of Lorem Ipsum avail the majority have suffered alteration in some form, by injected or randomised words which don't look </p>
                   <div class="button-group">
-                     <a class="" href=""><img src="{{url('/')}}/public/assets/frontpage_assets/images/app-store.png" alt=""></a>
-                     <a class="ms-md-3 ms-sm-0" href=""><img src="{{url('/')}}/public/assets/frontpage_assets/images/goole.png" alt=""></a>
+                     <a class="" href=""><img src="{{url('assets/frontpage_assets/images/app-store.png')}}" alt=""></a>
+                     <a class="ms-md-3 ms-sm-0" href=""><img src="{{url('assets/frontpage_assets/images/goole.png')}}" alt=""></a>
                  </div>
              </div>
          </div>
          <div class="col-lg-5" data-aos="fade-up">
-          <div class="apps-banner-right"><img src="{{url('/')}}/public/assets/frontpage_assets/images/phone.png" alt=""></div>
+          <div class="apps-banner-right"><img src="{{url('/')}}/assets/frontpage_assets/images/phone.png" alt=""></div>
       </div>
   </div>
 </div>

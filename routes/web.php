@@ -10,6 +10,7 @@ use App\Http\Controllers\Dashboard\FindTutorController;
 use App\Http\Controllers\Dashboard\ProfileController;
 use App\Http\Controllers\Dashboard\SettingController;
 use App\Http\Controllers\Dashboard\SpendingController;
+use App\Http\Controllers\Dashboard\StudentGroupLessonController;
 use App\Http\Controllers\Dashboard\SupportController;
 use App\Http\Controllers\Dashboard\TeachingOrdersController;
 use App\Http\Controllers\Frontend\PaymentController;
@@ -93,6 +94,7 @@ Route::post('/submit/review', [RatingController::class, 'submitReview'])->name('
 Route::group(['middleware' => ['dashboardmiddleware']], function() {
    
 
+Route::get('/student/groupLessons', [StudentGroupLessonController::class, 'groupLesson'])->name('student.groupLessons');
 Route::any('/dashboard', [DashboardController::class, 'dashboard']);
 Route::any('/logout', [DashboardController::class, 'logout']);
 

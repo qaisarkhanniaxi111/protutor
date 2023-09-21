@@ -12,6 +12,7 @@ $getVal =  end($parts);
 
     <li><a href="javascript:void(0)"><span><i class="fa-solid fa-book-bookmark"></i></span> <span>Library</span></a></li>
 
+    <li><a class="<?php echo ($getVal =='groupLessons') ? 'active' : '' ?>" href="{{ route('student.groupLessons') }}"><span><i class="fa-solid fa-square-poll-horizontal"></i></span> <span>Group Lessons</span></a></li>
     <li><a class="<?php echo ($getVal =='studentquiz') ? 'active' : '' ?>" href="/studentquiz"><span><i class="fa-solid fa-square-poll-horizontal"></i></span> <span>Quiz</span></a></li>
     <li><a class="<?php echo ($getVal =='teachingorders') ? 'active' : '' ?>" href="{{ route('student.orders') }}"><span><i class="fa-solid fa-chalkboard-user"></i></span> <span>Teaching Orders</span></a></li>
     <li><a class="<?php echo ($getVal =='chat') ? 'active' : '' ?>" href="{{ route('chat') }}"><span><i class="fa-solid fa-message"></i></span> <span>Chat</span></a></li>

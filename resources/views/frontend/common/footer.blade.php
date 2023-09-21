@@ -58,8 +58,8 @@
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script src="https://unpkg.com/tilt.js@1.2.1/dest/tilt.jquery.min.js"></script>
 <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
-<script src="assets/frontpage_assets/js/custom.js"></script>
-<script src="assets/frontpage_assets/js/app.js"></script>
+<script src="{{ url('assets/frontpage_assets/js/custom.js') }}"></script>
+<script src="{{ url('assets/frontpage_assets/js/app.js') }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 
 

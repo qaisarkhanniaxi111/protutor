@@ -4,13 +4,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, shrink-to-fit=no">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="shortcut icon" href="assets/frontpage_assets/images/favicon.png">
+    <link rel="shortcut icon" href="{{ url('assets/frontpage_assets/images/favicon.png') }}">
     <title>@if(!empty($PageTitle )) {{$PageTitle}} @else ProTutor | Home  @endif</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/frontpage_assets/css/custom.css">
-    <link rel="stylesheet" href="assets/frontpage_assets/css/style.css">
+    <link rel="stylesheet" href="{{ url('assets/frontpage_assets/css/custom.css') }}">
+    <link rel="stylesheet" href="{{ url('assets/frontpage_assets/css/style.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
     <link href="https://raw.githack.com/ttskch/select2-bootstrap4-theme/master/dist/select2-bootstrap4.css" rel="stylesheet">
@@ -22,7 +22,7 @@
   <header class="cont-space site-header">
     <div class="header-in">
       <div class="logo">
-        <a href="{{url('/')}}"><img src="assets/frontpage_assets/images/logo-dark.svg" alt=""></a>
+        <a href="{{url('/')}}"><img src="{{ url('assets/frontpage_assets/images/logo-dark.svg') }}" alt=""></a>
         <div class="mobClick">
           <span></span>
           <span></span>
