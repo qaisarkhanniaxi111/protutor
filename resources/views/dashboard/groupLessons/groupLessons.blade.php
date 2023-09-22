@@ -95,7 +95,7 @@ font-size: 16px;">Your All Enrolled Lessons</p>
                        
                   
                       <li>
-                          <a href="">
+                          <a href="{{ route('student.groupLessons.details',$Lesson['id']) }}">
                               <div class="order-md-1 order-2">
                                   <h3>{{ $Lesson ? $Lesson['title'] : '' }}</h3>
                                   <div class="row  mt-3">

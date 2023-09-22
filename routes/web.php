@@ -95,6 +95,7 @@ Route::group(['middleware' => ['dashboardmiddleware']], function() {
    
 
 Route::get('/student/groupLessons', [StudentGroupLessonController::class, 'groupLesson'])->name('student.groupLessons');
+Route::get('/student/groupLessons/details/{groupLesson}', [StudentGroupLessonController::class, 'groupLessonDetails'])->name('student.groupLessons.details');
 Route::any('/dashboard', [DashboardController::class, 'dashboard']);
 Route::any('/logout', [DashboardController::class, 'logout']);
 
