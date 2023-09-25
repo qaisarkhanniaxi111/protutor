@@ -1,0 +1,254 @@
+@media only screen and (min-width: 1200px) and (max-width:1600px) {
+  .container {
+    max-width: 92% !important;
+    margin: 0px auto;
+  }
+}
+
+@media only screen and (min-width: 1600px) {
+  .main-btn-blank {
+    padding: 16px 35px;
+  }
+
+  .main-btn {
+    padding: 16px 35px;
+  }
+}
+
+@media only screen and (max-width: 1300px) {
+  .main-heading {
+    color: #FFF;
+    font-family: Poppins;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 110%;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .main-btn-blank {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+
+  .main-btn {
+    padding: 10px 25px;
+    font-size: 14px;
+  }
+
+  .main-btn-blank2 {
+    font-size: 14px;
+  }
+
+  .top-navbar li {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  .main-heading br {
+    display: none;
+  }
+
+  .hero-section {
+    /* min-height: 100vh; */
+    padding-top: 70px;
+  }
+
+  .statistics {
+    padding: 30px;
+  }
+
+  .heading {
+    font-size: 30px;
+  }
+
+  .comfort-card {
+    padding: 15px;
+  }
+
+  .comfort-card h3 {
+    font-size: 22px;
+  }
+
+  .comfort-card p {
+    font-size: 14px;
+  }
+
+  .heading br {
+    display: none;
+  }
+
+  .navbar-collapse-light {
+    background-color: #FFFAF6 !important;
+  }
+  .top-navbar-light li a{
+    color: white !important;
+  }
+  .header-select-dark {
+    color: white !important;
+  }
+  .header-select-dark {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="18" height="10" viewBox="0 0 18 10" fill="none"><path d="M17 1L9 9L1 1" stroke="white" stroke-opacity="0.8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>') !important;
+  }
+  
+  /* .carousel-control-prev  {
+        width: 43vw;
+      } */
+    
+      .header-form {
+        padding: 20px 15px;
+        /* color: transparent; */
+      }
+}
+
+@media only screen and (max-width:991px) {
+  .work-card {
+    flex-direction: column;
+    padding: 0px 0px;
+  }
+
+  /* .carousel-control-prev{
+    width: 90%;
+  } */
+  .work-card img {
+    width: 100% !important;
+    height: auto !important;
+    margin-bottom: 20px !important;
+  }
+
+  .work-text {
+    padding: 20px;
+  }
+  .header-form {
+    padding: 20px 20px;
+  }
+}
+
+@media only screen and (max-width:768px) {
+  .testimonial-text {
+    font-size: 14px;
+    line-height: normal;
+  }
+
+  .carousel-control-next span,
+  .carousel-control-prev span {
+    height: 32px;
+    width: 32px;
+  }
+
+  .carousel-item h4 {
+    font-size: 14px;
+  }
+
+  .carousel-control-prev {
+    padding-right: 50px !important;
+  }
+
+  .work-card img {
+    width: 100%;
+  }
+
+  .work-text {
+    padding: 20px;
+  }
+
+  .header-form {
+    padding: 20px 15px;
+  }
+}
+
+@media only screen and (max-width:600px) {
+  .card-body {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+
+  .faq-accordian .accordion-button {
+    padding: 20px 0px !important;
+
+    font-size: 15px;
+
+  }
+
+  .testimonials,
+  .tutors,
+  .work,
+  .comfort-zone,
+  .language-training,
+  .subjects {
+    padding: 70px 0px;
+  }
+
+  .work-text {
+    padding: 15px;
+  }
+
+  .work-card h3 {
+    font-size: 24px;
+    text-align: center;
+  }
+
+  .work-card p {
+    font-size: 14px;
+    text-align: justify;
+  }
+
+  .main-btn,
+  .main-btn2,
+  .main-btn-blank,
+  .main-btn-blank2 {
+    width: 100%;
+  }
+
+  .statistics-card img {
+    height: 45px;
+    width: 45px;
+  }
+
+  .statistics-card h3 {
+    font-size: 18px;
+    line-height: 24px;
+    /* 112.5% */
+  }
+
+  .subject-card {
+    padding: 15px !important;
+  }
+
+  .subject-card2 h3,
+  .subject-card h3 {
+    font-size: 18px;
+    line-height: 20px;
+  }
+
+  .comfort-card h3 {
+    font-size: 20px;
+  }
+
+  .main-heading {
+    font-size: 25px;
+  }
+
+  .main-btn2 {
+    min-width: 100px;
+  }
+
+  .main-btn-blank2 {
+    min-width: 100px;
+  }
+
+  .main-text2,
+  .main-text {
+    font-size: 14px;
+    line-height: normal;
+  }
+
+  .statistics {
+    padding: 15px;
+  }
+
+  .heading {
+    font-size: 24px;
+  }
+}
