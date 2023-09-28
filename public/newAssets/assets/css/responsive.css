@@ -123,9 +123,28 @@
   .header-form {
     padding: 20px 20px;
   }
+  .profile-data .profile-content h2{
+    font-size: 14px;
+    padding:0px 0px;
+    margin-bottom: 10px;
+  }
+  .profile-data{
+    align-items: flex-start;
+  }
+  .border-right{
+    border-right: none !important;
+  }
+  .review-tag {
+    width: 100% !important;
+   
+  }
+  .review-tag-div{
+    padding: 10px 0px !important;
+  }
 }
 
 @media only screen and (max-width:768px) {
+
   .testimonial-text {
     font-size: 14px;
     line-height: normal;
@@ -159,6 +178,12 @@
 }
 
 @media only screen and (max-width:600px) {
+  .hero-section-profile{
+    padding-top: 80px;
+  }
+  .profile-data{
+    flex-direction: column;
+  }
   .card-body {
     padding-left: 0px;
     padding-right: 0px;
@@ -170,7 +195,14 @@
     font-size: 15px;
 
   }
-
+  .profile-data .profile-image{
+    width:100% !important;
+  height: auto;
+  }
+  .profile-data .profile-image img{
+    width:100% !important;
+  height: auto;
+  }
   .testimonials,
   .tutors,
   .work,
@@ -250,5 +282,54 @@
 
   .heading {
     font-size: 24px;
+  }
+  .profile-content{
+    margin-left: 0px;
+  }
+  .tab-div{
+    overflow-x: scroll;
+  }
+  .tab{
+    min-width: 420px;
+    padding-bottom: 15px;
+   
+  }
+  .tabcontent p{
+    font-size: 14px;
+  }
+  .tab button{
+    font-size: 14px;
+    margin: 0 0px;
+  }
+  .side-card p{
+    font-size: 13px;
+  }
+  .main-btn-sm{
+    padding: 8px 30px !important;
+    min-width: 190px;
+  }
+  .main-btn-blank-sm {
+    display: flex;
+    padding: 9px 10px;
+  }
+  .tabcontent{
+    padding: 15px;
+  }
+  .tab-table-responsive{
+    overflow-x: scroll;
+  }
+  .tab-table{
+    min-width: 500px;
+  }
+  .tab-select{
+    width: 100%;
+  }
+  .resume-tab{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .resumetablinks {
+    flex-grow: 1;
   }
 }

@@ -1,5 +1,5 @@
-@include('/dashboard/common/header')
-@include('/dashboard/common/sidebar')
+@include('dashboard/common/header')
+@include('dashboard/common/sidebar')
 <!-- Container -->
 <style type="text/css">
   li.nav-item a {
@@ -131,7 +131,7 @@ $getVal =  end($parts);
               <div class="col-lg-6">
                 <div class="profile-photo">
                   <div class="profile-photo-top">
-                    <div class="profile-photo-left"><img src="{{url('/')}}/public/images/{{$listUser[0]->profile_img}}" alt=""></div>
+                    <div class="profile-photo-left"><img src="{{url('/')}}/images/{{$listUser[0]->profile_img}}" alt=""></div>
                     <div class="profile-photo-right">
                       <div class="line-1"></div>
                       <div class="line"></div>

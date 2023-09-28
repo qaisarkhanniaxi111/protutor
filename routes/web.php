@@ -91,6 +91,19 @@ Route::post('/group/filtered', [RatingController::class, 'groupLessonFilter'])->
 Route::post('/group/filtered2', [RatingController::class, 'TodayGroupLessonFilter'])->name('groupLesson.filter2');
 Route::post('/submit/review', [RatingController::class, 'submitReview'])->name('submit.review');
 
+Route::any('/profile/{id?}', [DashboardController::class, 'profileUpdate']);
+Route::any('/delete_education/{id}', [DashboardController::class, 'deleteEducation']);
+Route::any('/delete_certificate/{id}', [DashboardController::class, 'deleteCertificate']);
+Route::any('/delete_experience/{id}', [DashboardController::class, 'deleteExperience']);
+Route::any('/delete_identity/{id}', [DashboardController::class, 'deleteIdentity']);
+
+// profile module 
+Route::any('/tutor/profile/{id?}', [ProfileController::class, 'profileUpdate']);
+Route::any('/tutor/delete_education/{id}', [ProfileController::class, 'deleteEducation']);
+Route::any('/tutor/delete_certificate/{id}', [ProfileController::class, 'deleteCertificate']);
+Route::any('/tutor/delete_experience/{id}', [ProfileController::class, 'deleteExperience']);
+Route::any('/tutor/delete_identity/{id}', [ProfileController::class, 'deleteIdentity']);
+
 Route::group(['middleware' => ['dashboardmiddleware']], function() {
    
 
@@ -99,11 +112,7 @@ Route::get('/student/groupLessons/details/{groupLesson}', [StudentGroupLessonCon
 Route::any('/dashboard', [DashboardController::class, 'dashboard']);
 Route::any('/logout', [DashboardController::class, 'logout']);
 
-Route::any('/profile/{id?}', [DashboardController::class, 'profileUpdate']);
-Route::any('/delete_education/{id}', [DashboardController::class, 'deleteEducation']);
-Route::any('/delete_certificate/{id}', [DashboardController::class, 'deleteCertificate']);
-Route::any('/delete_experience/{id}', [DashboardController::class, 'deleteExperience']);
-Route::any('/delete_identity/{id}', [DashboardController::class, 'deleteIdentity']);
+
 
 
 
@@ -187,12 +196,7 @@ Route::any('/add-schedule', [CalendarController::class, 'addSchedule']);
 Route::any('/add-availability-schedule', [CalendarController::class, 'add_availability_Schedule']);
 
 
-// profile module 
-Route::any('/tutor/profile/{id?}', [ProfileController::class, 'profileUpdate']);
-Route::any('/tutor/delete_education/{id}', [ProfileController::class, 'deleteEducation']);
-Route::any('/tutor/delete_certificate/{id}', [ProfileController::class, 'deleteCertificate']);
-Route::any('/tutor/delete_experience/{id}', [ProfileController::class, 'deleteExperience']);
-Route::any('/tutor/delete_identity/{id}', [ProfileController::class, 'deleteIdentity']);
+
 
 
 

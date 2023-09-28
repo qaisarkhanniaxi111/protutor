@@ -174,7 +174,7 @@ $getVal =  end($parts);
 							<div class="col-lg-6">
 								<div class="profile-photo">
 									<div class="profile-photo-top">
-										<div class="profile-photo-left"><img src="{{url('/')}}/public/images/{{$listUser[0]->profile_img}}" alt=""></div>
+										<div class="profile-photo-left"><img src="{{url('/')}}/images/{{$listUser[0]->profile_img}}" alt=""></div>
 										<div class="profile-photo-right">
 											<div class="line-1"></div>
 											<div class="line"></div>
@@ -259,7 +259,7 @@ $getVal =  end($parts);
 									<h4>Description for students</h4>
 									<div class="pro-desc-in">
 										<div class="pro-desc-left">
-											<div class="profile-photo-left"><img src="{{url('/')}}/public/images/{{$listUser[0]->profile_img}}" alt=""></div>
+											<div class="profile-photo-left"><img src="{{url('/')}}/images/{{$listUser[0]->profile_img}}" alt=""></div>
 										</div>
 										<div class="pro-desc-right">
 											<div class="inp-box mt-0">
@@ -308,7 +308,7 @@ $getVal =  end($parts);
 										<div class="vid-prev">
 											<div class="vid-icon">
 												<video width="400" controls>
-													<source src="{{url('/')}}/public/videos/{{$listUser[0]->video_link}}" id="video_here">
+													<source src="{{url('/')}}/videos/{{$listUser[0]->video_link}}" id="video_here">
 														Your browser does not support HTML5 video.
 													</video>
 												</div>
@@ -418,7 +418,7 @@ $getVal =  end($parts);
 											if(isset($getEgducation) && $getEgducation !=""){
 												foreach ($getEgducation as $key => $value) { ?>
 													<tr>
-														<td><img src="{{url('/')}}/public/educations/{{$value->degree_verification_pic}}" alt="" style="width: 50px;border-radius: 50%;height: 50px;"> </td>
+														<td><img src="{{url('/')}}/educations/{{$value->degree_verification_pic}}" alt="" style="width: 50px;border-radius: 50%;height: 50px;"> </td>
 														<td><?php echo $value->university_name ?></td>
 														<td><?php echo $value->degree_name ?></td>
 														<td><?php echo $value->degree_type ?></td>

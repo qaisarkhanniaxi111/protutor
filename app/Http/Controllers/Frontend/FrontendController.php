@@ -21,6 +21,7 @@ use App\Models\Hourly_rate;
 use App\Models\Homepage;
 use App\Models\Notifications;
 use App\Models\Become_a_tutor;
+use App\Models\Certificate;
 use App\Models\GroupLesson;
 use App\Models\Payment;
 use Carbon\Carbon;
@@ -474,7 +475,38 @@ class FrontendController extends Controller
     public function tutor_detail_single_page(Request $request,$tutorid)
     {
         $PageTitle = 'Tutor Detail | ProTutor';
-        return view("frontend/tutor_detail_single",compact('PageTitle'));
+        $teacher_data=  Userdetail::where('student_no', $tutorid)->get();
+    
+        $subjects = Subject::all();
+        $languages = Spoken_language::all();
+        $country = Countries::all();
+        $certificateAll = Certificate::all();
+        $hour_rate = Hourly_rate::all();
+        $content = Become_a_tutor::where('id',1)->get(); 
+    
+        $degree = DB::select('SELECT educations.degree_name, educations.specialization, educations.university_name, educations.year_of_study FROM `educations` join userdetails on educations.userdetail_id = userdetails.student_no
+            where userdetails.student_no="'.$tutorid.'";');
+    
+        $certificateAll = DB::select('SELECT certifications.year_of_study, certifications.certificate_name, certifications.issued_by FROM `certifications` join userdetails on certifications.userdetail_id = userdetails.student_no
+            where userdetails.student_no="'.$tutorid.'";');
+    
+        $experience = DB::select('SELECT experiences.period_of_employment, experiences.company_name, experiences.position FROM `experiences` join userdetails on experiences.userdetail_id = userdetails.student_no
+            where userdetails.student_no="'.$tutorid.'";');
+    
+        if(!empty($experience)){
+            $years_of_Exps = [];
+            foreach ($experience as $key => $value) {
+                $year = explode('-', $value->period_of_employment);
+                $years_of_Exps[] = $year[1]- $year[0];
+            }
+    
+            $years_of_Exp = array_sum($years_of_Exps);
+    
+            return view("frontend/tutor_detail_single",compact('PageTitle','teacher_data','subjects','languages','degree','years_of_Exp','country','experience','certificateAll','content','hour_rate'));
+        }else{
+            $years_of_Exp = 0;
+            return view("frontend/tutor_detail_single",compact('PageTitle','teacher_data','subjects','languages','degree','years_of_Exp','country','experience','certificateAll','content','hour_rate'));
+        }
 
     }
 
