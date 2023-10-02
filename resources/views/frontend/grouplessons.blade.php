@@ -1,3 +1,6 @@
+@php
+    $lightNavbar = true;
+@endphp
 @include('/frontend/common/header')
 
 <link rel="stylesheet" href="assets/frontpage_assets/css/lessons.css">

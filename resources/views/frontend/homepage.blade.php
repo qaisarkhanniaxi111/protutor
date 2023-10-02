@@ -21,7 +21,7 @@
                   <div
                       class="d-flex align-items-center justify-content-lg-start justify-content-center flex-md-row flex-column mt-3 pt-3 mb-3">
                       <button class="main-btn main-btn2 ">Refer a friend</button>
-                      <a href="{{ url('/student-signup') }}"><button class="main-btn-blank2 ms-md-3 mt-md-0 mt-3">Join as a Student</button></a>
+                      <a href="{{ url('/student-signup') }}" class="text-decoration-none"><button class="main-btn-blank2 ms-md-3 mt-md-0 mt-3">Join as a Student</button></a>
                   </div>
 
 
@@ -541,8 +541,8 @@
                   </p>
                   <div
                       class="d-flex align-items-center justify-content-lg-start justify-content-center flex-md-row flex-column mt-3 pt-3 mb-3">
-                      <button class="main-btn main-btn2 ">Join as a Tutor</button>
-                      <button class="main-btn-blank ms-md-3 mt-md-0 mt-3">Join as a Student</button>
+                      <a href="{{ url('/become-a-tutor') }}" class="text-decoration-none"><button class="main-btn main-btn2 ">Join as a Tutor</button></a>
+                      <a href="{{ url('/student-signup') }}" class="text-decoration-none"><button class="main-btn-blank ms-md-3 mt-md-0 mt-3">Join as a Student</button></a>
                   </div>
               </div>
               <div class="col-lg-6 ms-auto d-flex justify-content-end d-lg-block d-none">
@@ -624,7 +624,7 @@
                               professionals </p>
                       </div>
                       <div>
-                          <button class="main-btn">Find Tutor</button>
+                        <a href="{{ url('/find-a-tutor') }}" class="text-decoration-none"><button class="main-btn">Find Tutor</button></a>
                       </div>
                   </div>
               </div>
@@ -780,8 +780,8 @@
 
                   <div
                       class="d-flex align-items-center justify-content-lg-start justify-content-center flex-md-row flex-column mt-3 pt-3 mb-3">
-                     <a href="{{ url('/become-a-tutor') }}"></a> <button class="main-btn main-btn2 ">Join as a Tutor</button>
-                      <a href="{{ url('/student-signup') }}"><button class="main-btn-blank ms-md-3 mt-md-0 mt-3">Join as a Student</button></a>
+                     <a href="{{ url('/become-a-tutor') }}" class="text-decoration-none"> <button class="main-btn main-btn2 ">Join as a Tutor</button></a>
+                      <a href="{{ url('/student-signup') }}" class="text-decoration-none"><button class="main-btn-blank ms-md-3 mt-md-0 mt-3">Join as a Student</button></a>
                   </div>
               </div>
 

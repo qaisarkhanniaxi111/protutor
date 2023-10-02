@@ -1,3 +1,6 @@
+@php
+    $lightNavbar = true;
+@endphp
 @include('/frontend/common/header')
 
 <!-- start page title -->

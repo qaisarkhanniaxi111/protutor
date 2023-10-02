@@ -2,6 +2,11 @@
     $lightNavbar = true;
 @endphp
 @include('/frontend/common/header')
+<style>
+    p{
+        text-align: unset;
+    }
+</style>
 <main>
     <section class="hero-section-profile">
         <div class="hero-section-profile-bg"></div>
@@ -376,15 +381,15 @@
                                             <div class="review-tag ">
                                                 <h2>5</h2>
                                                 <div class="d-flex align-items-center justify-content-center my-3">
-                                                    <img src="{{ url('newAssets/') }}assets/images/star.svg"
+                                                    <img src="{{ url('/') }}/newAssets/assets/images/star.svg"
                                                         alt="" class="me-1">
-                                                    <img src="{{ url('newAssets/') }}assets/images/star.svg"
+                                                    <img src="{{ url('/') }}/newAssets/assets/images/star.svg"
                                                         alt="" class="me-1">
-                                                    <img src="{{ url('newAssets/') }}assets/images/star.svg"
+                                                    <img src="{{ url('/') }}/newAssets/assets/images/star.svg"
                                                         alt="" class="me-1">
-                                                    <img src="{{ url('newAssets/') }}assets/images/star.svg"
+                                                    <img src="{{ url('/') }}/newAssets/assets/images/star.svg"
                                                         alt="" class="me-1">
-                                                    <img src="{{ url('newAssets/') }}assets/images/star.svg"
+                                                    <img src="{{ url('/') }}/newAssets/assets/images/star.svg"
                                                         alt="" class="me-1">
                                                 </div>
                                                 <p class="mb-0 pb-0 text-center">10 Review</p>

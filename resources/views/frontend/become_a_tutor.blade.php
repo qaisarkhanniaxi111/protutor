@@ -199,7 +199,7 @@
 									</h2>
 									<p class="testimonial-text  text-lg-start text-center">
 											Eliza G. teaches English on ProTutor so<br class="d-md-block d-none"> she can spend more time with her son</p>
-											<a href="{{ url('/become-a-tutor') }}"><button class="main-btn main-btn2 mt-4 mx-lg-0 mx-auto">Join as a Tutor</button></a> 
+											<a href="{{ url('/become-a-tutor') }}" class="text-decoration-none"><button class="main-btn main-btn2 mt-4 mx-lg-0 mx-auto">Join as a Tutor</button></a> 
 											
 							</div>
 							<div class="col-lg-6 d-flex justify-content-center order-lg-2 order-1 mb-lg-0 mb-4">
@@ -229,8 +229,8 @@
 
 									<div
 											class="d-flex align-items-center justify-content-lg-start justify-content-center flex-md-row flex-column mt-3 pt-3 mb-3">
-											<a href="{{ url('/become-a-tutor') }}"> <button class="main-btn main-btn2 ">Join as a Tutor</button></a>
-                      <a href="{{ url('/student-signup') }}"><button class="main-btn-blank ms-md-3 mt-md-0 mt-3">Join as a Student</button></a>
+											<a href="{{ url('/become-a-tutor') }}" class="text-decoration-none"> <button class="main-btn main-btn2 ">Join as a Tutor</button></a>
+                      <a href="{{ url('/student-signup') }}" class="text-decoration-none"><button class="main-btn-blank ms-md-3 mt-md-0 mt-3">Join as a Student</button></a>
 									</div>
 							</div>
 
