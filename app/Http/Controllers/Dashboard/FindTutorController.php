@@ -129,6 +129,7 @@ class FindTutorController extends Controller
 
         //$getData = Calendar::where('student_no',$id)->where('status','schedule')->get();
         $getData = Calendar::where('student_no', $id)->get();
+        $data=[];
         foreach ($getData as $key => $value) {
             $data[] = array(
                 'id' => $value["id"],
@@ -143,6 +144,60 @@ class FindTutorController extends Controller
         }
         return json_encode($data);
     }
+    // public function fetchCalendarAvailability(Request $request, $id)
+    // {
+
+    //     //$getData = Calendar::where('student_no',$id)->where('status','schedule')->get();
+    //     $getData = Calendar::where('student_no', $id)->get();
+    //     $data=[];
+    //     foreach ($getData as $key => $value) {
+    //         $data[] = array(
+    //             'id' => $value["id"],
+    //             'title' => $value["note"],
+    //             'start' => $value["start_date"],
+    //             'end' => $value["end_date"],
+    //             'subject' => $value["subject"],
+    //             'grade' => $value["grade"],
+    //             'status' => $value["status"]
+
+    //         );
+    //     }
+    //     return json_encode($data);
+    // }
+  
+    
+
+    public function fetchCalendarAvailability(Request $request, $id)
+{
+    // Assuming you have availability data in the "Calendar" model
+    $availabilityData = Calendar::where('student_no', $id)->get();
+
+    $data = [];
+
+    foreach ($availabilityData as $slot) {
+        $startDateTime = Carbon::parse($slot->start_date);
+        $endDateTime = Carbon::parse($slot->end_date);
+
+        // Divide the availability slot into 1-hour time slots
+        while ($startDateTime->lt($endDateTime)) {
+            $nextHour = $startDateTime->clone()->addHour();
+            if ($nextHour->gt($endDateTime)) {
+                $nextHour = $endDateTime;
+            }
+
+            $data[] = [
+                'id' => $slot->id,
+                'start' => $startDateTime->toIso8601String(),
+                'end' => $nextHour->toIso8601String(),
+            ];
+
+            $startDateTime = $nextHour;
+        }
+    }
+
+    return response()->json($data);
+}
+
 
 
     public function purchase_lession_by_student(Request $request)

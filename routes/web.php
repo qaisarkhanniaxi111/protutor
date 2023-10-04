@@ -37,6 +37,8 @@ Route::any('/tutor/change_password', [SettingController::class, 'change_password
 Route::any('/tutor/teachingorders', [TutorTeachingOrdersController::class, 'teachingOrders'])->name('tutor.orders');
 Route::any('/tutor/support', [SupportController::class, 'support'])->name('tutor.support');
 
+Route::any('/fetchCalendarAvailability/{id}', [FindTutorController::class, 'fetchCalendarAvailability']);
+
 
 Route::prefix('tutor')->as('tutor.')->group(function() {
 
@@ -105,7 +107,7 @@ Route::any('/tutor/delete_experience/{id}', [ProfileController::class, 'deleteEx
 Route::any('/tutor/delete_identity/{id}', [ProfileController::class, 'deleteIdentity']);
 
 Route::group(['middleware' => ['dashboardmiddleware']], function() {
-   
+    Route::post('privateLessons/charge/', [PaymentController::class,'PrivateLessonCharge'])->name('private.charge');   
 
 Route::get('/student/groupLessons', [StudentGroupLessonController::class, 'groupLesson'])->name('student.groupLessons');
 Route::get('/student/groupLessons/details/{groupLesson}', [StudentGroupLessonController::class, 'groupLessonDetails'])->name('student.groupLessons.details');

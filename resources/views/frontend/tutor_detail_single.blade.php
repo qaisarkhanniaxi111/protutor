@@ -2,8 +2,9 @@
     $lightNavbar = true;
 @endphp
 @include('/frontend/common/header')
+<link rel="stylesheet" href="{{ url('/') }}/fullcalendar/fullcalendar.min.css" />
 <style>
-    p{
+    p {
         text-align: unset;
     }
 </style>
@@ -173,7 +174,20 @@
                                 border: 1px solid rgba(17, 159, 46, 0.30);
                                 background: #FAFFFB;
                                 box-shadow: 4px 10px 40px 0px rgba(163, 191, 185, 0.20);">
-                                <h1 class="heading">Schedule</h1>
+                                <!-- tutor schedule -->
+                                <div class="tutor-sec mt-5" id="schedule">
+                                    <h4 class="t-title fw-bold mb-2">Schedule</h4>
+                                    <div class="border"></div>
+
+                                    <div class="tutor-schedule">
+
+                                        <div id="schedule-calendar"></div>
+
+                                    </div>
+                                </div>
+
+
+                                {{-- <h1 class="heading">Schedule</h1>
                                 <p>Choose the time for your first lesson. The timings are displayed in your local
                                     timezone.</p>
                                 <div class="d-flex justify-content-between align-items-center flex-wrap">
@@ -369,7 +383,7 @@
 
                                         </tbody>
                                     </table>
-                                </div>
+                                </div> --}}
 
                             </div>
 
@@ -928,10 +942,25 @@
     </section>
 
 </main>
+
+
+<form id="submitPrivateLesson" action="{{ route('private.charge') }}" method="post">
+    @csrf
+    <input type="number" name="tutor_id" value="{{ $teacher_data[0]->student_no }}" hidden>
+    <input type="number" name="student_id" value="{{ auth()->user()->id }}" hidden>
+    <input type="number" name="price" value="{{ $teacher_data[0]->hourly_rate }}" hidden>
+    <input type="number" name="calendar_sch_id" id="calendar_sch_id" hidden>
+    <input type="datetime" name="start" id="session_start" hidden>
+    <input type="datetime" name="end" id="session_end" hidden>
+</form>
 @include('/frontend/common/footer')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
     integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="{{ url('/') }}/fullcalendar/lib/moment.min.js"></script>
+<script src="{{ url('/') }}/fullcalendar/fullcalendar.min.js"></script>
+{{-- <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script> --}}
+<script src='https://cdn.jsdelivr.net/npm/fullcalendar/index.global.min.js'></script>
 <script>
     function openCity(evt, cityName) {
         // Declare all variables
@@ -1007,5 +1036,47 @@
             }
 
         });
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.10.0/js/bootstrap-datepicker.min.js">
+</script>
+<script>
+    $('.date-display').datepicker({});
+    document.addEventListener('DOMContentLoaded', function() {
+        // console.log('hi loaded <?php echo $teacher_data[0]->student_no; ?>');
+        var calendarEl = document.getElementById('schedule-calendar');
+
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            headerToolbar: {
+                left: 'prev,next title',
+                right: ''
+            },
+
+            defaultView: 'timeGridWeek',
+            selectable: true,
+            editable: true,
+            events: "{{ url('/') }}/fetchCalendarAvailability/<?php echo $teacher_data[0]->student_no; ?>",
+            eventClick: function(eventClickInfo, jsEvent, view) {
+                eventID = eventClickInfo.el.fcSeg.eventRange.def.publicId;
+                console.log(eventID);
+                console.log(eventClickInfo.el.fcSeg.start)
+                $("#session_start").val(moment(eventClickInfo.el.fcSeg.start).add(0, 'minute').format('YYYY-MM-DD HH:mm'))
+                $("#session_end").val(moment(eventClickInfo.el.fcSeg.end).add(0, 'minute').format('YYYY-MM-DD HH:mm'))
+                $("#calendar_sch_id").val(eventID);
+                $('#submitPrivateLesson').submit();
+            },
+            eventDataTransform: function(event, element, info) {
+                if (event.status == 'time_off') {
+                    event.editable = false;
+                    event.color = "red";
+
+                }
+                return event;
+            },
+        });
+
+
+        calendar.render();
+        calendar.changeView('timeGridWeek');
     });
 </script>

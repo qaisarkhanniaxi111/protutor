@@ -260,10 +260,10 @@
 
                     <div class="box">
                         <div class="page-title mb-0 pb-0">
-                            <h1>Feedback{{ $ratingExists }}</h1>
+                            <h1>Feedback</h1>
                             <p class="mb-0 pb-0" style="color: #84818A;
                           font-size: 16px;">Give your
-                                Feedback.{{ $ratingStatus }}</p>
+                                Feedback.</p>
                         </div>
                         <div class="d-flex justify-content-end mb-4">
                             <div class="rating">

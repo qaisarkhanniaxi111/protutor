@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use DB;
+use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\Models\Countries;
 use App\Models\Subject;
@@ -32,7 +32,12 @@ class DashboardController extends Controller
 	public function dashboard(Request $request)
 	{
 		$PageTitle = 'Dashboard | ProTutor';
-		return view("dashboard/dashboard",compact('PageTitle'));
+		$tutorData = DB::table('users')
+                ->inRandomOrder()
+                ->limit(4)
+                ->get();
+	
+		return view("dashboard/dashboard",compact('PageTitle','tutorData'));
 	}
 
     public function logout() // This function are used for user logout

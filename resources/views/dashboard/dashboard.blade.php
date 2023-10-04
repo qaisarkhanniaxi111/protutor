@@ -1,9 +1,9 @@
 @include('/dashboard/common/header')
 @include('/dashboard/common/sidebar')
 <!-- Container -->
-  <section class="wrapper">
-    <div class="page-title">
-      <h1>Home</h1>
+<section class="wrapper">
+  <div class="page-title">
+    <h1>Home</h1>
     </div>
     <div class="home-section">
       <div class="home-left">
@@ -142,30 +142,15 @@
           </div>
           <div class="inbox-list">
             <ul>
+              @foreach ($tutorData as $tutor_data)
               <li>
-                <a href="">
-                  <h5>Contact Name</h5>
+                <a href="{{ url('chat/' . $tutor_data->id) }}">
+                  <h5>{{ $tutor_data->first_name}} {{ $tutor_data->last_name }}</h5>
                   <h6><span>Message</span> <span>10:22 AM</span></h6>
                 </a>
               </li>
-              <li>
-                <a href="">
-                  <h5>Contact Name</h5>
-                  <h6><span>Message</span> <span>10:22 AM</span></h6>
-                </a>
-              </li>
-              <li>
-                <a href="">
-                  <h5>Contact Name</h5>
-                  <h6><span>Message</span> <span>10:22 AM</span></h6>
-                </a>
-              </li>
-              <li>
-                <a href="">
-                  <h5>Contact Name</h5>
-                  <h6><span>Message</span> <span>10:22 AM</span></h6>
-                </a>
-              </li>
+              @endforeach
+             
             </ul>
           </div>
         </div>

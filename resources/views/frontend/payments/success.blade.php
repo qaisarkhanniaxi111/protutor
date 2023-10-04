@@ -4,7 +4,7 @@
 
 @section('content')
 <!-- start page title -->
-@if ($paymentStatus == true && $groupLessonStatus == true)
+@if ($paymentStatus == true || $groupLessonStatus == true)
 
 <div class="page-title">
     <div class="container">

@@ -6,7 +6,7 @@ use Carbon\Carbon;
 <!-- Container -->
 <section class="wrapper">
   <div class="page-title">
-    <h1>Teaching Orders </h1>
+    <h1>Teaching Orders {{ session()->get('userid') }}</h1>
   </div>
   <span style="color: red;">
     @if(session('success_msg'))  
