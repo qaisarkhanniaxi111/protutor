@@ -129,7 +129,7 @@ font-size: 16px;">Your All Enrolled Lessons</p>
                                       </div>
                                   </div>
                               </div>
-                              <img src="{{ $Lesson['gallery']['image'] }}" alt=""
+                              <img src="{{ isset($Lesson['gallery']['image']) ? $Lesson['gallery']['image'] : "" }}" alt=""
                                   class="group-lessons-img ms-3 order-md-2 order-1">
                           </a>
                       </li>

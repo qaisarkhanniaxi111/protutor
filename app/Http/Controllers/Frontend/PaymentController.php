@@ -132,6 +132,12 @@ class PaymentController extends Controller
         }
     }
     private function storeTeahingOrder($user_id,$teacher_id,$calendar_sch_id,$price,$session_start,$session_end){
+        $checkTeachingOrder=Order::where('user_id',$user_id)->where('teacher_id',$teacher_id)->where('session_start',$session_start)->count();
+        if($checkTeachingOrder > 0){
+
+        }else{
+            
+        }
         $newOrder=new Order;
         $newOrder->user_id = $user_id;
         $newOrder->teacher_id = $teacher_id;

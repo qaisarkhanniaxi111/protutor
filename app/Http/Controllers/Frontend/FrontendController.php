@@ -24,6 +24,7 @@ use App\Models\Become_a_tutor;
 use App\Models\Certificate;
 use App\Models\GroupLesson;
 use App\Models\Payment;
+use App\Models\Rating;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Mail;
@@ -483,7 +484,28 @@ class FrontendController extends Controller
         $certificateAll = Certificate::all();
         $hour_rate = Hourly_rate::all();
         $content = Become_a_tutor::where('id',1)->get(); 
-    
+
+         // calculate Tutor rating
+         $ratings = GroupLesson::where('tutor_id', $tutorid)
+         ->join('ratings', 'group_lessons.id', '=', 'ratings.group_lesson_id')
+         ->select('group_lessons.*', 'ratings.*');
+
+         $rating = $ratings->get();
+         
+        
+         $count=0;
+         foreach ($rating as $countRating) {
+             $count+= $countRating->rating;
+            //  $count+=$countRating->rating;
+         }
+         $numberOfRating=$ratings->count();
+         if($count<=0 || $numberOfRating<=0){
+             $groupLessonRating=0;
+         }else{
+ 
+             $groupLessonRating=$count/$numberOfRating;
+         }
+        
         $degree = DB::select('SELECT educations.degree_name, educations.specialization, educations.university_name, educations.year_of_study FROM `educations` join userdetails on educations.userdetail_id = userdetails.student_no
             where userdetails.student_no="'.$tutorid.'";');
     
@@ -497,19 +519,37 @@ class FrontendController extends Controller
             $years_of_Exps = [];
             foreach ($experience as $key => $value) {
                 $year = explode('-', $value->period_of_employment);
-                $years_of_Exps[] = $year[1]- $year[0];
+                $years_of_Exps[] = $year[1] - $year[0];
             }
     
             $years_of_Exp = array_sum($years_of_Exps);
     
-            return view("frontend/tutor_detail_single",compact('PageTitle','teacher_data','subjects','languages','degree','years_of_Exp','country','experience','certificateAll','content','hour_rate'));
+            return view("frontend/tutor_detail_single",compact('PageTitle','teacher_data','subjects','languages','degree','years_of_Exp','country','experience','certificateAll','content','hour_rate','groupLessonRating','rating'));
         }else{
             $years_of_Exp = 0;
-            return view("frontend/tutor_detail_single",compact('PageTitle','teacher_data','subjects','languages','degree','years_of_Exp','country','experience','certificateAll','content','hour_rate'));
+            return view("frontend/tutor_detail_single",compact('PageTitle','teacher_data','subjects','languages','degree','years_of_Exp','country','experience','certificateAll','content','hour_rate','groupLessonRating','rating'));
         }
 
     }
 
+    // private function calculateGroupLessonRating($groupLessonId){
+    //     // calculate Group Lesson rating
+    //     $ratings = Rating::where('group_lesson_id', $groupLessonId);
+    //     $rating = $ratings->get();
+
+    //     $count=0;
+    //     foreach ($rating as $countRating) {
+    //         $count+=$countRating->rating;
+    //     }
+    //     $numberOfRating=$ratings->count();
+    //     if($count<=0 || $numberOfRating<=0){
+    //         $groupLessonRating=0;
+    //     }else{
+
+    //         $groupLessonRating=$count/$numberOfRating;
+    //     }
+    //     return $groupLessonRating;
+    // }
 
     public function checkUserIsLogin()
     {

@@ -12,6 +12,7 @@
     <section class="hero-section-profile">
         <div class="hero-section-profile-bg"></div>
         <div class="container">
+            
             <div class="row ">
                 <div class="col-xl-8">
                     <div class="profile-data">
@@ -59,19 +60,19 @@
                             </div>
 
                             <div class="d-flex align-items-start mt-3">
-                                <img src="{{ url('newAssets/') }}assets/images/lesson.svg" alt=""
+                                <img src="{{ url('') }}/newAssets/assets/images/lesson.svg" alt=""
                                     class="me-2">
                                 <p class="mb-0 pb-0">
                                     Teaches English lessons</p>
                             </div>
                             <div class="d-flex align-items-start mt-3">
-                                <img src="{{ url('newAssets/') }}assets/images/speaks.svg" alt=""
+                                <img src="{{ url('') }}/newAssets/assets/images/speaks.svg" alt=""
                                     class="me-2">
                                 <p class="mb-0 pb-0"><span>Speaks:</span> English (Native), German (C2), Lithuanian
                                     (B2)</p>
                             </div>
                             <div class="d-flex align-items-start mt-3">
-                                <img src="{{ url('newAssets/') }}assets/images/taughts.svg" alt=""
+                                <img src="{{ url('') }}/newAssets/assets/images/taughts.svg" alt=""
                                     class="me-2">
                                 <p class="mb-0 pb-0">315lessons taught</p>
                             </div>
@@ -133,7 +134,7 @@
                                         id="defaultOpen">About</button>
                                     <button class="tablinks" onclick="openCity(event, 'Schedule')">Schedule</button>
                                     <button class="tablinks" onclick="openCity(event, 'Reviews')">Reviews
-                                        (5)</button>
+                                        ({{ $groupLessonRating }})</button>
                                     <button class="tablinks" onclick="openCity(event, 'Resume')">Resume</button>
                                     <button class="tablinks" onclick="openCity(event, 'Subjects')">Subjects</button>
                                 </div>
@@ -393,7 +394,7 @@
                                     <div class="col-lg-4 mb-3">
                                         <div class="review-tag-div border-right py-5">
                                             <div class="review-tag ">
-                                                <h2>5</h2>
+                                                <h2>{{ $groupLessonRating }}</h2>
                                                 <div class="d-flex align-items-center justify-content-center my-3">
                                                     <img src="{{ url('/') }}/newAssets/assets/images/star.svg"
                                                         alt="" class="me-1">
@@ -406,22 +407,22 @@
                                                     <img src="{{ url('/') }}/newAssets/assets/images/star.svg"
                                                         alt="" class="me-1">
                                                 </div>
-                                                <p class="mb-0 pb-0 text-center">10 Review</p>
+                                                <p class="mb-0 pb-0 text-center">{{ count($rating) }} Review</p>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-lg-6 ms-auto mb-3">
-                                        <div class="progress-line">
+                                        <div class="progress-line {{ count($rating)!=5 ? "zero-progress" : "" }}">
                                             <div class="d-flex align-items-center me-2">
                                                 <b>5&nbsp;</b>Stars
                                             </div>
                                             <div class=" w-100">
                                                 <div class="progress-bar" role="progressbar"
-                                                    style="width: 100%; height: 5px;" aria-valuenow="100"
+                                                    style="{{ count($rating)!=5 ? "width: 0%;" : "width: 100%;" }} height: 5px;" aria-valuenow="100"
                                                     aria-valuemin="0" aria-valuemax="100"></div>
                                             </div>
                                             <div class="d-flex align-items-center ms-2">
-                                                (10)
+                                                {{ "(".count($rating).")" }}
                                             </div>
                                         </div>
 
@@ -494,7 +495,8 @@
                                     </div>
                                 </div>
                                 <div class="row align-items-center">
-
+                                    @foreach ($rating as $reviews)
+                                        
                                     <div class="col-lg-6 mb-3">
                                         <div class="review-card">
                                             <div class="d-flex align-items-center review-card-header">
@@ -508,12 +510,11 @@
                                             <div class="review-card-body">
                                                 <img src="{{ url('newAssets/assets/images/semi.svg') }}"
                                                     alt="">
-                                                <p class="mb-0 pb-0">In my experience all the teachers are very
-                                                    supportive and friendly and the placement process has been very
-                                                    smooth. it’s also no issue talk about whatever you want to</p>
+                                                <p class="mb-0 pb-0">{{ $reviews['review'] }}</p>
                                             </div>
                                         </div>
                                     </div>
+                                    @endforeach
                                     <div class="col-lg-6 mb-3">
                                         <div class="review-card">
                                             <div class="d-flex align-items-center review-card-header">
@@ -525,90 +526,14 @@
                                                 </div>
                                             </div>
                                             <div class="review-card-body">
-                                                <img src="{{ url('newAssets/') }}assets/images/semi.svg"
+                                                <img src="{{ url('') }}/newAssets/assets/images/semi.svg"
                                                     alt="">
                                                 <p class="mb-0 pb-0">In my experience all the teachers are very
                                                     supportive and friendly and the placement process has been very
                                                     smooth. it’s also no issue talk about whatever you want to</p>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-lg-6 mb-3">
-                                        <div class="review-card">
-                                            <div class="d-flex align-items-center review-card-header">
-                                                <img src="{{ url('newAssets/assets/images/woman-with-headset-video-call 1.png') }}"
-                                                    alt="">
-                                                <div class="ms-3">
-                                                    <h2 class="mb-0 pb-0">Alfredo Schleifer</h2>
-                                                    <span>February 1, 2023</span>
-                                                </div>
-                                            </div>
-                                            <div class="review-card-body">
-                                                <img src="{{ url('newAssets/assets/images/semi.svg') }}"
-                                                    alt="">
-                                                <p class="mb-0 pb-0">In my experience all the teachers are very
-                                                    supportive and friendly and the placement process has been very
-                                                    smooth. it’s also no issue talk about whatever you want to</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 mb-3">
-                                        <div class="review-card">
-                                            <div class="d-flex align-items-center review-card-header">
-                                                <img src="{{ url('newAssets/assets/images/woman-with-headset-video-call 1.png') }}"
-                                                    alt="">
-                                                <div class="ms-3">
-                                                    <h2 class="mb-0 pb-0">Alfredo Schleifer</h2>
-                                                    <span>February 1, 2023</span>
-                                                </div>
-                                            </div>
-                                            <div class="review-card-body">
-                                                <img src="{{ url('newAssets/assets/images/semi.svg') }}"
-                                                    alt="">
-                                                <p class="mb-0 pb-0">In my experience all the teachers are very
-                                                    supportive and friendly and the placement process has been very
-                                                    smooth. it’s also no issue talk about whatever you want to</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 mb-3">
-                                        <div class="review-card">
-                                            <div class="d-flex align-items-center review-card-header">
-                                                <img src="{{ url('newAssets/assets/images/woman-with-headset-video-call 1.png') }}"
-                                                    alt="">
-                                                <div class="ms-3">
-                                                    <h2 class="mb-0 pb-0">Alfredo Schleifer</h2>
-                                                    <span>February 1, 2023</span>
-                                                </div>
-                                            </div>
-                                            <div class="review-card-body">
-                                                <img src="{{ url('newAssets/assets/images/semi.svg') }}"
-                                                    alt="">
-                                                <p class="mb-0 pb-0">In my experience all the teachers are very
-                                                    supportive and friendly and the placement process has been very
-                                                    smooth. it’s also no issue talk about whatever you want to</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 mb-3">
-                                        <div class="review-card">
-                                            <div class="d-flex align-items-center review-card-header">
-                                                <img src="{{ url('newAssets/assets/images/woman-with-headset-video-call 1.png') }}"
-                                                    alt="">
-                                                <div class="ms-3">
-                                                    <h2 class="mb-0 pb-0">Alfredo Schleifer</h2>
-                                                    <span>February 1, 2023</span>
-                                                </div>
-                                            </div>
-                                            <div class="review-card-body">
-                                                <img src="{{ url('newAssets/assets/images/semi.svg') }}"
-                                                    alt="">
-                                                <p class="mb-0 pb-0">In my experience all the teachers are very
-                                                    supportive and friendly and the placement process has been very
-                                                    smooth. it’s also no issue talk about whatever you want to</p>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    
                                     <div class="col-lg-12 mt-3">
                                         <button class="main-btn-blank">
                                             Show more
@@ -714,7 +639,7 @@
                         </video>
                         <div class="d-flex justify-content-between align-items-center flex-wrap mt-2">
                             <div class="d-flex align-items-center mb-3">
-                                <img src="{{ url('newAssets/') }}assets/images/star.svg" alt="">
+                                <img src="{{ url('') }}/newAssets/assets/images/star.svg" alt="">
                                 <b class="text-dark me-2">5.0</b>
                                 <p class="mb-0 pb-0">(33 review)</p>
                             </div>
@@ -947,7 +872,7 @@
 <form id="submitPrivateLesson" action="{{ route('private.charge') }}" method="post">
     @csrf
     <input type="number" name="tutor_id" value="{{ $teacher_data[0]->student_no }}" hidden>
-    <input type="number" name="student_id" value="{{ auth()->user()->id }}" hidden>
+    <input type="number" name="student_id" value="{{ auth()->check() ? auth()->user()->id : null }}" hidden>
     <input type="number" name="price" value="{{ $teacher_data[0]->hourly_rate }}" hidden>
     <input type="number" name="calendar_sch_id" id="calendar_sch_id" hidden>
     <input type="datetime" name="start" id="session_start" hidden>
