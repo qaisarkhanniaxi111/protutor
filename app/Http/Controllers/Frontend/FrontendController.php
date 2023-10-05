@@ -477,7 +477,13 @@ class FrontendController extends Controller
     {
         $PageTitle = 'Tutor Detail | ProTutor';
         $teacher_data=  Userdetail::where('student_no', $tutorid)->get();
-    
+        $subjects=explode(',',$teacher_data[0]->subject);
+        // dd($subjects);
+        $relatedTeachers=Userdetail::where('subject',$subjects[0]);
+        foreach ($subjects as $subject) {
+            $relatedTeachers=$relatedTeachers->orWhere('subject','LIKE','%'.$subject.'%');
+        }
+        $relatedTeachers=$relatedTeachers->get();
         $subjects = Subject::all();
         $languages = Spoken_language::all();
         $country = Countries::all();
@@ -488,10 +494,12 @@ class FrontendController extends Controller
          // calculate Tutor rating
          $ratings = GroupLesson::where('tutor_id', $tutorid)
          ->join('ratings', 'group_lessons.id', '=', 'ratings.group_lesson_id')
-         ->select('group_lessons.*', 'ratings.*');
+         ->join('userdetails', 'ratings.student_id', '=', 'userdetails.student_no')
+         ->select('ratings.*', 'userdetails.*');
 
-         $rating = $ratings->get();
+         $rating = $ratings->orderBy('ratings.created_at', 'desc')->get();
          
+        //  dd($rating->toArray());
         
          $count=0;
          foreach ($rating as $countRating) {
@@ -499,6 +507,8 @@ class FrontendController extends Controller
             //  $count+=$countRating->rating;
          }
          $numberOfRating=$ratings->count();
+        //  echo $count;
+        //  dd($numberOfRating);
          if($count<=0 || $numberOfRating<=0){
              $groupLessonRating=0;
          }else{
@@ -524,10 +534,10 @@ class FrontendController extends Controller
     
             $years_of_Exp = array_sum($years_of_Exps);
     
-            return view("frontend/tutor_detail_single",compact('PageTitle','teacher_data','subjects','languages','degree','years_of_Exp','country','experience','certificateAll','content','hour_rate','groupLessonRating','rating'));
+            return view("frontend/tutor_detail_single",compact('PageTitle','teacher_data','subjects','languages','degree','years_of_Exp','country','experience','certificateAll','content','hour_rate','groupLessonRating','rating','relatedTeachers'));
         }else{
             $years_of_Exp = 0;
-            return view("frontend/tutor_detail_single",compact('PageTitle','teacher_data','subjects','languages','degree','years_of_Exp','country','experience','certificateAll','content','hour_rate','groupLessonRating','rating'));
+            return view("frontend/tutor_detail_single",compact('PageTitle','teacher_data','subjects','languages','degree','years_of_Exp','country','experience','certificateAll','content','hour_rate','groupLessonRating','rating','relatedTeachers'));
         }
 
     }

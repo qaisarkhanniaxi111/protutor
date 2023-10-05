@@ -85,7 +85,11 @@ class PaymentController extends Controller
         $price = $request->price;
         $paymentMethodId = $request['payment_method'];
         $user = auth()->user();
-
+        $checkTeachingOrder=Order::where('user_id',$user_id)->where('teacher_id',$teacher_id)->where('session_start',$session_start)->count();
+        
+        if($checkTeachingOrder > 0){
+            return redirect()->back()->with('Aleady_booked_Session','You already Booked this Sesssion');
+        }
         $user = $user->createOrGetStripeCustomer();
 
         \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
@@ -132,12 +136,9 @@ class PaymentController extends Controller
         }
     }
     private function storeTeahingOrder($user_id,$teacher_id,$calendar_sch_id,$price,$session_start,$session_end){
-        $checkTeachingOrder=Order::where('user_id',$user_id)->where('teacher_id',$teacher_id)->where('session_start',$session_start)->count();
-        if($checkTeachingOrder > 0){
+        
 
-        }else{
-            
-        }
+        
         $newOrder=new Order;
         $newOrder->user_id = $user_id;
         $newOrder->teacher_id = $teacher_id;
@@ -146,6 +147,8 @@ class PaymentController extends Controller
         $newOrder->session_start = $session_start;
         $newOrder->session_end = $session_end;
         $newOrder->save();
+
+    
     }
     private function storeOrderPayment($tutor, $session, $price)
     {

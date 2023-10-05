@@ -12,7 +12,7 @@
     <section class="hero-section-profile">
         <div class="hero-section-profile-bg"></div>
         <div class="container">
-            
+
             <div class="row ">
                 <div class="col-xl-8">
                     <div class="profile-data">
@@ -50,12 +50,12 @@
                                     <img class="me-2"
                                         src="{{ url('/') }}/assets/frontpage_assets/flags/{{ Str::lower($value->iso) }}.png"
                                         alt="language">
+                                        {{ $value->nicename }}
                                     <?php 
                                      }
                                  }
                                  ?>
 
-                                    United State
                                 </h2>
                             </div>
 
@@ -412,136 +412,114 @@
                                         </div>
                                     </div>
                                     <div class="col-lg-6 ms-auto mb-3">
-                                        <div class="progress-line {{ count($rating)!=5 ? "zero-progress" : "" }}">
+                                        <div class="progress-line {{ $groupLessonRating != 5 ? 'zero-progress' : '' }}">
                                             <div class="d-flex align-items-center me-2">
                                                 <b>5&nbsp;</b>Stars
                                             </div>
-                                            <div class=" w-100">
+                                            <div class="progress w-100">
                                                 <div class="progress-bar" role="progressbar"
-                                                    style="{{ count($rating)!=5 ? "width: 0%;" : "width: 100%;" }} height: 5px;" aria-valuenow="100"
-                                                    aria-valuemin="0" aria-valuemax="100"></div>
+                                                    style="{{ $groupLessonRating != 5 ? 'width: 0%;' : 'width: 100%;' }} height: 5px;"
+                                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
                                             </div>
                                             <div class="d-flex align-items-center ms-2">
-                                                {{ "(".count($rating).")" }}
+                                                {{ ($groupLessonRating == 5) ? '(' . count($rating) . ')' : "" }}
                                             </div>
                                         </div>
 
-                                        <div class="progress-line zero-progress mt-3">
+                                        <div class="progress-line {{ ($groupLessonRating < 4) ? 'zero-progress' : '' }} mt-3">
                                             <div class="d-flex align-items-center me-2">
                                                 <b>4&nbsp;</b>Stars
                                             </div>
                                             <div class="progress w-100 ">
                                                 <div class="progress-bar" role="progressbar"
-                                                    style="width: 0%; height: 5px;" aria-valuenow="100"
+                                                    style="{{ $groupLessonRating < 4 ? 'width: 0%;' : 'width: 100%;' }} height: 5px;" aria-valuenow="100"
                                                     aria-valuemin="0" aria-valuemax="100"></div>
                                             </div>
                                             <div class="d-flex align-items-center ms-2">
-                                                (0)
+                                                {{ ($groupLessonRating >= 4 && $groupLessonRating <= 5) ? '(' . count($rating) . ')' : "" }}
                                             </div>
                                         </div>
 
-                                        <div class="progress-line zero-progress mt-3">
+                                        <div class="progress-line {{ ($groupLessonRating < 3) ? 'zero-progress' : '' }} mt-3">
                                             <div class="d-flex align-items-center me-2">
                                                 <b>3&nbsp;</b>Stars
                                             </div>
                                             <div class="progress w-100 ">
                                                 <div class="progress-bar" role="progressbar"
-                                                    style="width: 0%; height: 5px;" aria-valuenow="100"
+                                                    style="{{ $groupLessonRating < 3 ? 'width: 0%;' : 'width: 100%;' }} height: 5px;" aria-valuenow="100"
                                                     aria-valuemin="0" aria-valuemax="100"></div>
                                             </div>
                                             <div class="d-flex align-items-center ms-2">
-                                                (0)
+                                                {{ ($groupLessonRating >= 3 && $groupLessonRating <= 4) ? '(' . count($rating) . ')' : "" }}
                                             </div>
                                         </div>
-                                        <div class="progress-line zero-progress mt-3">
+                                        <div class="progress-line {{ ($groupLessonRating < 2) ? 'zero-progress' : '' }} mt-3">
                                             <div class="d-flex align-items-center me-2">
                                                 <b>2&nbsp;</b>Stars
                                             </div>
                                             <div class="progress w-100 ">
                                                 <div class="progress-bar" role="progressbar"
-                                                    style="width: 0%; height: 5px;" aria-valuenow="100"
+                                                    style="{{ $groupLessonRating < 2 ? 'width: 0%;' : 'width: 100%;' }} height: 5px;" aria-valuenow="100"
                                                     aria-valuemin="0" aria-valuemax="100"></div>
                                             </div>
                                             <div class="d-flex align-items-center ms-2">
-                                                (0)
+                                                {{ ($groupLessonRating >= 2 && $groupLessonRating <= 3) ? '(' . count($rating) . ')' : "" }}
                                             </div>
                                         </div>
-                                        <div class="progress-line zero-progress mt-3">
+                                        <div class="progress-line {{ ($groupLessonRating < 1) ? 'zero-progress' : '' }} mt-3">
                                             <div class="d-flex align-items-center me-2">
                                                 <b>1&nbsp;</b>Stars
                                             </div>
                                             <div class="progress w-100 ">
                                                 <div class="progress-bar" role="progressbar"
-                                                    style="width: 0%; height: 5px;" aria-valuenow="100"
+                                                    style="{{ $groupLessonRating < 1 ? 'width: 0%;' : 'width: 100%;' }} height: 5px;" aria-valuenow="100"
                                                     aria-valuemin="0" aria-valuemax="100"></div>
                                             </div>
                                             <div class="d-flex align-items-center ms-2">
-                                                (0)
+                                                {{ ($groupLessonRating >= 1 && $groupLessonRating <= 2) ? '(' . count($rating) . ')' : "" }}
                                             </div>
                                         </div>
-                                        <div class="progress-line zero-progress mt-3">
+                                        <div class="progress-line {{ ($groupLessonRating < 0) ? 'zero-progress' : '' }} mt-3">
                                             <div class="d-flex align-items-center me-2">
                                                 <b>0&nbsp;</b>Stars
                                             </div>
                                             <div class="progress w-100 ">
                                                 <div class="progress-bar" role="progressbar"
-                                                    style="width: 0%; height: 5px;" aria-valuenow="100"
+                                                    style="{{ $groupLessonRating < 0 ? 'width: 0%;' : 'width: 100%;' }} height: 5px;" aria-valuenow="100"
                                                     aria-valuemin="0" aria-valuemax="100"></div>
                                             </div>
                                             <div class="d-flex align-items-center ms-2">
-                                                (0)
+                                                {{ ($groupLessonRating >= 0 && $groupLessonRating <= 1) ? '(' . count($rating) . ')' : "" }}
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row align-items-center">
+                                    {{-- <pre>
+                                    {{ print_r($rating->toArray()) }}
+                                    </pre> --}}
                                     @foreach ($rating as $reviews)
-                                        
-                                    <div class="col-lg-6 mb-3">
-                                        <div class="review-card">
-                                            <div class="d-flex align-items-center review-card-header">
-                                                <img src="{{ url('newAssets/assets/images/woman-with-headset-video-call 1.png') }}"
-                                                    alt="">
-                                                <div class="ms-3">
-                                                    <h2 class="mb-0 pb-0">Alfredo Schleifer</h2>
-                                                    <span>February 1, 2023</span>
+                                        <div class="col-lg-6 mb-3">
+                                            <div class="review-card">
+                                                <div class="d-flex align-items-center review-card-header">
+                                                    <img src="{{ url('/') }}/images/{{ $reviews['profile_img'] }}"
+                                                        alt="">
+                                                    <div class="ms-3">
+                                                        <h2 class="mb-0 pb-0">{{ $reviews['first_name'] }} {{ $reviews['last_name'] }}</h2>
+                                                        <span>{{ date('F j, Y', strtotime($reviews['created_at'])) }}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="review-card-body">
+                                                    <img src="{{ url('newAssets/assets/images/semi.svg') }}"
+                                                        alt="">
+                                                    <p class="mb-0 pb-0">{{ $reviews['review'] }}</p>
                                                 </div>
                                             </div>
-                                            <div class="review-card-body">
-                                                <img src="{{ url('newAssets/assets/images/semi.svg') }}"
-                                                    alt="">
-                                                <p class="mb-0 pb-0">{{ $reviews['review'] }}</p>
-                                            </div>
                                         </div>
-                                    </div>
                                     @endforeach
-                                    <div class="col-lg-6 mb-3">
-                                        <div class="review-card">
-                                            <div class="d-flex align-items-center review-card-header">
-                                                <img src="{{ url('newAssets/assets/images/woman-with-headset-video-call 1.png') }}"
-                                                    alt="">
-                                                <div class="ms-3">
-                                                    <h2 class="mb-0 pb-0">Alfredo Schleifer</h2>
-                                                    <span>February 1, 2023</span>
-                                                </div>
-                                            </div>
-                                            <div class="review-card-body">
-                                                <img src="{{ url('') }}/newAssets/assets/images/semi.svg"
-                                                    alt="">
-                                                <p class="mb-0 pb-0">In my experience all the teachers are very
-                                                    supportive and friendly and the placement process has been very
-                                                    smooth. it’s also no issue talk about whatever you want to</p>
-                                            </div>
-                                        </div>
                                     
-                                    <div class="col-lg-12 mt-3">
-                                        <button class="main-btn-blank">
-                                            Show more
-                                        </button>
-                                    </div>
                                 </div>
                             </div>
-
                             <div id="Resume" class="tabcontent">
                                 <div class="d-flex align-items-center  border-bottom pb-3 flex-wrap">
                                     <h1 class="heading mb-0 mb-md-0 mb-2">Resume</h1>
@@ -700,22 +678,50 @@
                 </div>
                 <div class="col-lg-12">
                     <div class="owl-carousel ">
+                        @foreach ($relatedTeachers as $relatedTeacher)
                         <div>
                             <div class="tutors-card h-100 bg-white">
-                                <img src="{{ url('newAssets/assets/images/team (1).png') }}" alt="">
+                                <img src="{{ url('') }}/images/{{ $relatedTeacher->profile_img }}" alt="">
                                 <div class="tutors-card--text bg-white">
                                     <div class="mb-2">
-                                        <h3 class="mb-2">Gretchen Herwitz</h3>
+                                        <h3 class="mb-2">{{ $relatedTeacher->first_name }} {{ $relatedTeacher->last_name }}</h3>
                                         <div class="d-flex align-items-center flex-wrap">
-                                            <h4 class="me-2">*&nbsp;&nbsp;English Teacher</h4>
+                                            <?php
+                                            foreach ($subjects as $key => $value) {
+                                              $medi_arr = explode(',', $relatedTeacher->subject);
+                                              if(count($medi_arr) > 1){
+                                                if(in_array($value->id, $medi_arr)){
+                                                  echo '<h4 class="me-2">*&nbsp;&nbsp;'.$value->subject.' Tutor</h4>';
+                                
+                                                }
+                                              }else{
+                                                if($userdata_val->subject==$value->id){
+                                                  echo '<h4 class="me-2">'.$value->subject.' Tutor</h4>';
+                                                }
+                                              }
+                                            }
+                                
+                                            ?>
+                                          
 
                                         </div>
                                     </div>
                                     <div class="mt-auto flex-grow-1 d-flex flex-column justify-content-end">
                                         <div class="d-flex align-items-center ">
-                                            <img src="{{ url('newAssets/assets/images/flag.png') }}" alt=""
+                                            <?php 
+                                    foreach ($country as $key => $value) { 
+                                      if($relatedTeacher->country==$value->id){
+                                         ?>
+                                         <img src="{{ url('/') }}/assets/frontpage_assets/flags/{{ Str::lower($value->iso) }}.png" alt=""
+                                         class="flag-img">
+                                         <p class="mb-0 pb-0 ms-2">{{ $value->nicename }}</p>
+                                    <?php 
+                                     }
+                                 }
+                                 ?>
+                                            {{-- <img src="{{ url('newAssets/assets/images/flag.png') }}" alt=""
                                                 class="flag-img">
-                                            <p class="mb-0 pb-0 ms-2">Country Name</p>
+                                            <p class="mb-0 pb-0 ms-2">{{ $relatedTeacher->country }}</p> --}}
                                         </div>
                                         <div class="d-flex align-items-center mt-2">
                                             <img src="{{ url('newAssets/assets/images/reading-book 1.png') }}"
@@ -726,7 +732,9 @@
                                     </div>
                                 </div>
                             </div>
+                                
                         </div>
+                        @endforeach
 
 
                     </div>
@@ -985,8 +993,10 @@
                 eventID = eventClickInfo.el.fcSeg.eventRange.def.publicId;
                 console.log(eventID);
                 console.log(eventClickInfo.el.fcSeg.start)
-                $("#session_start").val(moment(eventClickInfo.el.fcSeg.start).add(0, 'minute').format('YYYY-MM-DD HH:mm'))
-                $("#session_end").val(moment(eventClickInfo.el.fcSeg.end).add(0, 'minute').format('YYYY-MM-DD HH:mm'))
+                $("#session_start").val(moment(eventClickInfo.el.fcSeg.start).add(0, 'minute')
+                    .format('YYYY-MM-DD HH:mm'))
+                $("#session_end").val(moment(eventClickInfo.el.fcSeg.end).add(0, 'minute').format(
+                    'YYYY-MM-DD HH:mm'))
                 $("#calendar_sch_id").val(eventID);
                 $('#submitPrivateLesson').submit();
             },

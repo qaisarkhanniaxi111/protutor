@@ -36,8 +36,17 @@ class DashboardController extends Controller
                 ->inRandomOrder()
                 ->limit(4)
                 ->get();
+								$student = auth()->user();
+								$studentId = $student ? $student->id: '';
+								$quizes=DB::select("SELECT * FROM quiz INNER JOIN teaches_levels ON teaches_levels.id=quiz.teaches_level INNER JOIN subjects ON quiz.subjectid=subjects.id INNER JOIN students_quiz_invites ON quiz.id=students_quiz_invites.quizid AND students_quiz_invites.studentid=$studentId ORDER BY quiz.startdate ASC;");
+
+								$currentDateTime = date('Y-m-d H:i:s');
+								$upcommingDate=DB::select("SELECT startdate FROM quiz INNER JOIN teaches_levels ON teaches_levels.id=quiz.teaches_level INNER JOIN subjects ON quiz.subjectid=subjects.id INNER JOIN students_quiz_invites ON quiz.id=students_quiz_invites.quizid AND students_quiz_invites.studentid=$studentId AND quiz.startdate > '$currentDateTime' ORDER BY quiz.startdate ASC LIMIT 1;");
+								$startDateTimeForTimer=$upcommingDate[0]->startdate;
+								// dd($startDateTimeForTimer);
+								// dd($quizes);
 	
-		return view("dashboard/dashboard",compact('PageTitle','tutorData'));
+		return view("dashboard/dashboard",compact('PageTitle','tutorData','quizes','startDateTimeForTimer'));
 	}
 
     public function logout() // This function are used for user logout
@@ -329,7 +338,7 @@ class DashboardController extends Controller
 			{
 				$tutor=new Tutors();
 				$quizdetails=$tutor->getQuiz($quizid);
-
+				// dd($quizdetails);
 				$startdate=$quizdetails[0]->startdate;
 				$enddate=$quizdetails[0]->enddate;
 
