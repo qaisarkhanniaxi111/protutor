@@ -74,18 +74,24 @@
                 <div class="quiz-table">
                     <div class="table-responsive">
                         <table class="table theme-table">
-                          @foreach ($quizes as $quiz)
-                          <tr>
-                            <td>{{ $quiz->quiztitle }}</td>
-                            <td>{{ $quiz->teaches_level }}</td>
-                            <td>{{ $quiz->subject }}</td>
-                            {{-- <td>Quiz Type</td> --}}
-                            <td>{{ $quiz->startdate }}</td>
-                            <td>{{ $quiz->enddate }}</td>
-                            <td><span class="table-link" href="">Upcoming</span></td>
-                        </tr>
-                          @endforeach
-                            
+                            @foreach ($quizes as $quiz)
+                                <tr>
+                                    <td>{{ $quiz->quiztitle }}</td>
+                                    <td>{{ $quiz->teaches_level }}</td>
+                                    <td>{{ $quiz->subject }}</td>
+                                    {{-- <td>Quiz Type</td> --}}
+                                    <td>{{ $quiz->startdate }}</td>
+                                    <td>{{ $quiz->enddate }}</td>
+                                    <td>
+                                        @if ($currentDateTime < $quiz->startdate)
+                                            <span class="table-link" href="">Upcoming</span>
+                                        @else
+                                            <span class="table-link completed" href="">Completed</span>
+                                        @endif
+                                    </td>
+                                </tr>
+                            @endforeach
+
                         </table>
                     </div>
                 </div>
@@ -100,10 +106,10 @@
                     <div class="box-title-right">
                         <span class="tag-sort">Sort by:</span>
                         <div class="filter-select">
-                            <select class="simple" name="" id="">
-                                <option value="">Monthly</option>
-                                <option value="">Yearly</option>
-                                <option value="">Weekly</option>
+                            <select class="simple" name="" id="sortByGraph">
+                                <option value="Monthly">Monthly</option>
+                                <option value="Yearly">Yearly</option>
+                                <option value="Weekly">Weekly</option>
                             </select>
                         </div>
                     </div>
@@ -123,7 +129,7 @@
                         <h2 class="small">Inbox</h2>
                     </div>
                     <div class="box-title-right">
-                        <a class="link" href="{{ url("chat/") }}">View All</a>
+                        <a class="link" href="{{ url('chat/') }}">View All</a>
                     </div>
                 </div>
                 <div class="inbox-list">
@@ -232,7 +238,7 @@
         var seconds = duration.seconds();
 
         // Format the timer as "2D : 24H : 3M : 4S"
-        var timerText ="<p>" + days + "D : " + hours + "H : " + minutes + "M : " + seconds + "S" + "</p>";
+        var timerText = "<p>" + days + "D : " + hours + "H : " + minutes + "M : " + seconds + "S" + "</p>";
         document.getElementById('timer').innerHTML = timerText;
 
         // Update the timer every second
@@ -243,86 +249,117 @@
     updateTimer();
 </script>
 <script type="text/javascript">
-  // chart-2 Bar chart
-  var ctx2 = document.getElementById('myChart2').getContext('2d');
-  var gradient = ctx2.createLinearGradient(0, 0, 0, 400);
-  gradient.addColorStop(0, 'rgba(251, 133, 0, 1)');
-  gradient.addColorStop(1, 'rgba(255, 183, 3, 1)');
-  var myChart2 = new Chart(ctx2, {
-      type: 'bar',
-      fillOpacity: 1,
-      data: {
-          labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-          datasets: [{
-              label: "",
-              backgroundColor: gradient,
-              borderColor: "none",
-              pointBorderColor: "#CFEECE",
-              borderWidth: 0,
-              pointRadius: 4,
-              pointHoverRadius: 4,
-              pointBackgroundColor: "#FFF",
-              data: [500, 1000, 500, 1000, 500, 1000, 500, 1000, 500, 1000, 500, 1000]
-          }]
-      },
-      options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          bezierCurve: false,
-          elements: {
-              line: {
-                  tension: 0
-              }
-          },
-          scales: {
-              xAxes: [{
-                  gridLines: {
-                      color: "rgba(0, 0, 0, 0)"
-                  },
-                  categoryPercentage: 3 / 10
-              }],
-              yAxes: [{
-                  ticks: {
-                      beginAtZero: true
-                  },
-                  gridLines: {
-                      color: "rgba(0, 148, 68, 0.2)"
-                  }
-              }]
-          },
+    labels = @json($GraphDates);
+    data = @json($GraphValues);
+    createBarChart(labels, data)
 
-          tooltips: {
-              custom: function(tooltip) {
-                  if (!tooltip) return;
-                  // disable displaying the color box;
-                  tooltip.displayColors = false;
-              },
-              callbacks: {
-                  // use label callback to return the desired label
-                  label: function(tooltipItem, data) {
-                      return "$" + tooltipItem.yLabel;
-                  },
-                  // remove title
-                  title: function(tooltipItem, data) {
-                      return;
-                  }
-              },
-              backgroundColor: "#FFF",
-              borderColor: "rgba(0, 0, 0, 0.09)",
-              borderWidth: 1,
-              bodyFontColor: "rgba(0, 0, 0, 1)",
-              bodyAlign: 'center',
-              bodyFontSize: 14,
-              bodyFontStyle: 500
-          },
-          legend: {
-              align: 'end',
-              labels: {
-                  boxWidth: 12,
-                  fontColor: "#A4A7B0"
-              }
-          }
-      }
-  });
-  // chart-2 Bar chart
+    function createBarChart(labelsArray, dataArray) {
+
+
+        // chart-2 Bar chart
+        var ctx2 = document.getElementById('myChart2').getContext('2d');
+        var gradient = ctx2.createLinearGradient(0, 0, 0, 400);
+        gradient.addColorStop(0, 'rgba(251, 133, 0, 1)');
+        gradient.addColorStop(1, 'rgba(255, 183, 3, 1)');
+        var myChart2 = new Chart(ctx2, {
+            type: 'bar',
+            fillOpacity: 1,
+            data: {
+                labels: labelsArray,
+                datasets: [{
+                    label: "",
+                    backgroundColor: gradient,
+                    borderColor: "none",
+                    pointBorderColor: "#CFEECE",
+                    borderWidth: 0,
+                    pointRadius: 4,
+                    pointHoverRadius: 4,
+                    pointBackgroundColor: "#FFF",
+                    data: dataArray
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                bezierCurve: false,
+                elements: {
+                    line: {
+                        tension: 0
+                    }
+                },
+                scales: {
+                    xAxes: [{
+                        gridLines: {
+                            color: "rgba(0, 0, 0, 0)"
+                        },
+                        categoryPercentage: 3 / 10
+                    }],
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        },
+                        gridLines: {
+                            color: "rgba(0, 148, 68, 0.2)"
+                        }
+                    }]
+                },
+
+                tooltips: {
+                    custom: function(tooltip) {
+                        if (!tooltip) return;
+                        // disable displaying the color box;
+                        tooltip.displayColors = false;
+                    },
+                    callbacks: {
+                        // use label callback to return the desired label
+                        label: function(tooltipItem, data) {
+                            return "$" + tooltipItem.yLabel;
+                        },
+                        // remove title
+                        title: function(tooltipItem, data) {
+                            return;
+                        }
+                    },
+                    backgroundColor: "#FFF",
+                    borderColor: "rgba(0, 0, 0, 0.09)",
+                    borderWidth: 1,
+                    bodyFontColor: "rgba(0, 0, 0, 1)",
+                    bodyAlign: 'center',
+                    bodyFontSize: 14,
+                    bodyFontStyle: 500
+                },
+                legend: {
+                    align: 'end',
+                    labels: {
+                        boxWidth: 12,
+                        fontColor: "#A4A7B0"
+                    }
+                }
+            }
+        });
+        // chart-2 Bar chart
+    }
+
+    $("#sortByGraph").on('change', () => {
+        sort = sortByGraph.value;
+
+        $.ajax({
+            url: "/getSortByStudentGraphData?sortBy=" + sort, // URL to your Laravel route
+            type: "GET",
+            dataType: "json",
+            success: function(data) {
+                labels = data.labels;
+                data = data.data;
+                createBarChart(labels, data)
+                // Data received as a JavaScript array
+                var jsArray = data;
+
+                // Use the data in your JavaScript code
+                console.log(jsArray);
+            },
+            error: function(xhr, status, error) {
+                console.error(error);
+            }
+        });
+    })
 </script>

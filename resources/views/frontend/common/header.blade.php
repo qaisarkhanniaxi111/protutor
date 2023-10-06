@@ -43,9 +43,11 @@
     <link rel="stylesheet" href="{{ url('newAssets/assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ url('newAssets/assets/css/responsive.css') }}">
 </head>
-
+@php
+    $parts=explode("/", $_SERVER['REQUEST_URI']);
+    $getUrl=end($parts);
+@endphp
 <body>
-
 
     {{-- <header class="cont-space site-header">
         <div class="header-in">
@@ -100,18 +102,18 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mx-auto mb-2 mb-lg-0 top-navbar d-flex {{ isset($lightNavbar) ? "top-navbar-light" : "" }}">
                         <li class="nav-item">
-                            <a class="nav-link active-nav" href="{{ url('/') }}">Home</a>
+                            <a class="nav-link {{ $getUrl=='' ? "active-nav" : "" }}" href="{{ url('/') }}">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/find-a-tutor') }}">Find Tutors</a>
+                            <a class="nav-link {{ $getUrl=='find-a-tutor' ? "active-nav" : "" }}" href="{{ url('/find-a-tutor') }}">Find Tutors</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Enterprise</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/become-a-tutor') }}">Become a tutor</a>
+                            <a class="nav-link {{ $getUrl=='become-a-tutor' ? "active-nav" : "" }}" href="{{ url('/become-a-tutor') }}">Become a tutor</a>
                         </li>
-                        <li class="nav-item"><a class="nav-link" href="{{ url('/group') }}">Group Lesson</a></li>
+                        <li class="nav-item"><a class="nav-link {{ $getUrl=='group' ? "active-nav" : "" }}" href="{{ url('/group') }}">Group Lesson</a></li>
                     </ul>
                     <div class="d-flex align-items-md-center flex-md-row flex-column">
                         <select class="form-select {{ isset($lightNavbar) ? "header-select-dark" : "header-select" }} mb-md-0 mb-3" style="{{ isset($lightNavbar) ? "" : "color: rgba(255, 255, 255, 0.80);" }}"
