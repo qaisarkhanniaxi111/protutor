@@ -42,7 +42,7 @@ class DashboardController extends Controller
 
 		$currentDateTime = date('Y-m-d H:i:s');
 		$upcommingDate = DB::select("SELECT startdate FROM quiz INNER JOIN teaches_levels ON teaches_levels.id=quiz.teaches_level INNER JOIN subjects ON quiz.subjectid=subjects.id INNER JOIN students_quiz_invites ON quiz.id=students_quiz_invites.quizid AND students_quiz_invites.studentid=$studentId AND quiz.startdate > '$currentDateTime' ORDER BY quiz.startdate ASC LIMIT 1;");
-		$startDateTimeForTimer = $upcommingDate[0]->startdate;
+		$startDateTimeForTimer = isset($upcommingDate[0]->startdate) ? $upcommingDate[0]->startdate : '';
 		// dd($startDateTimeForTimer);
 		// dd($quizes);
 

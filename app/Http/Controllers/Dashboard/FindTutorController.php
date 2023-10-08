@@ -189,6 +189,7 @@ class FindTutorController extends Controller
                 'id' => $slot->id,
                 'start' => $startDateTime->toIso8601String(),
                 'end' => $nextHour->toIso8601String(),
+                'allDay'=> false,
             ];
 
             $startDateTime = $nextHour;

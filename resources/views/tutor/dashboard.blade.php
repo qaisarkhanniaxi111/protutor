@@ -49,7 +49,7 @@
                     <div class="box coming-clock">
                         <h2>Next Coming Session in</h2>
                         <div class="clock" id="timer">
-                            <p>2D <span>:</span> 24H <span>:</span> 3M <span>:</span> 4S</p>
+                            <p>0D <span>:</span> 0H <span>:</span> 0M <span>:</span> 0S</p>
                         </div>
                     </div>
                 </div>
@@ -136,7 +136,7 @@
                         <h2 class="small">Inbox</h2>
                     </div>
                     <div class="box-title-right">
-                        <a class="link" href="chat.html">View All</a>
+                        <a class="link" href="{{ url('/chat') }}">View All</a>
                     </div>
                 </div>
                 <div class="inbox-list">
@@ -230,6 +230,9 @@
   // Fetch the target datetime from the PHP variable
   var targetDatetime = "{{ $startDateTimeForTimer }}";
 
+  if(targetDatetime==''){
+    console.log("no upcomping session");
+  }else{
   // Calculate the time remaining
   function updateTimer() {
       var now = moment();
@@ -253,6 +256,7 @@
 
   // Initial call to start the timer
   updateTimer();
+}
 </script>
 <script type="text/javascript">
   labels = @json($GraphDates);

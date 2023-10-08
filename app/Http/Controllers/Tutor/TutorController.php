@@ -34,7 +34,7 @@ class TutorController extends \App\Http\Controllers\Controller
 		$quizes = DB::select("SELECT * FROM quiz INNER JOIN teaches_levels ON teaches_levels.id=quiz.teaches_level INNER JOIN subjects ON quiz.subjectid=subjects.id AND quiz.tutorid=$tutorId ORDER BY quiz.startdate ASC;");
     $upcommingDate = DB::select("SELECT startdate FROM quiz INNER JOIN teaches_levels ON teaches_levels.id=quiz.teaches_level INNER JOIN subjects ON quiz.subjectid=subjects.id AND quiz.tutorId=$tutorId AND quiz.startdate > '$currentDateTime' ORDER BY quiz.startdate ASC LIMIT 1;");
     // dd($upcommingDate);
-		$startDateTimeForTimer = $upcommingDate[0]->startdate;
+		$startDateTimeForTimer = isset($upcommingDate[0]->startdate) ? $upcommingDate[0]->startdate : '';
     $monthlyGraphData=DB::select("SELECT p.tutor_id, CONCAT( CASE WHEN MONTH(p.created_at) = 1 THEN 'Jan' WHEN MONTH(p.created_at) = 2 THEN 'Feb' WHEN MONTH(p.created_at) = 3 THEN 'Mar' WHEN MONTH(p.created_at) = 4 THEN 'Apr' WHEN MONTH(p.created_at) = 5 THEN 'May' WHEN MONTH(p.created_at) = 6 THEN 'Jun' WHEN MONTH(p.created_at) = 7 THEN 'Jul' WHEN MONTH(p.created_at) = 8 THEN 'Aug' WHEN MONTH(p.created_at) = 9 THEN 'Sep' WHEN MONTH(p.created_at) = 10 THEN 'Oct' WHEN MONTH(p.created_at) = 11 THEN 'Nov' WHEN MONTH(p.created_at) = 12 THEN 'Dec' END, ', ', YEAR(p.created_at) ) AS month, SUM(p.amount) AS monthly_earnings FROM payments p WHERE p.tutor_id = $tutorId AND p.status='pending' GROUP BY p.tutor_id, month ORDER BY month;");
 		$GraphDates=[];
 		$GraphValues=[];
