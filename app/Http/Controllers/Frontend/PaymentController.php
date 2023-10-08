@@ -8,10 +8,13 @@ use App\Mail\Tutor\StudentRegistrationMail;
 use App\Models\GroupLesson;
 use App\Models\Order;
 use App\Models\Payment;
+use App\Models\Student_Registered_Quiz;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\URL;
 
 class PaymentController extends Controller
 {
@@ -65,9 +68,23 @@ class PaymentController extends Controller
 
             session()->put('payment_id', $paymentId);
             session()->put('group_lesson_id', $groupLesson->id);
-
+            // dd($groupLesson->id);
+            $enrolLesson=GroupLesson::find($groupLesson->id);
             session()->put('tutor_id', $request->tutor_id);
             session()->put('student_id', $request->student_id);
+            $currentDateTime = date('Y-m-d H:i:s');
+            // dd($enrolLesson->toArray());
+           
+            $student_registered=new Student_Registered_Quiz;
+            $student_registered->studentid=$request->student_id;
+            $student_registered->subjectid=$enrolLesson->subject_id;
+            $student_registered->teaches_level=$enrolLesson->teach_level_id;
+            $student_registered->tutorid=$request->tutor_id;
+            $student_registered->registereddatetime="'".$currentDateTime."'";
+            $student_registered->status='in-active';
+            $student_registered->save();
+
+            session()->put('student_registered', $student_registered->id);
 
 
             return redirect($session->url);
@@ -90,6 +107,8 @@ class PaymentController extends Controller
         if($checkTeachingOrder > 0){
             return redirect()->back()->with('Aleady_booked_Session','You already Booked this Sesssion');
         }
+
+        $cancel_url = URL::previous(); // Get the previous URL
         $user = $user->createOrGetStripeCustomer();
 
         \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
@@ -115,7 +134,7 @@ class PaymentController extends Controller
 
             'mode' => 'payment',
             'success_url' => env('APP_URL') . '/payments/success',
-            'cancel_url' => url('/tutor-detail', $teacher_id),
+            'cancel_url' => $cancel_url,
 
         ]);
 
@@ -209,6 +228,7 @@ class PaymentController extends Controller
 
     public function openSuccessPage()
     {
+        $student_registered_status=$this->studentRegisteredStatusUpdate();
         $paymentStatus = $this->updatePaymentStatus();
         $groupLessonStatus = $this->markAsEnrolledStatus();
 
@@ -256,7 +276,30 @@ class PaymentController extends Controller
         }
         return $groupLessonStatus;
     }
+    private function studentRegisteredStatusUpdate()
+    {
+        $paymentStatus = false;
 
+        if (session()->has('student_registered')) {
+
+            $paymentId = session()->get('student_registered');
+            $payment = Student_Registered_Quiz::find($paymentId);
+
+            if (!$payment) {
+                abort(403, 'Unable to sync payment with app, please contact the administrator along with payment id: ' . $paymentId);
+            }
+
+            $payment->update([
+                'status' => 'active'
+            ]);
+
+            session()->forget('student_registered');
+
+            $paymentStatus = true;
+        }
+
+        return $paymentStatus;
+    }
     private function sendRegistrationMail($tutorId, $studentId, $group_lesson_id)
     {
         $tutor = User::where('role', 3)->find($tutorId);

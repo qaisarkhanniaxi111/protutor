@@ -177,24 +177,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- tutor schedule tab -->
-                            {{-- <div id="Schedule" class="tabcontent "
-                                style="border-radius: 6px;
-                                border: 1px solid rgba(17, 159, 46, 0.30);
-                                background: #FAFFFB;
-                                box-shadow: 4px 10px 40px 0px rgba(163, 191, 185, 0.20);">
-                                <!-- tutor schedule -->
-                                <div class="tutor-sec mt-5" id="schedule">
-                                    <h4 class="t-title fw-bold mb-2">Schedule</h4>
-                                    <div class="border"></div>
-
-                                    <div class="tutor-schedule">
-
-                                        <div id="schedule-calendar"></div>
-
-                                    </div>
-                                </div>
-                            </div> --}}
+                           
 
 
 

@@ -20,48 +20,49 @@
 
                 <h3 class="mt-3 mb-3">
                     Choose your trial lesson duration</h3>
-                    <div class="d-flex flex-wrap gap-3 mb-5 pb-5">
-                <div class="card" style="max-width: 200px">
-                    <div class="card-body">
-                        <svg width='30px' class="styles_BoxButtonOptionIcon__Vpa8u" xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24">
-                            <path fill-rule="evenodd"
-                                d="M13.22 4.403 5.283 13H11a1 1 0 0 1 .976 1.217l-1.195 5.38L18.716 11H13a1 1 0 0 1-.976-1.217l1.195-5.38Zm-.213-2.719c1.04-1.126 2.9-.153 2.567 1.343L14.247 9h5.611c1.308 0 1.99 1.557 1.102 2.517l-9.967 10.799c-1.04 1.126-2.9.153-2.567-1.343L9.753 15H4.142c-1.308 0-1.99-1.557-1.102-2.517l9.968-10.799Z"
-                                clip-rule="evenodd"></path>
-                        </svg>
-                        <h5>25mins</h5>
-                        <p>Get to know the tutor, discuss your goals and learning plan</p>
+                <div class="d-flex flex-wrap gap-3 mb-5 pb-5">
+                    <div class="card" style="max-width: 200px">
+                        <div class="card-body">
+                            <svg width='30px' class="styles_BoxButtonOptionIcon__Vpa8u"
+                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path fill-rule="evenodd"
+                                    d="M13.22 4.403 5.283 13H11a1 1 0 0 1 .976 1.217l-1.195 5.38L18.716 11H13a1 1 0 0 1-.976-1.217l1.195-5.38Zm-.213-2.719c1.04-1.126 2.9-.153 2.567 1.343L14.247 9h5.611c1.308 0 1.99 1.557 1.102 2.517l-9.967 10.799c-1.04 1.126-2.9.153-2.567-1.343L9.753 15H4.142c-1.308 0-1.99-1.557-1.102-2.517l9.968-10.799Z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                            <h5>25mins</h5>
+                            <p>Get to know the tutor, discuss your goals and learning plan</p>
+                        </div>
+                    </div>
+                    <div class="card" style="max-width: 200px">
+                        <div class="card-body">
+                            <svg width='30px' class="styles_BoxButtonOptionIcon__Vpa8u"
+                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path fill-rule="evenodd"
+                                    d="M13.22 4.403 5.283 13H11a1 1 0 0 1 .976 1.217l-1.195 5.38L18.716 11H13a1 1 0 0 1-.976-1.217l1.195-5.38Zm-.213-2.719c1.04-1.126 2.9-.153 2.567 1.343L14.247 9h5.611c1.308 0 1.99 1.557 1.102 2.517l-9.967 10.799c-1.04 1.126-2.9.153-2.567-1.343L9.753 15H4.142c-1.308 0-1.99-1.557-1.102-2.517l9.968-10.799Z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                            <h5>40mins</h5>
+                            <p>Get to know the tutor, discuss your goals and learning plan</p>
+                        </div>
+                    </div>
+                    <div class="card" style="max-width: 200px">
+                        <div class="card-body">
+                            <svg width='30px' class="styles_BoxButtonOptionIcon__Vpa8u"
+                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path fill-rule="evenodd"
+                                    d="M13.22 4.403 5.283 13H11a1 1 0 0 1 .976 1.217l-1.195 5.38L18.716 11H13a1 1 0 0 1-.976-1.217l1.195-5.38Zm-.213-2.719c1.04-1.126 2.9-.153 2.567 1.343L14.247 9h5.611c1.308 0 1.99 1.557 1.102 2.517l-9.967 10.799c-1.04 1.126-2.9.153-2.567-1.343L9.753 15H4.142c-1.308 0-1.99-1.557-1.102-2.517l9.968-10.799Z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                            <h5>60mins</h5>
+                            <p>Get to know the tutor, discuss your goals and learning plan</p>
+                        </div>
                     </div>
                 </div>
-                <div class="card" style="max-width: 200px">
-                    <div class="card-body">
-                        <svg width='30px' class="styles_BoxButtonOptionIcon__Vpa8u" xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24">
-                            <path fill-rule="evenodd"
-                                d="M13.22 4.403 5.283 13H11a1 1 0 0 1 .976 1.217l-1.195 5.38L18.716 11H13a1 1 0 0 1-.976-1.217l1.195-5.38Zm-.213-2.719c1.04-1.126 2.9-.153 2.567 1.343L14.247 9h5.611c1.308 0 1.99 1.557 1.102 2.517l-9.967 10.799c-1.04 1.126-2.9.153-2.567-1.343L9.753 15H4.142c-1.308 0-1.99-1.557-1.102-2.517l9.968-10.799Z"
-                                clip-rule="evenodd"></path>
-                        </svg>
-                        <h5>40mins</h5>
-                        <p>Get to know the tutor, discuss your goals and learning plan</p>
-                    </div>
-                </div>
-                <div class="card" style="max-width: 200px">
-                    <div class="card-body">
-                        <svg width='30px' class="styles_BoxButtonOptionIcon__Vpa8u" xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24">
-                            <path fill-rule="evenodd"
-                                d="M13.22 4.403 5.283 13H11a1 1 0 0 1 .976 1.217l-1.195 5.38L18.716 11H13a1 1 0 0 1-.976-1.217l1.195-5.38Zm-.213-2.719c1.04-1.126 2.9-.153 2.567 1.343L14.247 9h5.611c1.308 0 1.99 1.557 1.102 2.517l-9.967 10.799c-1.04 1.126-2.9.153-2.567-1.343L9.753 15H4.142c-1.308 0-1.99-1.557-1.102-2.517l9.968-10.799Z"
-                                clip-rule="evenodd"></path>
-                        </svg>
-                        <h5>60mins</h5>
-                        <p>Get to know the tutor, discuss your goals and learning plan</p>
-                    </div>
-                </div>
-            </div>
             </div>
             <div class="modal-footer">
 
-                <button type="button" class="theme-btn-sm btn btn-primary"  data-bs-toggle="modal" data-bs-target="#calendar">Continue</button>
+                <button type="button" class="theme-btn-sm btn btn-primary" data-bs-toggle="modal"
+                    data-bs-target="#calendar">Continue</button>
             </div>
         </div>
     </div>
@@ -76,9 +77,9 @@
             </div>
             <div class="modal-body">
                 <div class="tutor-schedule" style="min-height: 400px">
-                <div class="selectCalendarTime">
+                    <div class="selectCalendarTime">
 
-                </div>
+                    </div>
                 </div>
             </div>
             <div class="modal-footer">
@@ -138,9 +139,11 @@
                                 <span class="tutor-stat"><i class="fa-solid fa-circle"></i> Online</span>
                             </div>
                             <p class="pt-2 pb-2">
-                                <strong>{{ !empty($degree[0]->degree_name) ? $degree[0]->degree_name : 'NA' }} Degrees in
+                                <strong>{{ !empty($degree[0]->degree_name) ? $degree[0]->degree_name : 'NA' }} Degrees
+                                    in
                                     {{ !empty($degree[0]->specialization) ? $degree[0]->specialization : 'NA' }} with
-                                    {{ $years_of_Exp }} years of experience</strong></p>
+                                    {{ $years_of_Exp }} years of experience</strong>
+                            </p>
 
                             <div class="tutor-spec"><span><i
                                         class="fa-solid fa-graduation-cap"></i></span><span><strong>Teaches</strong></span>
@@ -198,7 +201,8 @@
 
                             <div class="tutor-spec"><span><i
                                         class="fa-solid fa-book"></i></span><span><strong>Lessons</strong></span>
-                                <span>0</span></div>
+                                <span>0</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -500,7 +504,15 @@
     </div>
 </div>
 
-
+<form id="submitPrivateLesson" action="{{ route('private.charge') }}" method="post">
+    @csrf
+    <input type="number" name="tutor_id" value="{{ $teacher_data[0]->student_no }}" hidden>
+    <input type="number" name="student_id" value="{{ auth()->check() ? auth()->user()->id : null }}" hidden>
+    <input type="number" name="price" value="{{ $teacher_data[0]->hourly_rate }}" hidden>
+    <input type="number" name="calendar_sch_id" id="calendar_sch_id" hidden>
+    <input type="datetime" name="start" id="session_start" hidden>
+    <input type="datetime" name="end" id="session_end" hidden>
+</form>
 
 
 @include('/dashboard/common/footer')
@@ -523,7 +535,51 @@
 
 
     document.addEventListener('DOMContentLoaded', function() {
+        // console.log('hi loaded <?php echo $teacher_data[0]->student_no; ?>');
         var calendarEl = document.getElementById('schedule-calendar');
+
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            headerToolbar: {
+                left: 'prev,next title',
+                right: ''
+            },
+
+            defaultView: 'timeGridWeek',
+            selectable: true,
+            editable: true,
+            events: "{{ url('/') }}/fetchCalendarAvailability/<?php echo $teacher_data[0]->student_no; ?>",
+            eventClick: function(eventClickInfo, jsEvent, view) {
+                eventID = eventClickInfo.el.fcSeg.eventRange.def.publicId;
+                console.log(eventID);
+                console.log(eventClickInfo.el.fcSeg.start)
+                $("#session_start").val(moment(eventClickInfo.el.fcSeg.start).add(0, 'minute')
+                    .format('YYYY-MM-DD HH:mm'))
+                $("#session_end").val(moment(eventClickInfo.el.fcSeg.end).add(0, 'minute').format(
+                    'YYYY-MM-DD HH:mm'))
+                $("#calendar_sch_id").val(eventID);
+                $('#submitPrivateLesson').submit();
+            },
+            eventDataTransform: function(event, element, info) {
+                if (event.status == 'time_off') {
+                    event.editable = false;
+                    event.color = "red";
+
+                }
+                return event;
+            },
+        });
+
+
+        calendar.render();
+        calendar.changeView('timeGridWeek');
+
+    });
+
+    // display calendar in modal 
+    runfunctioncal();
+
+    function runfunctioncal() {
+        var calendarEl = document.querySelector('.selectCalendarTime');
 
         var calendar = new FullCalendar.Calendar(calendarEl, {
             headerToolbar: {
@@ -535,55 +591,10 @@
             selectable: true,
             editable: true,
             events: "{{ url('/') }}/getcalendar/<?php echo $teacher_data[0]->student_no; ?>",
-
             eventClick: function(eventClickInfo, jsEvent, view) {
-
-                eventID = eventClickInfo.el.fcSeg.eventRange.def.publicId;
-                var student_no = '<?php echo $teacher_data[0]->student_no; ?>';
-
-                //$('#booking-screen').modal('toggle');
-                //$('#booking-screen').modal('show');    
-
-                if (eventID) {
-
-
-                    $.ajax({
-                        url: "{{ url('/') }}/purchase-data",
-                        data: {
-                            'eventID': eventID
-                        },
-                        type: "POST",
-                        headers: {
-                            'X-CSRF-TOKEN': '<?php echo csrf_token(); ?>'
-                        },
-                        success: function(resource) {
-                            if (resource.status == "time_off") {
-                                $('#booking-screen').modal('hide');
-                            } else {
-                                $.ajax({
-                                    url: "{{ url('/') }}/purchase-lession-by-student",
-                                    data: {
-                                        'eventID': eventID,
-                                        'student_no': student_no
-                                    },
-                                    type: "POST",
-                                    headers: {
-                                        'X-CSRF-TOKEN': '<?php echo csrf_token(); ?>'
-                                    },
-                                    success: function(resource) {
-                                        $("#booking_screen_data").html(
-                                            resource);
-                                        $('#booking-screen').modal(
-                                        'toggle');
-                                        $('#booking-screen').modal('show');
-                                    }
-                                })
-                            }
-                        }
-                    })
-                }
+                // Your event click handler
+                // ...
             },
-
             eventDataTransform: function(event, element, info) {
                 if (event.status == 'time_off') {
                     event.editable = false;
@@ -591,55 +602,20 @@
                 }
                 return event;
             },
+            slotLabelFormat: {
+                hour: '2-digit',
+                minute: '2-digit',
+                omitZeroMinute: false,
+                hour12: false
+            },
+            slotDuration: '00:25:00', // Adjust this to your preferred time interval
+            allDaySlot: true,
+            slotEventOverlap: false, // Set this to false to avoid event overlapping
 
+            // Add more customizations as needed
         });
 
         calendar.render();
         calendar.changeView('timeGridWeek');
-    });
-
-    // display calendar in modal 
-    runfunctioncal();
-    function runfunctioncal(){
-        var calendarEl = document.querySelector('.selectCalendarTime');
-
-var calendar = new FullCalendar.Calendar(calendarEl, {
-    headerToolbar: {
-        left: 'prev,next today',
-        center: 'title',
-        right: 'timeGridWeek,timeGridDay'
-    },
-    defaultView: 'timeGridWeek',
-    selectable: true,
-    editable: true,
-    events: "{{ url('/') }}/getcalendar/<?php echo $teacher_data[0]->student_no; ?>",
-    eventClick: function(eventClickInfo, jsEvent, view) {
-        // Your event click handler
-        // ...
-    },
-    eventDataTransform: function(event, element, info) {
-        if (event.status == 'time_off') {
-            event.editable = false;
-            event.color = "red";
-        }
-        return event;
-    },
-    slotLabelFormat: {
-        hour: '2-digit',
-        minute: '2-digit',
-        omitZeroMinute: false,
-        hour12: false
-    },
-    slotDuration: '00:25:00', // Adjust this to your preferred time interval
-    allDaySlot: true,
-    slotEventOverlap: false, // Set this to false to avoid event overlapping
-
-    // Add more customizations as needed
-});
-
-calendar.render();
-calendar.changeView('timeGridWeek');
     }
-
-    
 </script>
