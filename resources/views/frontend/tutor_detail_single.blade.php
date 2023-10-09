@@ -5,11 +5,91 @@
 {{-- <link rel="stylesheet" href="{{ url('/') }}/fullcalendar/fullcalendar.min.css" /> --}}
 <link rel="stylesheet" href="https://fullcalendar.io/releases/fullcalendar/3.10.0/fullcalendar.min.css">
 <style>
+    /*calender*/
+
+    #schedule-calendar .fc-header-toolbar .fc-toolbar-chunk .fc-button-group button,
+    #model-schedule-calendar .fc-header-toolbar .fc-toolbar-chunk .fc-button-group button {
+        background: #fe6903;
+        border: solid 1px #fe6903;
+    }
+
+    #schedule-calendar .fc-header-toolbar .fc-toolbar-chunk .fc-button-group button:hover,
+    #model-schedule-calendar .fc-header-toolbar .fc-toolbar-chunk .fc-button-group button:hover {
+        color: #fff;
+        opacity: 0.7;
+    }
+
+    #schedule-calendar .fc-header-toolbar .fc-toolbar-chunk button.fc-today-button.fc-button.fc-button-primary,
+    #model-schedule-calendar .fc-header-toolbar .fc-toolbar-chunk button.fc-today-button.fc-button.fc-button-primary {
+        background: #a2b5ff;
+        border-color: #a2b5ff;
+    }
+
+
+    #schedule-calendar .fc-view-harness thead th.fc-col-header-cell a.fc-col-header-cell-cushion,
+    #model-schedule-calendar .fc-view-harness thead th.fc-col-header-cell a.fc-col-header-cell-cushion {
+        color: #fe6903;
+        text-decoration: none
+    }
+
+    #schedule-calendar .fc-view-harness td .fc-timegrid-col-frame .fc-timegrid-event-harness a.fc-event,
+    #model-schedule-calendar .fc-view-harness td .fc-timegrid-col-frame .fc-timegrid-event-harness a.fc-event {
+        background: #422d5a;
+        border: none !important;
+        text-align: center;
+        font-size: 16px;
+    }
+
+    #schedule-calendar .fc-header-toolbar .fc-toolbar-chunk .fc-button-group button:first-child,
+    #schedule-calendar .fc-header-toolbar .fc-toolbar-chunk .fc-button-group button.fc-prev-button,
+    #model-schedule-calendar .fc-header-toolbar .fc-toolbar-chunk .fc-button-group button:first-child,
+    #model-schedule-calendar .fc-header-toolbar .fc-toolbar-chunk .fc-button-group button.fc-prev-button {
+        border-right: solid 1px #fff;
+    }
+
+    #schedule-calendar .fc-header-toolbar .fc-toolbar-chunk .fc-button-group button.fc-prev-button,
+    #model-schedule-calendar .fc-header-toolbar .fc-toolbar-chunk .fc-button-group button.fc-prev-button {
+        margin-right: 1px;
+    }
+
     p {
         text-align: unset;
     }
 </style>
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-scrollable modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <img src="{{ url('/') }}/images/{{ $teacher_data[0]->profile_img }}" alt=""
+                    style="width:40px;height:40px;object-fit: cover;" class="rounded-circle me-3">
+                <span class="h1 modal-title fs-5" id="staticBackdropLabel"
+                    style="font-family: Arial, Helvetica, sans-serif">{{ $teacher_data[0]->first_name . ' ' . $teacher_data[0]->last_name }}</span>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <p>Choose the time for your first lesson. The timings are displayed in your local
+                    timezone.</p>
+
+                <div class="tabtable-responsive">
+                    <div class="fulltab-table">
+                        <div id='model-schedule-calendar'></div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" class="btn disabled"
+                    style="background-color: #fe6903;color:#fff" id="continueSubmitShcdulebtn" onclick="submitStudentSchedule()">Continue</button>
+            </div>
+        </div>
+    </div>
+</div>
 <main>
+
     <section class="hero-section-profile">
         <div class="hero-section-profile-bg"></div>
         <div class="container">
@@ -113,29 +193,33 @@
                                 </div>
                             </div>
                         </div>
+
+
                         <div class="col-lg-6 mb-3">
-                            <div class="review-card">
-                                <div class="d-flex align-items-center justify-content-between review-card-header w-100">
-                                    <div class="d-flex align-items-center w-100">
-                                        <img src="{{ url('/') }}/images/{{ $rating[0]->profile_img }}"
-                                            alt="">
-                                        <div class="ms-3">
-                                            <h2 class="mb-0 pb-0">{{ $rating[0]->first_name }}
-                                                {{ $rating[0]->last_name }}</h2>
-                                            <span>{{ date('F j, Y', strtotime($rating[0]->created_at)) }}</span>
+                            @if (isset($rating[0]))
+                                <div class="review-card">
+                                    <div
+                                        class="d-flex align-items-center justify-content-between review-card-header w-100">
+                                        <div class="d-flex align-items-center w-100">
+                                            <img src="{{ url('/') }}/images/{{ $rating[0]->profile_img }}"
+                                                alt="">
+                                            <div class="ms-3">
+                                                <h2 class="mb-0 pb-0">{{ $rating[0]->first_name }}
+                                                    {{ $rating[0]->last_name }}</h2>
+                                                <span>{{ date('F j, Y', strtotime($rating[0]->created_at)) }}</span>
+                                            </div>
+                                        </div>
+                                        <div class="recent-caption">
+                                            Recent review
                                         </div>
                                     </div>
-                                    <div class="recent-caption">
-                                        Recent review
+
+                                    <div class="review-card-body mt-3">
+                                        <img src="{{ url('newAssets/assets/images/semi.svg') }}" alt="">
+                                        <p class="mb-0 pb-0">{{ $rating[0]->review }}</p>
                                     </div>
                                 </div>
-
-                                <div class="review-card-body mt-3">
-                                    <img src="{{ url('newAssets/assets/images/semi.svg') }}" alt="">
-                                    <p class="mb-0 pb-0">{{ $rating[0]->review }}</p>
-                                </div>
-                            </div>
-
+                            @endif
                         </div>
 
 
@@ -177,7 +261,7 @@
                                     </div>
                                 </div>
                             </div>
-                           
+
 
 
 
@@ -429,7 +513,8 @@
                                 <p class="mb-0 pb-0 "> (50 - min lesson)</p>
                             </div>
                         </div>
-                        <button class="main-btn-sm w-100">Book a trial lesson</button>
+                        <button class="main-btn-sm w-100" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                            onclick="runModelCalendar()">Book a trial lesson</button>
                         <div class="d-flex align-items-center mt-3">
                             {{-- <img src="{{ url("newAssets/assets/images/heart.svg") }}" alt="" class="me-2"> --}}
                             <div class="like me-2">
@@ -820,5 +905,68 @@
 
         calendar.render();
         calendar.changeView('timeGridWeek');
+    }
+
+    function runModelCalendar() {
+        $("#model-schedule-calendar").empty();
+        setTimeout(() => {
+
+
+            console.log('hi')
+            // $('.date-display').datepicker({});
+            // document.addEventListener('DOMContentLoaded', function() {
+            // console.log('hi loaded <?php echo $teacher_data[0]->student_no; ?>');
+            var calendarEl = document.getElementById('model-schedule-calendar');
+
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                headerToolbar: {
+                    left: 'prev,next title',
+                    right: ''
+                },
+
+                defaultView: 'timeGridWeek',
+                selectable: true,
+                editable: true,
+                events: "{{ url('/') }}/fetchCalendarAvailability/<?php echo $teacher_data[0]->student_no; ?>",
+                eventClick: function(eventClickInfo, jsEvent, view) {
+                    // Reset the background color of all events to their default styling
+        calendar.getEvents().forEach(function(event) {
+            event.setProp('backgroundColor', event.extendedProps.originalBackgroundColor || '');
+        });
+
+        // Set the background color of the clicked event to green
+        eventClickInfo.event.setProp('backgroundColor', '#fe6903');
+                    console.log(view)
+                    eventID = eventClickInfo.el.fcSeg.eventRange.def.publicId;
+                    console.log(eventID);
+                    console.log(eventClickInfo.el.fcSeg.start)
+                    $("#session_start").val(moment(eventClickInfo.el.fcSeg.start).add(0, 'minute')
+                        .format('YYYY-MM-DD HH:mm'))
+                    $("#session_end").val(moment(eventClickInfo.el.fcSeg.end).add(0, 'minute')
+                        .format(
+                            'YYYY-MM-DD HH:mm'))
+                    $("#calendar_sch_id").val(eventID);
+                    $("#continueSubmitShcdulebtn").removeClass('disabled')
+                },
+                eventDataTransform: function(event, element, info) {
+                    if (event.status == 'time_off') {
+                        event.editable = false;
+                        event.color = "red";
+
+                    }
+                    return event;
+                },
+            });
+
+
+            calendar.render();
+            calendar.changeView('timeGridWeek');
+        }, 400);
+    }
+
+    function submitStudentSchedule() {
+        if ($("#session_start").val() != '' && $("#session_end").val() != '' && $("#calendar_sch_id").val() != '') {
+            $('#submitPrivateLesson').submit();
+        }
     }
 </script>
