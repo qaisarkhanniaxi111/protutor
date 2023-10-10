@@ -632,6 +632,7 @@
               @if (count($userdata))
               @foreach($userdata as $userdata_val)
               <div class="col-lg-3 col-md-6 col-sm-10 mx-auto col-12 mt-4">
+                <a href="{{ url('/tutor-detail') }}/{{ $userdata_val->user_id }}">
                   <div class="tutors-card h-100 bg-white">
                       <img src="images/{{$userdata_val->profile_img}}" alt="">
                       <div class="tutors-card--text">
@@ -671,12 +672,12 @@
                           </div>
                           <div class="d-flex align-items-center mt-2">
                               <img src="{{ url('newAssets/assets/images/reading-book 1.png') }}" alt="" class="flag-img">
-                              <p class="mb-0 pb-0 ms-2">21 active students</p>
-                              <p class="mb-0 pb-0 ms-2 lesson-numbers ms-3"> 315 lessons</p>
+                              <p class="mb-0 pb-0 ms-2">{{ activetutorlessons($userdata_val->user_id) }} active students</p>
+                              <p class="mb-0 pb-0 ms-2 lesson-numbers ms-3"> {{ deliveredtutorlessons($userdata_val->user_id) }} lessons</p>
                           </div>
                       </div>
                   </div>
-
+                </a>
               </div>
               @endforeach
               @endif

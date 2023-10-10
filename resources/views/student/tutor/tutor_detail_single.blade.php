@@ -5,86 +5,84 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.10.0/css/bootstrap-datepicker.min.css" />
 <link rel="stylesheet" href="{{ url('/') }}/fullcalendar/fullcalendar.min.css" />
 
+<style>
+      /*calender*/
 
+      #schedule-calendar .fc-header-toolbar .fc-toolbar-chunk .fc-button-group button,
+    #model-schedule-calendar .fc-header-toolbar .fc-toolbar-chunk .fc-button-group button {
+        background: #fe6903;
+        border: solid 1px #fe6903;
+    }
+
+    #schedule-calendar .fc-header-toolbar .fc-toolbar-chunk .fc-button-group button:hover,
+    #model-schedule-calendar .fc-header-toolbar .fc-toolbar-chunk .fc-button-group button:hover {
+        color: #fff;
+        opacity: 0.7;
+    }
+
+    #schedule-calendar .fc-header-toolbar .fc-toolbar-chunk button.fc-today-button.fc-button.fc-button-primary,
+    #model-schedule-calendar .fc-header-toolbar .fc-toolbar-chunk button.fc-today-button.fc-button.fc-button-primary {
+        background: #a2b5ff;
+        border-color: #a2b5ff;
+    }
+
+
+    #schedule-calendar .fc-view-harness thead th.fc-col-header-cell a.fc-col-header-cell-cushion,
+    #model-schedule-calendar .fc-view-harness thead th.fc-col-header-cell a.fc-col-header-cell-cushion {
+        color: #fe6903;
+        text-decoration: none
+    }
+
+    #schedule-calendar .fc-view-harness td .fc-timegrid-col-frame .fc-timegrid-event-harness a.fc-event,
+    #model-schedule-calendar .fc-view-harness td .fc-timegrid-col-frame .fc-timegrid-event-harness a.fc-event {
+        background: #422d5a;
+        border: none !important;
+        text-align: center;
+        font-size: 16px;
+    }
+
+    #schedule-calendar .fc-header-toolbar .fc-toolbar-chunk .fc-button-group button:first-child,
+    #schedule-calendar .fc-header-toolbar .fc-toolbar-chunk .fc-button-group button.fc-prev-button,
+    #model-schedule-calendar .fc-header-toolbar .fc-toolbar-chunk .fc-button-group button:first-child,
+    #model-schedule-calendar .fc-header-toolbar .fc-toolbar-chunk .fc-button-group button.fc-prev-button {
+        border-right: solid 1px #fff;
+    }
+
+    #schedule-calendar .fc-header-toolbar .fc-toolbar-chunk .fc-button-group button.fc-prev-button,
+    #model-schedule-calendar .fc-header-toolbar .fc-toolbar-chunk .fc-button-group button.fc-prev-button {
+        margin-right: 1px;
+    }
+
+</style>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-scrollable modal-lg">
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-scrollable modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">
-                    {{ $teacher_data[0]->first_name . ' ' . $teacher_data[0]->last_name }}</h1>
+                <img src="{{ url('/') }}/images/{{ $teacher_data[0]->profile_img }}" alt=""
+                    style="width:40px;height:40px;object-fit: cover;" class="rounded-circle me-3">
+                <span class="h1 modal-title fs-5" id="staticBackdropLabel"
+                    style="font-family: Arial, Helvetica, sans-serif">{{ $teacher_data[0]->first_name . ' ' . $teacher_data[0]->last_name }}</span>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
 
-                <h3 class="mt-3 mb-3">
-                    Choose your trial lesson duration</h3>
-                <div class="d-flex flex-wrap gap-3 mb-5 pb-5">
-                    <div class="card" style="max-width: 200px">
-                        <div class="card-body">
-                            <svg width='30px' class="styles_BoxButtonOptionIcon__Vpa8u"
-                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <path fill-rule="evenodd"
-                                    d="M13.22 4.403 5.283 13H11a1 1 0 0 1 .976 1.217l-1.195 5.38L18.716 11H13a1 1 0 0 1-.976-1.217l1.195-5.38Zm-.213-2.719c1.04-1.126 2.9-.153 2.567 1.343L14.247 9h5.611c1.308 0 1.99 1.557 1.102 2.517l-9.967 10.799c-1.04 1.126-2.9.153-2.567-1.343L9.753 15H4.142c-1.308 0-1.99-1.557-1.102-2.517l9.968-10.799Z"
-                                    clip-rule="evenodd"></path>
-                            </svg>
-                            <h5>25mins</h5>
-                            <p>Get to know the tutor, discuss your goals and learning plan</p>
-                        </div>
-                    </div>
-                    <div class="card" style="max-width: 200px">
-                        <div class="card-body">
-                            <svg width='30px' class="styles_BoxButtonOptionIcon__Vpa8u"
-                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <path fill-rule="evenodd"
-                                    d="M13.22 4.403 5.283 13H11a1 1 0 0 1 .976 1.217l-1.195 5.38L18.716 11H13a1 1 0 0 1-.976-1.217l1.195-5.38Zm-.213-2.719c1.04-1.126 2.9-.153 2.567 1.343L14.247 9h5.611c1.308 0 1.99 1.557 1.102 2.517l-9.967 10.799c-1.04 1.126-2.9.153-2.567-1.343L9.753 15H4.142c-1.308 0-1.99-1.557-1.102-2.517l9.968-10.799Z"
-                                    clip-rule="evenodd"></path>
-                            </svg>
-                            <h5>40mins</h5>
-                            <p>Get to know the tutor, discuss your goals and learning plan</p>
-                        </div>
-                    </div>
-                    <div class="card" style="max-width: 200px">
-                        <div class="card-body">
-                            <svg width='30px' class="styles_BoxButtonOptionIcon__Vpa8u"
-                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <path fill-rule="evenodd"
-                                    d="M13.22 4.403 5.283 13H11a1 1 0 0 1 .976 1.217l-1.195 5.38L18.716 11H13a1 1 0 0 1-.976-1.217l1.195-5.38Zm-.213-2.719c1.04-1.126 2.9-.153 2.567 1.343L14.247 9h5.611c1.308 0 1.99 1.557 1.102 2.517l-9.967 10.799c-1.04 1.126-2.9.153-2.567-1.343L9.753 15H4.142c-1.308 0-1.99-1.557-1.102-2.517l9.968-10.799Z"
-                                    clip-rule="evenodd"></path>
-                            </svg>
-                            <h5>60mins</h5>
-                            <p>Get to know the tutor, discuss your goals and learning plan</p>
-                        </div>
+                <p>Choose the time for your first lesson. The timings are displayed in your local
+                    timezone.</p>
+
+                <div class="tabtable-responsive">
+                    <div class="fulltab-table">
+                        <div id='model-schedule-calendar'></div>
                     </div>
                 </div>
+
             </div>
             <div class="modal-footer">
 
-                <button type="button" class="theme-btn-sm btn btn-primary" data-bs-toggle="modal"
-                    data-bs-target="#calendar">Continue</button>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="modal fade" id="calendar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-scrollable modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">
-                    {{ $teacher_data[0]->first_name . ' ' . $teacher_data[0]->last_name }}</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="tutor-schedule" style="min-height: 400px">
-                    <div class="selectCalendarTime">
-
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-
-                <button type="button" class="theme-btn-sm btn btn-primary">Continue</button>
+                <button type="button" class="btn disabled"
+                    style="background-color: #fe6903;color:#fff" id="continueSubmitShcdulebtn" onclick="submitStudentSchedule()">Continue</button>
             </div>
         </div>
     </div>
@@ -441,8 +439,8 @@
                             </ul>
                         </div>
                         <div class="pt-2">
-                            <button class="theme-btn-sm full" data-bs-toggle="modal" data-bs-target="#exampleModal"
-                                onclick="BookTrialLesson({{ auth()->user()->id }},{{ $teacher_data[0]->id }})">Book
+                            <button class="theme-btn-sm full" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                            onclick="runModelCalendar()">Book
                                 Trial Lesson</button>
                             <a class="theme-btn-sm full bdr mt-2" href="chat.html">Send Message</a>
                         </div>
@@ -525,6 +523,8 @@
 <script src="https://static.cloudflareinsights.com/beacon.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fecha/2.3.1/fecha.min.js"></script>
 <script>
+    // Get the client's time zone
+    const clientTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
     function BookTrialLesson(v1, v2) {
         console.log(v1, v2);
     }
@@ -547,6 +547,7 @@
             defaultView: 'timeGridWeek',
             selectable: true,
             editable: true,
+            timeZone: clientTimeZone, // Use the client's time zone
             events: "{{ url('/') }}/fetchCalendarAvailability/<?php echo $teacher_data[0]->student_no; ?>",
             eventClick: function(eventClickInfo, jsEvent, view) {
                 eventID = eventClickInfo.el.fcSeg.eventRange.def.publicId;
@@ -590,6 +591,7 @@
             defaultView: 'timeGridWeek',
             selectable: true,
             editable: true,
+            timeZone: clientTimeZone, // Use the client's time zone
             events: "{{ url('/') }}/getcalendar/<?php echo $teacher_data[0]->student_no; ?>",
             eventClick: function(eventClickInfo, jsEvent, view) {
                 // Your event click handler
@@ -617,5 +619,63 @@
 
         calendar.render();
         calendar.changeView('timeGridWeek');
+    }
+
+
+    function runModelCalendar() {
+        $("#model-schedule-calendar").empty();
+        setTimeout(() => {
+            var calendarEl = document.getElementById('model-schedule-calendar');
+
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                headerToolbar: {
+                    left: 'prev,next title',
+                    right: ''
+                },
+
+                defaultView: 'timeGridWeek',
+                selectable: true,
+                editable: true,
+                timeZone: clientTimeZone, // Use the client's time zone
+                events: "{{ url('/') }}/fetchCalendarAvailability/<?php echo $teacher_data[0]->student_no; ?>",
+                eventClick: function(eventClickInfo, jsEvent, view) {
+                    // Reset the background color of all events to their default styling
+        calendar.getEvents().forEach(function(event) {
+            event.setProp('backgroundColor', event.extendedProps.originalBackgroundColor || '');
+        });
+
+        // Set the background color of the clicked event to green
+        eventClickInfo.event.setProp('backgroundColor', '#fe6903');
+                    
+                    eventID = eventClickInfo.el.fcSeg.eventRange.def.publicId;
+                    
+                    $("#session_start").val(moment(eventClickInfo.el.fcSeg.start).add(0, 'minute')
+                        .format('YYYY-MM-DD HH:mm'))
+                    $("#session_end").val(moment(eventClickInfo.el.fcSeg.end).add(0, 'minute')
+                        .format(
+                            'YYYY-MM-DD HH:mm'))
+                    $("#calendar_sch_id").val(eventID);
+                    $("#continueSubmitShcdulebtn").removeClass('disabled')
+                },
+                eventDataTransform: function(event, element, info) {
+                    if (event.status == 'time_off') {
+                        event.editable = false;
+                        event.color = "red";
+
+                    }
+                    return event;
+                },
+            });
+
+
+            calendar.render();
+            calendar.changeView('timeGridWeek');
+        }, 400);
+    }
+
+    function submitStudentSchedule() {
+        if ($("#session_start").val() != '' && $("#session_end").val() != '' && $("#calendar_sch_id").val() != '') {
+            $('#submitPrivateLesson').submit();
+        }
     }
 </script>

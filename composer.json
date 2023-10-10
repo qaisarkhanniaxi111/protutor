@@ -31,7 +31,8 @@
             "Database\\Seeders\\": "database/seeders/"
         },
         "files": [
-            "app/Helpers/group_lesson.php"
+            "app/Helpers/group_lesson.php",
+            "app/Helpers/tutor_details.php"
         ]
     },
     "autoload-dev": {

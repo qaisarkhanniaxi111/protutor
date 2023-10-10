@@ -32,7 +32,9 @@ class GroupLessonController extends Controller
 
         return view("frontend.grouplessons", compact('todayGroupLessons', 'groupLessons', 'teaches_levels', 'subjects'));
     }
-
+    public function privategroupclasses(){
+        return view('frontend.privateGroupLesson');
+    }
     public function openGroupDetails(GroupLesson $groupLesson)
     {
         $groupLessonPlan=GroupLessonPlan::where('group_lesson_id',$groupLesson->id)->get();

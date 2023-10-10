@@ -15,6 +15,9 @@
 <link rel="stylesheet" href="{{ asset('assets/frontpage_assets/css/footer.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/tutor/css/toastr.min.css') }}">
 <style>
+    p{
+        text-align: unset;
+    }
     #english-USD {
         border: none;
         background-position: right center;
@@ -124,16 +127,18 @@
     }
 </style>
 
-
-<div class="hero-container">
+<main class="pt-4 mt-4">
+<div class="hero">
+    <div class="container">
     <section class="lesson-btns">
         <div class="btns-box">
-            <button class="private-lesson"><a href="">Private Lesson</a></button>
+            <button class="private-lesson"><a href="{{ route('private.lessons') }}">Private Lesson</a></button>
             <button class="group-classes"><a href="#">Group Classes</a></button>
         </div>
         <h1 class="text-online mt-5">Online English classes to practice speaking together</h1>
         <p class="tagline mt-4">Learn, speak and connect with a small group of students, guided by an expert tutor</p>
     </section>
+</div>
 </div>
 
 <div class="search-container">
@@ -508,7 +513,7 @@
         </section>
     </div>
 </section>
-
+</main>
 <!-- Footer Section -->
 @include('/frontend/common/footer')
 <script src="{{ asset('assets/tutor/js/toastr.min.js') }}"></script>

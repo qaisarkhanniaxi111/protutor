@@ -11,6 +11,7 @@ use App\Models\User;
 use App\Models\Userdetail;
 use App\Models\Subject;
 use App\Models\Teaches_level;
+use App\Models\Tutors;
 use Illuminate\Support\Facades\Session;
 
 class CalendarController extends Controller
@@ -30,7 +31,9 @@ class CalendarController extends Controller
             return redirect(route('tutor.dashboard'))->with('error_msg',__("You cannot go to the Calendar menu, please complete your profile first and have your profile verified by an administrator."));
         }
 
-
+        $tutor=new Tutors();
+        $tutorid=Session::get("tutorid");
+        $subjs=$tutor->getSubjects($tutorid);
         $subject =  Subject::all();
         $teache_level =  Teaches_level::all();
 
@@ -66,7 +69,7 @@ class CalendarController extends Controller
             
         }
         
-        return view("tutor.calendar.index",compact('PageTitle','subject','teache_level'));
+        return view("tutor.calendar.index",compact('PageTitle','subject','teache_level','subjs'));
 
     }
 

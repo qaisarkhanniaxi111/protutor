@@ -542,25 +542,7 @@ class FrontendController extends Controller
 
     }
 
-    // private function calculateGroupLessonRating($groupLessonId){
-    //     // calculate Group Lesson rating
-    //     $ratings = Rating::where('group_lesson_id', $groupLessonId);
-    //     $rating = $ratings->get();
-
-    //     $count=0;
-    //     foreach ($rating as $countRating) {
-    //         $count+=$countRating->rating;
-    //     }
-    //     $numberOfRating=$ratings->count();
-    //     if($count<=0 || $numberOfRating<=0){
-    //         $groupLessonRating=0;
-    //     }else{
-
-    //         $groupLessonRating=$count/$numberOfRating;
-    //     }
-    //     return $groupLessonRating;
-    // }
-
+    
     public function checkUserIsLogin()
     {
         if (auth()->check()) {

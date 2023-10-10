@@ -168,7 +168,7 @@
                             <div class="d-flex align-items-start mt-3">
                                 <img src="{{ url('') }}/newAssets/assets/images/taughts.svg" alt=""
                                     class="me-2">
-                                <p class="mb-0 pb-0">315lessons taught</p>
+                                <p class="mb-0 pb-0">{{ deliveredtutorlessons($teacher_data[0]->student_no) }} lessons taught</p>
                             </div>
                         </div>
                     </div>
@@ -865,6 +865,8 @@
 </script>
 
 <script>
+    // Get the client's time zone
+    const clientTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
     function runFullCalendar() {
         $('.date-display').datepicker({});
         // document.addEventListener('DOMContentLoaded', function() {
@@ -880,6 +882,7 @@
             defaultView: 'timeGridWeek',
             selectable: true,
             editable: true,
+            timeZone: clientTimeZone, // Use the client's time zone
             events: "{{ url('/') }}/fetchCalendarAvailability/<?php echo $teacher_data[0]->student_no; ?>",
             eventClick: function(eventClickInfo, jsEvent, view) {
                 eventID = eventClickInfo.el.fcSeg.eventRange.def.publicId;
@@ -911,11 +914,6 @@
         $("#model-schedule-calendar").empty();
         setTimeout(() => {
 
-
-            console.log('hi')
-            // $('.date-display').datepicker({});
-            // document.addEventListener('DOMContentLoaded', function() {
-            // console.log('hi loaded <?php echo $teacher_data[0]->student_no; ?>');
             var calendarEl = document.getElementById('model-schedule-calendar');
 
             var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -927,6 +925,7 @@
                 defaultView: 'timeGridWeek',
                 selectable: true,
                 editable: true,
+                timeZone: clientTimeZone, // Use the client's time zone
                 events: "{{ url('/') }}/fetchCalendarAvailability/<?php echo $teacher_data[0]->student_no; ?>",
                 eventClick: function(eventClickInfo, jsEvent, view) {
                     // Reset the background color of all events to their default styling
@@ -936,10 +935,9 @@
 
         // Set the background color of the clicked event to green
         eventClickInfo.event.setProp('backgroundColor', '#fe6903');
-                    console.log(view)
+                   
                     eventID = eventClickInfo.el.fcSeg.eventRange.def.publicId;
-                    console.log(eventID);
-                    console.log(eventClickInfo.el.fcSeg.start)
+                   
                     $("#session_start").val(moment(eventClickInfo.el.fcSeg.start).add(0, 'minute')
                         .format('YYYY-MM-DD HH:mm'))
                     $("#session_end").val(moment(eventClickInfo.el.fcSeg.end).add(0, 'minute')

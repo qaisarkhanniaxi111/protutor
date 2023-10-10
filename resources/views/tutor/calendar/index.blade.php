@@ -158,15 +158,10 @@ $getId = Session::get('tutorid');
 																<label for="">Subject</label>
 																<select class="block-inp" name="subject" id="subject" >
 																	<option value="">Select Subject</option>
-																	<?php 
-
-																	foreach ($subject as $subject_val) 
-																	{ 
-																		?>
-																		<option value="<?php echo $subject_val->id; ?>"><?php echo $subject_val->subject; ?></option>
-																		<?php 
-																	}
-																	?>
+																	@foreach ($subjs as $subject)
+                                                        <option value="{{ $subject->id }}">{{ $subject->subject }}
+                                                        </option>
+                              @endforeach
 																</select>
 															</div>
 														</div>
@@ -405,15 +400,11 @@ $getId = Session::get('tutorid');
 														<label for="">Subject</label>
 														<select class="block-inp" name="subject_a" id="subject_a" >
 															<option value="">Select Subject</option>
-															<?php 
-
-															foreach ($subject as $subject_val) 
-															{ 
-																?>
-																<option value="<?php echo $subject_val->id; ?>"><?php echo $subject_val->subject; ?></option>
-																<?php 
-															}
-															?>
+															@foreach ($subjs as $subject)
+                                                        <option value="{{ $subject->id }}">{{ $subject->subject }}
+                                                        </option>
+                              @endforeach
+															
 														</select>
 													</div>
 												</div>
@@ -552,7 +543,7 @@ $getId = Session::get('tutorid');
 							$('#start_date').val(newDateTime);
 							$('#end_date').val(newDateTime1); 
 							$('#grade').val(resource.grade).change();
-							$('#subject').val(resource.subject).change();
+							$('#subject').val(resource.subjs).change();
 						}
 					}) 
 				}

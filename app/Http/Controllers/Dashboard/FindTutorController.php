@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Calendar;
 use App\Models\Certificate;
 use App\Models\Countries;
+use App\Models\GroupLesson;
 use App\Models\Hourly_rate;
 use App\Models\Spoken_language;
 use App\Models\Subject;
@@ -106,6 +107,33 @@ class FindTutorController extends Controller
         $experience = DB::select('SELECT experiences.period_of_employment, experiences.company_name, experiences.position FROM `experiences` join userdetails on experiences.userdetail_id = userdetails.student_no
             where userdetails.student_no="' . $tutorid . '";');
 
+
+        // calculate Tutor rating
+        $ratings = GroupLesson::where('tutor_id', $tutorid)
+            ->join('ratings', 'group_lessons.id', '=', 'ratings.group_lesson_id')
+            ->join('userdetails', 'ratings.student_id', '=', 'userdetails.student_no')
+            ->select('ratings.*', 'userdetails.*');
+
+        $rating = $ratings->orderBy('ratings.created_at', 'desc')->get();
+
+        //  dd($rating->toArray());
+
+        $count = 0;
+        foreach ($rating as $countRating) {
+            $count += $countRating->rating;
+            //  $count+=$countRating->rating;
+        }
+        $numberOfRating = $ratings->count();
+        //  echo $count;
+        //  dd($numberOfRating);
+        if ($count <= 0 || $numberOfRating <= 0) {
+            $groupLessonRating = 0;
+        } else {
+
+            $groupLessonRating = $count / $numberOfRating;
+        }
+
+
         if (!empty($experience)) {
             $years_of_Exps = [];
             foreach ($experience as $key => $value) {
@@ -115,10 +143,10 @@ class FindTutorController extends Controller
 
             $years_of_Exp = array_sum($years_of_Exps);
 
-            return view("student.tutor.tutor_detail_single", compact('PageTitle', 'teacher_data', 'subjects', 'languages', 'degree', 'years_of_Exp', 'country', 'experience', 'certificateAll', 'hour_rate'));
+            return view("student.tutor.tutor_detail_single", compact('PageTitle', 'teacher_data', 'subjects', 'languages', 'degree', 'years_of_Exp', 'country', 'experience', 'certificateAll', 'hour_rate', 'groupLessonRating', 'rating'));
         } else {
             $years_of_Exp = 0;
-            return view("student.tutor.tutor_detail_single", compact('PageTitle', 'teacher_data', 'subjects', 'languages', 'degree', 'years_of_Exp', 'country', 'experience', 'certificateAll', 'hour_rate'));
+            return view("student.tutor.tutor_detail_single", compact('PageTitle', 'teacher_data', 'subjects', 'languages', 'degree', 'years_of_Exp', 'country', 'experience', 'certificateAll', 'hour_rate', 'groupLessonRating', 'rating'));
         }
     }
 
@@ -129,7 +157,7 @@ class FindTutorController extends Controller
 
         //$getData = Calendar::where('student_no',$id)->where('status','schedule')->get();
         $getData = Calendar::where('student_no', $id)->get();
-        $data=[];
+        $data = [];
         foreach ($getData as $key => $value) {
             $data[] = array(
                 'id' => $value["id"],
@@ -144,60 +172,42 @@ class FindTutorController extends Controller
         }
         return json_encode($data);
     }
-    // public function fetchCalendarAvailability(Request $request, $id)
-    // {
 
-    //     //$getData = Calendar::where('student_no',$id)->where('status','schedule')->get();
-    //     $getData = Calendar::where('student_no', $id)->get();
-    //     $data=[];
-    //     foreach ($getData as $key => $value) {
-    //         $data[] = array(
-    //             'id' => $value["id"],
-    //             'title' => $value["note"],
-    //             'start' => $value["start_date"],
-    //             'end' => $value["end_date"],
-    //             'subject' => $value["subject"],
-    //             'grade' => $value["grade"],
-    //             'status' => $value["status"]
 
-    //         );
-    //     }
-    //     return json_encode($data);
-    // }
-  
-    
+
 
     public function fetchCalendarAvailability(Request $request, $id)
-{
-    // Assuming you have availability data in the "Calendar" model
-    $availabilityData = Calendar::where('student_no', $id)->get();
+    {
+        // Assuming you have availability data in the "Calendar" model
+        $availabilityData = Calendar::where('student_no', $id)->get();
 
-    $data = [];
+        $data = [];
 
-    foreach ($availabilityData as $slot) {
-        $startDateTime = Carbon::parse($slot->start_date);
-        $endDateTime = Carbon::parse($slot->end_date);
+        foreach ($availabilityData as $slot) {
+            $startDateTime = Carbon::parse($slot->start_date);
+            $endDateTime = Carbon::parse($slot->end_date);
+            $timezone = $startDateTime->getTimezone()->getName();
+            // Divide the availability slot into 1-hour time slots
+            while ($startDateTime->lt($endDateTime)) {
+                $nextHour = $startDateTime->clone()->addHour();
+                if ($nextHour->gt($endDateTime)) {
+                    $nextHour = $endDateTime;
+                }
 
-        // Divide the availability slot into 1-hour time slots
-        while ($startDateTime->lt($endDateTime)) {
-            $nextHour = $startDateTime->clone()->addHour();
-            if ($nextHour->gt($endDateTime)) {
-                $nextHour = $endDateTime;
+                $data[] = [
+                    'id' => $slot->id,
+                    'start' => $startDateTime->toIso8601String(),
+                    'end' => $nextHour->toIso8601String(),
+                    'timezone' => $timezone
+                ];
+
+                $startDateTime = $nextHour;
             }
-
-            $data[] = [
-                'id' => $slot->id,
-                'start' => $startDateTime->toIso8601String(),
-                'end' => $nextHour->toIso8601String(),
-                'allDay'=> false,
-            ];
-
-            $startDateTime = $nextHour;
         }
+
+        return response()->json($data);
     }
 
-    return response()->json($data);
-}
 
 
 
