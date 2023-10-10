@@ -25,8 +25,31 @@
     line-height: 110%;
   }
 }
-
+@media only screen and (max-width:1240px){
+  .teacher-card--header-text{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .profile-price{
+    width: 100%;
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-align: left;
+    margin-bottom: 10px;
+  }
+}
 @media only screen and (max-width: 1200px) {
+  .filter-search .dropdown{
+    display: flex;
+    flex-grow: 1;
+  }
+  .filter-search .dropdown button{
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-between;
+  }
   .main-btn-blank {
     padding: 10px 20px;
     font-size: 14px;
@@ -107,7 +130,14 @@
     flex-direction: column;
     padding: 0px 0px;
   }
-
+.slc{
+  border: 0px !important;
+  margin-bottom: 15px;
+  padding-right: 0px !important;
+}
+.select-section select{
+  font-size: 14px;
+}
   /* .carousel-control-prev{
     width: 90%;
   } */
@@ -144,7 +174,19 @@
 }
 
 @media only screen and (max-width:768px) {
-
+  .search{
+    position: relative;
+    width: 100%;
+  }
+  .search input{
+  width: 100%;
+  }
+  .filter-search .dropdown{
+ width: 100%;
+  }
+  .filter-search .dropdown button{
+    width: 100%;
+  }
   .testimonial-text {
     font-size: 14px;
     line-height: normal;
@@ -175,9 +217,18 @@
   .header-form {
     padding: 20px 15px;
   }
+  .sm-100 {
+    width: 100% !important;
+  }
 }
 
 @media only screen and (max-width:600px) {
+  .select-section{
+    padding: 20px 10px;
+  }
+  .hide-sm{
+    display: none;
+  }
   .hero-section-profile{
     padding-top: 80px;
   }
@@ -332,4 +383,7 @@
   .resumetablinks {
     flex-grow: 1;
   }
+  /* .sm-100 {
+    width: 100% !important;
+  } */
 }
