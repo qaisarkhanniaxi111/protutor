@@ -9,7 +9,15 @@
   }
 </style>
     <main>
+        {{-- @if (count($userdata))
+        @foreach($userdata as $userdata_val)
 
+        <pre>
+            {{ print_r($userdata_val) }}
+        </pre>
+
+        @endforeach
+        @endif --}}
 
 
         <section class="hero ">
@@ -67,9 +75,10 @@
                             <label for="">I want to learn</label>
                             <select class="form-select" aria-label="Default select example">
                                 <option selected> Select </option>
-                                <option value="English">English</option>
-                                <option value="Urdu">Urdu</option>
-                                <option value="Italian">Italian</option>
+                                @foreach($subjectAll as $data2)
+                            <option <?php echo ((isset($_GET['subject']) && $_GET['subject'] == $data2->id) ? "selected" : ""); ?> value="{{ $data2->id }}">{{ $data2->subject }}</option>
+                            @endforeach
+                                
                             </select>
                         </div>
                     </div>
@@ -77,10 +86,17 @@
                         <div class="slc">
                             <label for="">price per lesson</label>
                             <select class="form-select" aria-label="Default select example">
-                                <option selected>$1-$40</option>
-                                <option value="$1-$40">$1-$40</option>
-                                <option value="$1-$40">$1-$40</option>
-                                <option value="$1-$40">$1-$40</option>
+                                <option selected> Select </option>
+                                <option value="1-5" <?php echo (isset($_GET['hourly_rate']) && $_GET['hourly_rate']=='1-5' ? 'selected' : "") ?>>$1-5</option>
+                                <option value="6-10" <?php echo (isset($_GET['hourly_rate']) && $_GET['hourly_rate']=='6-10' ? 'selected' : "") ?>>$6-10</option>
+                                <option value="11-15"<?php echo (isset($_GET['hourly_rate']) && $_GET['hourly_rate']=='11-15' ? 'selected' : "") ?>>$11-15</option>
+                                <option value="16-20"<?php echo (isset($_GET['hourly_rate']) && $_GET['hourly_rate']=='16-20' ? 'selected' : "") ?>>$16-20</option>
+                                <option value="21-25"<?php echo (isset($_GET['hourly_rate']) && $_GET['hourly_rate']=='21-25' ? 'selected' : "") ?>>$21-25</option>
+                                <option value="26-30"<?php echo (isset($_GET['hourly_rate']) && $_GET['hourly_rate']=='26-30' ? 'selected' : "") ?>>$26-30</option> 
+                                <option value="31-35"<?php echo (isset($_GET['hourly_rate']) && $_GET['hourly_rate']=='31-35' ? 'selected' : "") ?>>$31-35</option> 
+                                <option value="36-40"<?php echo (isset($_GET['hourly_rate']) && $_GET['hourly_rate']=='36-40' ? 'selected' : "") ?>>$36-40</option> 
+                                <option value="41-45"<?php echo (isset($_GET['hourly_rate']) && $_GET['hourly_rate']=='41-45' ? 'selected' : "") ?>>$41-45</option> 
+                                <option value="46-50"<?php echo (isset($_GET['hourly_rate']) && $_GET['hourly_rate']=='46-50' ? 'selected' : "") ?>>$46-50</option> 
                             </select>
                         </div>
                     </div>
@@ -89,9 +105,9 @@
                             <label for="">Country of birth</label>
                             <select class="form-select" aria-label="Default select example">
                                 <option selected>Any country </option>
-                                <option value="English">English</option>
-                                <option value="Urdu">Urdu</option>
-                                <option value="Italian">Italian</option>
+                                @foreach($countryAll as $data)
+                                <option <?php echo ((isset($_GET['country']) && $_GET['country'] == $data->id) ? "selected" : ""); ?> value="{{ $data->id }}">{{ $data->name }}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>
@@ -100,9 +116,8 @@
                             <label for="">I’m available</label>
                             <select class="form-select" aria-label="Default select example">
                                 <option selected> Any time</option>
-                                <option value="English" style="margin: 0px 20px !important;">English</option>
-                                <option value="Urdu">Urdu</option>
-                                <option value="Italian">Italian</option>
+                                <option value="1" <?php echo ((isset($_GET['user_status']) && $_GET['user_status'] == 1) ? "selected" : ""); ?> >Active</option>
+                                <option value="0" <?php echo ((isset($_GET['user_status']) && $_GET['user_status'] == 0) ? "selected" : ""); ?> >Inactive</option>
                             </select>
                         </div>
                     </div>
@@ -115,79 +130,18 @@
                                 Specialist
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                <li class="more-heading">
-                                    <h2 class="">
-                                        English Specialist
-                                    </h2>
-                                </li>
+                                @foreach($Spoken_language as $spoken_language_data)
                                 <li>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                        <input class="form-check-input" type="radio" name="spoken_language" value="{{ $spoken_language_data->id }}" id="flexCheckDefault" <?php echo ((isset($_GET['spoken_language']) && $_GET['spoken_language'] == $spoken_language_data->id) ? "checked" : ""); ?> >
                                         <label class="form-check-label" for="flexCheckDefault">
-                                            Englis
+                                            {{ $spoken_language_data->spoken_language }}
                                         </label>
                                     </div>
 
                                 </li>
-                                <li>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                        <label class="form-check-label" for="flexCheckDefault">
-                                            Urdu
-                                        </label>
-                                    </div>
-
-                                </li>
-                                <li>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                        <label class="form-check-label" for="flexCheckDefault">
-                                            Mathmatics
-                                        </label>
-                                    </div>
-
-                                </li>
-                                <li>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                        <label class="form-check-label" for="flexCheckDefault">
-                                            Computer
-                                        </label>
-                                    </div>
-
-                                </li>
-                                <li>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                        <label class="form-check-label" for="flexCheckDefault">
-                                            Chemistry
-                                        </label>
-                                    </div>
-                                </li>
-                                <li class="more-heading">
-                                    <h2 class="">
-                                        More Specialist
-                                    </h2>
-                                </li>
-
-                                <li>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                        <label class="form-check-label" for="flexCheckDefault">
-                                            Englis
-                                        </label>
-                                    </div>
-
-                                </li>
-                                <li>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                        <label class="form-check-label" for="flexCheckDefault">
-                                            Urdu
-                                        </label>
-                                    </div>
-
-                                </li>
+                           
+                            @endforeach
                             </ul>
                         </div>
                         <div class="dropdown my-3 mx-2">
@@ -196,152 +150,38 @@
                                 Also Speak
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-
+                                @foreach($Spoken_language as $spoken_language_data)
                                 <li>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                        <input class="form-check-input" type="radio" name="spoken_language" value="{{ $spoken_language_data->id }}" id="flexCheckDefault" <?php echo ((isset($_GET['spoken_language']) && $_GET['spoken_language'] == $spoken_language_data->id) ? "checked" : ""); ?> >
                                         <label class="form-check-label" for="flexCheckDefault">
-                                            Englis
+                                            {{ $spoken_language_data->spoken_language }}
                                         </label>
                                     </div>
 
                                 </li>
-                                <li>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                        <label class="form-check-label" for="flexCheckDefault">
-                                            Urdu
-                                        </label>
-                                    </div>
-
-                                </li>
-                                <li>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                        <label class="form-check-label" for="flexCheckDefault">
-                                            Mathmatics
-                                        </label>
-                                    </div>
-
-                                </li>
-                                <li>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                        <label class="form-check-label" for="flexCheckDefault">
-                                            Computer
-                                        </label>
-                                    </div>
-
-                                </li>
-                                <li>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                        <label class="form-check-label" for="flexCheckDefault">
-                                            Chemistry
-                                        </label>
-                                    </div>
-                                </li>
-                                <li class="more-heading">
-                                    <h2 class="">
-                                        More Languages
-                                    </h2>
-                                </li>
-
-                                <li>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                        <label class="form-check-label" for="flexCheckDefault">
-                                            Englis
-                                        </label>
-                                    </div>
-
-                                </li>
-                                <li>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                        <label class="form-check-label" for="flexCheckDefault">
-                                            Urdu
-                                        </label>
-                                    </div>
-
-                                </li>
+                           
+                            @endforeach
                             </ul>
                         </div>
                         <div class="dropdown my-3 mx-2">
                             <button class=" dropdown-toggle" type="button" id="dropdownMenuButton1"
                                 data-bs-toggle="dropdown" aria-expanded="false">
-                                Nation speaker
+                                Native speaker
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-
+                                @foreach($Spoken_language as $spoken_language_data)
                                 <li>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                        <input class="form-check-input" type="radio" name="spoken_language" value="{{ $spoken_language_data->id }}" id="flexCheckDefault" <?php echo ((isset($_GET['spoken_language']) && $_GET['spoken_language'] == $spoken_language_data->id) ? "checked" : ""); ?> >
                                         <label class="form-check-label" for="flexCheckDefault">
-                                            Englis
+                                            {{ $spoken_language_data->spoken_language }}
                                         </label>
                                     </div>
 
                                 </li>
-                                <li>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                        <label class="form-check-label" for="flexCheckDefault">
-                                            Urdu
-                                        </label>
-                                    </div>
-
-                                </li>
-                                <li>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                        <label class="form-check-label" for="flexCheckDefault">
-                                            Mathmatics
-                                        </label>
-                                    </div>
-
-                                </li>
-                                <li>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                        <label class="form-check-label" for="flexCheckDefault">
-                                            Computer
-                                        </label>
-                                    </div>
-
-                                </li>
-                                <li>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                        <label class="form-check-label" for="flexCheckDefault">
-                                            Chemistry
-                                        </label>
-                                    </div>
-                                </li>
-                                <li class="more-heading">
-                                    <h2 class="">
-                                        More Languages
-                                    </h2>
-                                </li>
-
-                                <li>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                        <label class="form-check-label" for="flexCheckDefault">
-                                            Englis
-                                        </label>
-                                    </div>
-
-                                </li>
-                                <li>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                        <label class="form-check-label" for="flexCheckDefault">
-                                            Urdu
-                                        </label>
-                                    </div>
-
-                                </li>
+                           
+                            @endforeach
                             </ul>
                         </div>
                         <div class="dropdown my-3 mx-2">
@@ -456,19 +296,24 @@
                         </div>
                     </div>
                     <div class="col-xl-8">
+                        @if (count($userdata))
+        @foreach($userdata as $userdata_val)
+
+       
+        
                         <div class="teacher-card-div mb-3">
                             <div class="teacher-card--header">
 
                                 <div class="teacher-card--header-text w-100 align-items-start">
                                     <div class=" d-flex align-items-start flex-md-row flex-column mb-md-0 mb-3">
                                         <div class="online-image">
-                                            <img src="{{ url('newAssets') }}/assets/images/ppp.png" alt="">
+                                            <img src="{{ url('/') }}/images/{{ $userdata_val->profile_img }}" alt="">
                                             <div class="online"></div>
                                         </div>
                                         <div class="profile-data-text">
                                             <div
                                                 class="d-flex align-items-sm-center flex-sm-row flex-column align-items-start">
-                                                <h1 class="mb-0 pb-0">Hanna Baptista</h1>
+                                                <h1 class="mb-0 pb-0">{{ $userdata_val->first_name.' '.$userdata_val->last_name }}</h1>
                                                 <div class="d-flex align-items-center mt-sm-0 mt-2">
                                                     <img src="{{ url('newAssets') }}/assets/images/star.svg" alt="" class="ms-sm-3 ms-0 me-1">
                                                     <h3 class="mb-0 pb-0">5.0</h3>
@@ -479,17 +324,40 @@
                                                 <!-- <h2 class="mb-0 pb-0">English teacher</h2> -->
                                                 <div
                                                     class="d-flex align-items-lg-center mt-3 flex-wrap align-items-start">
-                                                    <h2 class="text-primary me-2 ps-0">English teacher</h2>
-                                                    <h2 class="text-primary me-2 ps-0">English teacher</h2>
-                                                    <h2 class="text-primary me-2 ps-0">English teacher</h2>
-                                                    <h2 class="text-primary me-2 ps-0">English teacher</h2>
-                                                    <h2 class="text-primary me-2 ps-0">English teacher</h2>
+                                                    <?php 
+                                                    foreach ($subjectAll as $key => $value) { 
+                                                        $medi_arr = explode(',', $userdata_val->subject);  
+                                                        if(count($medi_arr) > 1){
+                                                          if(in_array($value->id, $medi_arr)){
+                                                            echo '<h2 class="text-primary me-2 ps-0">'.$value->subject.' </h2>';
+                                    
+                                                        }
+                                                    }else{
+                                                      if($userdata_val->subject==$value->id){
+                                                          echo '<h2 class="text-primary me-2 ps-0">'.$value->subject.'</h2>';
+                                                      }
+                                                  }
+                                              }
+                                    
+                                              ?> 
+                                                    
 
                                                 </div>
 
                                                 <div class="d-flex align-items-center  mt-2">
-                                                    <img src="{{ url('newAssets') }}/assets/images/flag.png" alt="" class="me-1">
-                                                    <p class="mb-0 pb-0">United State</p>
+                                                    <?php 
+                                                    foreach ($countryAll as $key => $value) { 
+                                                      if($userdata_val->country==$value->id){
+                                                         ?>       
+                                                         <span><img src="{{url('/')}}/assets/frontpage_assets/flags/{{Str::lower($value->iso)}}.png" alt=""></span>
+                                                         <p class="mb-0 pb-0 ps-1">{{ $value->nicename }}</p>
+
+                                                         <?php 
+                                                         
+                                                     }
+                                                 }
+                                                 ?> 
+                                                  
                                                 </div>
                                             </div>
                                             <div>
@@ -503,18 +371,14 @@
                                         </div>
                                     </div>
                                     <div class="profile-price flex-shrink-0">
-                                        <h2 class="mb-0 pb-0">$105.00</h2>
+                                        <h2 class="mb-0 pb-0">${{ $userdata_val->hourly_rate }}</h2>
                                         <p class="mb-0 pb-0">50-min lesson</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="teacher-card-body">
                                 <p>
-                                    English tutor with over 5 years of teaching experience Hi! I'm Ugne. Originally I am
-                                    from Lithuania, however, I have completed my high school education in an American
-                                    International School and my bachelor's degree at a university in London, UK. I have
-                                    quite a few interests and creative hobbies, however my favorite thing to do whenever
-                                    I have the time is traveling as much as possible.
+                                    {{ $userdata_val->desc_about }}
 
                                 </p>
                             </div>
@@ -542,6 +406,8 @@
                                 </div>
                             </div>
                         </div>
+                        @endforeach
+        @endif
                         <div class="teacher-card-div mb-3">
                             <div class="teacher-card--header">
 

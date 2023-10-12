@@ -55,6 +55,11 @@
     p {
         text-align: unset;
     }
+
+    .tutors-card-image{
+        height:300px !important;
+        object-fit: cover;
+    }
 </style>
 <!-- Modal -->
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
@@ -570,7 +575,7 @@
                             <div>
                                 <div class="tutors-card h-100 bg-white">
                                     <img src="{{ url('') }}/images/{{ $relatedTeacher->profile_img }}"
-                                        alt="">
+                                        alt="" class="tutors-card-image">
                                     <div class="tutors-card--text bg-white">
                                         <div class="mb-2">
                                             <h3 class="mb-2">{{ $relatedTeacher->first_name }}

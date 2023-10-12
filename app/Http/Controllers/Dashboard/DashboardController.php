@@ -46,7 +46,7 @@ class DashboardController extends Controller
 		// dd($startDateTimeForTimer);
 		// dd($quizes);
 
-		$monthlyGraphData=DB::select("SELECT p.tutor_id, CONCAT( CASE WHEN MONTH(p.created_at) = 1 THEN 'Jan' WHEN MONTH(p.created_at) = 2 THEN 'Feb' WHEN MONTH(p.created_at) = 3 THEN 'Mar' WHEN MONTH(p.created_at) = 4 THEN 'Apr' WHEN MONTH(p.created_at) = 5 THEN 'May' WHEN MONTH(p.created_at) = 6 THEN 'Jun' WHEN MONTH(p.created_at) = 7 THEN 'Jul' WHEN MONTH(p.created_at) = 8 THEN 'Aug' WHEN MONTH(p.created_at) = 9 THEN 'Sep' WHEN MONTH(p.created_at) = 10 THEN 'Oct' WHEN MONTH(p.created_at) = 11 THEN 'Nov' WHEN MONTH(p.created_at) = 12 THEN 'Dec' END, ', ', YEAR(p.created_at) ) AS month, SUM(p.amount) AS monthly_earnings FROM payments p JOIN payment_student ps ON p.id = ps.payment_id WHERE ps.student_id = $studentId AND p.status='pending' GROUP BY p.tutor_id, month ORDER BY month;");
+		$monthlyGraphData=DB::select("SELECT CONCAT( CASE WHEN MONTH(p.created_at) = 1 THEN 'Jan' WHEN MONTH(p.created_at) = 2 THEN 'Feb' WHEN MONTH(p.created_at) = 3 THEN 'Mar' WHEN MONTH(p.created_at) = 4 THEN 'Apr' WHEN MONTH(p.created_at) = 5 THEN 'May' WHEN MONTH(p.created_at) = 6 THEN 'Jun' WHEN MONTH(p.created_at) = 7 THEN 'Jul' WHEN MONTH(p.created_at) = 8 THEN 'Aug' WHEN MONTH(p.created_at) = 9 THEN 'Sep' WHEN MONTH(p.created_at) = 10 THEN 'Oct' WHEN MONTH(p.created_at) = 11 THEN 'Nov' WHEN MONTH(p.created_at) = 12 THEN 'Dec' END, ', ', YEAR(p.created_at) ) AS month, SUM(p.amount) AS monthly_earnings FROM payments p JOIN payment_student ps ON p.id = ps.payment_id WHERE ps.student_id = $studentId AND p.status='pending' GROUP BY month ORDER BY month;");
 		$GraphDates=[];
 		$GraphValues=[];
 		foreach ($monthlyGraphData as $key => $value) {
@@ -63,7 +63,7 @@ class DashboardController extends Controller
 		$student = auth()->user();
 		$studentId = $student ? $student->id : '';
 		if($request->sortBy=='Monthly'){
-			$monthlyGraphData=DB::select("SELECT p.tutor_id, CONCAT( CASE WHEN MONTH(p.created_at) = 1 THEN 'Jan' WHEN MONTH(p.created_at) = 2 THEN 'Feb' WHEN MONTH(p.created_at) = 3 THEN 'Mar' WHEN MONTH(p.created_at) = 4 THEN 'Apr' WHEN MONTH(p.created_at) = 5 THEN 'May' WHEN MONTH(p.created_at) = 6 THEN 'Jun' WHEN MONTH(p.created_at) = 7 THEN 'Jul' WHEN MONTH(p.created_at) = 8 THEN 'Aug' WHEN MONTH(p.created_at) = 9 THEN 'Sep' WHEN MONTH(p.created_at) = 10 THEN 'Oct' WHEN MONTH(p.created_at) = 11 THEN 'Nov' WHEN MONTH(p.created_at) = 12 THEN 'Dec' END, ', ', YEAR(p.created_at) ) AS month, SUM(p.amount) AS monthly_earnings FROM payments p JOIN payment_student ps ON p.id = ps.payment_id WHERE ps.student_id = $studentId AND p.status='pending' GROUP BY p.tutor_id, month ORDER BY month;");
+			$monthlyGraphData=DB::select("SELECT  CONCAT( CASE WHEN MONTH(p.created_at) = 1 THEN 'Jan' WHEN MONTH(p.created_at) = 2 THEN 'Feb' WHEN MONTH(p.created_at) = 3 THEN 'Mar' WHEN MONTH(p.created_at) = 4 THEN 'Apr' WHEN MONTH(p.created_at) = 5 THEN 'May' WHEN MONTH(p.created_at) = 6 THEN 'Jun' WHEN MONTH(p.created_at) = 7 THEN 'Jul' WHEN MONTH(p.created_at) = 8 THEN 'Aug' WHEN MONTH(p.created_at) = 9 THEN 'Sep' WHEN MONTH(p.created_at) = 10 THEN 'Oct' WHEN MONTH(p.created_at) = 11 THEN 'Nov' WHEN MONTH(p.created_at) = 12 THEN 'Dec' END, ', ', YEAR(p.created_at) ) AS month, SUM(p.amount) AS monthly_earnings FROM payments p JOIN payment_student ps ON p.id = ps.payment_id WHERE ps.student_id = $studentId AND p.status='pending' GROUP BY  month ORDER BY month;");
 			$GraphDates=[];
 			$GraphValues=[];
 			foreach ($monthlyGraphData as $key => $value) {
@@ -73,7 +73,7 @@ class DashboardController extends Controller
 			return response()->json(['labels'=>$GraphDates,'data'=>$GraphValues]);
 		}
 		if($request->sortBy=='Weekly'){
-			$weeklyGraphData=DB::select("SELECT p.tutor_id, CONCAT( DATE_FORMAT(MIN(p.created_at), '%d'), '-', DATE_FORMAT(DATE_ADD(MIN(p.created_at), INTERVAL 6 DAY), '%d %b, %Y') ) AS weekly_range, SUM(p.amount) AS weekly_earnings FROM payments p JOIN payment_student ps ON p.id = ps.payment_id WHERE ps.student_id = $studentId AND p.status='pending' GROUP BY p.tutor_id, YEAR(p.created_at), WEEK(p.created_at) ORDER BY YEAR(p.created_at), WEEK(p.created_at);");
+			$weeklyGraphData=DB::select("SELECT  CONCAT( DATE_FORMAT(MIN(p.created_at), '%d'), '-', DATE_FORMAT(DATE_ADD(MIN(p.created_at), INTERVAL 6 DAY), '%d %b, %Y') ) AS weekly_range, SUM(p.amount) AS weekly_earnings FROM payments p JOIN payment_student ps ON p.id = ps.payment_id WHERE ps.student_id = $studentId AND p.status='pending' GROUP BY  YEAR(p.created_at), WEEK(p.created_at) ORDER BY YEAR(p.created_at), WEEK(p.created_at);");
 			$GraphDates=[];
 			$GraphValues=[];
 			foreach ($weeklyGraphData as $key => $value) {
@@ -83,7 +83,7 @@ class DashboardController extends Controller
 			return response()->json(['labels'=>$GraphDates,'data'=>$GraphValues]);
 		}
 		if($request->sortBy=='Yearly'){
-			$yearlyGraphData=DB::select("SELECT p.tutor_id, YEAR(p.created_at) AS year, SUM(p.amount) AS yearly_earnings FROM payments p JOIN payment_student ps ON p.id = ps.payment_id WHERE ps.student_id = $studentId AND p.status='pending' GROUP BY p.tutor_id, year ORDER BY year;");
+			$yearlyGraphData=DB::select("SELECT YEAR(p.created_at) AS year, SUM(p.amount) AS yearly_earnings FROM payments p JOIN payment_student ps ON p.id = ps.payment_id WHERE ps.student_id = $studentId AND p.status='pending' GROUP BY year ORDER BY year;");
 			$GraphDates=[];
 			$GraphValues=[];
 			foreach ($yearlyGraphData as $key => $value) {

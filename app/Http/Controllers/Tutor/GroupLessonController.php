@@ -6,16 +6,20 @@ namespace App\Http\Controllers\Tutor;
 use App\Models\GroupLesson;
 use App\Models\Galleries;
 use App\Http\Controllers\Controller;
+use App\Models\Countries;
 use App\Models\Gallery;
 use App\Models\GroupLessonPlan;
+use App\Models\Hourly_rate;
 use App\Models\Payment;
 use App\Models\Rating;
+use App\Models\Spoken_language;
 use App\Models\Subject;
 use App\Models\Teaches_level;
 use App\Models\Tutors;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class GroupLessonController extends Controller
 {
@@ -34,7 +38,55 @@ class GroupLessonController extends Controller
     }
     public function privategroupclasses()
     {
-        return view('frontend.privateGroupLesson');
+        $PageTitle = 'Private Lessons | ProTutor';
+        //$Spoken_language = Spoken_language::all();
+        $Spoken_language =  Spoken_language::where('user_status', 1)->get();
+        $subjectAll = Subject::all();
+        $rateAll = Hourly_rate::all();
+        $countryAll = Countries::all();
+
+        if (isset($_REQUEST['subject']) or isset($_REQUEST['hourly_rate']) or isset($_REQUEST['country']) or isset($_REQUEST['user_status']) or isset($_REQUEST['native_language']) or isset($_REQUEST['spoken_language'])) {
+
+
+            $user_data = 'SELECT users.id as user_id,users.first_name,users.last_name,users.phone_number,users.role,users.user_status,users.email ,users.email_verify,users.password,userdetails.* FROM `users` LEFT JOIN `userdetails` ON users.id = userdetails.student_no WHERE users.role=3';
+
+
+            if (isset($_REQUEST['subject']) and $_REQUEST['subject'] != '') {
+                $user_data .= " and " . 'userdetails.subject=' . $_REQUEST['subject'];
+            }
+
+            if (isset($_REQUEST['hourly_rate']) and $_REQUEST['hourly_rate'] != '') {
+                $expVal = explode('-', $_REQUEST['hourly_rate']);
+                //$user_data .= " and " .'userdetails.hourly_rate IN (SELECT id from hourly_rates WHERE id between '.$expVal[0] .' and '.$expVal[1] .')'. )   ;
+                //$user_data .= " and " .'userdetails.hourly_rate between '.$expVal[0] .' and '.$expVal[1] ;
+                $user_data .= " and " . 'userdetails.hourly_rate IN ' . '(SELECT id from hourly_rates WHERE id between ' . $expVal[0] . ' and ' . $expVal[1] . ')';
+            }
+
+            if (isset($_REQUEST['country']) and $_REQUEST['country'] != '') {
+                $user_data .= " and " . 'userdetails.country=' . $_REQUEST['country'];
+            }
+
+            if (isset($_REQUEST['user_status']) and $_REQUEST['user_status'] != '') {
+                $user_data .= " and " . 'users.user_status=' . $_REQUEST['user_status'];
+            }
+
+            if (isset($_REQUEST['native_language']) and $_REQUEST['native_language'] != '') {
+                $user_data .= " and " . 'userdetails.native_language=' . $_REQUEST['native_language'];
+            }
+
+            if (isset($_REQUEST['spoken_language']) and $_REQUEST['spoken_language'] != '') {
+                $user_data .= " and " . 'userdetails.languages=' . $_REQUEST['spoken_language'];
+            }
+            //\DB::enableQueryLog();
+            $userdata = DB::select($user_data);
+            //dd(\DB::getQueryLog());
+            return view('frontend.privateGroupLesson',compact('PageTitle','countryAll','rateAll','subjectAll','Spoken_language','userdata'));
+        }else{
+            $user_status='3';
+            $user_data='SELECT users.id as user_id,users.first_name,users.last_name,users.phone_number,users.role,users.user_status,users.email ,users.email_verify,users.password,userdetails.* FROM `users` LEFT JOIN `userdetails` ON users.id = userdetails.student_no WHERE users.role="'.$user_status.'" LIMIT 12';
+            $userdata = DB::select($user_data);
+            return view('frontend.privateGroupLesson',compact('PageTitle','countryAll','rateAll','subjectAll','Spoken_language','userdata'));
+        }
     }
     public function openGroupDetails(GroupLesson $groupLesson)
     {
@@ -185,10 +237,10 @@ class GroupLessonController extends Controller
         //     $newPlan->time = $value['time'];
         //     $newPlan->save();
         // }
-        $lessionId=$newGroupLesson->id;
-       
+        $lessionId = $newGroupLesson->id;
 
-        return response()->json(['lessonId'=>$lessionId]);
+
+        return response()->json(['lessonId' => $lessionId]);
     }
 
     public function storeGroupLessonPlan(Request $request)

@@ -35,7 +35,7 @@
 
 
     <div class="container" id="lesson_details_container">
-        <div class="row">
+        <div class="">
             <div class="col-12">
                 @if ($groupLesson)
 
@@ -120,76 +120,80 @@
                     <h3 class="text-danger text-center">No lesson found.</h3>
                 @endif
 
-                @if ($groupLessonPlan ? true : false)
-                <h1 class="h1-responsive">Group Lesson Plan</h1>
-                <div class="row mt-4 mb-5">
-                    <div class="col-lg-9 mx-auto table-responsive">
-                        <table class="table table-warning table-striped">
-                            <tr>
-                                <th>Sr.No</th>
-                                <th>Type</th>
-                                <th>Time</th>
-                                <th>Date</th>
-                            </tr>
-                                
-                            @php
-                                $i = 0;
-                            @endphp
-                            @foreach ($groupLessonPlan as $planItem)
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+
+        @if ($groupLessonPlan ? true : false)
+            <h1 class="h1-responsive">Group Lesson Plan</h1>
+            <div class="row mt-4 mb-5">
+                <div class="col-lg-9 mx-auto table-responsive">
+                    <table class="table table-warning table-striped">
+                        <tr>
+                            <th>Sr.No</th>
+                            <th>Type</th>
+                            <th>Time</th>
+                            <th>Date</th>
+                        </tr>
+
+                        @php
+                            $i = 0;
+                        @endphp
+                        @foreach ($groupLessonPlan as $planItem)
                             <tr>
                                 <td>{{ ++$i }}</td>
                                 <td>{{ $planItem ? $planItem['type'] : '' }}</td>
                                 <td>{{ $planItem ? $planItem['time'] : '' }}</td>
                                 <td>{{ $planItem ? $planItem['date'] : '' }}</td>
                             </tr>
-                            @endforeach
-                        </table>
-                    </div>
+                        @endforeach
+                    </table>
                 </div>
-                            @endif
-
-
-                @if ($paymentStatus == 'paid')
-                    <div class="text-center">
-                        <a href="{{ url('chat/' . $tutor->id) }}" class="btn"
-                            style="background: #FF6C0B; color:white">Chat with
-                            {{ $groupLesson->tutor ? $groupLesson->tutor->fullname : '' }}</a>
-                    </div>
-                @elseif($paymentStatus == 'unpaid')
-                    @if (groupLessonParticipantsReached($groupLesson->id) == true)
-                        <h3 class="text-center"><span class="badge bg-danger">Limit Reached</span></h3>
-                    @else
-                        <div class="row">
-                            <div class="splitscreen">
-                                <div class="left">
-                                    <a href="{{ url('chat/' . $tutor->id) }}" class="btn"
-                                        style="background: #FF6C0B; color:white">Chat with
-                                        {{ $groupLesson->tutor ? $groupLesson->tutor->fullname : '' }}</a>
-                                </div>
-                                <div class="right">
-                                    <form method="post"
-                                        action="{{ route('payments.charge', $groupLesson ? $groupLesson->id : '') }}">
-                                        @csrf
-                                        <input type="hidden" name="student_id" value="{{ $student ? $student->id: null }}">
-                                        <input type="hidden" name="tutor_id" value="{{ $tutor->id }}">
-                                        <input type="number" name="price"
-                                            value="{{ number_format($groupLesson->price, 0) }}" hidden>
-                                        <input type="number" name="group_lesson_id" value="{{ $groupLesson->id }}" hidden>
-                                        <button class="btn btn-primary">Enroll into the course</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    @endif
-                @endif
-                <div class="row text-center mt-5">
-                    <span id="error-msg" class="text-danger error-msgs"></span>
-                </div>
-
-
             </div>
+        @endif
+
+
+        @if ($paymentStatus == 'paid')
+            <div class="text-center">
+                <a href="{{ url('chat/' . $tutor->id) }}" class="btn" style="background: #FF6C0B; color:white">Chat with
+                    {{ $groupLesson->tutor ? $groupLesson->tutor->fullname : '' }}</a>
+            </div>
+        @elseif($paymentStatus == 'unpaid')
+            @if (groupLessonParticipantsReached($groupLesson->id) == true)
+                <h3 class="text-center"><span class="badge bg-danger">Limit Reached</span></h3>
+            @else
+                <div class="row">
+                    <div class="splitscreen">
+                        <div class="left">
+                            <a href="{{ url('chat/' . $tutor->id) }}" class="btn"
+                                style="background: #FF6C0B; color:white">Chat with
+                                {{ $groupLesson->tutor ? $groupLesson->tutor->fullname : '' }}</a>
+                        </div>
+                        <div class="right">
+                            <form method="post"
+                                action="{{ route('payments.charge', $groupLesson ? $groupLesson->id : '') }}">
+                                @csrf
+                                <input type="hidden" name="student_id" value="{{ $student ? $student->id : null }}">
+                                <input type="hidden" name="tutor_id" value="{{ $tutor->id }}">
+                                <input type="number" name="price" value="{{ number_format($groupLesson->price, 0) }}"
+                                    hidden>
+                                <input type="number" name="group_lesson_id" value="{{ $groupLesson->id }}" hidden>
+                                <button class="btn btn-primary">Enroll into the course</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            @endif
+        @endif
+        <div class="row text-center mt-5">
+            <span id="error-msg" class="text-danger error-msgs"></span>
         </div>
     </div>
+
 
     @if ($ratingStatus)
         @if (auth()->check())

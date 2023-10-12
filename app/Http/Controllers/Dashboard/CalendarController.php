@@ -12,6 +12,7 @@ use App\Models\Userdetail;
 use App\Models\Subject;
 use App\Models\Teaches_level;
 use App\Models\Tutors;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Session;
 
 class CalendarController extends Controller
@@ -169,17 +170,37 @@ class CalendarController extends Controller
             if(!empty($cale)){
                 return "error";
             }  
+            $startDateTime = Carbon::parse($request->start_date_a);
+            $endDateTime = Carbon::parse($request->end_date_a);
+           
+            // Divide the availability slot into 1-hour time slots
+            while ($startDateTime->lt($endDateTime)) {
+                $nextHour = $startDateTime->clone()->addHour();
+                if ($nextHour->gt($endDateTime)) {
+                    $nextHour = $endDateTime;
+                }
 
-            $schedule = new Calendar;
-            $schedule->start_date =  $request->start_date_a; 
-            $schedule->end_date =  $request->end_date_a; 
-            $schedule->student_no =  $request->student_no_a;
-            $schedule->grade =  $request->grade_a;
-            $schedule->subject =  $request->subject_a;
-            $schedule->note =  $request->note_a;
-            $schedule->status =  'schedule';
+                $schedule = new Calendar;
+                $schedule->start_date =  $startDateTime; 
+                $schedule->end_date =  $nextHour; 
+                $schedule->student_no =  $request->student_no_a;
+                $schedule->grade =  $request->grade_a;
+                $schedule->subject =  $request->subject_a;
+                $schedule->note =  $request->note_a;
+                $schedule->status =  'schedule';
+                $schedule->save();
+                $startDateTime = $nextHour;
+            }
+            // $schedule = new Calendar;
+            // $schedule->start_date =  $request->start_date_a; 
+            // $schedule->end_date =  $request->end_date_a; 
+            // $schedule->student_no =  $request->student_no_a;
+            // $schedule->grade =  $request->grade_a;
+            // $schedule->subject =  $request->subject_a;
+            // $schedule->note =  $request->note_a;
+            // $schedule->status =  'schedule';
 
-            if($schedule->save()){
+            // if($schedule->save()){
 
                 $user_data =  User::where('id', $request->student_no_a)->first();
                 $user_email = $user_data->email;
@@ -198,9 +219,9 @@ class CalendarController extends Controller
                 $Notifications->save();
 
                 return true;
-            } else{
-                return false;
-            }
+            // } else{
+            //     return false;
+            // }
         }
         
     }
