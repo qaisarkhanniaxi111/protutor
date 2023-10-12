@@ -428,14 +428,15 @@
 
                     // Set the background color of the clicked event
                     eventClickInfo.event.setProp('backgroundColor', '#fe6903');
+                    eventID = eventClickInfo.el.fcSeg.eventRange.def.publicId;
                     
+                    $("#continueSubmitShcdulebtn").removeClass("disabled")
                     $("#session_start").val(moment(eventClickInfo.el.fcSeg.start).add(0, 'minute')
                         .format('YYYY-MM-DD HH:mm'))
                     $("#session_end").val(moment(eventClickInfo.el.fcSeg.end).add(0, 'minute')
                         .format(
                             'YYYY-MM-DD HH:mm'))
                     $("#calendar_sch_id").val(eventID);
-                    $("#continueSubmitShcdulebtn").removeClass('disabled')
                 },
                 eventDataTransform: function(event, element, info) {
                     if (event.status == 'time_off') {

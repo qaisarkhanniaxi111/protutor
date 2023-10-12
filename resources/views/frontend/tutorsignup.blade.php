@@ -1,5 +1,5 @@
 @include('/frontend/common/header')
-<link rel="stylesheet" href="{{url('/')}}/public/assets/frontpage_assets/css/tutor-signup.css">
+<link rel="stylesheet" href="{{url('/')}}/assets/frontpage_assets/css/tutor-signup.css">
 <div class="sign-step">
 	<div class="sign-step-top">
 		<div class="container">

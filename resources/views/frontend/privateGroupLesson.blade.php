@@ -1,7 +1,7 @@
 @php
     $lightNavbar = true;
 @endphp
-@include('/frontend/common/header')
+@include('frontend/common/header')
 <link rel="stylesheet" href="{{ url('newAssets/assets/css/private-lessons.css') }}">
 <style>
   p{
@@ -50,7 +50,7 @@
                     </div>
                     <div class="col-lg-5 order-lg-2 order-1">
                         <div class="right-hero d-flex justify-content-center mb-lg-0 mb-3">
-                            <img src="{{ url('newAssets/assets/images/images/hero.png') }}" alt="" class="img-fluid">
+                            <img src="{{ url('newAssets/assets/images/images/hero.png') }}" alt="img" class="img-fluid">
                         </div>
                     </div>
                 </div>

@@ -469,7 +469,7 @@
                       </div>
 
 
-                      <img src="assets/images/image 150.png" alt="" class="mx-auto img-fluid mt-3 mb-3">
+                      <img src="{{ url('') }}/newAssets/assets/images/image 150.png" alt="" class="mx-auto img-fluid mt-3 mb-3">
                       <p class="mb-0 pb-0">
                           Whether you are a beginner looking to learn English from scratch or an advanced learner
                           aiming to refine specific skills, an English tutor can provide valuable guidance and
@@ -498,7 +498,7 @@
 
               <div class="col-lg-3 mt-3 col-md-6">
                   <div class="comfort-card">
-                      <img src="assets/images/expert.svg" alt="">
+                      <img src="{{ url('') }}/newAssets/assets/images/expert.svg" alt="">
                       <h3 class="mb-2">Expert tutors</h3>
                       <p class="mb-0 pb-0">Find native speakers and certified private tutors</p>
                   </div>
@@ -506,7 +506,7 @@
 
               <div class="col-lg-3 mt-3 col-md-6">
                   <div class="comfort-card">
-                      <img src="assets/images/verified.svg" alt="">
+                      <img src="{{ url('') }}/newAssets/assets/images/verified.svg" alt="">
                       <h3 class="mb-2">Verified profiles</h3>
                       <p class="mb-0 pb-0">We carefully check and confirm each tutor's profile</p>
                   </div>
@@ -514,7 +514,7 @@
 
               <div class="col-lg-3 mt-3 col-md-6">
                   <div class="comfort-card">
-                      <img src="assets/images/learn.svg" alt="">
+                      <img src="{{ url('') }}/newAssets/assets/images/learn.svg" alt="">
                       <h3 class="mb-2">Learn anytime</h3>
                       <p class="mb-0 pb-0">Take online lessons at the perfect time for your schedule</p>
                   </div>
@@ -522,7 +522,7 @@
 
               <div class="col-lg-3 mt-3 col-md-6">
                   <div class="comfort-card">
-                      <img src="assets/images/affordable.svg" alt="">
+                      <img src="{{ url('') }}/newAssets/assets/images/affordable.svg" alt="">
                       <h3 class="mb-2">Affordable prices</h3>
                       <p class="mb-0 pb-0">Choose an experienced tutor that fits your budget</p>
                   </div>
@@ -533,7 +533,7 @@
                   <h2 class="heading text-lg-start text-center">
                       Our world-class tutors<br> can help you <span class="text-primary">learn online</span>
                   </h2>
-                  <img src="assets/images/Image (1).png" alt="" class="d-lg-none d-block w-100 my-3">
+                  <img src="{{ url('') }}/newAssets/assets/images/Image (1).png" alt="" class="d-lg-none d-block w-100 my-3">
                   <p class="main-text2 text-lg-start text-center mt-2">
                       They prepare lessons by studying lesson plans, reviewing textbooks in detail to understand
                       the topic they will be teaching and providing additional projects if needed during a

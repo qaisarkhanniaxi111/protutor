@@ -32,29 +32,30 @@ class GroupLessonController extends Controller
 
         return view("frontend.grouplessons", compact('todayGroupLessons', 'groupLessons', 'teaches_levels', 'subjects'));
     }
-    public function privategroupclasses(){
+    public function privategroupclasses()
+    {
         return view('frontend.privateGroupLesson');
     }
     public function openGroupDetails(GroupLesson $groupLesson)
     {
-        $groupLessonPlan=GroupLessonPlan::where('group_lesson_id',$groupLesson->id)->get();
-        $groupLessonPlan=$groupLessonPlan->toArray();
+        $groupLessonPlan = GroupLessonPlan::where('group_lesson_id', $groupLesson->id)->get();
+        $groupLessonPlan = $groupLessonPlan->toArray();
         $tutor = $groupLesson->tutor;
         $teachLevel = $groupLesson->teachLevel;
         $subject = $groupLesson->subject;
         $gallery = $groupLesson->gallery;
-        $student = $groupLesson ? $groupLesson->students: '';
+        $student = $groupLesson ? $groupLesson->students : '';
 
         $student = auth()->user();
-        $studentId = $student ? $student->id: '';
+        $studentId = $student ? $student->id : '';
 
         $paymentStatus = 'unpaid';
         $payments = null;
 
         if ($student) {
-            $payments = Payment::whereHas('studentPayments', function($query) use($studentId) {
-                    $query->where('student_id', $studentId);
-                })
+            $payments = Payment::whereHas('studentPayments', function ($query) use ($studentId) {
+                $query->where('student_id', $studentId);
+            })
                 ->notFetchInActivePayments()
                 ->where('group_lesson_id', $groupLesson->id)
                 ->count();
@@ -63,7 +64,6 @@ class GroupLessonController extends Controller
         if ($payments > 0) {
 
             $paymentStatus = 'paid';
-
         }
 
 
@@ -80,28 +80,27 @@ class GroupLessonController extends Controller
         $todayDate = Carbon::now();
         $groupLessonEndDate = Carbon::parse($groupLesson->class_end_date);
 
-        if($groupLessonEndDate->lt($todayDate)){
+        if ($groupLessonEndDate->lt($todayDate)) {
 
-            if (! $ratingExists) {
+            if (!$ratingExists) {
                 $ratingStatus = true;
             }
-
         }
 
         // calculate rating
         $ratings = Rating::where('group_lesson_id', $groupLesson->id);
         $rating = $ratings->get();
 
-        $count=0;
+        $count = 0;
         foreach ($rating as $countRating) {
-            $count+=$countRating->rating;
+            $count += $countRating->rating;
         }
-        $numberOfRating=$ratings->count();
-        if($count<=0 || $numberOfRating<=0){
-            $groupLessonRating=0;
-        }else{
+        $numberOfRating = $ratings->count();
+        if ($count <= 0 || $numberOfRating <= 0) {
+            $groupLessonRating = 0;
+        } else {
 
-            $groupLessonRating=$count/$numberOfRating;
+            $groupLessonRating = $count / $numberOfRating;
         }
 
         $enrolledIntoGroupLesson = false;
@@ -121,7 +120,7 @@ class GroupLessonController extends Controller
         session()->put('group_lesson_detail_page_url', $currentGroupLessonUrl);
 
 
-        return view('frontend.grouplessondetails', compact('groupLesson', 'tutor', 'teachLevel', 'subject', 'gallery','paymentStatus', 'student', 'ratingStatus', 'groupLessonRating', 'enrolledIntoGroupLesson','groupLessonPlan'));
+        return view('frontend.grouplessondetails', compact('groupLesson', 'tutor', 'teachLevel', 'subject', 'gallery', 'paymentStatus', 'student', 'ratingStatus', 'groupLessonRating', 'enrolledIntoGroupLesson', 'groupLessonPlan'));
     }
 
 
@@ -170,6 +169,30 @@ class GroupLessonController extends Controller
             $newGallery->save();
         }
 
+        // // Plan items from the URL
+        // $encodedPlanItems = $request['plan'];
+        // // Decode the URL parameter
+        // $decodedPlanItems = urldecode($encodedPlanItems);
+
+        // // Parse the JSON string to get the original array
+        // $planItemsArray = json_decode($decodedPlanItems, true);
+        // foreach ($planItemsArray as $value) {
+
+        //     $newPlan = new GroupLessonPlan;
+        //     $newPlan->group_lesson_id = $newGroupLesson->id;
+        //     $newPlan->type = $value['planItemType'];
+        //     $newPlan->date = $value['date'];
+        //     $newPlan->time = $value['time'];
+        //     $newPlan->save();
+        // }
+        $lessionId=$newGroupLesson->id;
+       
+
+        return response()->json(['lessonId'=>$lessionId]);
+    }
+
+    public function storeGroupLessonPlan(Request $request)
+    {
         // Plan items from the URL
         $encodedPlanItems = $request['plan'];
         // Decode the URL parameter
@@ -180,13 +203,12 @@ class GroupLessonController extends Controller
         foreach ($planItemsArray as $value) {
 
             $newPlan = new GroupLessonPlan;
-            $newPlan->group_lesson_id = $newGroupLesson->id;
+            $newPlan->group_lesson_id = $request['lessonId'];
             $newPlan->type = $value['planItemType'];
             $newPlan->date = $value['date'];
             $newPlan->time = $value['time'];
             $newPlan->save();
         }
-
         return response()->json($request->all());
     }
 
@@ -311,5 +333,4 @@ class GroupLessonController extends Controller
         $teaches_levels = $tutor->teaches_levels();
         return response()->json($groupLessons);
     }
-
 }

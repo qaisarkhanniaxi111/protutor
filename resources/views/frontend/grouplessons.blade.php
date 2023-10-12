@@ -377,7 +377,7 @@
                                 <div class="slider-card ">
                                     @if ($gallery = $groupLesson->gallery)
                                         @if ($gallery->image)
-                                            <img class="card-image" alt="Image" src="{{ $gallery->image }}" />
+                                            <img class="card-image" alt="{{ $gallery->image }}" src="{{ url($gallery->image) }}" />
                                         @endif
                                     @else
                                         <img class="card-image" alt="Image" src="{{ asset('assets/frontpage_assets/images/Rectangle_4436.png') }} " />

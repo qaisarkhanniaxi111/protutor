@@ -102,7 +102,7 @@ class PaymentController extends Controller
         $price = $request->price;
         $paymentMethodId = $request['payment_method'];
         $user = auth()->user();
-        $checkTeachingOrder=Order::where('user_id',$user_id)->where('teacher_id',$teacher_id)->where('session_start',$session_start)->count();
+        $checkTeachingOrder=Order::where('user_id',$user_id)->where('teacher_id',$teacher_id)->where('session_start',$session_start)->where('payment_status','active')->count();
         
         if($checkTeachingOrder > 0){
             return redirect()->back()->with('Aleady_booked_Session','You already Booked this Sesssion');
@@ -166,7 +166,7 @@ class PaymentController extends Controller
         $newOrder->session_start = $session_start;
         $newOrder->session_end = $session_end;
         $newOrder->save();
-
+        session()->put('teachingOrderId', $newOrder->id);
     
     }
     private function storeOrderPayment($tutor, $session, $price)
@@ -230,6 +230,12 @@ class PaymentController extends Controller
     {
         $student_registered_status=$this->studentRegisteredStatusUpdate();
         $paymentStatus = $this->updatePaymentStatus();
+        if (session()->has('teachingOrderId')) {
+        $orderPaymentStatus = $this->updateTeachingOrderPaymentStatus();
+        if($orderPaymentStatus){
+            return redirect(url('/student/teachingorders'));
+        }
+        }
         $groupLessonStatus = $this->markAsEnrolledStatus();
 
         return view('frontend.payments.success', compact('paymentStatus', 'groupLessonStatus'));
@@ -253,6 +259,37 @@ class PaymentController extends Controller
             ]);
 
             session()->forget('payment_id');
+
+            $paymentStatus = true;
+        }
+
+        return $paymentStatus;
+    }
+    private function updateTeachingOrderPaymentStatus()
+    {
+        $paymentStatus = false;
+
+        if (session()->has('teachingOrderId')) {
+
+            $orderId = session()->get('teachingOrderId');
+            $order = Order::find($orderId);
+
+            if (!$order) {
+                abort(403, 'Unable to sync payment with app, please contact the administrator along with payment id: ' . $paymentId);
+            }
+
+            $order->payment_status='active';
+            if (session()->has('payment_id')) {
+                $paymentId = session()->get('payment_id');
+                $order->payment_id=$paymentId;
+            }
+            $order->status=1;
+            $order->save();
+            // $payment->update([
+            //     'status' => 'pending'
+            // ]);
+
+            session()->forget('teachingOrderId');
 
             $paymentStatus = true;
         }

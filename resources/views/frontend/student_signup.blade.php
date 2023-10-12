@@ -12,7 +12,7 @@
         <div class="row">
           <div class="col-sm-6">
             <div class="sign-white-left">
-              <img src="{{url('/')}}/public/assets/frontpage_assets/images/sign-img.jpg" alt="">
+              <img src="{{url('/')}}/assets/frontpage_assets/images/sign-img.jpg" alt="">
             </div>
           </div>
           <div class="col-sm-6">

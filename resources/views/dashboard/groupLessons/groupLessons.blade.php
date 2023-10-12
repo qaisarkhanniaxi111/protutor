@@ -85,7 +85,7 @@
 font-size: 16px;">Your All Enrolled Lessons</p>
   </div>
   <div class="home-section ">
-      <div class="row  ">
+      <div class="row w-100 ">
           <div class="col-lg-12">
               <div class="box  group-lessons w-100">
                   <ul>

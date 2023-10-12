@@ -526,12 +526,12 @@
                                                 </p>
 
                                             </div>
-                                            <div class="mt-5 d-flex justify-content-between align-items-end">
+                                            <div class="mt-5 d-flex align-items-center">
                                                 <button type="button" class="btn btn-dark px-5"
                                                     data-bs-toggle="modal" data-bs-target="#exampleModal"
                                                     onclick="setRange()">Add</button>
-                                                <b class="text-danger error-msg" id="make_plan">
-
+                                                <b class="text-success p-3 error-msg" id="make_plan">
+                                                    Add a Plan for this GroupLesson ( optional) 
                                                 </b>
                                             </div>
                                             <div class="create-btn">
@@ -1222,7 +1222,9 @@
 
         $("#submit").click(function() {
 
-            $(this).html(`Creating`);
+            $(this).html(`Creating <div class="spinner-border text-light spinner-border-sm" role="status">
+  <span class="sr-only">Loading...</span>
+</div>`);
             $('.error-msg').html('');
             let form = new FormData(formData);
             console.log(planItems)
@@ -1236,13 +1238,16 @@
             });
             $.ajax({
 
-                url: '{{ route('store.groupLesson') }}/?plan=' + encodedPlanItems,
+                // url: '{{ route('store.groupLesson') }}/?plan=' + encodedPlanItems,
+                url: '{{ route('store.groupLesson') }}',
                 method: 'POST',
                 processData: false,
                 cache: false,
                 contentType: false,
                 data: form,
                 success: function(result) {
+                    console.log(result);
+                    storePlanIntoDatabase(result.lessonId);
                     planItems = [];
                     $("#submit").html('Create');
                     fetchUncompletedGroupLessons();
@@ -1289,7 +1294,22 @@
         });
 
 
+        // storePlanIntoDatabase 
+        function storePlanIntoDatabase(lessonId){
+            planItemsJson = JSON.stringify(planItems);
+            encodedPlanItems = encodeURIComponent(planItemsJson);
+            $.ajax({
+                url: '{{ route('store.groupLesson.plan') }}/?lessonId=' + lessonId + '&plan=' + encodedPlanItems,
+                method: 'GET',
+                processData: false,
+                cache: false,
+                contentType: false,
+                success: function(data){
+                    console.log(data)
+                }
+            });
 
+        }
         // Display Uncompleted GroupLessons Ajax 
         function fetchUncompletedGroupLessons() {
             $.ajax({

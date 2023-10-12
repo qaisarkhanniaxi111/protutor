@@ -107,9 +107,7 @@
                         <li class="nav-item">
                             <a class="nav-link {{ $getUrl=='find-a-tutor' ? "active-nav" : "" }}" href="{{ url('/find-a-tutor') }}">Find Tutors</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Enterprise</a>
-                        </li>
+                        
                         <li class="nav-item">
                             <a class="nav-link {{ $getUrl=='become-a-tutor' ? "active-nav" : "" }}" href="{{ url('/become-a-tutor') }}">Become a tutor</a>
                         </li>
@@ -123,7 +121,7 @@
                             <option value="2" style="color: black;">English, USD</option>
                             <option value="3" style="color: black;">English, USD</option>
                         </select>
-                        <button class="main-btn-blank ms-3 mb-md-0 mb-3 w-auto">Refer a friend</button>
+                      
 
                         @if (auth()->user())
                             @if (auth()->user()->role == 3)

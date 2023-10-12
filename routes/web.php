@@ -187,6 +187,7 @@ Route::get('/tutorgrouplessons/uncomplete', [GroupLessonController::class, 'unco
 
 
 Route::post('/tutorgrouplessons/store', [GroupLessonController::class, 'storeGroupLesson'])->name('store.groupLesson');
+Route::get('/tutorgrouplessons/plan/store', [GroupLessonController::class, 'storeGroupLessonPlan'])->name('store.groupLesson.plan');
 Route::get('deleteGroupLesson/{id}', [GroupLessonController::class,'deleteGroupLesson'])->name('delete.groupLesson');
 Route::get('showGroupLesson/{id}', [GroupLessonController::class,'showGroupLesson'])->name('show.groupLesson');
 Route::get('editGroupLesson/{id}', [GroupLessonController::class,'editGroupLesson'])->name('edit.groupLesson');
