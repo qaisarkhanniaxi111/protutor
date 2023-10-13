@@ -83,8 +83,13 @@ class GroupLessonController extends Controller
             return view('frontend.privateGroupLesson',compact('PageTitle','countryAll','rateAll','subjectAll','Spoken_language','userdata'));
         }else{
             $user_status='3';
-            $user_data='SELECT users.id as user_id,users.first_name,users.last_name,users.phone_number,users.role,users.user_status,users.email ,users.email_verify,users.password,userdetails.* FROM `users` LEFT JOIN `userdetails` ON users.id = userdetails.student_no WHERE users.role="'.$user_status.'" LIMIT 12';
-            $userdata = DB::select($user_data);
+            // $user_data='SELECT users.id as user_id,users.first_name,users.last_name,users.phone_number,users.role,users.user_status,users.email ,users.email_verify,users.password,userdetails.* FROM `users` LEFT JOIN `userdetails` ON users.id = userdetails.student_no WHERE users.role="'.$user_status.'" LIMIT 12';
+            // $userdata = DB::select($user_data);
+            $userdata = DB::table('users')
+            ->select('users.id as user_id', 'users.first_name', 'users.last_name', 'users.phone_number', 'users.role', 'users.user_status', 'users.email', 'users.email_verify', 'users.password','userdetails.*')
+            ->join('userdetails', 'users.id', '=', 'userdetails.student_no')
+            ->where('users.role', $user_status)
+            ->paginate(5);
             return view('frontend.privateGroupLesson',compact('PageTitle','countryAll','rateAll','subjectAll','Spoken_language','userdata'));
         }
     }

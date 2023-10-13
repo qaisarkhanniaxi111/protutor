@@ -175,7 +175,7 @@ use Carbon\Carbon;
                               @if ($finishTime->lt(now()))
                               <div class="col-6">
                                   <div class="join-session">
-                                      <button class="alt open-res">Leave a Review</button>
+                                      <button class="alt open-res" onclick="giveFeedback()">Leave a Review</button>
                                       <h6>{{ $totalDuration1 }}</h6>
                                   </div>
                               </div>
@@ -628,3 +628,10 @@ use Carbon\Carbon;
 </script>
 
 @include('/dashboard/common/footer')  
+
+
+<script>
+  function giveFeedback(){
+    
+  }
+</script>

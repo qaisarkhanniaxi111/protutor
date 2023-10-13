@@ -138,12 +138,12 @@ use Carbon\Carbon;
                                   <h6><?php echo $totalDuration1; ?></h6>
                                 </div>
                               </div>
-                              <div class="col-6">
+                              {{-- <div class="col-6">
                                 <div class="join-session">
                                   <button class="alt open-res">Resolution Center</button>
                                   <h6><?php echo $totalDuration1; ?></h6>
                                 </div>
-                              </div>
+                              </div> --}}
                             </div>
                           </div>
                         </div>
