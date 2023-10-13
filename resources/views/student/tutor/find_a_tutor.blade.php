@@ -358,9 +358,9 @@
                                 </ul>
                             </div>
                             <div class="pt-2">
-                                <a class="theme-btn-sm full" href="tutor-details.html" data-bs-toggle="modal"
+                                <a class="theme-btn-sm full" href="" data-bs-toggle="modal"
                                     data-bs-target="#staticBackdrop"
-                                    onclick="runModelCalendar({{ $userdata_val->user_id }},'{{ url('/') }}/images/{{ $userdata_val->profile_img }}','{{ $userdata_val->first_name . ' ' . $userdata_val->last_name }}')">Book
+                                    onclick="runModelCalendar({{ $userdata_val->user_id }},{{ $userdata_val->hourly_rate }},'{{ url('/') }}/images/{{ $userdata_val->profile_img }}','{{ $userdata_val->first_name . ' ' . $userdata_val->last_name }}')">Book
                                     Trial Lesson</a>
                                 <a class="theme-btn-sm full bdr mt-2"
                                     href="{{ url('/chat', $userdata_val->user_id) }}">Send Message</a>
@@ -381,9 +381,9 @@
     <!-- Container -->
     <form id="submitPrivateLesson" action="{{ route('private.charge') }}" method="post">
         @csrf
-        <input type="number" name="tutor_id" value="{{ $userdata_val->user_id }}" hidden>
+        <input type="number" name="tutor_id" id="tutor_bookTrial" value="" hidden>
         <input type="number" name="student_id" value="{{ auth()->check() ? auth()->user()->id : null }}" hidden>
-        <input type="number" name="price" value="{{ $userdata_val->hourly_rate }}" hidden>
+        <input type="number" name="price" id="hourly_rate" value="" hidden>
         <input type="number" name="calendar_sch_id" id="calendar_sch_id" hidden>
         <input type="datetime" name="start" id="session_start" hidden>
         <input type="datetime" name="end" id="session_end" hidden>
@@ -399,9 +399,11 @@
 <script>
   // Get the client's time zone
     const clientTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    function runModelCalendar(tutorId, img, name) {
+    function runModelCalendar(tutorId, hourly_rate, img, name) {
         document.querySelector("#modelTutorImage").src = img;
         document.querySelector("#modelTutorName").innerHTML = name;
+        document.querySelector("#tutor_bookTrial").value = tutorId;
+        document.querySelector("#hourly_rate").value = hourly_rate;
         $("#model-schedule-calendar").empty();
         setTimeout(() => {
 

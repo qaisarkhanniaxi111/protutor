@@ -3,6 +3,40 @@
 <?php 
 use Carbon\Carbon;
 ?>
+<style>
+  .rating {
+        position: relative;
+        background: transparent;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .rating__result {
+        font-size: 14px;
+        font-weight: 500;
+        color: black;
+        pointer-events: none;
+    }
+
+    .rating__star {
+        font-size: 1.3em;
+        cursor: pointer;
+        color: #dabd18b2;
+        transition: filter linear .3s;
+    }
+
+    .rating__star:hover {
+        filter: drop-shadow(1px 1px 4px gold);
+    }
+
+    .feedback-textarea {
+        border: 1px solid rgb(143, 136, 136);
+        border-radius: 4px;
+        width: 100%;
+        padding: 15px;
+    }
+</style>
 <!-- Container -->
 <section class="wrapper">
   <div class="page-title">
@@ -138,12 +172,15 @@ use Carbon\Carbon;
                                   <h6><?php echo $totalDuration1; ?></h6>
                                 </div>
                               </div>
+                              @if ($finishTime->lt(now()))
                               <div class="col-6">
-                                <div class="join-session">
-                                  <button class="alt open-res">Resolution Center</button>
-                                  <h6><?php echo $totalDuration1; ?></h6>
-                                </div>
+                                  <div class="join-session">
+                                      <button class="alt open-res">Leave a Review</button>
+                                      <h6>{{ $totalDuration1 }}</h6>
+                                  </div>
                               </div>
+                          @endif
+                          
                             </div>
                           </div>
                         </div>
@@ -167,24 +204,45 @@ use Carbon\Carbon;
 
             <div class="res-center">
               <span class="res-center-close"></span>
-              <h2 class="pb-3">Resolution Center</h2>
-              <h3>Resolutions can be made until <strong>00H : 20M : 00S</strong></h3>
-              <div class="row mt-3">
-                <div class="col-6">
-                  <button data-bs-toggle="modal" data-bs-target="#resStep-1" class="theme-btn full bdr teal">Reschedule Lesson</button>
-                </div>
-                <div class="col-6">
-                  <button data-bs-toggle="modal" data-bs-target="#cancelStep-1" class="theme-btn full bdr red">Cancel Lesson</button>
-                </div>
-              </div>
-              <h3 class="mt-3"><strong class="txt-orange">Response</strong></h3>
-              <div class="system-resp">
-                <h5>System</h5>
-                <div class="system-resp-txt">
-                  <p>Your request to reschedule lesson is accepted by Student Name. The lesson is rescheduled now for October 20, 2021</p>
-                </div>
-                <p class="text-end pt-2">October 19, 2021 - 10:00</p>
-              </div>
+              <h2 class="pb-3">Feedback</h2>
+              <div class="col-lg-12 mt-4">
+          
+                <div class="box">
+                        <div class="page-title mb-0 pb-0">
+                            
+                            <p class="mb-0 pb-0" style="color: #84818A;
+                          font-size: 16px;">Give your
+                                Feedback.</p>
+                        </div>
+                        <div class="d-flex justify-content-end mb-4">
+                            <div class="rating">
+                                <i class="rating__star far fa-star"></i>
+                                <i class="rating__star far fa-star"></i>
+                                <i class="rating__star far fa-star"></i>
+                                <i class="rating__star far fa-star"></i>
+                                <i class="rating__star far fa-star"></i>
+    
+                                <div class="ms-4">
+                                    <span class="rating__result"></span>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <form action="{{ route('submit.review') }}" method="post">
+                            @csrf
+                            <input type="number" name="group_lesson_id" value="" hidden>
+                            <input type="number" name="student_id" value="{{ auth()->user() ? auth()->user()->id : '' }}"
+                                hidden>
+                            <input type="number" name="rating" id="student_rating" value="" hidden>
+                            <textarea name="review" id="" rows="5" class="feedback-textarea" placeholder="Type here..."></textarea>
+                            <div class="text-end pt-3">
+                                <button class="theme-btn green">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    
+            </div>
             </div>
 
           </div>
@@ -535,6 +593,38 @@ use Carbon\Carbon;
   </div>
 </div>
 
+<script>
+  const ratingStars = [...document.getElementsByClassName("rating__star")];
+  const ratingResult = document.querySelector(".rating__result");
 
+  printRatingResult(ratingResult);
+
+  function executeRating(stars, result) {
+      const starClassActive = "rating__star fas fa-star";
+      const starClassUnactive = "rating__star far fa-star";
+      const starsLength = stars.length;
+      let i;
+      stars.map((star) => {
+          star.onclick = () => {
+              i = stars.indexOf(star);
+
+              if (star.className.indexOf(starClassUnactive) !== -1) {
+                  printRatingResult(result, i + 1);
+                  for (i; i >= 0; --i) stars[i].className = starClassActive;
+              } else {
+                  printRatingResult(result, i);
+                  for (i; i < starsLength; ++i) stars[i].className = starClassUnactive;
+              }
+          };
+      });
+  }
+
+  function printRatingResult(result, num = 0) {
+      result.textContent = `${num}/5`;
+      document.querySelector("#student_rating").value = num;
+  }
+
+  executeRating(ratingStars, ratingResult);
+</script>
 
 @include('/dashboard/common/footer')  

@@ -735,7 +735,10 @@ $getId = Session::get('tutorid');
 
 							$('#availability_schedule_form')[0].reset();
 							$('#availability_msgSchedule').html('<div class="alert alert-success alert-dismissible fade show" role="alert">Schedule Add Successfully.<button type="button" class="btn-close" data-bs-dismiss="alert" ria-label="Close"></button></div>');
-						location.reload(true);
+							setTimeout(() => {
+								
+								location.reload(true);
+							}, 1000);
 						}
 					}
 				}) 

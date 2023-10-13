@@ -267,4 +267,4 @@ There is no records.
 </div>
 </section>
 
-@include('/frontend/common/footer')
+@include('frontend/common/footer')

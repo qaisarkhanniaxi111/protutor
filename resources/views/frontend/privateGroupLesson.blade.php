@@ -7,7 +7,88 @@
   p{
     text-align: unset;
   }
+
+   /*calender*/
+
+   #schedule-calendar .fc-header-toolbar .fc-toolbar-chunk .fc-button-group button,
+    #model-schedule-calendar .fc-header-toolbar .fc-toolbar-chunk .fc-button-group button {
+        background: #fe6903;
+        border: solid 1px #fe6903;
+    }
+
+    #schedule-calendar .fc-header-toolbar .fc-toolbar-chunk .fc-button-group button:hover,
+    #model-schedule-calendar .fc-header-toolbar .fc-toolbar-chunk .fc-button-group button:hover {
+        color: #fff;
+        opacity: 0.7;
+    }
+
+    #schedule-calendar .fc-header-toolbar .fc-toolbar-chunk button.fc-today-button.fc-button.fc-button-primary,
+    #model-schedule-calendar .fc-header-toolbar .fc-toolbar-chunk button.fc-today-button.fc-button.fc-button-primary {
+        background: #a2b5ff;
+        border-color: #a2b5ff;
+    }
+
+
+    #schedule-calendar .fc-view-harness thead th.fc-col-header-cell a.fc-col-header-cell-cushion,
+    #model-schedule-calendar .fc-view-harness thead th.fc-col-header-cell a.fc-col-header-cell-cushion {
+        color: #fe6903;
+        text-decoration: none
+    }
+
+    #schedule-calendar .fc-view-harness td .fc-timegrid-col-frame .fc-timegrid-event-harness a.fc-event,
+    #model-schedule-calendar .fc-view-harness td .fc-timegrid-col-frame .fc-timegrid-event-harness a.fc-event {
+        background: #422d5a;
+        border: none !important;
+        text-align: center;
+        font-size: 16px;
+    }
+
+    #schedule-calendar .fc-header-toolbar .fc-toolbar-chunk .fc-button-group button:first-child,
+    #schedule-calendar .fc-header-toolbar .fc-toolbar-chunk .fc-button-group button.fc-prev-button,
+    #model-schedule-calendar .fc-header-toolbar .fc-toolbar-chunk .fc-button-group button:first-child,
+    #model-schedule-calendar .fc-header-toolbar .fc-toolbar-chunk .fc-button-group button.fc-prev-button {
+        border-right: solid 1px #fff;
+    }
+
+    #schedule-calendar .fc-header-toolbar .fc-toolbar-chunk .fc-button-group button.fc-prev-button,
+    #model-schedule-calendar .fc-header-toolbar .fc-toolbar-chunk .fc-button-group button.fc-prev-button {
+        margin-right: 1px;
+    }
 </style>
+
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-scrollable modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <img src="" alt="" id="modelTutorImage"
+                    style="width:40px;height:40px;object-fit: cover;" class="rounded-circle me-3">
+                <span class="h1 modal-title fs-5" id="modelTutorName"
+                    style="font-family: Arial, Helvetica, sans-serif"></span>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <p>Choose the time for your first lesson. The timings are displayed in your local
+                    timezone.</p>
+
+                <div class="tabtable-responsive">
+                    <div class="fulltab-table">
+                        <div id='model-schedule-calendar'></div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" class="btn disabled" style="background-color: #fe6903;color:#fff"
+                    id="continueSubmitShcdulebtn" onclick="submitStudentSchedule()">Continue</button>
+            </div>
+        </div>
+    </div>
+</div>
     <main>
         {{-- @if (count($userdata))
         @foreach($userdata as $userdata_val)
@@ -69,12 +150,13 @@
 
         <div class="">
             <div class="container">
+                <form action="{{url('/private/group')}}" method="get">
                 <div class="row select-section">
                     <div class="col-lg-3">
                         <div class="slc">
                             <label for="">I want to learn</label>
-                            <select class="form-select" aria-label="Default select example">
-                                <option selected> Select </option>
+                            <select class="form-select" name="subject" aria-label="Default select example">
+                                <option value=""  selected> Select </option>
                                 @foreach($subjectAll as $data2)
                             <option <?php echo ((isset($_GET['subject']) && $_GET['subject'] == $data2->id) ? "selected" : ""); ?> value="{{ $data2->id }}">{{ $data2->subject }}</option>
                             @endforeach
@@ -85,8 +167,8 @@
                     <div class="col-lg-3">
                         <div class="slc">
                             <label for="">price per lesson</label>
-                            <select class="form-select" aria-label="Default select example">
-                                <option selected> Select </option>
+                            <select class="form-select" name="hourly_rate" aria-label="Default select example">
+                                <option value="" selected> Select </option>
                                 <option value="1-5" <?php echo (isset($_GET['hourly_rate']) && $_GET['hourly_rate']=='1-5' ? 'selected' : "") ?>>$1-5</option>
                                 <option value="6-10" <?php echo (isset($_GET['hourly_rate']) && $_GET['hourly_rate']=='6-10' ? 'selected' : "") ?>>$6-10</option>
                                 <option value="11-15"<?php echo (isset($_GET['hourly_rate']) && $_GET['hourly_rate']=='11-15' ? 'selected' : "") ?>>$11-15</option>
@@ -103,8 +185,8 @@
                     <div class="col-lg-3">
                         <div class="slc">
                             <label for="">Country of birth</label>
-                            <select class="form-select" aria-label="Default select example">
-                                <option selected>Any country </option>
+                            <select class="form-select" name="country" aria-label="Default select example">
+                                <option value="" selected>Any country </option>
                                 @foreach($countryAll as $data)
                                 <option <?php echo ((isset($_GET['country']) && $_GET['country'] == $data->id) ? "selected" : ""); ?> value="{{ $data->id }}">{{ $data->name }}</option>
                                 @endforeach
@@ -114,8 +196,8 @@
                     <div class="col-lg-3">
                         <div class="slc border-0">
                             <label for="">I’m available</label>
-                            <select class="form-select" aria-label="Default select example">
-                                <option selected> Any time</option>
+                            <select class="form-select" name="user_status" aria-label="Default select example">
+                                <option value=""  selected> Any time</option>
                                 <option value="1" <?php echo ((isset($_GET['user_status']) && $_GET['user_status'] == 1) ? "selected" : ""); ?> >Active</option>
                                 <option value="0" <?php echo ((isset($_GET['user_status']) && $_GET['user_status'] == 0) ? "selected" : ""); ?> >Inactive</option>
                             </select>
@@ -123,7 +205,7 @@
                     </div>
                 </div>
                 <div class="row filter-search align-items-center">
-                    <div class="col-xl-6 d-flex align-items-center flex-md-row flex-column">
+                    <div class="col-xl-8 d-flex align-items-center flex-md-row flex-column">
                         <div class="dropdown my-3 mx-2">
                             <button class=" dropdown-toggle" type="button" id="dropdownMenuButton1"
                                 data-bs-toggle="dropdown" aria-expanded="false">
@@ -133,7 +215,7 @@
                                 @foreach($Spoken_language as $spoken_language_data)
                                 <li>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="spoken_language" value="{{ $spoken_language_data->id }}" id="flexCheckDefault" <?php echo ((isset($_GET['spoken_language']) && $_GET['spoken_language'] == $spoken_language_data->id) ? "checked" : ""); ?> >
+                                        <input class="form-check-input" type="radio" value="{{ $spoken_language_data->id }}" id="flexCheckDefault" <?php echo ((isset($_GET['spoken_language']) && $_GET['spoken_language'] == $spoken_language_data->id) ? "checked" : ""); ?> >
                                         <label class="form-check-label" for="flexCheckDefault">
                                             {{ $spoken_language_data->spoken_language }}
                                         </label>
@@ -173,7 +255,7 @@
                                 @foreach($Spoken_language as $spoken_language_data)
                                 <li>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="spoken_language" value="{{ $spoken_language_data->id }}" id="flexCheckDefault" <?php echo ((isset($_GET['spoken_language']) && $_GET['spoken_language'] == $spoken_language_data->id) ? "checked" : ""); ?> >
+                                        <input class="form-check-input" type="radio" name="native_language" value="{{ $spoken_language_data->id }}" id="flexCheckDefault" <?php echo ((isset($_GET['native_language']) && $_GET['native_language'] == $spoken_language_data->id) ? "checked" : ""); ?> >
                                         <label class="form-check-label" for="flexCheckDefault">
                                             {{ $spoken_language_data->spoken_language }}
                                         </label>
@@ -261,8 +343,10 @@
                                 </li>
                             </ul>
                         </div>
+                        <button class="btn btn-success me-2 rounded-5">submit</button>
+                        <a href="{{ url("/private/group/") }}" class="btn btn-danger rounded-5">clear</a>
                     </div>
-                    <div class="col-xl-6 d-flex align-items-center flex-md-row flex-column">
+                    <div class="col-xl-4 d-flex align-items-center flex-md-row flex-column">
                         <div class="sort ms-auto d-flex align-items-center mb-md-0 mb-3">
                             <p class="mb-0 pb-0">
                                 sort by:
@@ -285,6 +369,7 @@
 
                     </div>
                 </div>
+                </form>
             </div>
         </div>
         <section class="teacher-section pb-0">
@@ -372,7 +457,7 @@
                                     </div>
                                     <div class="profile-price flex-shrink-0">
                                         <h2 class="mb-0 pb-0">${{ $userdata_val->hourly_rate }}</h2>
-                                        <p class="mb-0 pb-0">50-min lesson</p>
+                                        <p class="mb-0 pb-0">60-mins lesson</p>
                                     </div>
                                 </div>
                             </div>
@@ -399,9 +484,11 @@
                                                     stroke="#FF6C0B" stroke-width="2" />
                                             </svg>
                                         </div>
-                                        <button class="main-btn-blank-sm w-100 mx-3">Message</button>
+                                        <button class="main-btn-blank-sm w-100 mx-3"><a href="{{ url('chat', $userdata_val->user_id) }}" style="color: #FF6C0B">Message</a></button>
                                     </div>
-                                    <button class="main-btn-sm w-100" style="white-space: nowrap;">Book a trial
+                                    <button class="main-btn-sm w-100" style="white-space: nowrap;" data-bs-toggle="modal"
+                                    data-bs-target="#staticBackdrop"
+                                    onclick="runModelCalendar({{ $userdata_val->user_id }},{{ $userdata_val->hourly_rate }},'{{ url('/') }}/images/{{ $userdata_val->profile_img }}','{{ $userdata_val->first_name . ' ' . $userdata_val->last_name }}')">Book a trial
                                         lesson</button>
                                 </div>
                             </div>
@@ -830,7 +917,18 @@
         </section>
 
     </main>
-
+    @if (isset($userdata_val))
+    <!-- Container -->
+    <form id="submitPrivateLesson" action="{{ route('private.charge') }}" method="post">
+        @csrf
+        <input type="number" name="tutor_id" id="tutor_bookTrial" value="" hidden>
+        <input type="number" name="student_id" value="{{ auth()->check() ? auth()->user()->id : null }}" hidden>
+        <input type="number" name="price" id="hourly_rate" value="" hidden>
+        <input type="number" name="calendar_sch_id" id="calendar_sch_id" hidden>
+        <input type="datetime" name="start" id="session_start" hidden>
+        <input type="datetime" name="end" id="session_end" hidden>
+    </form>
+@endif
 
   <!-- Footer Section -->
 @include('/frontend/common/footer')
@@ -929,3 +1027,73 @@
         });
 
     </script>
+<script src="{{ url('/') }}/fullcalendar/lib/moment.min.js"></script>
+<script src="{{ url('/') }}/fullcalendar/fullcalendar.min.js"></script>
+{{-- <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script> --}}
+<script src='https://cdn.jsdelivr.net/npm/fullcalendar/index.global.min.js'></script>
+<script>
+  // Get the client's time zone
+    const clientTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    function runModelCalendar(tutorId, hourly_rate, img, name) {
+        document.querySelector("#modelTutorImage").src = img;
+        document.querySelector("#modelTutorName").innerHTML = name;
+        document.querySelector("#tutor_bookTrial").value = tutorId;
+        document.querySelector("#hourly_rate").value = hourly_rate;
+        $("#model-schedule-calendar").empty();
+        setTimeout(() => {
+
+
+            var calendarEl = document.getElementById('model-schedule-calendar');
+
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                headerToolbar: {
+                    left: 'prev,next title',
+                    right: ''
+                },
+
+                defaultView: 'timeGridWeek',
+                selectable: true,
+                editable: true,
+                timeZone: clientTimeZone, // Use the client's time zone
+                events: "{{ url('/') }}/fetchCalendarAvailability/" + tutorId,
+                eventClick: function(eventClickInfo, jsEvent, view) {
+                    // Reset the background color of all events to their default styling
+                    calendar.getEvents().forEach(function(event) {
+                        event.setProp('backgroundColor', event.extendedProps
+                            .originalBackgroundColor || '');
+                    });
+
+                    // Set the background color of the clicked event
+                    eventClickInfo.event.setProp('backgroundColor', '#fe6903');
+                    eventID = eventClickInfo.el.fcSeg.eventRange.def.publicId;
+                    
+                    $("#continueSubmitShcdulebtn").removeClass("disabled")
+                    $("#session_start").val(moment(eventClickInfo.el.fcSeg.start).add(0, 'minute')
+                        .format('YYYY-MM-DD HH:mm'))
+                    $("#session_end").val(moment(eventClickInfo.el.fcSeg.end).add(0, 'minute')
+                        .format(
+                            'YYYY-MM-DD HH:mm'))
+                    $("#calendar_sch_id").val(eventID);
+                },
+                eventDataTransform: function(event, element, info) {
+                    if (event.status == 'time_off') {
+                        event.editable = false;
+                        event.color = "red";
+
+                    }
+                    return event;
+                },
+            });
+
+
+            calendar.render();
+            calendar.changeView('timeGridWeek');
+        }, 400);
+    }
+
+    function submitStudentSchedule() {
+        if ($("#session_start").val() != '' && $("#session_end").val() != '' && $("#calendar_sch_id").val() != '') {
+            $('#submitPrivateLesson').submit();
+        }
+    }
+</script>

@@ -172,7 +172,7 @@ class CalendarController extends Controller
             }  
             $startDateTime = Carbon::parse($request->start_date_a);
             $endDateTime = Carbon::parse($request->end_date_a);
-           
+           $is_submit=false;
             // Divide the availability slot into 1-hour time slots
             while ($startDateTime->lt($endDateTime)) {
                 $nextHour = $startDateTime->clone()->addHour();
@@ -188,7 +188,9 @@ class CalendarController extends Controller
                 $schedule->subject =  $request->subject_a;
                 $schedule->note =  $request->note_a;
                 $schedule->status =  'schedule';
-                $schedule->save();
+                if($schedule->save()){
+                    $is_submit=true;
+                }
                 $startDateTime = $nextHour;
             }
             // $schedule = new Calendar;
@@ -200,7 +202,7 @@ class CalendarController extends Controller
             // $schedule->note =  $request->note_a;
             // $schedule->status =  'schedule';
 
-            // if($schedule->save()){
+            if($is_submit){
 
                 $user_data =  User::where('id', $request->student_no_a)->first();
                 $user_email = $user_data->email;
@@ -219,9 +221,9 @@ class CalendarController extends Controller
                 $Notifications->save();
 
                 return true;
-            // } else{
-            //     return false;
-            // }
+            } else{
+                return false;
+            }
         }
         
     }
