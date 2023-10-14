@@ -62,6 +62,7 @@
     }
 </style>
 <!-- Modal -->
+
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl modal-dialog-scrollable modal-dialog-centered">
@@ -237,7 +238,7 @@
                                     <button class="tablinks"
                                         onclick="openCity(event, 'Schedule');runFullCalendar()">Schedule</button>
                                     <button class="tablinks" onclick="openCity(event, 'Reviews')">Reviews
-                                        ({{ $groupLessonRating }})</button>
+                                        ({{ $totalTutorRating }})</button>
                                     <button class="tablinks" onclick="openCity(event, 'Resume')">Resume</button>
                                     <button class="tablinks" onclick="openCity(event, 'Subjects')">Subjects</button>
                                 </div>
@@ -278,7 +279,7 @@
                                     <div class="col-lg-4 mb-3">
                                         <div class="review-tag-div border-right py-5">
                                             <div class="review-tag ">
-                                                <h2>{{ $groupLessonRating }}</h2>
+                                                <h2>{{ $totalTutorRating }}</h2>
                                                 <div class="d-flex align-items-center justify-content-center my-3">
                                                     <img src="{{ url('/') }}/newAssets/assets/images/star.svg"
                                                         alt="" class="me-1">
@@ -291,43 +292,43 @@
                                                     <img src="{{ url('/') }}/newAssets/assets/images/star.svg"
                                                         alt="" class="me-1">
                                                 </div>
-                                                <p class="mb-0 pb-0 text-center">{{ count($rating) }} Review</p>
+                                                <p class="mb-0 pb-0 text-center">{{ count($rating)+count($rating2) }} Review</p>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-lg-6 ms-auto mb-3">
                                         <div
-                                            class="progress-line {{ $groupLessonRating != 5 ? 'zero-progress' : '' }}">
+                                            class="progress-line {{ $totalTutorRating != 5 ? 'zero-progress' : '' }}">
                                             <div class="d-flex align-items-center me-2">
                                                 <b>5&nbsp;</b>Stars
                                             </div>
                                             <div class="progress w-100">
                                                 <div class="progress-bar" role="progressbar"
-                                                    style="{{ $groupLessonRating != 5 ? 'width: 0%;' : 'width: 100%;' }} height: 5px;"
+                                                    style="{{ $totalTutorRating != 5 ? 'width: 0%;' : 'width: 100%;' }} height: 5px;"
                                                     aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
                                             </div>
                                             <div class="d-flex align-items-center ms-2">
-                                                {{ $groupLessonRating == 5 ? '(' . count($rating) . ')' : '' }}
+                                                {{ $totalTutorRating == 5 ? '(' . count($rating)+count($rating2)  . ')' : '' }}
                                             </div>
                                         </div>
 
                                         <div
-                                            class="progress-line {{ $groupLessonRating < 4 ? 'zero-progress' : '' }} mt-3">
+                                            class="progress-line {{ $totalTutorRating < 4 ? 'zero-progress' : '' }} mt-3">
                                             <div class="d-flex align-items-center me-2">
                                                 <b>4&nbsp;</b>Stars
                                             </div>
                                             <div class="progress w-100 ">
                                                 <div class="progress-bar" role="progressbar"
-                                                    style="{{ $groupLessonRating < 4 ? 'width: 0%;' : 'width: 100%;' }} height: 5px;"
+                                                    style="{{ $totalTutorRating < 4 ? 'width: 0%;' : 'width: 100%;' }} height: 5px;"
                                                     aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
                                             </div>
                                             <div class="d-flex align-items-center ms-2">
-                                                {{ $groupLessonRating >= 4 && $groupLessonRating <= 5 ? '(' . count($rating) . ')' : '' }}
+                                                {{ $totalTutorRating >= 4 && $totalTutorRating <= 5 ? '(' . count($rating)+count($rating2)  . ')' : '' }}
                                             </div>
                                         </div>
 
                                         <div
-                                            class="progress-line {{ $groupLessonRating < 3 ? 'zero-progress' : '' }} mt-3">
+                                            class="progress-line {{ $totalTutorRating < 3 ? 'zero-progress' : '' }} mt-3">
                                             <div class="d-flex align-items-center me-2">
                                                 <b>3&nbsp;</b>Stars
                                             </div>
@@ -337,39 +338,39 @@
                                                     aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
                                             </div>
                                             <div class="d-flex align-items-center ms-2">
-                                                {{ $groupLessonRating >= 3 && $groupLessonRating <= 4 ? '(' . count($rating) . ')' : '' }}
+                                                {{ $totalTutorRating >= 3 && $totalTutorRating <= 4 ? '(' . count($rating)+count($rating2)  . ')' : '' }}
                                             </div>
                                         </div>
                                         <div
-                                            class="progress-line {{ $groupLessonRating < 2 ? 'zero-progress' : '' }} mt-3">
+                                            class="progress-line {{ $totalTutorRating < 2 ? 'zero-progress' : '' }} mt-3">
                                             <div class="d-flex align-items-center me-2">
                                                 <b>2&nbsp;</b>Stars
                                             </div>
                                             <div class="progress w-100 ">
                                                 <div class="progress-bar" role="progressbar"
-                                                    style="{{ $groupLessonRating < 2 ? 'width: 0%;' : 'width: 100%;' }} height: 5px;"
+                                                    style="{{ $totalTutorRating < 2 ? 'width: 0%;' : 'width: 100%;' }} height: 5px;"
                                                     aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
                                             </div>
                                             <div class="d-flex align-items-center ms-2">
-                                                {{ $groupLessonRating >= 2 && $groupLessonRating <= 3 ? '(' . count($rating) . ')' : '' }}
+                                                {{ $totalTutorRating >= 2 && $totalTutorRating <= 3 ? '(' . count($rating)+count($rating2)  . ')' : '' }}
                                             </div>
                                         </div>
                                         <div
-                                            class="progress-line {{ $groupLessonRating < 1 ? 'zero-progress' : '' }} mt-3">
+                                            class="progress-line {{ $totalTutorRating < 1 ? 'zero-progress' : '' }} mt-3">
                                             <div class="d-flex align-items-center me-2">
                                                 <b>1&nbsp;</b>Stars
                                             </div>
                                             <div class="progress w-100 ">
                                                 <div class="progress-bar" role="progressbar"
-                                                    style="{{ $groupLessonRating < 1 ? 'width: 0%;' : 'width: 100%;' }} height: 5px;"
+                                                    style="{{ $totalTutorRating < 1 ? 'width: 0%;' : 'width: 100%;' }} height: 5px;"
                                                     aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
                                             </div>
                                             <div class="d-flex align-items-center ms-2">
-                                                {{ $groupLessonRating >= 1 && $groupLessonRating <= 2 ? '(' . count($rating) . ')' : '' }}
+                                                {{ $totalTutorRating >= 1 && $totalTutorRating <= 2 ? '(' . count($rating)+count($rating2)  . ')' : '' }}
                                             </div>
                                         </div>
                                         <div
-                                            class="progress-line {{ $groupLessonRating < 0 ? 'zero-progress' : '' }} mt-3">
+                                            class="progress-line {{ $totalTutorRating < 0 ? 'zero-progress' : '' }} mt-3">
                                             <div class="d-flex align-items-center me-2">
                                                 <b>0&nbsp;</b>Stars
                                             </div>
@@ -379,7 +380,7 @@
                                                     aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
                                             </div>
                                             <div class="d-flex align-items-center ms-2">
-                                                {{ $groupLessonRating >= 0 && $groupLessonRating <= 1 ? '(' . count($rating) . ')' : '' }}
+                                                {{ $totalTutorRating >= 0 && $totalTutorRating <= 1 ? '(' . count($rating)+count($rating2) . ')' : '' }}
                                             </div>
                                         </div>
                                     </div>
@@ -533,7 +534,7 @@
                                         stroke="#FF6C0B" stroke-width="2" />
                                 </svg>
                             </div>
-                            <button class="main-btn-blank-sm w-100">Send message</button>
+                            <button class="main-btn-blank-sm w-100"><a href="{{ url('/chat',$teacher_data[0]->student_no) }}" style="color: #fe6903">Send message</a></button>
                         </div>
                         <div class="d-flex align-items-center mt-3">
                             <img src="{{ url('newAssets/assets/images/pro.svg') }}" alt="" class="me-2">

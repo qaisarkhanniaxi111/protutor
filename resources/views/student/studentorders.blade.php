@@ -137,7 +137,8 @@ use Carbon\Carbon;
 
                         $getData='SELECT `order`.id as order_id,`order`.user_id,`order`.teacher_id,`order`.calender_sch_id,`order`.order_type,`order`.items,`order`.total ,`order`.discount,`order`.transaction_fee,`order`.net_total,`order`.payment_id,`order`.payment_status,`order`.status,`order`.zoom_meeeting_url,calendars.* FROM `order` LEFT JOIN `calendars` ON `order`.calender_sch_id = calendars.id WHERE `order`.id="'.$getorderid.'"';
                         $alldataget = DB::select($getData);
-                        
+                        $id=$alldataget[0]->order_id;
+                        $checkreview=DB::select("SELECT * FROM `ratings` WHERE order_id=$id");
                         $zoom_meeeting_url = $alldataget[0]->zoom_meeeting_url;
                         $student_no = $alldataget[0]->student_no;
                         $subject = $alldataget[0]->subject;
@@ -172,13 +173,18 @@ use Carbon\Carbon;
                                   <h6><?php echo $totalDuration1; ?></h6>
                                 </div>
                               </div>
+                              @if (!isset($checkreview[0]))
                               @if ($finishTime->lt(now()))
+                                  
+                              
                               <div class="col-6">
                                   <div class="join-session">
-                                      <button class="alt open-res" onclick="giveFeedback()">Leave a Review</button>
+                                      <button class="alt open-res" onclick="giveFeedback({{ $alldataget[0]->order_id }})">Leave a Review</button>
                                       <h6>{{ $totalDuration1 }}</h6>
                                   </div>
                               </div>
+
+                              @endif
                           @endif
                           
                             </div>
@@ -230,7 +236,7 @@ use Carbon\Carbon;
     
                         <form action="{{ route('submit.review') }}" method="post">
                             @csrf
-                            <input type="number" name="group_lesson_id" value="" hidden>
+                            <input type="number" name="order_id" id="order_id" value="" hidden>
                             <input type="number" name="student_id" value="{{ auth()->user() ? auth()->user()->id : '' }}"
                                 hidden>
                             <input type="number" name="rating" id="student_rating" value="" hidden>
@@ -631,7 +637,7 @@ use Carbon\Carbon;
 
 
 <script>
-  function giveFeedback(){
-    
+  function giveFeedback(order_id){
+    $("#order_id").val(order_id)
   }
 </script>

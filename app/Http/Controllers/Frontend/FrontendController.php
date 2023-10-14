@@ -23,6 +23,7 @@ use App\Models\Notifications;
 use App\Models\Become_a_tutor;
 use App\Models\Certificate;
 use App\Models\GroupLesson;
+use App\Models\Order;
 use App\Models\Payment;
 use App\Models\Rating;
 use Carbon\Carbon;
@@ -496,6 +497,11 @@ class FrontendController extends Controller
          ->join('ratings', 'group_lessons.id', '=', 'ratings.group_lesson_id')
          ->join('userdetails', 'ratings.student_id', '=', 'userdetails.student_no')
          ->select('ratings.*', 'userdetails.*');
+         $ratings2 = Order::where('teacher_id', $tutorid)->where('payment_status','active')
+         ->join('ratings', 'order.id', '=', 'ratings.order_id')
+         ->join('userdetails', 'ratings.student_id', '=', 'userdetails.student_no')
+         ->select('ratings.*', 'userdetails.*');
+         $rating2=$ratings2->orderBy('ratings.created_at', 'desc')->get();
 
          $rating = $ratings->orderBy('ratings.created_at', 'desc')->get();
          
@@ -506,7 +512,13 @@ class FrontendController extends Controller
              $count+= $countRating->rating;
             //  $count+=$countRating->rating;
          }
+         $count2=0;
+         foreach ($rating2 as $countRating) {
+             $count2+= $countRating->rating;
+            //  $count+=$countRating->rating;
+         }
          $numberOfRating=$ratings->count();
+         $numberOfOrdersRating=$ratings2->count();
         //  echo $count;
         //  dd($numberOfRating);
          if($count<=0 || $numberOfRating<=0){
@@ -515,7 +527,14 @@ class FrontendController extends Controller
  
              $groupLessonRating=$count/$numberOfRating;
          }
-        
+         if($count2<=0 || $numberOfOrdersRating<=0){
+             $orderRating=0;
+         }else{
+ 
+             $orderRating=$count2/$numberOfOrdersRating;
+         }
+        // dd($orderRating);
+        $totalTutorRating=($groupLessonRating+$orderRating)/2;
         $degree = DB::select('SELECT educations.degree_name, educations.specialization, educations.university_name, educations.year_of_study FROM `educations` join userdetails on educations.userdetail_id = userdetails.student_no
             where userdetails.student_no="'.$tutorid.'";');
     
@@ -534,10 +553,10 @@ class FrontendController extends Controller
     
             $years_of_Exp = array_sum($years_of_Exps);
     
-            return view("frontend/tutor_detail_single",compact('PageTitle','teacher_data','subjects','languages','degree','years_of_Exp','country','experience','certificateAll','content','hour_rate','groupLessonRating','rating','relatedTeachers'));
+            return view("frontend/tutor_detail_single",compact('PageTitle','teacher_data','subjects','totalTutorRating','languages','degree','years_of_Exp','country','experience','certificateAll','content','hour_rate','groupLessonRating','orderRating','rating','rating2','relatedTeachers'));
         }else{
             $years_of_Exp = 0;
-            return view("frontend/tutor_detail_single",compact('PageTitle','teacher_data','subjects','languages','degree','years_of_Exp','country','experience','certificateAll','content','hour_rate','groupLessonRating','rating','relatedTeachers'));
+            return view("frontend/tutor_detail_single",compact('PageTitle','teacher_data','subjects','languages','degree','years_of_Exp','country','experience','certificateAll','content','hour_rate','groupLessonRating','orderRating','totalTutorRating','rating','rating2','relatedTeachers'));
         }
 
     }

@@ -100,15 +100,19 @@ class RatingController extends Controller
     {
         // Validate the input
         $request->validate([
-            'group_lesson_id' => 'required',
+            
             'student_id' => 'required',
             'rating' => 'required|in:1,2,3,4,5',
             'review' => 'required|max:2000',
         ]);
-
+        
         $newLessonRating = new Rating;
         $newLessonRating->student_id=$request->student_id;
+        if($request->group_lesson_id){
         $newLessonRating->group_lesson_id=$request->group_lesson_id;
+        }else{
+            $newLessonRating->order_id=$request->order_id;
+        }
         $newLessonRating->rating=$request->rating;
         $newLessonRating->review=$request->review;
         $newLessonRating->save();
