@@ -87,9 +87,9 @@ p.text-large{ font-size: 20px; line-height: 32px;}
 .user-thumb{ width: 50px; height: 50px; border: 1px solid var(--dark-grey); border-radius: 100%; overflow: hidden;}
 .user-thumb img{ width: 50px; height: 50px; object-fit: cover;}
 
-.side-bar{ z-index: 9; position: fixed; left: 0; top: 100px; width: 280px; box-shadow: 3px 0px 10px #00000029; border-radius: 0px 30px 30px 0px; height: calc(100vh - 150px); background: var(--grey); padding: 20px; overflow-x: hidden; overflow-y: auto; transition: all 0.5s ease;}
+.side-bar{ z-index: 9; position: fixed; left: 0; top: 100px; width: 280px; box-shadow: 3px 0px 10px #00000029; border-radius: 0px 10px 10px 0px; height: calc(100vh - 150px); background: var(--grey); padding: 20px; overflow-x: hidden; overflow-y: auto; transition: all 0.5s ease;}
 .side-bar { -ms-overflow-style: none; scrollbar-width: none;}
-.side-bar::-webkit-scrollbar { display: none;}
+/* .side-bar::-webkit-scrollbar { display: none;} */
 .side-bar ul li:first-child{ margin-top: 0;}
 .side-bar ul li{ margin-top: 15px;}
 .side-bar ul li a{ transition: all 0.5s ease; font-size: 19px; color: var(--black); font-weight: 500; height: 40px; display: flex; align-items: center; border-radius: 10px; padding: 0 20px;}
@@ -1140,4 +1140,16 @@ input:checked + .slider:before { background: #FFF; -webkit-transform: translateX
 
   select{ appearance: none; height: 40px; position: relative; background: url('../images/arrow-down.png') #FFF right 10px center no-repeat; }
   /* select::after{ content: ''; position: absolute; right: 15px; top: 15px; width: 10px; height: 6px; background: url('../images/arrow-down.png') center center no-repeat;} */
+}
+
+.side-bar::-webkit-scrollbar {
+  width: 7px;
+}
+ 
+
+ 
+.side-bar::-webkit-scrollbar-thumb {
+  background-color: #C1C1C1;
+  /*outline: 1px solid slategrey;*/
+  border-radius:10px !important;
 }

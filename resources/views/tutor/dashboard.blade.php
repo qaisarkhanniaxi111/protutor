@@ -143,9 +143,9 @@
                     <ul>
                         @foreach ($tutorData as $tutor_data)
                             <li>
-                                <a href="{{ url('chat/' . $tutor_data->id) }}">
+                                <a href="{{ url('chat/' . $tutor_data->id) }}" class="text-capitalize">
                                     <h5>{{ $tutor_data->first_name }} {{ $tutor_data->last_name }}</h5>
-                                    <h6><span>Message</span> <span>10:22 AM</span></h6>
+                                    <h6><span><small>Click Here</small></span> <span><i class="fa-regular fa-clock"></i></span></h6>
                                 </a>
                             </li>
                         @endforeach

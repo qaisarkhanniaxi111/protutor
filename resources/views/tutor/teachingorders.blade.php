@@ -138,12 +138,12 @@ use Carbon\Carbon;
                                   <h6><?php echo $totalDuration1; ?></h6>
                                 </div>
                               </div>
-                              {{-- <div class="col-6">
+                              <div class="col-6">
                                 <div class="join-session">
-                                  <button class="alt open-res">Resolution Center</button>
-                                  <h6><?php echo $totalDuration1; ?></h6>
+                                  <button  data-bs-toggle="modal" data-bs-target="#resStep-1"  class="alt" onclick="resetMeetingLink({{ $alldataget[0]->order_id }})">Reset Meeting Link</button>
+                                  {{-- <h6><?php echo $totalDuration1; ?></h6> --}}
                                 </div>
-                              </div> --}}
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -378,40 +378,25 @@ use Carbon\Carbon;
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="txt-orange">Resolution Center</h5>
-        <h6 class="txt-green">Reschedule Lesson</h6>
+        <h5 class="txt-orange">Reset Meeting Link</h5>
+        
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
+        <form action="{{ route('tutor.orders.meeting') }}" method="POST">
+          @csrf
         <div class="inp-group mt-0">
-          <label for=""><i class="fa-regular fa-circle-question"></i> Reason to reschedule lesson</label>
-          <textarea class="inp" name="" placeholder="Please explain why you need to reschedule this lesson"></textarea>
+          <label for=""><i class="fa-regular fa-circle-question"></i> Enter New Meeting Link</label>
+          <input type="number" name="order_id" id="meeting_order_id" hidden>
+          <textarea class="inp" name="meeting_link" placeholder="You can add zoom , google or others meeting link..."></textarea>
         </div>
         
-        <div class="inp-group mt-0">
-          <div class="row">
-            <div class="col-lg-6">
-              <div class="inp-group">
-                <label for=""><i class="fa-regular fa-clock"></i> Select Time</label>
-                <select class="inp" name="" id="">
-                  <option value="">Select Date</option>
-                </select>
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="inp-group">
-                <label for="">&nbsp;</label>
-                <select class="inp" name="" id="">
-                  <option value="">Select Time</option>
-                </select>
-              </div>
-            </div>
-          </div>
-        </div>
+        
       </div>
       <div class="modal-footer center">
-        <button type="button" data-bs-dismiss="modal" class="theme-btn btn-round green">Submit</button>
+        <button data-bs-dismiss="modal" class="theme-btn btn-round green">Submit</button>
       </div>
+    </form>
     </div>
   </div>
 </div>
@@ -476,4 +461,10 @@ use Carbon\Carbon;
 </div>
 
 
+
 @include('/dashboard/common/footer')  
+<script>
+  function resetMeetingLink(orderId){
+    $("#meeting_order_id").val(orderId)
+  }
+</script>

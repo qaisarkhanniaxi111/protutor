@@ -55,10 +55,20 @@
     p {
         text-align: unset;
     }
-
+    .fc .fc-toolbar-title{
+        font-size:17px !important;
+        margin-top:10px !important;
+    }
+    .fc .fc-timegrid-axis-cushion, .fc .fc-timegrid-slot-label-cushion{
+        font-size:14px !important;
+    }
+    #schedule-calendar .fc-view-harness thead th.fc-col-header-cell a.fc-col-header-cell-cushion, #model-schedule-calendar .fc-view-harness thead th.fc-col-header-cell a.fc-col-header-cel-cushion{
+        font-size:14px !important;
+        font-weight:500 !important;
+    }
     .tutors-card-image{
-        height:300px !important;
-        object-fit: cover;
+        height:300px !important
+        ;
     }
 </style>
 <!-- Modal -->
@@ -881,8 +891,8 @@
 
         var calendar = new FullCalendar.Calendar(calendarEl, {
             headerToolbar: {
-                left: 'prev,next title',
-                right: ''
+                left: 'prev,next',
+                right: 'title'
             },
 
             defaultView: 'timeGridWeek',
@@ -924,8 +934,8 @@
 
             var calendar = new FullCalendar.Calendar(calendarEl, {
                 headerToolbar: {
-                    left: 'prev,next title',
-                    right: ''
+                    left: 'prev,next',
+                    right: 'title'
                 },
 
                 defaultView: 'timeGridWeek',

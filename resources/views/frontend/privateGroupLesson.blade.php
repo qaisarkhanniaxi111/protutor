@@ -1104,8 +1104,8 @@
 
             var calendar = new FullCalendar.Calendar(calendarEl, {
                 headerToolbar: {
-                    left: 'prev,next title',
-                    right: ''
+                    left: 'prev,next',
+                    right: 'title'
                 },
 
                 defaultView: 'timeGridWeek',

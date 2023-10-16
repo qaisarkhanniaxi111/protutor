@@ -40,7 +40,7 @@
                 @if ($groupLesson)
 
                     <div class="text-center">
-                        <img src="{{ $gallery ? $gallery->image : '' }}" alt="course img" style="width: 60%; height:40%">
+                        <img src="{{ $gallery ? $gallery->image : '' }}" alt="course img" style="width: 60%; height:40%; object-fit:contain;">
                     </div>
 
                     <div class="row">

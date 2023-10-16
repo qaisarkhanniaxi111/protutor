@@ -35,6 +35,7 @@ use App\Models\Payment;
 Route::any('/tutor/settings', [SettingController::class, 'settings'])->name('tutor.settings');
 Route::any('/tutor/change_password', [SettingController::class, 'change_password']);
 Route::any('/tutor/teachingorders', [TutorTeachingOrdersController::class, 'teachingOrders'])->name('tutor.orders');
+Route::post('/tutor/teachingorders/saveMeeting', [TutorTeachingOrdersController::class, 'teachingOrdersSetMeeting'])->name('tutor.orders.meeting');
 Route::any('/tutor/support', [SupportController::class, 'support'])->name('tutor.support');
 
 Route::any('/fetchCalendarAvailability/{id}', [FindTutorController::class, 'fetchCalendarAvailability']);

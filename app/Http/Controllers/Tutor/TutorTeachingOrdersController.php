@@ -10,6 +10,15 @@ use Illuminate\Support\Facades\Session;
 
 class TutorTeachingOrdersController extends Controller
 {
+    public function teachingOrdersSetMeeting(Request $request){
+        $update=Order::find($request->order_id);
+        if($update){
+
+            $update->zoom_meeeting_url=$request->meeting_link;
+            $update->save();
+        }
+        return redirect(route('tutor.orders'));
+    }
     public function teachingOrders()
     {
 
