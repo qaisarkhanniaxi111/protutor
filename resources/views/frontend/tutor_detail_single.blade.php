@@ -600,7 +600,7 @@
                                                             echo '<h4 class="me-2">*&nbsp;&nbsp;' . $value->subject . ' Tutor</h4>';
                                                         }
                                                     } else {
-                                                        if ($userdata_val->subject == $value->id) {
+                                                        if ($value->id) {
                                                             echo '<h4 class="me-2">' . $value->subject . ' Tutor</h4>';
                                                         }
                                                     }
