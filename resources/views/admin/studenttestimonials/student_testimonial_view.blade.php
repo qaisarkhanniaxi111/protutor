@@ -1,7 +1,7 @@
-@include('/admin/common/header')
+@include('admin/common/header')
 
 <div class="dashboard-wrap">
-  @include('/admin/common/sidebar')
+  @include('admin/common/sidebar')
 
   <div class="main-wrapper">
 
@@ -82,6 +82,7 @@
               <th>SN</th>
               <th>Image</th>
               <th>Student Name</th>
+              <th>Student Profession</th>
               <th>Description</th>
               <th>Star Rating</th>
               <th>Status</th>
@@ -99,9 +100,10 @@
               <tr>
                 <td>{{$i}}</td>
                 <td>
-                  <img style="height: 75px;" src="{{url('/')}}/public/images/{{$data->student_image}}">
+                  <img style="height: 75px;" src="{{url('/')}}/images/{{$data->student_image}}">
                 </td>
                 <td>{{$data->student_name}}</td>
+                <td>{{$data->field}}</td>
                 <td style="white-space: normal;">{{$data->student_desc}}</td>
                 <td>{{$data->student_rating}}</td>
                 <td>
@@ -176,6 +178,10 @@
             <input class="input" type="text" name="name" placeholder="">
           </div>
           <div class="inp-outer">
+            <label for="">Student Profession</label>
+            <input class="input" type="text" name="field" placeholder="">
+          </div>
+          <div class="inp-outer">
                 <label for="">Star Rating</label>
                 <select class="input" name="star_rating" id="">
                     <option value="1">1</option>
@@ -187,7 +193,7 @@
           </div>
           <div class="inp-outer">
             <label for="">Description</label>
-            <textarea rows="5" cols="25" name="description"></textarea>
+            <textarea rows="5" cols="25" name="description" class="form-control"></textarea>
           </div>
 
           <div class="inp-outer">
@@ -266,4 +272,4 @@
 </script>
 
 
-@include('/admin/common/footer')
+@include('admin/common/footer')

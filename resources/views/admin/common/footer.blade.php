@@ -1,7 +1,7 @@
-<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>    
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://unpkg.com/tilt.js@1.2.1/dest/tilt.jquery.min.js"></script>
-<script src="/assets/js/custom.js"></script>
+<script src="{{url('/')}}/assets/js/custom.js"></script>  
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
@@ -22,7 +22,7 @@
       dataType : 'json',
       success : function(result){
         console.log(result);
-        location.reload();
+        location.reload(); 
       }
     });
 
@@ -51,6 +51,7 @@
    $('.mark-as-read').click(function() {
     let request = sendMarkRequest($(this).data('id'));
     //console.log(request);
+    alert($(this).data('id'));
     request.done(() => {
      $(this).parents('div.inner').remove();
    });
@@ -65,7 +66,7 @@
    });
 
  });
-
+ 
 
 </script>
 <script>
@@ -74,23 +75,23 @@
     type: "line",
     data: {
       labels: xValues,
-      datasets: [{
+      datasets: [{ 
         data: [400,100,200,50,150],
         borderColor: "#FB9A99",
         fill: false
-      }, {
+      }, { 
         data: [200,300,250,100,50],
         borderColor: "#A6CEE3",
         fill: false
-      }, {
+      }, { 
         data: [20,50,200,100,350],
         borderColor: "#B2DF8A",
         fill: false
-      },{
+      },{ 
         data: [100,250,200,30,80],
         borderColor: "#1F78B4",
         fill: false
-      },{
+      },{ 
         data: [50,80,70,30,80],
         borderColor: "#FFB703",
         fill: false
@@ -107,7 +108,7 @@
         yAxes: [{
           gridLines: {
             color: "rgba(0, 0, 0, 0.03)",
-          }
+          }   
         }]
       }
     }
@@ -119,23 +120,23 @@
     type: "line",
     data: {
       labels: xValues2,
-      datasets: [{
+      datasets: [{ 
         data: [400,100,200,50,150],
         borderColor: "#FB9A99",
         fill: false
-      }, {
+      }, { 
         data: [200,300,250,100,50],
         borderColor: "#A6CEE3",
         fill: false
-      }, {
+      }, { 
         data: [20,50,200,100,350],
         borderColor: "#B2DF8A",
         fill: false
-      },{
+      },{ 
         data: [100,250,200,30,80],
         borderColor: "#1F78B4",
         fill: false
-      },{
+      },{ 
         data: [50,80,70,30,80],
         borderColor: "#FFB703",
         fill: false
@@ -152,7 +153,7 @@
         yAxes: [{
           gridLines: {
             color: "rgba(0, 0, 0, 0.03)",
-          }
+          }   
         }]
       }
     }
@@ -164,23 +165,23 @@
     type: "line",
     data: {
       labels: xValues3,
-      datasets: [{
+      datasets: [{ 
         data: [400,100,200,50,150],
         borderColor: "#FB9A99",
         fill: false
-      }, {
+      }, { 
         data: [200,300,250,100,50],
         borderColor: "#A6CEE3",
         fill: false
-      }, {
+      }, { 
         data: [20,50,200,100,350],
         borderColor: "#B2DF8A",
         fill: false
-      },{
+      },{ 
         data: [100,250,200,30,80],
         borderColor: "#1F78B4",
         fill: false
-      },{
+      },{ 
         data: [50,80,70,30,80],
         borderColor: "#FFB703",
         fill: false
@@ -197,7 +198,7 @@
         yAxes: [{
           gridLines: {
             color: "rgba(0, 0, 0, 0.03)",
-          }
+          }   
         }]
       }
     }

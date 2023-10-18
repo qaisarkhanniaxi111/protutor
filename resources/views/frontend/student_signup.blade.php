@@ -1,3 +1,6 @@
+@php
+    $lightNavbar = true;
+@endphp
 @include('/frontend/common/header')
 <section class="page-title">
   <div class="container">

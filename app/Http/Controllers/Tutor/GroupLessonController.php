@@ -187,7 +187,7 @@ class GroupLessonController extends Controller
 
         $request->validate(
             [
-                'image' => 'required',
+                'image' => 'required | image',
                 'title' => 'required',
                 'teaches_level' => 'required',
                 'subject' => 'required',
@@ -218,7 +218,7 @@ class GroupLessonController extends Controller
             $newGallery = new Galleries;
             $fileExt = $request->file('image')->getClientOriginalExtension();
             $newName = time() . '.' . $fileExt;
-            $request->file('image')->move(storage_path('app/public/group_lessons/images/'), $newName);
+            $request->file('image')->move(public_path('group_lessons/images/'), $newName);
             $url = $newName;
             $newGallery->image = $url;
             $newGallery->image_type = 1;

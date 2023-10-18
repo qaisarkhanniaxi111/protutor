@@ -474,7 +474,7 @@
                                                 <span class="quiz-inp-icon"><i
                                                         class="fa-solid fa-calendar"></i></span>
                                                 <input class="quiz-inp" type="date" name="register_Start_Date"
-                                                    id="registerstartdate" placeholder="Start Date and Time">
+                                                    id="registerstartdate" placeholder="Start Date and Time" onchange="document.querySelector('#registerenddate').removeAttribute('disabled');document.querySelector('#registerenddate').min=this.value">
                                                 <p class="text-danger error-msg" id="lesson_register_Start_Date">
 
                                                 </p>
@@ -488,7 +488,7 @@
                                                 <span class="quiz-inp-icon"><i
                                                         class="fa-solid fa-calendar"></i></span>
                                                 <input class="quiz-inp" type="date" name="register_End_Date"
-                                                    id="registerenddate" placeholder="End Date and Time">
+                                                    id="registerenddate" placeholder="End Date and Time" disabled  onchange="document.querySelector('#classStartDate').removeAttribute('disabled');document.querySelector('#classStartDate').min=this.value">
 
                                                 <p class="text-danger error-msg" id="lesson_register_End_Date">
 
@@ -504,7 +504,7 @@
                                                 <span class="quiz-inp-icon"><i
                                                         class="fa-solid fa-calendar"></i></span>
                                                 <input class="quiz-inp" type="date" name="class_Start_Date"
-                                                    id="classStartDate" placeholder="Start Date and Time">
+                                                    id="classStartDate" placeholder="Start Date and Time" disabled   onchange="document.querySelector('#classEndDate').removeAttribute('disabled');document.querySelector('#classEndDate').min=this.value">
 
                                                 <p class="text-danger error-msg" id="lesson_class_Start_Date">
 

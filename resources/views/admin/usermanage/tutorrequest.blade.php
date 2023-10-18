@@ -1,5 +1,5 @@
-@include('/admin/common/header')
-@include('/admin/common/sidebar')
+@include('admin/common/header')
+@include('admin/common/sidebar')
 <!-- Container -->
 <section class="wrapper">
   <div class="page-title">
@@ -11,13 +11,13 @@
       @if(session('success_msg'))  
       <div class="alert alert-success alert-dismissible"> 
         {{session('success_msg')}}
-        <button type="button" class="btn-close" data-bs-dismiss="alert"><span aria-hidden="true">&times;</span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"><span aria-hidden="true"></span>
         </button>
       </div>
       @elseif(session('error_msg'))
       <div class="alert alert-danger alert-dismissible"> 
         {{session('error_msg')}}
-        <button type="button" class="btn-close" data-bs-dismiss="alert"><span aria-hidden="true">&times;</span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"><span aria-hidden="true"></span>
         </button>
       </div>
       @endif 
@@ -173,4 +173,4 @@
   </div>
 </section>
 <!-- Container -->
-@include('/admin/common/footer')
+@include('admin/common/footer')

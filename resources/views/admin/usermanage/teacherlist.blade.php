@@ -1,5 +1,5 @@
-@include('/admin/common/header')
-@include('/admin/common/sidebar')
+@include('admin/common/header')
+@include('admin/common/sidebar')
 <!-- Container -->
 <section class="wrapper">
   <div class="page-title">
@@ -183,4 +183,4 @@
 </div>
 </section>
 <!-- Container -->
-@include('/admin/common/footer')
+@include('admin/common/footer')

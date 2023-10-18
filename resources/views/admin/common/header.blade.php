@@ -3,20 +3,25 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, shrink-to-fit=no">
-  <link rel="shortcut icon" href="/assets/images/favicon.png">
+  <link rel="shortcut icon" href="{{url('/')}}/assets/images/favicon.png">
   <title>@if(!empty($PageTitle )) {{$PageTitle}} @else Login | ProTutor  @endif</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <link rel="stylesheet" href="/assets/css/custom.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{{url('/')}}/assets/css/custom.css">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
   <link href="https://raw.githack.com/ttskch/select2-bootstrap4-theme/master/dist/select2-bootstrap4.css" rel="stylesheet">
 </head>
 <body>
+  <?php 
+  $userid = Session::get('admin_userid');
+  $getDataheader = DB::table('userdetails')->where('student_no',$userid)->get();  
+ 
+  ?>
  <meta name="csrf-token" content="{{ csrf_token() }}">
  <div class="site-wrap">
   <div class="login-head">
     <div class="login-head-left">
-      <img src="/assets/images/logo-dark.svg" alt="">
+      <img src="{{url('/')}}/assets/images/logo-dark.svg" alt="">
       <div class="mobClick">
         <span></span>
         <span></span>
@@ -25,8 +30,9 @@
     </div>
     <div class="login-head-right">
 
-      <?php
-      $notifications = DB::table('notifications')->whereIn('viewer_role',[1,2])->whereNotIn('read_at',[1])->get();
+      <?php 
+     
+       $notifications = DB::table('notifications')->whereNotIn('read_at',[1])->where('user_id',$userid)->get();
 
       ?>
 
@@ -50,7 +56,7 @@
                 <i class="fa-solid fa-xmark"></i>
               </button>
             </a>
-
+            
           </div>
           @endforeach
         </div>
@@ -66,7 +72,7 @@
       <div class="dropdown">
         <div class="dropdown-toggle" data-bs-toggle="dropdown">
           <span class="profile-dropdown-img">
-            <img src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt=""></span>
+            <img src="{{url('/')}}/images/{{(isset($getDataheader[0]->profile_img) ? $getDataheader[0]->profile_img : '') }}" alt=""></span>
           <span class="btn-txt">{{ session('admin_userdata.first_name').' '.session('admin_userdata.last_name')}}</span>
         </div>
         <ul class="dropdown-menu">

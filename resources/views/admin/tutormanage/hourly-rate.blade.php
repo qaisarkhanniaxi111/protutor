@@ -1,7 +1,7 @@
-@include('/admin/common/header')
+@include('admin/common/header')
 
 <div class="dashboard-wrap">
- @include('/admin/common/sidebar')
+ @include('admin/common/sidebar')
 
  <div class="main-wrapper">
 
@@ -223,4 +223,4 @@
   });
 
 </script>
-@include('/admin/common/footer')
+@include('admin/common/footer')

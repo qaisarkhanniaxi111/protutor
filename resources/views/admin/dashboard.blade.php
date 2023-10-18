@@ -1,23 +1,23 @@
-@include('/admin/common/header')
+@include('admin/common/header')
 
 <div class="dashboard-wrap">
-    @include('/admin/common/sidebar')
+    @include('admin/common/sidebar')
 
     <div class="main-wrapper">
         <span style="color: red;">
-            @if(session('success_msg'))
-            <div class="alert alert-success alert-dismissible">
+            @if(session('success_msg')) 
+            <div class="alert alert-success alert-dismissible"> 
                 {{session('success_msg')}}
                 <button type="button" class="btn-close" data-bs-dismiss="alert"><span aria-hidden="true">&times;</span>
                 </button>
             </div>
             @elseif(session('error_msg'))
-            <div class="alert alert-danger alert-dismissible">
+            <div class="alert alert-danger alert-dismissible"> 
                 {{session('error_msg')}}
                 <button type="button" class="btn-close" data-bs-dismiss="alert"><span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            @endif
+            @endif 
         </span>
         <div class="dashboard-head">
             <h5 class="fw-600">ACCOUNT OVERVIEW</h5>
@@ -429,5 +429,5 @@
 
 </div>
 
-</div>
-@include('/admin/common/footer')
+</div>  
+@include('admin/common/footer')

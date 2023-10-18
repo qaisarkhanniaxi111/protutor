@@ -1,5 +1,5 @@
-@include('/admin/common/header')
-@include('/admin/common/sidebar')
+@include('admin/common/header')
+@include('admin/common/sidebar')
 <div class="main-wrapper">
   <div class="profile-back">
     <a href="{{ url()->previous() }}"><i class="fa-solid fa-arrow-left"></i> Back</a>
@@ -283,16 +283,24 @@
   <div class="col-lg-4">
     <div class="inp-outer">
       <label for="">Status</label>
-      <select class="input" name="status" id="">
+      <select class="input" name="status" id="status">
         <option value="0" <?php if($userdata[0]->profile_verified=='0'){ echo 'selected'; } ?>>Cancelled</option>
         <option value="1" <?php if($userdata[0]->profile_verified=='1'){ echo 'selected'; } ?>>Approved</option>
       </select>
     </div>
+
+    <div class="inp-outer mt-0" id="rejected_msg" <?php if($userdata[0]->profile_verified=='1'){ echo 'style="display: none;"'; } ?>>
+      <label for="">Reason for rejecting this Turor</label>
+      <textarea class="input" name="reject_reason"></textarea>
+    </div>
+
     <div class="inp-outer">
       <input type="hidden" name="userrealid" value="{{$userdata[0]->user_id}}">
       <button type="submit" class="site-link small">Update</button>
     </div>
   </div>
+
+
 </form>
 </div>
 
@@ -335,6 +343,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
+
         <div class="ps-4 pe-4">
           <div class="inp-outer mt-0">
             <label for="">Reason for rejecting this Turor</label>
@@ -367,4 +376,17 @@
   </div>
 </div>
 </div>
-@include('/admin/common/footer')
+@include('admin/common/footer')
+
+<script>
+  $(document).ready(function(){
+    $("#status").change(function(){
+      var status = this.value;
+      if(status=='1'){
+        $("#rejected_msg").css("display", "none");
+      }else{
+        $("#rejected_msg").css("display", "block");
+      }
+    });
+  });
+</script>

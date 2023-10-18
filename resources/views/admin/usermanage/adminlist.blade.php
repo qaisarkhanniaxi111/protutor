@@ -1,5 +1,5 @@
-@include('/admin/common/header')
-@include('/admin/common/sidebar')
+@include('admin/common/header')
+@include('admin/common/sidebar')
 <!-- Container -->
 <section class="wrapper">
   <div class="page-title">
@@ -276,7 +276,7 @@
   <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
   <!-- Container -->
 
-  @include('/admin/common/footer')
+  @include('admin/common/footer')
   <script type="text/javascript">
     <?php  
   /*if(!empty($errors->any())){ ?> 

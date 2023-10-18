@@ -1,5 +1,5 @@
-@include('/admin/common/header')
-@include('/admin/common/sidebar')
+@include('admin/common/header')
+@include('admin/common/sidebar')
 <div class="main-wrapper">
   <div class="profile-back">
     <a href="{{ url()->previous() }}"><i class="fa-solid fa-arrow-left"></i> Back</a>
@@ -203,7 +203,7 @@
 
 </div>
 </div>  
-@include('/admin/common/footer')
+@include('admin/common/footer')
 
 <script type="text/javascript">
   $('#languages').val([<?php echo $userdata[0]->languages; ?>]);

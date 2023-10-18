@@ -1,5 +1,5 @@
-@include('/admin/common/header')
-@include('/admin/common/sidebar')
+@include('admin/common/header')
+@include('admin/common/sidebar')
 <div class="main-wrapper">
 	<div class="profile-back">
 		<a href="{{ url()->previous() }}"><i class="fa-solid fa-arrow-left"></i> Back</a>
@@ -8,13 +8,13 @@
 		@if(session('success_msg'))  
 		<div class="alert alert-success alert-dismissible"> 
 			{{session('success_msg')}}
-			<button type="button" class="btn-close" data-bs-dismiss="alert"><span aria-hidden="true">&times;</span>
+			<button type="button" class="btn-close" data-bs-dismiss="alert"><span aria-hidden="true"></span>
 			</button>
 		</div>
 		@elseif(session('error_msg'))
 		<div class="alert alert-danger alert-dismissible"> 
 			{{session('error_msg')}}
-			<button type="button" class="btn-close" data-bs-dismiss="alert"><span aria-hidden="true">&times;</span>
+			<button type="button" class="btn-close" data-bs-dismiss="alert"><span aria-hidden="true"></span>
 			</button>
 		</div>
 		@endif 
@@ -250,14 +250,18 @@
 								</div>
 							</div>
 
-							<input type="submit" name="submit" class="site-link sm" value="Save">
+							<div class="update-btn" style="text-align: center;">
+								<input type="submit" name="submit" class="site-link sm" value="Save">
+							</div>
+
+							
 
 						</form>
 
 					</div>
 				</div>
 
-				@include('/admin/common/footer')
+				@include('admin/common/footer')
 
 				<script type="text/javascript">
 
@@ -271,7 +275,7 @@
     //Once add button is clicked
     $(addButton).click(function(){
         //Check maximum number of input fields
-        if(x < maxField){ 
+    	if(x < maxField){ 
             x++; //Increment field counter
             $(wrapper).append(fieldHTML); //Add field html
         }
@@ -295,7 +299,7 @@
     //Once add button is clicked
     $(addButton).click(function(){
         //Check maximum number of input fields
-        if(q < maxField){ 
+    	if(q < maxField){ 
             q++; //Increment field counter
             $(wrapper_sec2).append(fieldHTML_sec2); //Add field html
         }
@@ -319,7 +323,7 @@
     //Once add button is clicked
     $(addButton).click(function(){
         //Check maximum number of input fields
-        if(r < maxField){ 
+    	if(r < maxField){ 
             r++; //Increment field counter
             $(wrapper_sec3).append(fieldHTML_sec3); //Add field html
         }

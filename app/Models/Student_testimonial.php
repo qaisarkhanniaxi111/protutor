@@ -11,5 +11,5 @@ class Student_testimonial extends Model
     protected $table = 'student_testimonial';
 
 
-    protected $fillable = ['student_name','student_desc','student_image', 'student_rating', 'user_status'];
+    protected $fillable = ['student_name','field','student_desc','student_image', 'student_rating', 'user_status'];
 }

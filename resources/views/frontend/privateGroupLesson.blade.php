@@ -391,13 +391,13 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="teacher-heading mb-3">
-                        15,544 English teachers available
+                        {{ count($userdata) }} teachers available
                     </div>
                 </div>
                 <div class="col-xl-8">
                     @if (count($userdata))
                         @foreach ($userdata as $userdata_val)
-                            <div class="teacher-card-div mb-3">
+                            <div class="teacher-card-div mb-3" onmouseenter="document.querySelector('#tutorVideo').src='/videos/{{ $userdata_val->video_link }}'">
                                 <div class="teacher-card--header">
 
                                     <div class="teacher-card--header-text w-100 align-items-start">
@@ -634,7 +634,7 @@
                 <div class="col-xl-4">
                     <div class="right-p-part-content">
                         <div class="side-card">
-                            <video controls>
+                            <video  id="tutorVideo" controls>
                                 <source src="{{ url('newAssets') }}/assets/images/SampleVideo_1280x720_1mb.mp4"
                                     type="video/mp4">
                                 Your browser does not support the video tag.
@@ -992,7 +992,7 @@
 <!-- Footer Section -->
 @include('/frontend/common/footer')
 
-<script src="https://code.jquery.com/jquery-3.7.1.slim.js"
+{{-- <script src="https://code.jquery.com/jquery-3.7.1.slim.js"
     integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
     integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
@@ -1003,10 +1003,10 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
     integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script> --}}
 
-<script src="{{ url('newAssets') }}/assets/js/app.js"></script>
-<script>
+{{-- <script src="{{ url('newAssets') }}/assets/js/app.js"></script> --}}
+{{-- <script>
     function openCity(evt, cityName) {
         // Declare all variables
         var i, tabcontent, tablinks;
@@ -1051,8 +1051,8 @@
         evt.currentTarget.className += " active";
     }
     document.getElementById("defaultOpen2").click();
-</script>
-<script type="text/javascript">
+</script> --}}
+{{-- <script type="text/javascript">
     $(function() {
         // Owl Carousel
         var owl = $(".owl-carousel");
@@ -1082,7 +1082,7 @@
 
         });
     });
-</script>
+</script> --}}
 <script src="{{ url('/') }}/fullcalendar/lib/moment.min.js"></script>
 <script src="{{ url('/') }}/fullcalendar/fullcalendar.min.js"></script>
 {{-- <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script> --}}

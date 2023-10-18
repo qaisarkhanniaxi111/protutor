@@ -1,6 +1,6 @@
-<?php
+<?php 
 $parts = explode("/", $_SERVER['REQUEST_URI']);
-$getVal =  end($parts);
+$getVal =  end($parts); 
 
 ?>
 <div class="sidebar">
@@ -36,11 +36,13 @@ $getVal =  end($parts);
         <span class="nav-icon"><i class="fa-solid fa-people-group"></i></span>
         Pages
       </div>
-      <div id="menu-15" class="accordion-collapse collapse <?php echo ($getVal =='1' || $getVal =='add_content') ? 'show' : '' ?>" data-bs-parent="#sideNav">
+      <div id="menu-15" class="accordion-collapse collapse <?php echo ($getVal =='1' || $getVal =='edit-become-a-tutor') ? 'show' : '' ?>" data-bs-parent="#sideNav">
         <div class="acc-body">
           <ul>
             <li><a href="{{url('/').'/admin/edit-homepage/1'}}" class="<?php echo ($getVal =='1') ? 'active' : '' ?>">Home Page</a></li>
-            <li><a href="{{url('/').'/admin/add_content'}}" class="<?php echo ($getVal =='add_content') ? 'active' : '' ?>">Add Content</a></li>
+            <li><a href="{{url('/').'/admin/edit-become-a-tutor'}}" class="<?php echo ($getVal =='edit-become-a-tutor') ? 'active' : '' ?>">Become a tutor</a></li>
+            <li><a href="{{url('/').'/admin/update_support'}}">Support</a></li>
+            <li><a href="{{url('/').'/admin/update_footer'}}">Footer</a></li>
           </ul>
         </div>
       </div>
@@ -59,7 +61,7 @@ $getVal =  end($parts);
       </div>
     </div>
 
-    <div class="acc-item">
+    <!-- <div class="acc-item">
       <div class="acc-button collapsed" data-bs-toggle="collapse" data-bs-target="#menu-2" aria-expanded="false">
         <span class="nav-icon"><i class="fa-solid fa-people-group"></i></span>
         Group Classes
@@ -67,13 +69,13 @@ $getVal =  end($parts);
       <div id="menu-2" class="accordion-collapse collapse" data-bs-parent="#sideNav">
         <div class="acc-body">
           <ul>
-            <li><a href="group-classess.html">Group Classess</a></li>
-            <li><a href="package-classes.html">Package Classes</a></li>
-            <li><a href="quiz.html">Quiz</a></li>
+            <li><a href="#">Group Classess</a></li>
+            <li><a href="#">Package Classes</a></li>
+            <li><a href="#">Quiz</a></li>
           </ul>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <div class="acc-item">
       <div class="acc-button collapsed" data-bs-toggle="collapse" data-bs-target="#menu-3" aria-expanded="false">
@@ -83,19 +85,19 @@ $getVal =  end($parts);
       <div id="menu-3" class="accordion-collapse collapse" data-bs-parent="#sideNav">
         <div class="acc-body">
           <ul>
-            <li><a href="all-orders.html">All Orders</a></li>
-            <li><a href="lesson-orders.html">Lesson Orders</a></li>
-            <li><a href="subscription-orders.html">Subscription Orders</a></li>
-            <li><a href="classes-orders.html">Classes Orders</a></li>
-            <li><a href="package-Orders.html">Package Orders</a></li>
-            <li><a href="wallet-orders.html">Wallet Orders</a></li>
-            <li><a href="gift-card-orders.html">Gift Card Orders</a></li>
+            <li><a href="{{url('/').'/admin/all_orders'}}">All Orders</a></li>
+            <li><a href="{{url('/').'/admin/lesson_orders'}}">Lesson Orders</a></li>
+            <!-- <li><a href="#">Subscription Orders</a></li>
+            <li><a href="#">Classes Orders</a></li>
+            <li><a href="#">Package Orders</a></li>
+            <li><a href="#">Wallet Orders</a></li>
+            <li><a href="#">Gift Card Orders</a></li> -->
           </ul>
         </div>
       </div>
     </div>
-
-    <div class="acc-item">
+ 
+    <!-- <div class="acc-item">
       <div class="acc-button collapsed" data-bs-toggle="collapse" data-bs-target="#menu-4" aria-expanded="false">
         <span class="nav-icon"><i class="fa-solid fa-clipboard-list"></i></span>
         Report Logs
@@ -103,11 +105,11 @@ $getVal =  end($parts);
       <div id="menu-4" class="accordion-collapse collapse" data-bs-parent="#sideNav">
         <div class="acc-body">
           <ul>
-            <li><a href="report-logs.html">Report Logs</a></li>
+            <li><a href="#">Report Logs</a></li>
           </ul>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <div class="acc-item">
       <div class="acc-button collapsed" data-bs-toggle="collapse" data-bs-target="#menu-5" aria-expanded="false">
@@ -118,17 +120,17 @@ $getVal =  end($parts);
         <div class="acc-body">
           <ul>
 
-            <li><a href="accents.html">Accents</a></li>
+            <!-- <li><a href="#">Accents</a></li> -->
             <li><a href="{{url('/admin/teaches_level')}}">Teaches Level</a></li>
-            <li><a href="learner-ages.html">Learner Ages</a></li>
-            <li><a href="">Lesson Includes</a></li>
+            <!-- <li><a href="#">Learner Ages</a></li> -->
+            <!-- <li><a href="#">Lesson Includes</a></li> -->
             <li><a href="{{url('/admin/subject')}}">Subjects</a></li>
             <li><a href="{{url('/admin/hourly_rate')}}">Hourly Rate</a></li>
-            <li><a href="text-prepration.html">Text Prepration</a></li>
-            <li><a href="{{url('/admin/spoken_language')}}">Spoken Language</a></li>
-            <li><a href="teaching-language.html">Teaching Language</a></li>
-            <li><a href="issues-report-option.html">Issues Report Option</a></li>
-            <li><a href="price-slabs.html">Price Slabs</a></li>
+            <!-- <li><a href="#">Text Prepration</a></li> -->
+            <li><a href="{{url('/admin/spoken_language')}}">Language</a></li>
+            <!-- <li><a href="#">Teaching Language</a></li>
+            <li><a href="#">Issues Report Option</a></li>
+            <li><a href="#">Price Slabs</a></li> -->
 
           </ul>
         </div>
@@ -143,21 +145,21 @@ $getVal =  end($parts);
       <div id="menu-6" class="accordion-collapse collapse" data-bs-parent="#sideNav">
         <div class="acc-body">
           <ul>
-            <li><a href="general-settings.html">General Settings</a></li>
-            <li><a href="pwa-settings.html">PWA Settings</a></li>
-            <li><a href="meetings-tools.html">Meetings Tools</a></li>
-            <li><a href="payment-methods.html">Payment Methods</a></li>
-            <li><a href="social-platforms.html">Social Platforms</a></li>
-            <li><a href="discount-coupons.html">Discount Coupons</a></li>
-            <li><a href="commission-settings.html">Commission Settings</a></li>
-            <li><a href="currency-management.html">Currency Management</a></li>
-            <li><a href="themes-management.html">Themes Management</a></li>
+            <!-- <li><a href="#">General Settings</a></li>
+            <li><a href="#">PWA Settings</a></li>
+            <li><a href="#">Meetings Tools</a></li>
+            <li><a href="#">Payment Methods</a></li> -->
+            <li><a href="{{url('admin/social_platforms')}}">Social Platforms</a></li>
+            <!-- <li><a href="#">Discount Coupons</a></li>
+            <li><a href="#">Commission Settings</a></li>
+            <li><a href="#">Currency Management</a></li>
+            <li><a href="#">Themes Management</a></li> -->
           </ul>
         </div>
       </div>
     </div>
 
-    <div class="acc-item">
+    <!-- <div class="acc-item">
       <div class="acc-button collapsed" data-bs-toggle="collapse" data-bs-target="#menu-7" aria-expanded="false">
         <span class="nav-icon"><i class="fa-solid fa-layer-group"></i></span>
         Manage CMS
@@ -165,23 +167,23 @@ $getVal =  end($parts);
       <div id="menu-7" class="accordion-collapse collapse" data-bs-parent="#sideNav">
         <div class="acc-body">
           <ul>
-            <li><a href="home-page-slide.html">Home Page Slide</a></li>
-            <li><a href="content-pages.html">Content Pages</a></li>
-            <li><a href="content-blocks.html">Content Blocks</a></li>
-            <li><a href="navigation.html">Navigation</a></li>
-            <li><a href="countries.html">Countries</a></li>
-            <li><a href="videos-content.html">Videos Content</a></li>
-            <li><a href="testimonials.html">Testimonials </a></li>
-            <li><a href="language-label.html">Language Label</a></li>
-            <li><a href="faqs-categories.html">FAQs Categories</a></li>
-            <li><a href="manage-faqs.html">Manage FAQs</a></li>
-            <li><a href="email-templates.html">Email Templates</a></li>
+            <li><a href="#">Home Page Slide</a></li>
+            <li><a href="#">Content Pages</a></li>
+            <li><a href="#">Content Blocks</a></li>
+            <li><a href="#">Navigation</a></li>
+            <li><a href="#">Countries</a></li>
+            <li><a href="#">Videos Content</a></li>
+            <li><a href="#">Testimonials </a></li>
+            <li><a href="#">Language Label</a></li>
+            <li><a href="#">FAQs Categories</a></li>
+            <li><a href="#">Manage FAQs</a></li>
+            <li><a href="#">Email Templates</a></li>
           </ul>
         </div>
       </div>
-    </div>
+    </div> -->
 
-    <div class="acc-item">
+    <!-- <div class="acc-item">
       <div class="acc-button collapsed" data-bs-toggle="collapse" data-bs-target="#menu-8" aria-expanded="false">
         <span class="nav-icon"><i class="fa-solid fa-blog"></i></span>
         Manage Blogs
@@ -189,13 +191,13 @@ $getVal =  end($parts);
       <div id="menu-8" class="accordion-collapse collapse" data-bs-parent="#sideNav">
         <div class="acc-body">
           <ul>
-            <li><a href="">Not Available</a></li>
+            <li><a href="#">Not Available</a></li>
           </ul>
         </div>
       </div>
-    </div>
+    </div> -->
 
-    <div class="acc-item">
+    <!-- <div class="acc-item">
       <div class="acc-button collapsed" data-bs-toggle="collapse" data-bs-target="#menu-9" aria-expanded="false">
         <span class="nav-icon"><i class="fa-solid fa-seedling"></i></span>
         Manage SEO
@@ -203,13 +205,13 @@ $getVal =  end($parts);
       <div id="menu-9" class="accordion-collapse collapse" data-bs-parent="#sideNav">
         <div class="acc-body">
           <ul>
-            <li><a href="">Not Available</a></li>
+            <li><a href="#">Not Available</a></li>
           </ul>
         </div>
       </div>
-    </div>
+    </div> -->
 
-    <div class="acc-item">
+    <!-- <div class="acc-item">
       <div class="acc-button collapsed" data-bs-toggle="collapse" data-bs-target="#menu-10" aria-expanded="false">
         <span class="nav-icon"><i class="fa-solid fa-chart-pie"></i></span>
         Report Performance
@@ -217,16 +219,16 @@ $getVal =  end($parts);
       <div id="menu-10" class="accordion-collapse collapse" data-bs-parent="#sideNav">
         <div class="acc-body">
           <ul>
-            <li><a href="lesson-top-subject.html">Lesson Top Subject</a></li>
-            <li><a href="classes-top-subject.html">Classes Top Subject</a></li>
-            <li><a href="tutor-performance.html">Tutor Performance</a></li>
-            <li><a href="lesson-stats.html">Lesson Stats</a></li>
-            <li><a href="sales-report.html">Sales Report</a></li>
-            <li><a href="settlements.html">Settlements </a></li>
+            <li><a href="#">Lesson Top Subject</a></li>
+            <li><a href="#">Classes Top Subject</a></li>
+            <li><a href="#">Tutor Performance</a></li>
+            <li><a href="#">Lesson Stats</a></li>
+            <li><a href="#">Sales Report</a></li>
+            <li><a href="#">Settlements </a></li>
           </ul>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <div class="acc-item">
       <div class="acc-button collapsed" data-bs-toggle="collapse" data-bs-target="#menu-11" aria-expanded="false">
@@ -237,8 +239,8 @@ $getVal =  end($parts);
         <div class="acc-body">
           <ul>
             <li><a href="{{url('/').'/admin/tutor-request'}}">Tutor Request</a></li>
-            <li><a href="withdrawal-request.html">Withdrawal Request</a></li>
-            <li><a href="gdpr-Request.html">GDPR Request</a></li>
+            <!-- <li><a href="#">Withdrawal Request</a></li>
+            <li><a href="#">GDPR Request</a></li> -->
           </ul>
         </div>
       </div>
@@ -258,7 +260,7 @@ $getVal =  end($parts);
                     </div>
                   </div> -->
 
-                  <div class="acc-item">
+                 <!--  <div class="acc-item">
                     <div class="acc-button collapsed" data-bs-toggle="collapse" data-bs-target="#menu-13" aria-expanded="false">
                       <span class="nav-icon"><i class="fa-solid fa-bullhorn"></i></span>
                       Affiliates
@@ -266,10 +268,11 @@ $getVal =  end($parts);
                     <div id="menu-13" class="accordion-collapse collapse" data-bs-parent="#sideNav">
                       <div class="acc-body">
                         <ul>
-                          <li><a href="affiliates.html">Affiliates</a></li>
+                          <li><a href="#">Affiliates</a></li>
                         </ul>
                       </div>
                     </div>
-                  </div>
+                  </div> -->
+
                 </div>
               </div>

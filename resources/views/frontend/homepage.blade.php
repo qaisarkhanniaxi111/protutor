@@ -1,5 +1,11 @@
 @include('/frontend/common/header')
 
+<style>
+    p {
+        text-align: unset;
+    }
+</style>
+
 
 {{-- new code  --}}
 <main>
@@ -8,14 +14,11 @@
             <div class="row align-items-end">
                 <div class="col-lg-6 order-lg-1 order-2">
                     <h1 class="main-heading mt-lg-5 pt-lg-4 mb-3 mt-4 text-lg-start text-center">
-                        A good education is <br>
-                        always a base of <br>
-                        <span class="text-primary">A bright future</span>
+                        <?php echo $Homepagedata[0]->sec_1_heading; ?>
+                      
                     </h1>
                     <p class=" main-text mb-3 text-lg-start text-center ">
-                        Are you looking for a trusted online school where you can learn English language, math,
-                        science, and other subjects? You've come to the right place. We are the #1 online school
-                        offering live online lessons 24/7 with certified tutors.
+                        {{$Homepagedata[0]->sec_1_dec}}
                     </p>
 
                     <div
@@ -578,7 +581,7 @@
             <div class="row">
                 <div class="col-lg-12 mb-lg-4 mb-3 pb-lg-2">
                     <h2 class="heading ">
-                        How ProTutor works
+                        {{$Homepagedata[0]->sec2_main_heading}}
                     </h2>
                     <p class="main-text2 text-center">
                         Learn online with the world's best tutors
@@ -587,14 +590,11 @@
 
                 <div class="col-lg-12 mb-lg-5 mb-4">
                     <div class="work-card">
-                        <img src="{{ url('newAssets/assets/images/Rectangle 9317.png') }}" alt=""
+                        <img src="{{url('/')}}/images/{{$Homepagedata[0]->sec2_part1_file}}" alt=""
                             class="h-100">
                         <div class="work-text ">
-                            <h3>Self-paced learning</h3>
-                            <p class="mb-0 pb-0 mt-3">Our self-paced courses provide you the flexibility and
-                                convenience of learning at your own pace. The courses are meticulously created by
-                                qualified professionals and uploaded for your convenience, allowing you to pace your
-                                learning and increase the course content retention.</p>
+                            <h3>{{$Homepagedata[0]->sec2_part1_heading}}</h3>
+                            <p class="mb-0 pb-0 mt-3">{{$Homepagedata[0]->sec2_part1_desc}}</p>
                         </div>
                     </div>
                 </div>
@@ -602,13 +602,10 @@
                 <div class="col-lg-12 mb-lg-5 mb-4">
                     <div class="work-card bg-white">
                         <div class="work-text order-lg-1 order-2">
-                            <h3>1-on-1 Live classes</h3>
-                            <p class="mb-0 pb-0 mt-3">Live tutoring software enables tutors to teach students in
-                                real time utilizing interactive video conferencing features. As a Student or Parent,
-                                you can browse through Tutor profiles and their subject expertise, and thereafter
-                                book live lesson.</p>
+                            <h3>{{$Homepagedata[0]->sec2_part2_heading}}</h3>
+                            <p class="mb-0 pb-0 mt-3">{{$Homepagedata[0]->sec2_part2_desc}}</p>
                         </div>
-                        <img src="{{ url('newAssets/assets/images/Rectangle 9317 (1).png') }}" alt=""
+                        <img src="{{url('/')}}/images/{{$Homepagedata[0]->sec2_part2_file}}" alt=""
                             class="h-100 order-lg-2 order-1">
 
 
@@ -618,13 +615,11 @@
 
                 <div class="col-lg-12 mb-lg-5 mb-4">
                     <div class="work-card">
-                        <img src="{{ url('newAssets/assets/images/Rectangle 9317 (2).png') }}" alt=""
+                        <img src="{{url('/')}}/images/{{$Homepagedata[0]->sec2_part3_file}}" alt=""
                             class="h-100">
                         <div class="work-text ">
-                            <h3>Enjoy structured learning</h3>
-                            <p class="mb-0 pb-0 mt-3">Keep track of your learning progress. Improve your speaking
-                                and vocabulary with our Learning plans. Keep track of your learning progress.
-                                Improve your speaking and vocabulary with our Learning plans</p>
+                            <h3>{{$Homepagedata[0]->sec2_part3_heading}}</h3>
+                            <p class="mb-0 pb-0 mt-3">{{$Homepagedata[0]->sec2_part3_desc}}</p>
                         </div>
                     </div>
                 </div>
@@ -654,68 +649,73 @@
                 </div>
 
                 @if (count($userdata))
-              @foreach($userdata as $userdata_val)
-              <div class="col-lg-3 col-md-6 col-sm-10 col-12 mt-4">
-                  <div class="tutors-card h-100 bg-white">
-                      <!--<img src="images/{{$userdata_val->profile_img}}" alt="">-->
-                      <div class="carousel__slide">
-                                <figure>
-                                    <div>
-                                                           <img src="images/{{$userdata_val->profile_img}}" alt="" style="height: 300px; object-fit:cover;">
+                    @foreach ($userdata as $userdata_val)
+                        <div class="col-lg-3 col-md-6 col-sm-10 col-12 mt-4">
+                            <div class="tutors-card h-100 bg-white">
+                                <!--<img src="images/{{ $userdata_val->profile_img }}" alt="">-->
+                                <div class="carousel__slide">
+                                    <figure>
+                                        <div>
+                                            <img src="images/{{ $userdata_val->profile_img }}" alt=""
+                                                style="height: 300px; object-fit:cover;">
+                                        </div>
+                                    </figure>
+                                </div>
+                                <div class="tutors-card--text bg-white">
+                                    <div class="mb-3">
+                                        <h3 class="mb-2">{{ $userdata_val->firstname . ' ' . $userdata_val->lastname }}
+                                        </h3>
+                                        <div class="d-flex align-items-center flex-wrap">
+                                            <?php
+                                            foreach ($subjectAll as $key => $value) {
+                                                $medi_arr = explode(',', $userdata_val->subject);
+                                                if (count($medi_arr) > 1) {
+                                                    if (in_array($value->id, $medi_arr)) {
+                                                        echo '<h4 class="me-2">*&nbsp;&nbsp;' . $value->subject . ' Tutor</h4>';
+                                                    }
+                                                } else {
+                                                    if ($userdata_val->subject == $value->id) {
+                                                        echo '<h4 class="me-2">' . $value->subject . ' Tutor</h4>';
+                                                    }
+                                                }
+                                            }
+                                            
+                                            ?>
+                                        </div>
                                     </div>
-                                </figure>
-                            </div>
-                      <div class="tutors-card--text bg-white">
-                         <div class="mb-3">
-                              <h3 class="mb-2">{{$userdata_val->firstname.' '.$userdata_val->lastname}}</h3>
-                          <div class="d-flex align-items-center flex-wrap">
-                          <?php
-            foreach ($subjectAll as $key => $value) {
-              $medi_arr = explode(',', $userdata_val->subject);
-              if(count($medi_arr) > 1){
-                if(in_array($value->id, $medi_arr)){
-                  echo '<h4 class="me-2">*&nbsp;&nbsp;'.$value->subject.' Tutor</h4>';
-
-                }
-              }else{
-                if($userdata_val->subject==$value->id){
-                  echo '<h4 class="me-2">'.$value->subject.' Tutor</h4>';
-                }
-              }
-            }
-
-            ?>
-                         </div>
-                          </div>
-                          <div class="mt-auto flex-grow-1 d-flex flex-column justify-content-end">
-                               <div class="d-flex align-items-center ">
-                                    <?php
+                                    <div class="mt-auto flex-grow-1 d-flex flex-column justify-content-end">
+                                        <div class="d-flex align-items-center ">
+                                            <?php
                             foreach ($countryAll as $key => $value) {
                               if($userdata_val->country==$value->id){
                                ?>
-                               <img src="assets/frontpage_assets/flags/{{Str::lower($value->iso)}}.png" alt="" class="flag-img">
-                               <span>
-                               </span>
-                               <p class="mb-0 pb-0 ms-2">{{ $value->nicename }}</p>
-                               <?php
+                                            <img src="assets/frontpage_assets/flags/{{ Str::lower($value->iso) }}.png"
+                                                alt="" class="flag-img">
+                                            <span>
+                                            </span>
+                                            <p class="mb-0 pb-0 ms-2">{{ $value->nicename }}</p>
+                                            <?php
                               
                              }
                            }
                            ?>
-                               </div>
-                           
-                          </div>
-                          <div class="d-flex align-items-center mt-2">
-                              <img src="{{ url('newAssets/assets/images/reading-book 1.png') }}" alt="" class="flag-img">
-                              <p class="mb-0 pb-0 ms-2">{{ activetutorlessons($userdata_val->user_id) }} active students</p>
-                              <p class="mb-0 pb-0 ms-2 lesson-numbers ms-3"> {{ deliveredtutorlessons($userdata_val->user_id) }} lessons</p>
-                          </div>
-                      </div>
-                  </div>
+                                        </div>
 
-              </div>
-              @endforeach
-              @endif
+                                    </div>
+                                    <div class="d-flex align-items-center mt-2">
+                                        <img src="{{ url('newAssets/assets/images/reading-book 1.png') }}"
+                                            alt="" class="flag-img">
+                                        <p class="mb-0 pb-0 ms-2">{{ activetutorlessons($userdata_val->user_id) }}
+                                            active students</p>
+                                        <p class="mb-0 pb-0 ms-2 lesson-numbers ms-3">
+                                            {{ deliveredtutorlessons($userdata_val->user_id) }} lessons</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    @endforeach
+                @endif
 
 
 
@@ -743,39 +743,30 @@
                                 aria-label="Slide 3"></button>
                         </div>
                         <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <p class="testimonial-text  text-lg-start text-center">
-                                    <img src="{{ url('newAssets/assets/images/comma.svg') }}" alt="">
-                                    In my experience all the teachers are very supportive and friendly and the
-                                    placement process has been very smooth. it’s also no issue talk about whatever
-                                    you want to Lorem, ipsum dolor sit amet consectetur adipisicing elit. Adipisci
-                                    placeat fugiat earum?
 
-                                </p>
-                                <h4>Sherina Munir - Designer</h4>
-                            </div>
-                            <div class="carousel-item">
-                                <p class="testimonial-text  text-lg-start text-center">
-                                    <img src="{{ url('newAssets/assets/images/comma.svg') }}" alt="">
-                                    In my experience all the teachers are very supportive and friendly and the
-                                    placement process has been very smooth. it’s also no issue talk about whatever
-                                    you want to Lorem, ipsum dolor sit amet consectetur adipisicing elit. Adipisci
-                                    placeat fugiat earum?
+                            @if (count($Alltestimonial))
+                                @php
+                                    $t_count = 1;
+                                @endphp
+                                @foreach ($Alltestimonial as $Alltestimonial_val)
+                                    @if ($t_count < 4)
+                                        <div class="carousel-item {{ $t_count == 1 ? 'active' : '' }}">
+                                            <p class="testimonial-text  text-lg-start text-center">
+                                                <img src="{{ url('newAssets/assets/images/comma.svg') }}"
+                                                    alt="">
+                                                {{ $Alltestimonial_val->student_desc }}
 
-                                </p>
-                                <h4>Sherina Munir - Designer</h4>
-                            </div>
-                            <div class="carousel-item">
-                                <p class="testimonial-text  text-lg-start text-center">
-                                    <img src="{{ url('newAssets/assets/images/comma.svg') }}" alt="">
-                                    In my experience all the teachers are very supportive and friendly and the
-                                    placement process has been very smooth. it’s also no issue talk about whatever
-                                    you want to Lorem, ipsum dolor sit amet consectetur adipisicing elit. Adipisci
-                                    placeat fugiat earum?
+                                            </p>
+                                            <h4>{{ $Alltestimonial_val->student_name }} - {{ $Alltestimonial_val->field }}</h4>
+                                        </div>
+                                        @php
+                                            $t_count++;
+                                        @endphp
+                                    @endif
+                                @endforeach
+                            @endif
 
-                                </p>
-                                <h4>Sherina Munir - Designer</h4>
-                            </div>
+
                         </div>
                         <button class="carousel-control-prev" type="button"
                             data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">

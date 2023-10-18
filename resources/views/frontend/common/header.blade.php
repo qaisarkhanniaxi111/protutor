@@ -104,14 +104,14 @@
                         <li class="nav-item">
                             <a class="nav-link {{ $getUrl=='' ? "active-nav" : "" }}" href="{{ url('/') }}">Home</a>
                         </li>
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a class="nav-link {{ $getUrl=='find-a-tutor' ? "active-nav" : "" }}" href="{{ url('/find-a-tutor') }}">Find Tutors</a>
-                        </li>
+                        </li> --}}
+                        <li class="nav-item"><a class="nav-link {{ $getUrl=='group' ? "active-nav" : "" }}" href="{{ url('/group') }}">Find Tutors</a></li>
                         
                         <li class="nav-item">
                             <a class="nav-link {{ $getUrl=='become-a-tutor' ? "active-nav" : "" }}" href="{{ url('/become-a-tutor') }}">Become a tutor</a>
                         </li>
-                        <li class="nav-item"><a class="nav-link {{ $getUrl=='group' ? "active-nav" : "" }}" href="{{ url('/group') }}">Group Lesson</a></li>
                     </ul>
                     <div class="d-flex align-items-md-center flex-md-row flex-column">
                         <select class="form-select {{ isset($lightNavbar) ? "header-select-dark" : "header-select" }} mb-md-0 mb-3" style="{{ isset($lightNavbar) ? "" : "color: rgba(255, 255, 255, 0.80);" }}"
@@ -133,7 +133,7 @@
                             @endif
                         @else
                             <a href="{{url('/signup')}}" class="main-btn ms-3 w-auto">SignUp</a>
-                          @endif
+                        @endif
                             <a href="
                       @if (auth()->user()) @if (auth()->user()->role == 3)
                               {{ url('/tutordashboard') }}
@@ -145,6 +145,17 @@
 {{ url('/login') }}
                       @endif"
                                 class="main-btn ms-3 w-auto">{{ auth()->check() ? 'Dashboard' : 'Login' }}</a>
+                                @if (auth()->user())
+                            @if (auth()->user()->role == 3)
+                            <a href="{{url('/tutorlogout')}}" class="main-btn ms-3 w-auto">Logout</a>
+                            @elseif (auth()->user()->role == 4)
+                            <a href="{{url('/logout')}}" class="main-btn ms-3 w-auto">Logout</a>
+                            @else
+                            
+                            @endif
+                        @else
+                            
+                        @endif
                     </div>
                 </div>
             </div>

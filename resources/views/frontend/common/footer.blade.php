@@ -54,14 +54,17 @@
 </footer> --}}
 
 {{-- new code  --}}
-
+<?php
+        $Footerdata =  DB::select('SELECT icon, title, email, contact, Copyright FROM `footer` where id=1;');
+        $SocialPlatformrdata =  DB::select('SELECT title, url, user_status FROM `social_media_platform`;');
+        ?>
 <footer class="footer">
   <div class="container">
       <div class="row">
           <div class="col-lg-3 mb-lg-0 mb-4 d-flex flex-column align-items-md-start align-items-center">
-              <img src="{{ url('newAssets/assets/images/image 2.png') }}" alt="">
+              <img src="{{url('/')}}/images/{{$Footerdata[0]->icon}}" alt="">
               <p class="footer text">
-                  We take care of your health with regular and fun exercise
+                {{$Footerdata[0]->title}}
               </p>
               <div class="d-flex align-items-center">
                   <a href="">
@@ -137,10 +140,10 @@
               <h2 class="mb-3">Contact</h2>
               <ul class="ms-0 ps-0 d-flex flex-column align-items-md-start align-items-center">
                   <li>
-                      <a href="">Demo@gmail.com</a>
+                      <a href="mailto:{{$Footerdata[0]->email}}">{{$Footerdata[0]->email}}</a>
                   </li>
                   <li>
-                      <a href="">+154515544854</a>
+                      <a href="tel:{{$Footerdata[0]->contact}}">+{{$Footerdata[0]->contact}}</a>
                   </li>
                   <li>
                       <a href=""></a>
@@ -162,7 +165,7 @@
           <div class="col-lg-12 py-4" style="border-top: 2px dashed #E1E1E1;">
               <p class="footer-text mb-0 pb-0  text-center" style="color: rgba(44, 44, 44, 0.50);
               ">
-                  Copyright © 2023 all right reserved ProTutor
+                  {{$Footerdata[0]->Copyright}}
               </p>
           </div>
       </div>

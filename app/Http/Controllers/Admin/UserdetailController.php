@@ -20,6 +20,7 @@ use App\Models\Education;
 use App\Models\Certificate;
 use App\Models\Experience;
 use App\Models\Identification;
+use App\Models\Notifications;
 use Carbon\Carbon;
 use Mail;
 use Illuminate\Support\Str;
@@ -296,127 +297,157 @@ class UserdetailController extends Controller
 
 
     }
-  }*/
+}*/
 
-  public function update_user_profile(Request $request)
-  { 
+public function update_user_profile(Request $request)
+{ 
 
-  	if($request->post()){
+	if($request->post()){
 
-  		$request->validate([
-  			'first_name' => ['required'],
-  			'last_name' => ['required'],
-  			'email' => ['required'],
-  		]);
+		$request->validate([
+			'first_name' => ['required'],
+			'last_name' => ['required'],
+			'email' => ['required'],
+		]);
 
-  		$update = array('first_name'=>$request->first_name,'last_name'=>$request->last_name,'email'=>$request->email,'role'=>$request->role,'phone_number'=>$request->phone,'user_status'=>$request->status);
+		$update = array('first_name'=>$request->first_name,'last_name'=>$request->last_name,'email'=>$request->email,'role'=>$request->role,'phone_number'=>$request->phone,'user_status'=>$request->status);
 
-  		DB::table('users')->where('id',$request->userrealid)->update($update);
-  		$languages = implode(',', $request->languages);
+		DB::table('users')->where('id',$request->userrealid)->update($update);
+		$languages = implode(',', $request->languages);
 
-  		$userdetails_update = array('first_name'=>$request->first_name,'last_name'=>$request->last_name,'email'=>$request->email,'phone'=>$request->phone,'country'=>$request->country,'gender'=>$request->gender,'dob'=>$request->dob,'level'=>$request->level,'teaching_exp'=>$request->teaching_exp,'current_sit'=>$request->current_sit,'native_language'=>$request->native_language,'languages'=>$languages,'desc_about'=>$request->desc_about);
+		$userdetails_update = array('first_name'=>$request->first_name,'last_name'=>$request->last_name,'email'=>$request->email,'phone'=>$request->phone,'country'=>$request->country,'gender'=>$request->gender,'dob'=>$request->dob,'level'=>$request->level,'teaching_exp'=>$request->teaching_exp,'current_sit'=>$request->current_sit,'native_language'=>$request->native_language,'languages'=>$languages,'desc_about'=>$request->desc_about);
 
-  		DB::table('userdetails')->where('student_no',$request->userrealid)->update($userdetails_update);
+		DB::table('userdetails')->where('student_no',$request->userrealid)->update($userdetails_update);
 
-  		return redirect('admin/edit-profile/'.$request->userrealid)->with('success_msg',__('Your profile updated successfully.'));
+		return redirect('admin/edit-profile/'.$request->userrealid)->with('success_msg',__('Your profile updated successfully.'));
 
 
-  	}
-  }
+	}
+}
 
-  public function status_update(Request $request){
+public function status_update(Request $request){
 
-  	$id = $request->id;
-  	$user = DB::table('users')->select('user_status')->where('id',$id)->first();
+	$id = $request->id;
+	$user = DB::table('users')->select('user_status')->where('id',$id)->first();
 
-  	if($user->user_status == '1'){
-  		$status = 0;
-  	}else{
-  		$status = 1;
-  	}
+	if($user->user_status == '1'){
+		$status = 0;
+	}else{
+		$status = 1;
+	}
 
-  	$update = array('user_status'=>$status);
-  	DB::table('users')->where('id',$id)->update($update);
+	$update = array('user_status'=>$status);
+	DB::table('users')->where('id',$id)->update($update);
 
-  	$msg = "Status is updated";
-  	return response()->json(array('msg'=> $msg), 200);
-  	die();
+	$msg = "Status is updated";
+	return response()->json(array('msg'=> $msg), 200);
+	die();
 
-  }
+}
 
-  public function admin_apporove_profile(Request $request){
+public function admin_apporove_profile(Request $request){
 
-  	$id = $request->userrealid;
-  	$status = $request->status;
+	$id = $request->userrealid;
+	$reject_reason = $request->reject_reason;
+	$status = $request->status;
 		//$user = DB::table('users')->select('user_status')->where('id',$id)->first();
 
-  	if($status == '1'){
-  		$status = 1;
-  	}else{
-  		$status = 0;
-  	}
+	if($status == '1'){
+		$status = 1;
 
-  	$update = array('profile_verified'=>$status);
-  	DB::table('userdetails')->where('student_no',$id)->update($update);
+		$teacher='3';
+		$notificationstype = array('techer'=>$teacher);
+		$notifi_notifiable_id=implode(",",$notificationstype);
 
-  	return redirect('admin/tutor-request/')->with('success_msg',__('Status is updated.'));
+		$notificationsdata = 'Your profile is approved by admin.';
+		$Notifications = new Notifications();
+		$Notifications->viewer_role =$notifi_notifiable_id;
+		$Notifications->user_id =$id;
+		$Notifications->message_type='ProfileverifyNotification';
+		$Notifications->data=$notificationsdata;
+		$Notifications->read_at='0';
+		$Notifications->save();
 
-  }
+	}else{
+
+		$status = 0;
+
+		$teacher='3';
+		$notificationstype = array('techer'=>$teacher);
+		$notifi_notifiable_id=implode(",",$notificationstype);
+
+		$notificationsdata = 'Your profile is rejected by admin and Reason for rejecting: '.$reject_reason;
+		$Notifications = new Notifications();
+		$Notifications->viewer_role =$notifi_notifiable_id;
+		$Notifications->user_id =$id;
+		$Notifications->message_type='ProfileverifyNotification';
+		$Notifications->data=$notificationsdata;
+		$Notifications->read_at='0';
+		$Notifications->save();
+	}
+
+	$update = array('profile_verified'=>$status);
+	DB::table('userdetails')->where('student_no',$id)->update($update);
+
+
+	return redirect('admin/tutor-request/')->with('success_msg',__('Status is updated.'));
+
+}
 
    // Deletes a user
-  public function delete_user(Request $request,$id){
+public function delete_user(Request $request,$id){
 
-  	$userslist = User::find($id);
-  	$userslist->delete();
-  	$userdetails = Userdetail::where('student_no', $id)->delete();
-  	return redirect('/admin/userlist')->with('success_msg',__('User deleted successfully.'));
-  }
+	$userslist = User::find($id);
+	$userslist->delete();
+	$userdetails = Userdetail::where('student_no', $id)->delete();
+	return redirect('/admin/userlist')->with('success_msg',__('User deleted successfully.'));
+}
 
-  public function delete_student(Request $request,$id){
+public function delete_student(Request $request,$id){
 
-  	$userslist = User::find($id);
-  	$userslist->delete();
-  	$userdetails = Userdetail::where('student_no', $id)->delete();
-  	return redirect('/admin/studentlist')->with('success_msg',__('Student deleted successfully.'));
-  }
+	$userslist = User::find($id);
+	$userslist->delete();
+	$userdetails = Userdetail::where('student_no', $id)->delete();
+	return redirect('/admin/studentlist')->with('success_msg',__('Student deleted successfully.'));
+}
 
-  public function delete_teacher(Request $request,$id){
+public function delete_teacher(Request $request,$id){
 
-  	$userslist = User::find($id);
-  	$userslist->delete();
-  	$userdetails = Userdetail::where('student_no', $id)->delete();
-  	return redirect('/admin/teacherlist')->with('success_msg',__('Tutor deleted successfully.'));
-  }
+	$userslist = User::find($id);
+	$userslist->delete();
+	$userdetails = Userdetail::where('student_no', $id)->delete();
+	return redirect('/admin/teacherlist')->with('success_msg',__('Tutor deleted successfully.'));
+}
 
-  public function delete_admin(Request $request,$id){
+public function delete_admin(Request $request,$id){
 
-  	$userslist = User::find($id);
-  	$userslist->delete();
-  	$userdetails = Userdetail::where('student_no', $id)->delete();
-  	return redirect('/admin/adminlist')->with('success_msg',__('Admin deleted successfully.'));
-  }
-  public function newpassword2(Request $request){
+	$userslist = User::find($id);
+	$userslist->delete();
+	$userdetails = Userdetail::where('student_no', $id)->delete();
+	return redirect('/admin/adminlist')->with('success_msg',__('Admin deleted successfully.'));
+}
+public function newpassword2(Request $request){
 
-  	$email = Session::get('forgetpasswordemail');
-  	$token = Session::get('forgetpasswordtoken');  
+	$email = Session::get('forgetpasswordemail');
+	$token = Session::get('forgetpasswordtoken');  
 
-  	if($request->post()){
+	if($request->post()){
 
-  		$request->validate([
-  			'password' => ['required','confirmed'],
-  			'password_confirmation' => ['required'],
-  		]);
-
-
-  		$user = User::where('email', $email)->update(['password' => md5($request->password)]);    
-
-  		Session::flush();
-  		return redirect('/reset-password-success')->with('success_msg',__('You are login successfully'));
-
-  	}
+		$request->validate([
+			'password' => ['required','confirmed'],
+			'password_confirmation' => ['required'],
+		]);
 
 
-  }
+		$user = User::where('email', $email)->update(['password' => md5($request->password)]);    
+
+		Session::flush();
+		return redirect('/reset-password-success')->with('success_msg',__('You are login successfully'));
+
+	}
+
+
+}
 
 
 }
