@@ -8,11 +8,10 @@
 					<div class="row align-items-center">
 							<div class="col-lg-7 order-md-1 order-2">
 									<h1 class="main-heading  pt-md-3 mb-3 mt-4 text-start">
-											ATeach students from over 180 countries
+										{{ $contentAll[0]->sec_1_heading }}
 									</h1>
 									<p class="py-lg-3 py-2 main-text mb-3 text-start ">
-											ProTutor tutors teach 800,000+ students globally. Join us and you’ll have everything you
-											need to teach successfully.
+										{{ $contentAll[0]->sec_1_dec }}
 									</p>
 
 									<ul class="hero-list">
@@ -95,33 +94,33 @@
 					<div class="row justify-content-center">
 							<div class="col-lg-12 mb-lg-4 mb-3 pb-lg-2">
 									<h2 class="heading ">
-											We allowed you to make a living without leaving home!
+										{{ $contentAll[0]->sec_5_mainHeading }}
 									</h2>
 							</div>
 
 							<div class="col-lg-4 mt-3">
 									<div class="comfort-card justify-content-start">
-											<img src="{{ url("newAssets/assets/images/living-1.svg") }}" alt="" class="">
+											<img src="{{ url('/') }}/images/{{ $contentAll[0]->sec_5_c1_file }}" alt="" class="">
 										 <div>
-											<h3 class="mb-2 ">Set your own rate</h3>
-											<p class="mb-0 pb-0">Choose your hourly rate and change it anytime. On average, English tutors charge $15-25 per hour.</p>
+											<h3 class="mb-2 ">{{ $contentAll[0]->sec_5_c1_heading }}</h3>
+											<p class="mb-0 pb-0">{{ $contentAll[0]->sec_5_c1_dec }}</p>
 										 </div>
 									</div>
 							</div>
 
 							<div class="col-lg-4 mt-3">
 									<div class="comfort-card">
-											<img src="{{ url("newAssets/assets/images/living-2.svg") }}" alt="">
-											<h3 class="mb-2">Teach anytime, anywhere</h3>
-											<p class="mb-0 pb-0">Decide when and how many hours you want to teach. No minimum time commitment or fixed schedule. Be your own boss!</p>
+											<img src="{{ url('/') }}/images/{{ $contentAll[0]->sec_5_c2_file }}" alt="">
+											<h3 class="mb-2">{{ $contentAll[0]->sec_5_c2_heading }}</h3>
+											<p class="mb-0 pb-0">{{ $contentAll[0]->sec_5_c2_dec }}</p>
 									</div>
 							</div>
 
 							<div class="col-lg-4 mt-3">
 									<div class="comfort-card">
-											<img src="{{ url("newAssets/assets/images/living-3.svg") }}" alt="">
-											<h3 class="mb-2">Grow professionally</h3>
-											<p class="mb-0 pb-0">Attend professional development webinars and get tips to upgrade your skills. You’ll get all the help you need from our team to grow.</p>
+											<img src="{{ url('/') }}/images/{{ $contentAll[0]->sec_5_c3_file }}" alt="">
+											<h3 class="mb-2">{{ $contentAll[0]->sec_5_c3_heading }}</h3>
+											<p class="mb-0 pb-0">{{ $contentAll[0]->sec_5_c3_dec }}</p>
 									</div>
 							</div>
 
@@ -135,14 +134,14 @@
 					<div class="row align-items-center">
 						 
 							<div class="col-lg-5 d-flex justify-content-center mb-lg-0 mb-4">
-									<img src="{{ url("newAssets/assets/images/Image 1.png") }}" alt="" class="mx-auto img-fluid">
+									<img src="{{ url('/') }}/images/{{ $contentAll[0]->sec_2_file }}" alt="" class="mx-auto img-fluid">
 							</div>
 							<div class="col-lg-7 ">
 									<h2 class="heading text-start">
-											Teach students from over 180 countries
+										{{ $contentAll[0]->sec_2_heading }}
 									</h2>
 									<p class="testimonial-text  text-start">
-											ProTutor tutors teach 800,000+ students globally. Join us and you’ll have everything you need to teach successfully.
+										{{ $contentAll[0]->sec_2_dec }}
 							
 											<div class="row p-0 mt-3">
 													<div class="col-lg-6">
@@ -195,15 +194,15 @@
 					<div class="row align-items-center">
 							<div class="col-lg-6 order-lg-1 order-2">
 									<h2 class="heading text-lg-start text-center">
-											“ProTutor allowed me to make a living without leaving home!”
+										{{ $contentAll[0]->sec_3_heading }}
 									</h2>
 									<p class="testimonial-text  text-lg-start text-center">
-											Eliza G. teaches English on ProTutor so<br class="d-md-block d-none"> she can spend more time with her son</p>
+										{!! $contentAll[0]->sec_3_dec !!}</p>
 											<a href="{{ url('/become-a-tutor') }}" class="text-decoration-none"><button class="main-btn main-btn2 mt-4 mx-lg-0 mx-auto">Join as a Tutor</button></a> 
 											
 							</div>
 							<div class="col-lg-6 d-flex justify-content-center order-lg-2 order-1 mb-lg-0 mb-4">
-									<img src="{{ url('newAssets/assets/images/65013-english-teacher 1.png') }}" alt="" class="mx-auto img-fluid">
+									<img src="{{ url('/') }}/images/{{ $contentAll[0]->sec_3_file }}" alt="" class="mx-auto img-fluid">
 							</div>
 
 					</div>
@@ -215,17 +214,15 @@
 			<div class="container">
 					<div class="row align-items-center">
 							<div class="col-lg-6 d-flex justify-content-center  mb-lg-0 mb-4">
-									<img src="{{ url("newAssets/assets/images/lang.png") }}" alt="" class="mx-auto img-fluid">
+									<img src="{{ url('/') }}/images/{{ $contentAll[0]->sec_4_file }}" alt="" class="mx-auto img-fluid">
 							</div>
 							<div class="col-lg-6 pe-lg-5 ">
 									<h2 class="heading text-md-start">
-											Corporate language training for business
+										{{ $contentAll[0]->sec_4_heading }}
 									</h2>
 									<p class="main-text2 text-md-start text-center text-gray mt-3" style="color: rgba(44, 44, 44, 0.80);
 									;">
-											ProTutor corporate training is designed for teams and businesses offering personalized
-											language learning with online tutors. Book a demo to learn more.
-											Want your employer to pay for your lessons? Refer your company! </p>
+										{{ $contentAll[0]->sec_4_dec }} </p>
 
 									<div
 											class="d-flex align-items-center justify-content-lg-start justify-content-center flex-md-row flex-column mt-3 pt-3 mb-3">

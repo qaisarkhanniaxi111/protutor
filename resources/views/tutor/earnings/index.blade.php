@@ -92,7 +92,7 @@
                         @foreach ($allPayments as $payment)
                             <tr>
                                 <td><span class="txt-green">{{ $payment->created_at->format('m-d-Y') }}</span></td>
-                                <td>{{ $payment->groupLesson ? Str::limit($payment->groupLesson->title, 20) : '' }}
+                                <td>{{ $payment->groupLesson ? Str::limit($payment->groupLesson->title, 20) : 'Private Lesson' }}
                                 </td>
                                 <td><span class="txt-green">{{ config('protutor.currency') }}
                                         {{ $payment->amount }}</span></td>

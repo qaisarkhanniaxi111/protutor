@@ -63,7 +63,7 @@
               @foreach ($payments as $payment)
               <tr>
                 <td class="text-start">{{ date('m-d-Y', strtotime($payment->created_at)) }}</td>
-                <td class="text-start">{{ $payment->groupLesson ? Str::limit($payment->groupLesson->title, 20) : '' }} with {{ $payment->tutor ? Str::limit($payment->tutor->fullname, 20) : '' }}</td>
+                <td class="text-start">{{ $payment->groupLesson ? Str::limit($payment->groupLesson->title, 20) : 'Private Lesson' }} with {{ $payment->tutor ? Str::limit($payment->tutor->fullname, 20) : '' }}</td>
                 <td><span class="txt-green">{{ config('protutor.currency') }} {{ $payment->amount }}</span></td>
               </tr>
               @endforeach

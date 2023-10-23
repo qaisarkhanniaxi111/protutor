@@ -47,6 +47,10 @@ class Payment extends Model
     {
         return $this->belongsTo(GroupLesson::class, 'group_lesson_id', 'id');
     }
+    public function teachingOrder()
+    {
+        return $this->belongsTo(Order::class, 'order_id', 'id');
+    }
 
     public function scopeNotFetchInActivePayments(Builder $builder)
     {

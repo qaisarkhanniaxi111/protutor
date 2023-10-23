@@ -582,7 +582,83 @@
                 </div>
                 <div class="col-lg-12">
                     <div class="owl-carousel ">
+                        <div>
+                            <div class="tutors-card h-100 bg-white">
+                                <img src="{{ url("") }}/newAssets/assets/images/team (1).png" alt="">
+                                <div class="tutors-card--text bg-white">
+                                    <div class="mb-2">
+                                        <h3 class="mb-2">Gretchen Herwitz</h3>
+                                        <div class="d-flex align-items-center flex-wrap">
+                                            <h4 class="me-2">*&nbsp;&nbsp;English Teacher</h4>
+
+                                        </div>
+                                    </div>
+                                    <div class="mt-auto flex-grow-1 d-flex flex-column justify-content-end">
+                                        <div class="d-flex align-items-center ">
+                                            <img src="{{ url("") }}/newAssets/assets/images/flag.png" alt="" class="flag-img">
+                                            <p class="mb-0 pb-0 ms-2">Country Name</p>
+                                        </div>
+                                        <div class="d-flex align-items-center mt-2">
+                                            <img src="{{ url("") }}/newAssets/assets/images/reading-book 1.png" alt="" class="flag-img">
+                                            <p class="mb-0 pb-0 ms-2">21 active students</p>
+                                            <p class="mb-0 pb-0 ms-2 lesson-numbers ms-3"> 315 lessons</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="tutors-card h-100 bg-white">
+                                <img src="{{ url("") }}/newAssets/assets/images/team (2).png" alt="">
+                                <div class="tutors-card--text bg-white">
+                                    <div class="mb-2">
+                                        <h3 class="mb-2">Gretchen Herwitz</h3>
+                                        <div class="d-flex align-items-center flex-wrap">
+                                            <h4 class="me-2">*&nbsp;&nbsp;English Teacher</h4>
+
+                                        </div>
+                                    </div>
+                                    <div class="mt-auto flex-grow-1 d-flex flex-column justify-content-end">
+                                        <div class="d-flex align-items-center ">
+                                            <img src="{{ url("") }}/newAssets/assets/images/flag.png" alt="" class="flag-img">
+                                            <p class="mb-0 pb-0 ms-2">Country Name</p>
+                                        </div>
+                                        <div class="d-flex align-items-center mt-2">
+                                            <img src="{{ url("") }}/newAssets/assets/images/reading-book 1.png" alt="" class="flag-img">
+                                            <p class="mb-0 pb-0 ms-2">21 active students</p>
+                                            <p class="mb-0 pb-0 ms-2 lesson-numbers ms-3"> 315 lessons</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="tutors-card h-100 bg-white">
+                                <img src="{{ url("") }}/newAssets/assets/images/team (3).png" alt="">
+                                <div class="tutors-card--text bg-white">
+                                    <div class="mb-2">
+                                        <h3 class="mb-2">Gretchen Herwitz</h3>
+                                        <div class="d-flex align-items-center flex-wrap">
+                                            <h4 class="me-2">*&nbsp;&nbsp;English Teacher</h4>
+
+                                        </div>
+                                    </div>
+                                    <div class="mt-auto flex-grow-1 d-flex flex-column justify-content-end">
+                                        <div class="d-flex align-items-center ">
+                                            <img src="{{ url("") }}/newAssets/assets/images/flag.png" alt="" class="flag-img">
+                                            <p class="mb-0 pb-0 ms-2">Country Name</p>
+                                        </div>
+                                        <div class="d-flex align-items-center mt-2">
+                                            <img src="{{ url("") }}/newAssets/assets/images/reading-book 1.png" alt="" class="flag-img">
+                                            <p class="mb-0 pb-0 ms-2">21 active students</p>
+                                            <p class="mb-0 pb-0 ms-2 lesson-numbers ms-3"> 315 lessons</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         @foreach ($relatedTeachers as $relatedTeacher)
+                        <a href="{{ url('tutor-detail',$relatedTeacher->student_no) }}">
                             <div>
                                 <div class="tutors-card h-100 bg-white">
                                     <img src="{{ url('') }}/images/{{ $relatedTeacher->profile_img }}"
@@ -593,18 +669,14 @@
                                                 {{ $relatedTeacher->last_name }}</h3>
                                             <div class="d-flex align-items-center flex-wrap">
                                                 <?php
-                                                foreach ($subjects as $key => $value) {
                                                     $medi_arr = explode(',', $relatedTeacher->subject);
-                                                    if (count($medi_arr) > 1) {
+                                                    if (count($medi_arr) > 0) {
+                                                foreach ($subjects as $key => $value) {
                                                         if (in_array($value->id, $medi_arr)) {
                                                             echo '<h4 class="me-2">*&nbsp;&nbsp;' . $value->subject . ' Tutor</h4>';
                                                         }
-                                                    } else {
-                                                        if ($value->id) {
-                                                            echo '<h4 class="me-2">' . $value->subject . ' Tutor</h4>';
-                                                        }
                                                     }
-                                                }
+                                                } 
                                                 
                                                 ?>
 
@@ -631,14 +703,15 @@
                                             <div class="d-flex align-items-center mt-2">
                                                 <img src="{{ url('newAssets/assets/images/reading-book 1.png') }}"
                                                     alt="" class="flag-img">
-                                                <p class="mb-0 pb-0 ms-2">21 active students</p>
-                                                <p class="mb-0 pb-0 ms-2 lesson-numbers ms-3"> 315 lessons</p>
+                                                <p class="mb-0 pb-0 ms-2">{{ activetutorlessons($relatedTeacher->student_no) }} active students</p>
+                                                <p class="mb-0 pb-0 ms-2 lesson-numbers ms-3"> {{ deliveredtutorlessons($relatedTeacher->student_no) }} lessons</p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
                             </div>
+                        </a>
                         @endforeach
 
 

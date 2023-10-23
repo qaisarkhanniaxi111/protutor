@@ -26,6 +26,18 @@
         <form action="{{ url('admin/update_homepage/1') }}" method="post" enctype="multipart/form-data">
             @csrf()
             <div class="row">
+                <div class="col-sm-6 col-lg-4">
+                    <div class="inp-outer">
+                        <label for="">Image</label>
+                        <input class="input" type="file" name="sec_1_file">
+                        <?php if(isset($Homepagedata[0]->sec_1_file)){ ?>
+                        <input type="hidden" name="hidden_sec_1_file"
+                            value="{{ $Homepagedata[0]->sec_1_file }}">
+                        <img src="{{ url('/') }}/images/{{ $Homepagedata[0]->sec_1_file }}"
+                            alt="" width="100" height="100">
+                        <?php } ?>
+                    </div>
+                </div>
                 <div class="col-sm-6 col-lg-12">
                     <div class="inp-outer">
                         <label for="">Heading</label>
@@ -42,6 +54,86 @@
                 </div>
 
                 <h4 class="fw-700 mt-3" style="text-align: center;">Section 2</h4>
+                <div class="row field_wrapper_main">
+                    <?php
+                    $get_section3 = $Homepagedata[0]->sec3_data;
+                    $get_section_all = json_decode($get_section3);
+                    ?>
+                    <?php 
+            $sec3_count=1;
+            foreach ($get_section_all as $key => $get_section_value) {
+              ?>
+                    <div class="row field_wrapper_inner">
+                        <div class="col-sm-6 col-lg-4">
+                            <div class="inp-outer">
+                                <label for="">Icon</label>
+                                <input class="input" type="file" name="icon[]">
+                                <?php if(isset($get_section_value->icon)){ ?>
+                                <input type="hidden" name="hidden_icon_file[]"
+                                    value="{{ $get_section_value->icon }}">
+                                <img src="{{ url('/') }}/images/{{ $get_section_value->icon }}"
+                                    alt="" width="100" height="100">
+                                <?php } ?>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-lg-4">
+                            <div class="inp-outer">
+                                <label for="">Title</label>
+                                <input class="input" type="text" name="title[]"
+                                    value="{{ $get_section_value->title }}">
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-lg-12">
+                            <div class="inp-outer">
+                                <label for="">Description</label>
+                                <textarea class="input" name="description[]">{{ $get_section_value->description }}</textarea>
+                            </div>
+                        </div>
+
+                        <?php if($sec3_count!='1'){ ?>
+                        <div class="add-btn remove_button1" style="cursor: pointer;"><i
+                                class="fa-solid fa-circle-plus  "></i> Remove</div>
+                        <?php } ?>
+
+                    </div>
+                    <?php $sec3_count++; } ?>
+
+                </div>
+
+                <div class="add-btn add_button1" style="cursor: pointer;"><i class="fa-solid fa-circle-plus"></i> Add
+                    more</div>
+
+
+                    <h4 class="fw-700 mt-3" style="text-align: center;">Section 3</h4>
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="inp-outer">
+                            <label for="">Image</label>
+                            <input class="input" type="file" name="sec_4_file">
+                            <?php if(isset($Homepagedata[0]->sec_4_file)){ ?>
+                            <input type="hidden" name="hidden_sec_4_file"
+                                value="{{ $Homepagedata[0]->sec_4_file }}">
+                            <img src="{{ url('/') }}/images/{{ $Homepagedata[0]->sec_4_file }}"
+                                alt="" width="100" height="100">
+                            <?php } ?>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-12">
+                        <div class="inp-outer">
+                            <label for="">Heading</label>
+                            <input class="input" type="text" value="{{ $Homepagedata[0]->sec_4_heading }}"
+                                name="sec_4_heading">
+                        </div>
+                    </div>
+                    
+    
+    
+                    <div class="inp-outer">
+                        <label for="">Description</label>
+                        <textarea name="sec_4_dec" id="" class="input">{{ $Homepagedata[0]->sec_4_dec }}</textarea>
+                    </div>    
+
+
+                <h4 class="fw-700 mt-3" style="text-align: center;">Section 4</h4>
 
                 <div class="col-sm-12 col-lg-12">
                     <div class="inp-outer">
@@ -159,59 +251,39 @@
                     </div>
                 </div>
 
-                <h4 class="fw-700 mt-3" style="text-align: center;">Section 3</h4>
-
-                <div class="row field_wrapper_main">
-                    <?php
-                    $get_section3 = $Homepagedata[0]->sec3_data;
-                    $get_section_all = json_decode($get_section3);
-                    ?>
-                    <?php 
-            $sec3_count=1;
-            foreach ($get_section_all as $key => $get_section_value) {
-              ?>
-                    <div class="row field_wrapper_inner">
-                        <div class="col-sm-6 col-lg-4">
-                            <div class="inp-outer">
-                                <label for="">Icon</label>
-                                <input class="input" type="file" name="icon[]">
-                                <?php if(isset($get_section_value->icon)){ ?>
-                                <input type="hidden" name="hidden_icon_file[]"
-                                    value="{{ $get_section_value->icon }}">
-                                <img src="{{ url('/') }}/images/{{ $get_section_value->icon }}"
-                                    alt="" width="100" height="100">
-                                <?php } ?>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-lg-4">
-                            <div class="inp-outer">
-                                <label for="">Title</label>
-                                <input class="input" type="text" name="title[]"
-                                    value="{{ $get_section_value->title }}">
-                            </div>
-                        </div>
-                        <div class="col-sm-12 col-lg-12">
-                            <div class="inp-outer">
-                                <label for="">Description</label>
-                                <textarea class="input" name="description[]">{{ $get_section_value->description }}</textarea>
-                            </div>
-                        </div>
-
-                        <?php if($sec3_count!='1'){ ?>
-                        <div class="add-btn remove_button1" style="cursor: pointer;"><i
-                                class="fa-solid fa-circle-plus  "></i> Remove</div>
+                
+                <h4 class="fw-700 mt-3" style="text-align: center;">Section 5</h4>
+                <div class="col-sm-6 col-lg-4">
+                    <div class="inp-outer">
+                        <label for="">Image</label>
+                        <input class="input" type="file" name="sec_3_file">
+                        <?php if(isset($Homepagedata[0]->sec_3_file)){ ?>
+                        <input type="hidden" name="hidden_sec_3_file"
+                            value="{{ $Homepagedata[0]->sec_3_file }}">
+                        <img src="{{ url('/') }}/images/{{ $Homepagedata[0]->sec_3_file }}"
+                            alt="" width="100" height="100">
                         <?php } ?>
-
                     </div>
-                    <?php $sec3_count++; } ?>
+                </div>
+                <div class="col-sm-6 col-lg-12">
+                    <div class="inp-outer">
+                        <label for="">Heading</label>
+                        <input class="input" type="text" value="{{ $Homepagedata[0]->sec_3_heading }}"
+                            name="sec_3_heading">
+                    </div>
+                </div>
+                
 
+
+                <div class="inp-outer">
+                    <label for="">Description</label>
+                    <textarea name="sec_3_dec" id="" class="input">{{ $Homepagedata[0]->sec_3_dec }}</textarea>
                 </div>
 
-                <div class="add-btn add_button1" style="cursor: pointer;"><i class="fa-solid fa-circle-plus"></i> Add
-                    more</div>
+                
 
 
-
+{{--
                 <h4 class="fw-700 mt-3" style="text-align: center;">Section 4</h4>
 
                 <div class="col-sm-12 col-lg-12">
@@ -268,7 +340,7 @@
                         <textarea name="sec4_part2_desc" rows="4" class="input">{{ $Homepagedata[0]->sec4_part2_desc }}</textarea>
                     </div>
                 </div>
-
+ 
                 <h4 class="fw-700 mt-3" style="text-align: center;">Section 7</h4>
 
                 <div class="col-sm-6 col-lg-4">
@@ -369,7 +441,7 @@
                         <label for="">Description</label>
                         <textarea name="sec9_desc" rows="4" class="input">{{ $Homepagedata[0]->sec9_desc }}</textarea>
                     </div>
-                </div>
+                </div> --}}
 
                 <div class="update-btn" style="text-align: center;">
                     <button type="submit" class="site-link sm">Update Homepage</button>

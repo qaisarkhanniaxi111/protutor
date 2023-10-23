@@ -357,8 +357,8 @@
                                 </li>
                             </ul>
                         </div>
-                        <button class="btn btn-success me-2 rounded-5">submit</button>
-                        <a href="{{ url('/private/group/') }}" class="btn btn-danger rounded-5">clear</a>
+                        <button class="btn me-2 rounded-5" style="background-color:#ff6c0b;border-color: #434b480a;color:#fff">submit</button>
+                        <a href="{{ url('/private/group/') }}" class="btn rounded-5" style="background-color:#ff6c0b;border-color: #434b480a;color:#fff">clear</a>
                     </div>
                     <div class="col-xl-4 d-flex align-items-center flex-md-row flex-column">
                         <div class="sort ms-auto d-flex align-items-center mb-md-0 mb-3">
@@ -395,10 +395,183 @@
                     </div>
                 </div>
                 <div class="col-xl-8">
+                    <div class="teacher-card-div mb-3">
+                        <div class="teacher-card--header">
+
+                            <div class="teacher-card--header-text w-100 align-items-start">
+                                <div class=" d-flex align-items-start flex-md-row flex-column mb-md-0 mb-3">
+                                    <div class="online-image">
+                                        <img src="{{ url("") }}/newAssets/assets/images/team (4).png" alt="">
+                                        <div class="online"></div>
+                                    </div>
+                                    <div class="profile-data-text">
+                                        <div
+                                            class="d-flex align-items-sm-center flex-sm-row flex-column align-items-start">
+                                            <h1 class="mb-0 pb-0">Hanna Baptista</h1>
+                                            <div class="d-flex align-items-center mt-sm-0 mt-2">
+                                                <img src="{{ url("") }}/newAssets/assets/images/star.svg" alt="" class="ms-sm-3 ms-0 me-1">
+                                                <h3 class="mb-0 pb-0">5.0</h3>
+                                                <span>(33 review)</span>
+                                            </div>
+                                        </div>
+                                        <div class=" mb-2">
+                                            <!-- <h2 class="mb-0 pb-0">English teacher</h2> -->
+                                            <div
+                                                class="d-flex align-items-lg-center mt-3 flex-wrap align-items-start">
+                                                <h2 class="text-primary me-2 ps-0">English teacher</h2>
+                                                <h2 class="text-primary me-2 ps-0">English teacher</h2>
+                                                <h2 class="text-primary me-2 ps-0">English teacher</h2>
+                                                <h2 class="text-primary me-2 ps-0">English teacher</h2>
+                                                <h2 class="text-primary me-2 ps-0">English teacher</h2>
+
+                                            </div>
+
+                                            <div class="d-flex align-items-center  mt-2">
+                                                <img src="{{ url("") }}/newAssets/assets/images/flag.png" alt="" class="me-1">
+                                                <p class="mb-0 pb-0">United State</p>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <p class="mb-0 pb-0 mt-2 mb-2">
+                                                <span>Speaks:</span> English (Native) German (Advanced)
+                                                Lithuanian
+                                                (Native)
+                                            </p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="profile-price flex-shrink-0">
+                                    <h2 class="mb-0 pb-0">$105.00</h2>
+                                    <p class="mb-0 pb-0">50-min lesson</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="teacher-card-body">
+                            <p>
+                                English tutor with over 5 years of teaching experience Hi! I'm Ugne. Originally I am
+                                from Lithuania, however, I have completed my high school education in an American
+                                International School and my bachelor's degree at a university in London, UK. I have
+                                quite a few interests and creative hobbies, however my favorite thing to do whenever
+                                I have the time is traveling as much as possible.
+
+                            </p>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center flex-md-row flex-column ">
+                            <div class="mb-md-0 mb-3">
+                                <img src="{{ url("") }}/newAssets/assets/images/veri.svg" alt="">
+                            </div>
+                            <div class="d-flex align-items-center flex-md-row flex-column sm-100 ">
+                                <div class="d-flex align-items-center w-100 mb-md-0 mb-3">
+                                    <div class="like">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"
+                                            viewBox="0 0 40 40" fill="none">
+                                            <path
+                                                d="M0 20C0 8.95431 8.95431 0 20 0C31.0457 0 40 8.95431 40 20C40 31.0457 31.0457 40 20 40C8.95431 40 0 31.0457 0 20Z"
+                                                fill="#FF6C0B" fill-opacity="0.15" />
+                                            <path class="like-fill "
+                                                d="M18.6356 12.9894L18.6468 13.0001L18.6583 13.0104C19.0273 13.3404 19.505 13.5228 20 13.5228C20.495 13.5228 20.9727 13.3404 21.3417 13.0104L21.3535 12.9998L21.365 12.9888C22.2116 12.1818 23.8293 11 26 11C27.5801 11 28.7855 11.6184 29.6199 12.6803C30.4752 13.7688 31 15.4045 31 17.5C31 18.7417 30.4893 20.1505 29.5891 21.6176C28.696 23.073 27.467 24.5082 26.1492 25.7806C24.8327 27.0516 23.4532 28.1356 22.2806 28.895C21.6935 29.2752 21.1737 29.5641 20.7514 29.754C20.297 29.9584 20.0599 30 20 30C19.9401 30 19.703 29.9584 19.2486 29.754C18.8263 29.5641 18.3065 29.2752 17.7194 28.895C16.5468 28.1356 15.1673 27.0516 13.8508 25.7806C12.533 24.5082 11.304 23.073 10.4109 21.6176C9.51066 20.1505 9 18.7417 9 17.5C9 15.4045 9.52485 13.7688 10.3801 12.6803C11.2145 11.6184 12.4199 11 14 11C16.169 11 17.7883 12.183 18.6356 12.9894Z"
+                                                stroke="#FF6C0B" stroke-width="2" />
+                                        </svg>
+                                    </div>
+                                    <button class="main-btn-blank-sm w-100 mx-3">Message</button>
+                                </div>
+                                <button class="main-btn-sm w-100" style="white-space: nowrap;">Book a trial
+                                    lesson</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="teacher-card-div mb-3">
+                        <div class="teacher-card--header">
+
+                            <div class="teacher-card--header-text w-100 align-items-start">
+                                <div class=" d-flex align-items-start flex-md-row flex-column mb-md-0 mb-3">
+                                    <div class="online-image">
+                                        <img src="{{ url("") }}/newAssets/assets/images/team (2).png" alt="">
+                                        <div class="online"></div>
+                                    </div>
+                                    <div class="profile-data-text">
+                                        <div
+                                            class="d-flex align-items-sm-center flex-sm-row flex-column align-items-start">
+                                            <h1 class="mb-0 pb-0">Hanna Baptista</h1>
+                                            <div class="d-flex align-items-center mt-sm-0 mt-2">
+                                                <img src="{{ url("") }}/newAssets/assets/images/star.svg" alt="" class="ms-sm-3 ms-0 me-1">
+                                                <h3 class="mb-0 pb-0">5.0</h3>
+                                                <span>(33 review)</span>
+                                            </div>
+                                        </div>
+                                        <div class=" mb-2">
+                                            <!-- <h2 class="mb-0 pb-0">English teacher</h2> -->
+                                            <div
+                                                class="d-flex align-items-lg-center mt-3 flex-wrap align-items-start">
+                                                <h2 class="text-primary me-2 ps-0">English teacher</h2>
+                                                <h2 class="text-primary me-2 ps-0">English teacher</h2>
+                                                <h2 class="text-primary me-2 ps-0">English teacher</h2>
+                                                <h2 class="text-primary me-2 ps-0">English teacher</h2>
+                                                <h2 class="text-primary me-2 ps-0">English teacher</h2>
+
+                                            </div>
+
+                                            <div class="d-flex align-items-center  mt-2">
+                                                <img src="{{ url("") }}/newAssets/assets/images/flag.png" alt="" class="me-1">
+                                                <p class="mb-0 pb-0">United State</p>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <p class="mb-0 pb-0 mt-2 mb-2">
+                                                <span>Speaks:</span> English (Native) German (Advanced)
+                                                Lithuanian
+                                                (Native)
+                                            </p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="profile-price flex-shrink-0">
+                                    <h2 class="mb-0 pb-0">$105.00</h2>
+                                    <p class="mb-0 pb-0">50-min lesson</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="teacher-card-body">
+                            <p>
+                                English tutor with over 5 years of teaching experience Hi! I'm Ugne. Originally I am
+                                from Lithuania, however, I have completed my high school education in an American
+                                International School and my bachelor's degree at a university in London, UK. I have
+                                quite a few interests and creative hobbies, however my favorite thing to do whenever
+                                I have the time is traveling as much as possible.
+
+                            </p>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center flex-md-row flex-column ">
+                            <div class="mb-md-0 mb-3">
+                                <img src="{{ url("") }}/newAssets/assets/images/veri.svg" alt="">
+                            </div>
+                            <div class="d-flex align-items-center flex-md-row flex-column sm-100 ">
+                                <div class="d-flex align-items-center w-100 mb-md-0 mb-3">
+                                    <div class="like">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"
+                                            viewBox="0 0 40 40" fill="none">
+                                            <path
+                                                d="M0 20C0 8.95431 8.95431 0 20 0C31.0457 0 40 8.95431 40 20C40 31.0457 31.0457 40 20 40C8.95431 40 0 31.0457 0 20Z"
+                                                fill="#FF6C0B" fill-opacity="0.15" />
+                                            <path class="like-fill "
+                                                d="M18.6356 12.9894L18.6468 13.0001L18.6583 13.0104C19.0273 13.3404 19.505 13.5228 20 13.5228C20.495 13.5228 20.9727 13.3404 21.3417 13.0104L21.3535 12.9998L21.365 12.9888C22.2116 12.1818 23.8293 11 26 11C27.5801 11 28.7855 11.6184 29.6199 12.6803C30.4752 13.7688 31 15.4045 31 17.5C31 18.7417 30.4893 20.1505 29.5891 21.6176C28.696 23.073 27.467 24.5082 26.1492 25.7806C24.8327 27.0516 23.4532 28.1356 22.2806 28.895C21.6935 29.2752 21.1737 29.5641 20.7514 29.754C20.297 29.9584 20.0599 30 20 30C19.9401 30 19.703 29.9584 19.2486 29.754C18.8263 29.5641 18.3065 29.2752 17.7194 28.895C16.5468 28.1356 15.1673 27.0516 13.8508 25.7806C12.533 24.5082 11.304 23.073 10.4109 21.6176C9.51066 20.1505 9 18.7417 9 17.5C9 15.4045 9.52485 13.7688 10.3801 12.6803C11.2145 11.6184 12.4199 11 14 11C16.169 11 17.7883 12.183 18.6356 12.9894Z"
+                                                stroke="#FF6C0B" stroke-width="2" />
+                                        </svg>
+                                    </div>
+                                    <button class="main-btn-blank-sm w-100 mx-3">Message</button>
+                                </div>
+                                <button class="main-btn-sm w-100" style="white-space: nowrap;">Book a trial
+                                    lesson</button>
+                            </div>
+                        </div>
+                    </div>
                     @if (count($userdata))
                         @foreach ($userdata as $userdata_val)
-                            <div class="teacher-card-div mb-3" onmouseenter="document.querySelector('#tutorVideo').src='/videos/{{ $userdata_val->video_link }}'">
-                                <div class="teacher-card--header">
+                        <div class="teacher-card-div mb-3" onmouseenter="changeCalendarContent('{{ $userdata_val->video_link }}')">
+                            <div class="teacher-card--header">
+                                    <a class="w-100" href="{{url('/tutor-detail')}}/{{$userdata_val->user_id}}">
 
                                     <div class="teacher-card--header-text w-100 align-items-start">
                                         <div class=" d-flex align-items-start flex-md-row flex-column mb-md-0 mb-3">
@@ -476,6 +649,7 @@
                                             <p class="mb-0 pb-0">60-mins lesson</p>
                                         </div>
                                     </div>
+                                </a>
                                 </div>
                                 <div class="teacher-card-body">
                                     <p>
@@ -513,6 +687,7 @@
                                     </div>
                                 </div>
                             </div>
+                           
                         @endforeach
                     @endif
                     {{-- <div class="teacher-card-div mb-3">
@@ -604,10 +779,12 @@
                     </div> --}}
 
                     <!-- Display pagination links -->
-                    {{-- <div class="mt-4">
-
+                    <div class="mt-4">
+                        @if (!isset($filter))
+                            
                         {{ $userdata->links() }}
-                    </div> --}}
+                        @endif
+                    </div>
 
 
                     {{-- <div class="pagination mt-4">
@@ -761,39 +938,28 @@
                                 aria-label="Slide 3"></button>
                         </div>
                         <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <p class="testimonial-text  text-lg-start text-center">
-                                    <img src="{{ url('newAssets') }}/assets/images/comma.svg" alt="">
-                                    In my experience all the teachers are very supportive and friendly and the
-                                    placement process has been very smooth. it’s also no issue talk about whatever
-                                    you want to Lorem, ipsum dolor sit amet consectetur adipisicing elit. Adipisci
-                                    placeat fugiat earum?
+                            @if (count($Alltestimonial))
+                                @php
+                                    $t_count = 1;
+                                @endphp
+                                @foreach ($Alltestimonial as $Alltestimonial_val)
+                                    @if ($t_count < 4)
+                                        <div class="carousel-item {{ $t_count == 1 ? 'active' : '' }}">
+                                            <p class="testimonial-text  text-lg-start text-center">
+                                                <img src="{{ url('newAssets/assets/images/comma.svg') }}"
+                                                    alt="">
+                                                {{ $Alltestimonial_val->student_desc }}
 
-                                </p>
-                                <h4>Sherina Munir - Designer</h4>
-                            </div>
-                            <div class="carousel-item">
-                                <p class="testimonial-text  text-lg-start text-center">
-                                    <img src="{{ url('newAssets') }}/assets/images/comma.svg" alt="">
-                                    In my experience all the teachers are very supportive and friendly and the
-                                    placement process has been very smooth. it’s also no issue talk about whatever
-                                    you want to Lorem, ipsum dolor sit amet consectetur adipisicing elit. Adipisci
-                                    placeat fugiat earum?
-
-                                </p>
-                                <h4>Sherina Munir - Designer</h4>
-                            </div>
-                            <div class="carousel-item">
-                                <p class="testimonial-text  text-lg-start text-center">
-                                    <img src="{{ url('newAssets') }}/assets/images/comma.svg" alt="">
-                                    In my experience all the teachers are very supportive and friendly and the
-                                    placement process has been very smooth. it’s also no issue talk about whatever
-                                    you want to Lorem, ipsum dolor sit amet consectetur adipisicing elit. Adipisci
-                                    placeat fugiat earum?
-
-                                </p>
-                                <h4>Sherina Munir - Designer</h4>
-                            </div>
+                                            </p>
+                                            <h4>{{ $Alltestimonial_val->student_name }} -
+                                                {{ $Alltestimonial_val->field }}</h4>
+                                        </div>
+                                        @php
+                                            $t_count++;
+                                        @endphp
+                                    @endif
+                                @endforeach
+                            @endif
                         </div>
                         <button class="carousel-control-prev" type="button"
                             data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -1145,6 +1311,31 @@
 
             calendar.render();
             calendar.changeView('timeGridWeek');
+
+
+            // fake dummy data
+            // Static events
+            var currentDate = new Date(); // Current date
+            var formattedCurrentDate = currentDate.toISOString().slice(0, 10); // Format as 'YYYY-MM-DD'
+        var staticEvents = [
+            {
+                title: 'Static Event 1',
+                start: formattedCurrentDate+'T08:00:00',
+                end: formattedCurrentDate+'T10:00:00',
+                
+            },
+            {
+                title: 'Static Event 2',
+                start: formattedCurrentDate+'T14:00:00',
+                end: formattedCurrentDate+'T16:00:00',
+                
+            },
+            // Add more static events as needed
+        ];
+
+        staticEvents.forEach(function (eventData) {
+            var event = calendar.addEvent(eventData);
+        });
         }, 400);
     }
 
@@ -1152,5 +1343,10 @@
         if ($("#session_start").val() != '' && $("#session_end").val() != '' && $("#calendar_sch_id").val() != '') {
             $('#submitPrivateLesson').submit();
         }
+    }
+
+
+    function changeCalendarContent(videoSource){
+        document.querySelector('#tutorVideo').src='/videos/'+videoSource;
     }
 </script>

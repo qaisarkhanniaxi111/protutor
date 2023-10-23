@@ -39,6 +39,10 @@ class GroupLesson extends Model
     {
         return $this->belongsTo(User::class, 'tutor_id', 'id');
     }
+    public function tutorDetails()
+    {
+        return $this->belongsTo(Userdetail::class, 'tutor_id', 'student_no');
+    }
 
     public function student()
     {

@@ -161,3 +161,9 @@
             </div>
         </nav>
     </header>
+
+    <style>
+        p{
+            text-align: unset;
+        }
+    </style>

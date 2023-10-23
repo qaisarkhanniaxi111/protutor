@@ -26,6 +26,316 @@
 				<h4 class="fw-700 mt-3" style="text-align: center;">Section 1</h4>
 
 				<div class="row field_wrapper_main">
+					<div class="col-sm-6 col-lg-12">
+						<div class="inp-outer">
+								<label for="">Heading</label>
+								<input class="input" type="text" value="{{ $Homepagedata[0]->sec_1_heading }}"
+										name="sec_1_heading">
+						</div>
+				</div>
+				
+
+
+				<div class="inp-outer">
+						<label for="">Description</label>
+						<textarea name="sec_1_dec" id="" class="input">{{ $Homepagedata[0]->sec_1_dec }}</textarea>
+				</div>
+				<br>
+				<hr>
+					<h4 class="fw-700 mt-3" style="text-align: center;">Section 2(a)</h4>
+					<div class="col-sm-6 col-lg-12">
+						<div class="inp-outer">
+								<label for="">Main Heading</label>
+								<input class="input" type="text" value="{{ $Homepagedata[0]->sec_5_mainHeading }}"
+										name="sec_5_mainHeading">
+						</div>
+				</div>
+				<div class="col-sm-6 col-lg-4">
+					<div class="inp-outer">
+							<label for="">Image</label>
+							<input class="input" type="file" name="sec_5_c1_file">
+							<?php if(isset($Homepagedata[0]->sec_5_c1_file)){ ?>
+							<input type="hidden" name="hidden_sec_5_c1_file"
+									value="{{ $Homepagedata[0]->sec_5_c1_file }}">
+							<img src="{{ url('/') }}/images/{{ $Homepagedata[0]->sec_5_c1_file }}"
+									alt="" width="100" height="100">
+							<?php } ?>
+					</div>
+			</div>
+			<div class="col-sm-6 col-lg-12">
+					<div class="inp-outer">
+							<label for="">Heading</label>
+							<input class="input" type="text" value="{{ $Homepagedata[0]->sec_5_c1_heading }}"
+									name="sec_5_c1_heading">
+					</div>
+			</div>
+			
+
+
+			<div class="inp-outer">
+					<label for="">Description</label>
+					<textarea name="sec_5_c1_dec" id="" class="input">{{ $Homepagedata[0]->sec_5_c1_dec }}</textarea>
+			</div>
+				<div class="col-sm-6 col-lg-4">
+					<div class="inp-outer">
+							<label for="">Image</label>
+							<input class="input" type="file" name="sec_5_c2_file">
+							<?php if(isset($Homepagedata[0]->sec_5_c2_file)){ ?>
+							<input type="hidden" name="hidden_sec_5_c2_file"
+									value="{{ $Homepagedata[0]->sec_5_c2_file }}">
+							<img src="{{ url('/') }}/images/{{ $Homepagedata[0]->sec_5_c2_file }}"
+									alt="" width="100" height="100">
+							<?php } ?>
+					</div>
+			</div>
+			<div class="col-sm-6 col-lg-12">
+					<div class="inp-outer">
+							<label for="">Heading</label>
+							<input class="input" type="text" value="{{ $Homepagedata[0]->sec_5_c2_heading }}"
+									name="sec_5_c2_heading">
+					</div>
+			</div>
+			
+
+
+			<div class="inp-outer">
+					<label for="">Description</label>
+					<textarea name="sec_5_c2_dec" id="" class="input">{{ $Homepagedata[0]->sec_5_c2_dec }}</textarea>
+			</div>
+				<div class="col-sm-6 col-lg-4">
+					<div class="inp-outer">
+							<label for="">Image</label>
+							<input class="input" type="file" name="sec_5_c3_file">
+							<?php if(isset($Homepagedata[0]->sec_5_c3_file)){ ?>
+							<input type="hidden" name="hidden_sec_5_c3_file"
+									value="{{ $Homepagedata[0]->sec_5_c3_file }}">
+							<img src="{{ url('/') }}/images/{{ $Homepagedata[0]->sec_5_c3_file }}"
+									alt="" width="100" height="100">
+							<?php } ?>
+					</div>
+			</div>
+			<div class="col-sm-6 col-lg-12">
+					<div class="inp-outer">
+							<label for="">Heading</label>
+							<input class="input" type="text" value="{{ $Homepagedata[0]->sec_5_c3_heading }}"
+									name="sec_5_c3_heading">
+					</div>
+			</div>
+			
+
+
+			<div class="inp-outer">
+					<label for="">Description</label>
+					<textarea name="sec_5_c3_dec" id="" class="input">{{ $Homepagedata[0]->sec_5_c3_dec }}</textarea>
+			</div>
+				<br>
+				{{-- <hr>
+					<h4 class="fw-700 mt-3" style="text-align: center;">Section 2</h4>
+				<div class="col-sm-6 col-lg-4">
+					<div class="inp-outer">
+							<label for="">Image</label>
+							<input class="input" type="file" name="sec_2_file">
+							<?php if(isset($Homepagedata[0]->sec_2_file)){ ?>
+							<input type="hidden" name="hidden_sec_2_file"
+									value="{{ $Homepagedata[0]->sec_2_file }}">
+							<img src="{{ url('/') }}/images/{{ $Homepagedata[0]->sec_2_file }}"
+									alt="" width="100" height="100">
+							<?php } ?>
+					</div>
+			</div>
+			<div class="col-sm-6 col-lg-12">
+					<div class="inp-outer">
+							<label for="">Heading</label>
+							<input class="input" type="text" value="{{ $Homepagedata[0]->sec_2_heading }}"
+									name="sec_2_heading">
+					</div>
+			</div>
+			
+
+
+			<div class="inp-outer">
+					<label for="">Description</label>
+					<textarea name="sec_2_dec" id="" class="input">{{ $Homepagedata[0]->sec_2_dec }}</textarea>
+			</div>
+				<br>
+				<hr>
+					<h4 class="fw-700 mt-3" style="text-align: center;">Section 2</h4>
+				<div class="col-sm-6 col-lg-4">
+					<div class="inp-outer">
+							<label for="">Image</label>
+							<input class="input" type="file" name="sec_2_file">
+							<?php if(isset($Homepagedata[0]->sec_2_file)){ ?>
+							<input type="hidden" name="hidden_sec_2_file"
+									value="{{ $Homepagedata[0]->sec_2_file }}">
+							<img src="{{ url('/') }}/images/{{ $Homepagedata[0]->sec_2_file }}"
+									alt="" width="100" height="100">
+							<?php } ?>
+					</div>
+			</div>
+			<div class="col-sm-6 col-lg-12">
+					<div class="inp-outer">
+							<label for="">Heading</label>
+							<input class="input" type="text" value="{{ $Homepagedata[0]->sec_2_heading }}"
+									name="sec_2_heading">
+					</div>
+			</div>
+			
+
+
+			<div class="inp-outer">
+					<label for="">Description</label>
+					<textarea name="sec_2_dec" id="" class="input">{{ $Homepagedata[0]->sec_2_dec }}</textarea>
+			</div>
+				<br>
+				<hr>
+					<h4 class="fw-700 mt-3" style="text-align: center;">Section 2</h4>
+				<div class="col-sm-6 col-lg-4">
+					<div class="inp-outer">
+							<label for="">Image</label>
+							<input class="input" type="file" name="sec_2_file">
+							<?php if(isset($Homepagedata[0]->sec_2_file)){ ?>
+							<input type="hidden" name="hidden_sec_2_file"
+									value="{{ $Homepagedata[0]->sec_2_file }}">
+							<img src="{{ url('/') }}/images/{{ $Homepagedata[0]->sec_2_file }}"
+									alt="" width="100" height="100">
+							<?php } ?>
+					</div>
+			</div>
+			<div class="col-sm-6 col-lg-12">
+					<div class="inp-outer">
+							<label for="">Heading</label>
+							<input class="input" type="text" value="{{ $Homepagedata[0]->sec_2_heading }}"
+									name="sec_2_heading">
+					</div>
+			</div>
+			
+
+
+			<div class="inp-outer">
+					<label for="">Description</label>
+					<textarea name="sec_2_dec" id="" class="input">{{ $Homepagedata[0]->sec_2_dec }}</textarea>
+			</div>
+				<br>
+				<hr>
+					<h4 class="fw-700 mt-3" style="text-align: center;">Section 2</h4>
+				<div class="col-sm-6 col-lg-4">
+					<div class="inp-outer">
+							<label for="">Image</label>
+							<input class="input" type="file" name="sec_2_file">
+							<?php if(isset($Homepagedata[0]->sec_2_file)){ ?>
+							<input type="hidden" name="hidden_sec_2_file"
+									value="{{ $Homepagedata[0]->sec_2_file }}">
+							<img src="{{ url('/') }}/images/{{ $Homepagedata[0]->sec_2_file }}"
+									alt="" width="100" height="100">
+							<?php } ?>
+					</div>
+			</div>
+			<div class="col-sm-6 col-lg-12">
+					<div class="inp-outer">
+							<label for="">Heading</label>
+							<input class="input" type="text" value="{{ $Homepagedata[0]->sec_2_heading }}"
+									name="sec_2_heading">
+					</div>
+			</div>
+			
+
+
+			<div class="inp-outer">
+					<label for="">Description</label>
+					<textarea name="sec_2_dec" id="" class="input">{{ $Homepagedata[0]->sec_2_dec }}</textarea>
+			</div> --}}
+				<br>
+				<hr>
+					<h4 class="fw-700 mt-3" style="text-align: center;">Section 2</h4>
+				<div class="col-sm-6 col-lg-4">
+					<div class="inp-outer">
+							<label for="">Image</label>
+							<input class="input" type="file" name="sec_2_file">
+							<?php if(isset($Homepagedata[0]->sec_2_file)){ ?>
+							<input type="hidden" name="hidden_sec_2_file"
+									value="{{ $Homepagedata[0]->sec_2_file }}">
+							<img src="{{ url('/') }}/images/{{ $Homepagedata[0]->sec_2_file }}"
+									alt="" width="100" height="100">
+							<?php } ?>
+					</div>
+			</div>
+			<div class="col-sm-6 col-lg-12">
+					<div class="inp-outer">
+							<label for="">Heading</label>
+							<input class="input" type="text" value="{{ $Homepagedata[0]->sec_2_heading }}"
+									name="sec_2_heading">
+					</div>
+			</div>
+			
+
+
+			<div class="inp-outer">
+					<label for="">Description</label>
+					<textarea name="sec_2_dec" id="" class="input">{{ $Homepagedata[0]->sec_2_dec }}</textarea>
+			</div>
+				<br>
+				<hr>
+					<h4 class="fw-700 mt-3" style="text-align: center;">Section 3</h4>
+				<div class="col-sm-6 col-lg-4">
+					<div class="inp-outer">
+							<label for="">Image</label>
+							<input class="input" type="file" name="sec_3_file">
+							<?php if(isset($Homepagedata[0]->sec_3_file)){ ?>
+							<input type="hidden" name="hidden_sec_3_file"
+									value="{{ $Homepagedata[0]->sec_3_file }}">
+							<img src="{{ url('/') }}/images/{{ $Homepagedata[0]->sec_3_file }}"
+									alt="" width="100" height="100">
+							<?php } ?>
+					</div>
+			</div>
+			<div class="col-sm-6 col-lg-12">
+					<div class="inp-outer">
+							<label for="">Heading</label>
+							<input class="input" type="text" value="{{ $Homepagedata[0]->sec_3_heading }}"
+									name="sec_3_heading">
+					</div>
+			</div>
+			
+
+
+			<div class="inp-outer">
+					<label for="">Description</label>
+					<textarea name="sec_3_dec" id="" class="input">{{ $Homepagedata[0]->sec_3_dec }}</textarea>
+			</div>
+				<br>
+				<hr>
+					<h4 class="fw-700 mt-3" style="text-align: center;">Section 4</h4>
+				<div class="col-sm-6 col-lg-4">
+					<div class="inp-outer">
+							<label for="">Image</label>
+							<input class="input" type="file" name="sec_4_file">
+							<?php if(isset($Homepagedata[0]->sec_4_file)){ ?>
+							<input type="hidden" name="hidden_sec_4_file"
+									value="{{ $Homepagedata[0]->sec_4_file }}">
+							<img src="{{ url('/') }}/images/{{ $Homepagedata[0]->sec_4_file }}"
+									alt="" width="100" height="100">
+							<?php } ?>
+					</div>
+			</div>
+			<div class="col-sm-6 col-lg-12">
+					<div class="inp-outer">
+							<label for="">Heading</label>
+							<input class="input" type="text" value="{{ $Homepagedata[0]->sec_4_heading }}"
+									name="sec_4_heading">
+					</div>
+			</div>
+			
+
+
+			<div class="inp-outer">
+					<label for="">Description</label>
+					<textarea name="sec_4_dec" id="" class="input">{{ $Homepagedata[0]->sec_4_dec }}</textarea>
+			</div>
+				<br>
+
+{{-- 				
+				<hr>
+					<h4 class="fw-700 mt-3" style="text-align: center;">old Section 1</h4>
 					<?php 
 					$get_section1 = $Homepagedata[0]->sec_data1;
 					$get_section_all = json_decode($get_section1);
@@ -41,7 +351,7 @@
 									<input class="input" type="file" name="icon[]">
 									<?php if(isset($get_section_value->icon)){ ?>
 										<input type="hidden" name="hidden_icon_file1[]" value="{{$get_section_value->icon}}">
-										<img src="{{url('/')}}/public/images/{{$get_section_value->icon}}" alt="" width="100" height="100">
+										<img src="{{url('/')}}/images/{{$get_section_value->icon}}" alt="" width="100" height="100">
 									<?php } ?>
 								</div>
 							</div>
@@ -83,7 +393,7 @@
 								<input class="input" type="file" name="image">
 								<?php if(isset($Homepagedata[0]->img_sec2)){ ?>
 									<input type="hidden" name="hidden_icon_file" value="{{$Homepagedata[0]->img_sec2}}">
-									<img src="{{url('/')}}/public/images/{{$Homepagedata[0]->img_sec2}}" alt="" width="100" height="100">
+									<img src="{{url('/')}}/images/{{$Homepagedata[0]->img_sec2}}" alt="" width="100" height="100">
 								<?php } ?>
 							</div>
 						</div>
@@ -186,7 +496,7 @@
 										<input class="input" type="file" name="bg_img">
 										<?php if(isset($Homepagedata[0]->sec4_img)){ ?>
 											<input type="hidden" name="hidden_bg_img" value="{{$Homepagedata[0]->sec4_img}}">
-											<img src="{{url('/')}}/public/images/{{$Homepagedata[0]->sec4_img}}" alt="" width="100" height="100">
+											<img src="{{url('/')}}/images/{{$Homepagedata[0]->sec4_img}}" alt="" width="100" height="100">
 										<?php } ?>
 									</div>
 								</div>
@@ -220,7 +530,7 @@
 										<input class="input" type="file" name="bck_img">
 										<?php if(isset($Homepagedata[0]->sec5_file)){ ?>
 											<input type="hidden" name="hidden_bck_img" value="{{$Homepagedata[0]->sec5_file}}">
-											<img src="{{url('/')}}/public/images/{{$Homepagedata[0]->sec5_file}}" alt="" width="100" height="100">
+											<img src="{{url('/')}}/images/{{$Homepagedata[0]->sec5_file}}" alt="" width="100" height="100">
 										<?php } ?>
 									</div>
 								</div>
@@ -248,7 +558,7 @@
 										<input class="input" type="text" name="applestore" value="{{$Homepagedata[0]->sec5_apple_store_url}}">
 									</div>
 								</div>
-							</div>
+							</div> --}}
 
 							<div class="update-btn" style="text-align: center;">
 								<input type="submit" name="submit" class="site-link sm" value="Save">

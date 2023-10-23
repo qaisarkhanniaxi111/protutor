@@ -20,6 +20,7 @@ class SpendingController extends Controller
                             $query->where('student_id', $studentId);
                         })
                         ->notFetchInActivePayments()
+                        ->orderBy('created_at', 'desc')
                         ->get();
 
             $totalSpentAmount = Payment::whereHas('studentPayments', function($query) use($studentId) {

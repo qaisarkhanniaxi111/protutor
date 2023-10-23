@@ -11,7 +11,7 @@ class RatingController extends Controller
 {
     public function groupLessonFilter(Request $request)
     {
-        $query = GroupLesson::with(['teachLevel', 'subject', 'tutor', 'gallery']);
+        $query = GroupLesson::with(['teachLevel', 'subject', 'tutor','tutorDetails', 'gallery']);
         if (!empty($request->subject)) {
             $query->where('subject_id', $request->subject);
         }
@@ -52,7 +52,7 @@ class RatingController extends Controller
     {
         try {
             $todayDate = now()->format('Y-m-d');
-            $query = GroupLesson::with(['teachLevel', 'subject', 'tutor', 'gallery'])->whereDate('class_start_date', $todayDate);
+            $query = GroupLesson::with(['teachLevel', 'subject', 'tutor','tutorDetails', 'gallery'])->whereDate('class_start_date', $todayDate);
 
             if (!empty($request->subject)) {
                 $query->where('subject_id', $request->subject);

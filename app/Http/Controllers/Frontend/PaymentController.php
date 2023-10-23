@@ -140,7 +140,7 @@ class PaymentController extends Controller
 
         if ($session->url) {
 
-            $paymentId = $this->storeTeahingOrder($user_id,$teacher_id,$calendar_sch_id,$price,$session_start,$session_end);
+            $this->storeTeahingOrder($user_id,$teacher_id,$calendar_sch_id,$price,$session_start,$session_end);
             $paymentId = $this->storeOrderPayment($teacher_id, $session, $price);
             session()->put('payment_id', $paymentId);
             
@@ -188,7 +188,9 @@ class PaymentController extends Controller
         
         $newPayment->currency = $currency;
         $newPayment->transaction_id = $session ? $session->id : '';
-
+        if(session()->has("teachingOrderId")){
+            $newPayment->order_id=session()->get("teachingOrderId");
+        }
         $newPayment->amount = $price;
         $newPayment->status = 'in-active';
         $newPayment->save();

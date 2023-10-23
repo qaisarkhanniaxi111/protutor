@@ -55,8 +55,10 @@
 
 {{-- new code  --}}
 <?php
-        $Footerdata =  DB::select('SELECT icon, title, email, contact, Copyright FROM `footer` where id=1;');
+        $Footerdata =  DB::select('SELECT icon, title, email, contact, Copyright, top_subjects FROM `footer` where id=1;');
+        $allSubjects =  DB::select('SELECT * FROM `subjects`;');
         $SocialPlatformrdata =  DB::select('SELECT title, url, user_status FROM `social_media_platform`;');
+
         ?>
 <footer class="footer">
   <div class="container">
@@ -85,18 +87,21 @@
           <div class="col-lg-2 col-md-6 ms-auto d-flex flex-column align-items-md-start align-items-center">
               <h2 class="mb-3">Top Subjects</h2>
               <ul class="ms-0 ps-0">
-                  <li>
-                      <a href="">English</a>
-                  </li>
-                  <li>
-                      <a href="">German</a>
-                  </li>
-                  <li>
-                      <a href="">Arabic</a>
-                  </li>
-                  <li>
-                      <a href="">Spanish</a>
-                  </li>
+                <?php 
+          $topSubjects = explode(',', $Footerdata[0]->top_subjects);
+         
+          ?>
+                @foreach ($allSubjects as $subject)
+                @if (in_array($subject->id,$topSubjects))
+                    
+                
+                    
+                <li>
+                  <a href="{{ url('/private/group?') }}subject={{ $subject->id }}">{{ $subject->subject }}</a>
+              </li>
+              @endif
+                @endforeach
+                  
               </ul>
           </div>
 

@@ -22,13 +22,14 @@ class TutorController extends \App\Http\Controllers\Controller
   public function dashboard(Request $request)
   {
     $PageTitle = 'Dashboard | ProTutor';
-    $tutorData = DB::table('users')
-			->inRandomOrder()
-			->limit(4)
-			->get();
-
+    // $tutorData = DB::table('users')
+		// 	->inRandomOrder()
+		// 	->limit(4)
+		// 	->get();
+    // dd($tutorData);
 		$tutorId = auth()->user();
 		$tutorId = $tutorId ? $tutorId->id : '';
+    $tutorData = DB::select("SELECT ch_messages.to_id AS id, userdetails.first_name,userdetails.last_name, MAX(ch_messages.created_at) AS created_at, ch_messages.body AS body FROM users JOIN ch_messages ON (users.id = ch_messages.from_id) JOIN userdetails ON ch_messages.to_id = userdetails.student_no WHERE users.id = $tutorId GROUP BY ch_messages.to_id, userdetails.first_name,userdetails.last_name ORDER BY ch_messages.created_at;");
     $currentDateTime = date('Y-m-d H:i:s');
     // dd($currentDateTime);
 		$quizes = DB::select("SELECT * FROM quiz INNER JOIN teaches_levels ON teaches_levels.id=quiz.teaches_level INNER JOIN subjects ON quiz.subjectid=subjects.id AND quiz.tutorid=$tutorId ORDER BY quiz.startdate ASC;");

@@ -10,7 +10,7 @@
   <div class="user-bar">
     <div class="user-bar-left">
 
-      <div class="user-bar-profile"><img src="{{ url('/') }}/public/images/{{$userdata[0]->profile_img}}" alt=""></div>
+      <div class="user-bar-profile"><img src="{{ url('/') }}/images/{{$userdata[0]->profile_img}}" alt=""></div>
       <div class="user-bar-txt">
         <h5>{{$userdata[0]->first_name.' '.$userdata[0]->last_name}} - {{$userdata[0]->user_id}}</h5>
         <p>@php
@@ -82,7 +82,7 @@
           echo "Female";
         }
       @endphp</span>
-      <span class="list-gap"><span class="fw-600">Video Links:</span> <a href="{{ url('/') }}/public/videos/{{$userdata[0]->video_link}}" target="_blank">Click Here</a></span>
+      <span class="list-gap"><span class="fw-600">Video Links:</span> <a href="{{ url('/') }}/videos/{{$userdata[0]->video_link}}" target="_blank">Click Here</a></span>
     </li>
     <li><span class="fw-600">Teaching Subject :</span> 
       <?php 
@@ -171,7 +171,7 @@
               <td><?php echo $value->specialization ?></td>
               <td><?php echo $value->year_of_study ?></td>
               <td>
-               <a class="site-link small bdr" href="{{url('/')}}/public/educations/{{$value->degree_verification_pic}}" download><i class="fa-regular fa-eye"></i> View</a>
+               <a class="site-link small bdr" href="{{url('/')}}/educations/{{$value->degree_verification_pic}}" download><i class="fa-regular fa-eye"></i> View</a>
              </td>
            </tr>
          <?php }
@@ -204,7 +204,7 @@
             <td><?php echo $value->issued_by ?></td> 
             <td><?php echo $value->year_of_study ?></td> 
             <td> 
-              <a class="site-link small bdr" href="{{url('/')}}/public/certificates/{{$value->certificate_verified_pic}}" download><i class="fa-regular fa-eye"></i> View</a>
+              <a class="site-link small bdr" href="{{url('/')}}/certificates/{{$value->certificate_verified_pic}}" download><i class="fa-regular fa-eye"></i> View</a>
             </td>
           </tr>
         <?php }
@@ -236,8 +236,8 @@
               <td><?php echo $value->identification_number ?></td>
               <td><?php echo $value->expiry_date ?></td>
               <td>
-                <a class="site-link small bdr" href="{{url('/')}}/public/identity/{{$value->identity_document_front}}" download><i class="fa-regular fa-eye"></i>Front View</a>
-                <a class="site-link small bdr" href="{{url('/')}}/public/identity/{{$value->identity_document_back}}" download><i class="fa-regular fa-eye"></i>back View</a>
+                <a class="site-link small bdr" href="{{url('/')}}/identity/{{$value->identity_document_front}}" download><i class="fa-regular fa-eye"></i>Front View</a>
+                <a class="site-link small bdr" href="{{url('/')}}/identity/{{$value->identity_document_back}}" download><i class="fa-regular fa-eye"></i>back View</a>
               </td>
             </tr>
           <?php }
@@ -322,7 +322,7 @@
 
       <div class="modal-body p-3">
         <div class="text-center">
-          <img src="{{url('/')}}/public/assets/images/pdf.png" alt="">
+          <img src="{{url('/')}}/assets/images/pdf.png" alt="">
         </div>
       </div>
 

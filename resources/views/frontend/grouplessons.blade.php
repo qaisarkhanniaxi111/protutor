@@ -368,7 +368,6 @@
             </div>
             <div class="col-lg-12 d-flex flex-wrap justify-content-lg-start justify-content-center align-items-center mx-auto"
                 style="max-width:1360px;" id="filter-cards-id">
-
                 @if (count($groupLessons) > 0)
                     @foreach ($groupLessons as $groupLesson)
 
@@ -393,11 +392,11 @@
                                         style="background-color:transparent !important; box-shadow:none !importnat; padding:0px !important;">
                                         <div class="person-data" style="box-shadow:none !importnat">
                                             <div class="person" style="box-shadow:none !importnat">
-                                                @if ($groupLesson->tutor)
-                                                    @if ($groupLesson->tutor->avatar != null)
-                                                    <img class="-person-image" alt="Image"
+                                                @if ($groupLesson->tutorDetails)
+                                                    @if ($groupLesson->tutorDetails->profile_img != null)
+                                                    <img class="-person-image me-2" alt="Image"
                                                         style="height:30px; width:30px; border-radius:100%; object-fit:cover; box-shadow:none !important;"
-                                                        src="{{ $groupLesson->tutor->avatar }}"/>
+                                                        src="{{ url("") }}/images/{{ $groupLesson->tutorDetails->profile_img }}"/>
                                                     @else
                                                     <img class="-person-image" alt="Image"
                                                         style="height:30px; width:30px; border-radius:100%; object-fit:cover; box-shadow:none !important;"

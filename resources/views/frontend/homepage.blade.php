@@ -15,10 +15,10 @@
                 <div class="col-lg-6 order-lg-1 order-2">
                     <h1 class="main-heading mt-lg-5 pt-lg-4 mb-3 mt-4 text-lg-start text-center">
                         <?php echo $Homepagedata[0]->sec_1_heading; ?>
-                      
+
                     </h1>
                     <p class=" main-text mb-3 text-lg-start text-center ">
-                        {{$Homepagedata[0]->sec_1_dec}}
+                        {{ $Homepagedata[0]->sec_1_dec }}
                     </p>
 
                     <div
@@ -33,8 +33,8 @@
                         student to grub knowledge.</p>
                 </div>
                 <div class="col-lg-6 order-lg-2 d-flex order-1  justify-content-center ">
-                    <img src="{{ url('newAssets/assets/images/hero.png') }}" alt="" style="margin-top: -10px;"
-                        class="img-fluid">
+                    <img src="{{ url('/') }}/images/{{ $Homepagedata[0]->sec_1_file }}" alt=""
+                        style="margin-top: -10px;" class="img-fluid">
                 </div>
             </div>
         </div>
@@ -515,16 +515,21 @@
                         Speak naturally with professional online tutors from 185 countries
                     </p>
                 </div>
-
-                <div class="col-lg-3 mt-3 col-md-6">
-                    <div class="comfort-card">
-                        <img src="{{ url('') }}/newAssets/assets/images/expert.svg" alt="">
-                        <h3 class="mb-2">Expert tutors</h3>
-                        <p class="mb-0 pb-0">Find native speakers and certified private tutors</p>
+                <?php
+                $get_section3 = $Homepagedata[0]->sec3_data;
+                $get_section_all = json_decode($get_section3);
+                ?>
+                @foreach ($get_section_all as $get_section_value)
+                    <div class="col-lg-3 mt-3 col-md-6">
+                        <div class="comfort-card">
+                            <img src="{{ url('/') }}/images/{{ $get_section_value->icon }}" alt="">
+                            <h3 class="mb-2">{{ $get_section_value->title }}</h3>
+                            <p class="mb-0 pb-0">{{ $get_section_value->description }}</p>
+                        </div>
                     </div>
-                </div>
+                @endforeach
 
-                <div class="col-lg-3 mt-3 col-md-6">
+                {{-- <div class="col-lg-3 mt-3 col-md-6">
                     <div class="comfort-card">
                         <img src="{{ url('') }}/newAssets/assets/images/verified.svg" alt="">
                         <h3 class="mb-2">Verified profiles</h3>
@@ -546,19 +551,17 @@
                         <h3 class="mb-2">Affordable prices</h3>
                         <p class="mb-0 pb-0">Choose an experienced tutor that fits your budget</p>
                     </div>
-                </div>
+                </div> --}}
             </div>
             <div class="row mt-5 pt-lg-4 align-items-center">
                 <div class="col-xl-5 col-lg-6">
                     <h2 class="heading text-lg-start text-center">
-                        Our world-class tutors<br> can help you <span class="text-primary">learn online</span>
+                        {!! $Homepagedata[0]->sec_4_heading !!}
                     </h2>
                     <img src="{{ url('') }}/newAssets/assets/images/Image (1).png" alt=""
                         class="d-lg-none d-block w-100 my-3">
                     <p class="main-text2 text-lg-start text-center mt-2">
-                        They prepare lessons by studying lesson plans, reviewing textbooks in detail to understand
-                        the topic they will be teaching and providing additional projects if needed during a
-                        session.
+                        {{ $Homepagedata[0]->sec_4_dec }}
                     </p>
                     <div
                         class="d-flex align-items-center justify-content-lg-start justify-content-center flex-md-row flex-column mt-3 pt-3 mb-3">
@@ -569,7 +572,8 @@
                     </div>
                 </div>
                 <div class="col-lg-6 ms-auto d-flex justify-content-end d-lg-block d-none">
-                    <img src="{{ url('newAssets/assets/images/Image (1).png') }}" alt="" class="img-fluid">
+                    <img src="{{ url('/') }}/images/{{ $Homepagedata[0]->sec_4_file }}" alt=""
+                        class="img-fluid">
                 </div>
             </div>
         </div>
@@ -581,7 +585,7 @@
             <div class="row">
                 <div class="col-lg-12 mb-lg-4 mb-3 pb-lg-2">
                     <h2 class="heading ">
-                        {{$Homepagedata[0]->sec2_main_heading}}
+                        {{ $Homepagedata[0]->sec2_main_heading }}
                     </h2>
                     <p class="main-text2 text-center">
                         Learn online with the world's best tutors
@@ -590,11 +594,11 @@
 
                 <div class="col-lg-12 mb-lg-5 mb-4">
                     <div class="work-card">
-                        <img src="{{url('/')}}/images/{{$Homepagedata[0]->sec2_part1_file}}" alt=""
+                        <img src="{{ url('/') }}/images/{{ $Homepagedata[0]->sec2_part1_file }}" alt=""
                             class="h-100">
                         <div class="work-text ">
-                            <h3>{{$Homepagedata[0]->sec2_part1_heading}}</h3>
-                            <p class="mb-0 pb-0 mt-3">{{$Homepagedata[0]->sec2_part1_desc}}</p>
+                            <h3>{{ $Homepagedata[0]->sec2_part1_heading }}</h3>
+                            <p class="mb-0 pb-0 mt-3">{{ $Homepagedata[0]->sec2_part1_desc }}</p>
                         </div>
                     </div>
                 </div>
@@ -602,10 +606,10 @@
                 <div class="col-lg-12 mb-lg-5 mb-4">
                     <div class="work-card bg-white">
                         <div class="work-text order-lg-1 order-2">
-                            <h3>{{$Homepagedata[0]->sec2_part2_heading}}</h3>
-                            <p class="mb-0 pb-0 mt-3">{{$Homepagedata[0]->sec2_part2_desc}}</p>
+                            <h3>{{ $Homepagedata[0]->sec2_part2_heading }}</h3>
+                            <p class="mb-0 pb-0 mt-3">{{ $Homepagedata[0]->sec2_part2_desc }}</p>
                         </div>
-                        <img src="{{url('/')}}/images/{{$Homepagedata[0]->sec2_part2_file}}" alt=""
+                        <img src="{{ url('/') }}/images/{{ $Homepagedata[0]->sec2_part2_file }}" alt=""
                             class="h-100 order-lg-2 order-1">
 
 
@@ -615,11 +619,11 @@
 
                 <div class="col-lg-12 mb-lg-5 mb-4">
                     <div class="work-card">
-                        <img src="{{url('/')}}/images/{{$Homepagedata[0]->sec2_part3_file}}" alt=""
+                        <img src="{{ url('/') }}/images/{{ $Homepagedata[0]->sec2_part3_file }}" alt=""
                             class="h-100">
                         <div class="work-text ">
-                            <h3>{{$Homepagedata[0]->sec2_part3_heading}}</h3>
-                            <p class="mb-0 pb-0 mt-3">{{$Homepagedata[0]->sec2_part3_desc}}</p>
+                            <h3>{{ $Homepagedata[0]->sec2_part3_heading }}</h3>
+                            <p class="mb-0 pb-0 mt-3">{{ $Homepagedata[0]->sec2_part3_desc }}</p>
                         </div>
                     </div>
                 </div>
@@ -647,72 +651,193 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-lg-3 col-md-6 col-sm-10 mx-auto col-12 mt-4 ">
+                    <div class="tutors-card h-100 bg-white">
+                        <img src="{{ url('') }}/newAssets/assets/images/team (1).png" alt="">
+                        <div class="tutors-card--text bg-white">
+                            <div class="mb-2">
+                                <h3 class="mb-2">Gretchen Herwitz</h3>
+                                <div class="d-flex align-items-center flex-wrap">
+                                    <h4 class="me-2">*&nbsp;&nbsp;English Teacher</h4>
+                                    <h4 class="me-2">*&nbsp;&nbsp;English Teacher</h4>
+                                    <h4 class="me-2">*&nbsp;&nbsp;English Teacher</h4>
 
+                                </div>
+                            </div>
+                            <div class="mt-auto flex-grow-1 d-flex flex-column justify-content-end">
+                                <div class="d-flex align-items-center ">
+                                    <img src="{{ url('') }}/newAssets/assets/images/flag.png" alt=""
+                                        class="flag-img">
+                                    <p class="mb-0 pb-0 ms-2">Country Name</p>
+                                </div>
+                                <div class="d-flex align-items-center mt-2">
+                                    <img src="{{ url('') }}/newAssets/assets/images/reading-book 1.png"
+                                        alt="" class="flag-img">
+                                    <p class="mb-0 pb-0 ms-2">21 active students</p>
+                                    <p class="mb-0 pb-0 ms-2 lesson-numbers ms-3"> 315 lessons</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-10 mx-auto col-12 mt-4 ">
+                    <div class="tutors-card h-100 bg-white">
+                        <img src="{{ url('') }}/newAssets/assets/images/team (2).png" alt="">
+                        <div class="tutors-card--text bg-white">
+                            <div class="mb-2">
+                                <h3 class="mb-2">Gretchen Herwitz</h3>
+                                <div class="d-flex align-items-center flex-wrap">
+                                    <h4 class="me-2">*&nbsp;&nbsp;English Teacher</h4>
+                                    <h4 class="me-2">*&nbsp;&nbsp;English Teacher</h4>
+                                    <h4 class="me-2">*&nbsp;&nbsp;English Teacher</h4>
+
+                                </div>
+                            </div>
+                            <div class="mt-auto flex-grow-1 d-flex flex-column justify-content-end">
+                                <div class="d-flex align-items-center ">
+                                    <img src="{{ url('') }}/newAssets/assets/images/flag.png" alt=""
+                                        class="flag-img">
+                                    <p class="mb-0 pb-0 ms-2">Country Name</p>
+                                </div>
+                                <div class="d-flex align-items-center mt-2">
+                                    <img src="{{ url('') }}/newAssets/assets/images/reading-book 1.png"
+                                        alt="" class="flag-img">
+                                    <p class="mb-0 pb-0 ms-2">21 active students</p>
+                                    <p class="mb-0 pb-0 ms-2 lesson-numbers ms-3"> 315 lessons</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-10 mx-auto col-12 mt-4 ">
+                    <div class="tutors-card h-100 bg-white">
+                        <img src="{{ url('') }}/newAssets/assets/images/team (3).png" alt="">
+                        <div class="tutors-card--text bg-white">
+                            <div class="mb-2">
+                                <h3 class="mb-2">Gretchen Herwitz</h3>
+                                <div class="d-flex align-items-center flex-wrap">
+                                    <h4 class="me-2">*&nbsp;&nbsp;English Teacher</h4>
+                                    <h4 class="me-2">*&nbsp;&nbsp;English Teacher</h4>
+                                    <h4 class="me-2">*&nbsp;&nbsp;English Teacher</h4>
+
+                                </div>
+                            </div>
+                            <div class="mt-auto flex-grow-1 d-flex flex-column justify-content-end">
+                                <div class="d-flex align-items-center ">
+                                    <img src="{{ url('') }}/newAssets/assets/images/flag.png" alt=""
+                                        class="flag-img">
+                                    <p class="mb-0 pb-0 ms-2">Country Name</p>
+                                </div>
+                                <div class="d-flex align-items-center mt-2">
+                                    <img src="{{ url('') }}/newAssets/assets/images/reading-book 1.png"
+                                        alt="" class="flag-img">
+                                    <p class="mb-0 pb-0 ms-2">21 active students</p>
+                                    <p class="mb-0 pb-0 ms-2 lesson-numbers ms-3"> 315 lessons</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-10 mx-auto col-12 mt-4 ">
+                    <div class="tutors-card h-100 bg-white">
+                        <img src="{{ url('') }}/newAssets/assets/images/team (4).png" alt="">
+                        <div class="tutors-card--text bg-white">
+                            <div class="mb-2">
+                                <h3 class="mb-2">Gretchen Herwitz</h3>
+                                <div class="d-flex align-items-center flex-wrap">
+                                    <h4 class="me-2">*&nbsp;&nbsp;English Teacher</h4>
+                                    <h4 class="me-2">*&nbsp;&nbsp;English Teacher</h4>
+                                    <h4 class="me-2">*&nbsp;&nbsp;English Teacher</h4>
+
+                                </div>
+                            </div>
+                            <div class="mt-auto flex-grow-1 d-flex flex-column justify-content-end">
+                                <div class="d-flex align-items-center ">
+                                    <img src="{{ url('') }}/newAssets/assets/images/flag.png" alt=""
+                                        class="flag-img">
+                                    <p class="mb-0 pb-0 ms-2">Country Name</p>
+                                </div>
+                                <div class="d-flex align-items-center mt-2">
+                                    <img src="{{ url('') }}/newAssets/assets/images/reading-book 1.png"
+                                        alt="" class="flag-img">
+                                    <p class="mb-0 pb-0 ms-2">21 active students</p>
+                                    <p class="mb-0 pb-0 ms-2 lesson-numbers ms-3"> 315 lessons</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
                 @if (count($userdata))
                     @foreach ($userdata as $userdata_val)
                         <div class="col-lg-3 col-md-6 col-sm-10 col-12 mt-4">
-                            <div class="tutors-card h-100 bg-white">
-                                <!--<img src="images/{{ $userdata_val->profile_img }}" alt="">-->
-                                <div class="carousel__slide">
-                                    <figure>
-                                        <div>
-                                            <img src="images/{{ $userdata_val->profile_img }}" alt=""
-                                                style="height: 300px; object-fit:cover;">
-                                        </div>
-                                    </figure>
-                                </div>
-                                <div class="tutors-card--text bg-white">
-                                    <div class="mb-3">
-                                        <h3 class="mb-2">{{ $userdata_val->firstname . ' ' . $userdata_val->lastname }}
-                                        </h3>
-                                        <div class="d-flex align-items-center flex-wrap">
-                                            <?php
-                                            foreach ($subjectAll as $key => $value) {
-                                                $medi_arr = explode(',', $userdata_val->subject);
-                                                if (count($medi_arr) > 1) {
-                                                    if (in_array($value->id, $medi_arr)) {
-                                                        echo '<h4 class="me-2">*&nbsp;&nbsp;' . $value->subject . ' Tutor</h4>';
-                                                    }
-                                                } else {
-                                                    if ($userdata_val->subject == $value->id) {
-                                                        echo '<h4 class="me-2">' . $value->subject . ' Tutor</h4>';
+                            <a href="{{ url('/tutor-detail') }}/{{ $userdata_val->user_id }}">
+                                <div class="tutors-card h-100 bg-white">
+                                    <!--<img src="images/{{ $userdata_val->profile_img }}" alt="">-->
+                                    <div class="carousel__slide">
+                                        <figure>
+                                            <div>
+                                                <img src="images/{{ $userdata_val->profile_img }}" alt=""
+                                                    style="height: 300px; object-fit:cover;">
+                                            </div>
+                                        </figure>
+                                    </div>
+                                    <div class="tutors-card--text bg-white">
+                                        <div class="mb-3">
+                                            <h3 class="mb-2">
+                                                {{ $userdata_val->firstname . ' ' . $userdata_val->lastname }}
+                                            </h3>
+                                            <div class="d-flex align-items-center flex-wrap">
+                                                <?php
+                                                foreach ($subjectAll as $key => $value) {
+                                                    $medi_arr = explode(',', $userdata_val->subject);
+                                                    if (count($medi_arr) > 1) {
+                                                        if (in_array($value->id, $medi_arr)) {
+                                                            echo '<h4 class="me-2">*&nbsp;&nbsp;' . $value->subject . ' Tutor</h4>';
+                                                        }
+                                                    } else {
+                                                        if ($userdata_val->subject == $value->id) {
+                                                            echo '<h4 class="me-2">' . $value->subject . ' Tutor</h4>';
+                                                        }
                                                     }
                                                 }
-                                            }
-                                            
-                                            ?>
+                                                
+                                                ?>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="mt-auto flex-grow-1 d-flex flex-column justify-content-end">
-                                        <div class="d-flex align-items-center ">
-                                            <?php
+                                        <div class="mt-auto flex-grow-1 d-flex flex-column justify-content-end">
+                                            <div class="d-flex align-items-center ">
+                                                <?php
                             foreach ($countryAll as $key => $value) {
                               if($userdata_val->country==$value->id){
                                ?>
-                                            <img src="assets/frontpage_assets/flags/{{ Str::lower($value->iso) }}.png"
-                                                alt="" class="flag-img">
-                                            <span>
-                                            </span>
-                                            <p class="mb-0 pb-0 ms-2">{{ $value->nicename }}</p>
-                                            <?php
+                                                <img src="assets/frontpage_assets/flags/{{ Str::lower($value->iso) }}.png"
+                                                    alt="" class="flag-img">
+                                                <span>
+                                                </span>
+                                                <p class="mb-0 pb-0 ms-2">{{ $value->nicename }}</p>
+                                                <?php
                               
                              }
                            }
                            ?>
-                                        </div>
+                                            </div>
 
-                                    </div>
-                                    <div class="d-flex align-items-center mt-2">
-                                        <img src="{{ url('newAssets/assets/images/reading-book 1.png') }}"
-                                            alt="" class="flag-img">
-                                        <p class="mb-0 pb-0 ms-2">{{ activetutorlessons($userdata_val->user_id) }}
-                                            active students</p>
-                                        <p class="mb-0 pb-0 ms-2 lesson-numbers ms-3">
-                                            {{ deliveredtutorlessons($userdata_val->user_id) }} lessons</p>
+                                        </div>
+                                        <div class="d-flex align-items-center mt-2">
+                                            <img src="{{ url('newAssets/assets/images/reading-book 1.png') }}"
+                                                alt="" class="flag-img">
+                                            <p class="mb-0 pb-0 ms-2">{{ activetutorlessons($userdata_val->user_id) }}
+                                                active students</p>
+                                            <p class="mb-0 pb-0 ms-2 lesson-numbers ms-3">
+                                                {{ deliveredtutorlessons($userdata_val->user_id) }} lessons</p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-
+                            </a>
                         </div>
                     @endforeach
                 @endif
@@ -757,7 +882,8 @@
                                                 {{ $Alltestimonial_val->student_desc }}
 
                                             </p>
-                                            <h4>{{ $Alltestimonial_val->student_name }} - {{ $Alltestimonial_val->field }}</h4>
+                                            <h4>{{ $Alltestimonial_val->student_name }} -
+                                                {{ $Alltestimonial_val->field }}</h4>
                                         </div>
                                         @php
                                             $t_count++;
@@ -794,19 +920,17 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6 d-flex justify-content-center  mb-lg-0 mb-4">
-                    <img src="{{ url('newAssets/assets/images/lang.png') }}" alt=""
+                    <img src="{{ url('/') }}/images/{{ $Homepagedata[0]->sec_3_file }}" alt=""
                         class="mx-auto img-fluid">
                 </div>
                 <div class="col-lg-6 pe-lg-5 ">
                     <h2 class="heading text-md-start">
-                        Corporate language training for business
+                        <?php echo $Homepagedata[0]->sec_3_heading; ?>
                     </h2>
                     <p class="main-text2 text-md-start text-center text-gray mt-3"
                         style="color: rgba(44, 44, 44, 0.80);
                   ;">
-                        ProTutor corporate training is designed for teams and businesses offering personalized
-                        language learning with online tutors. Book a demo to learn more.
-                        Want your employer to pay for your lessons? Refer your company! </p>
+                        {{ $Homepagedata[0]->sec_3_dec }} </p>
 
                     <div
                         class="d-flex align-items-center justify-content-lg-start justify-content-center flex-md-row flex-column mt-3 pt-3 mb-3">

@@ -884,6 +884,27 @@ die();*/
         $collection->implode('title', ', ');
         $collection->implode('description', ', ');
 
+        if (isset($request->sec_1_file)) {
+            $image = $request->file('sec_1_file');
+            $imageNameSec1 = time() . '_' . $image->getClientOriginalName();
+            $request->sec_1_file->move(public_path('images'), $imageNameSec1);
+        } else {
+            $imageNameSec1 = $request->hidden_sec_1_file;
+        }
+        if (isset($request->sec_3_file)) {
+            $image = $request->file('sec_3_file');
+            $imageNameSec3 = time() . '_' . $image->getClientOriginalName();
+            $request->sec_3_file->move(public_path('images'), $imageNameSec3);
+        } else {
+            $imageNameSec3 = $request->hidden_sec_3_file;
+        }
+        if (isset($request->sec_4_file)) {
+            $image = $request->file('sec_4_file');
+            $imageNameSec4 = time() . '_' . $image->getClientOriginalName();
+            $request->sec_4_file->move(public_path('images'), $imageNameSec4);
+        } else {
+            $imageNameSec4 = $request->hidden_sec_4_file;
+        }
 
         if (isset($request->sec2_part1_file)) {
             $image = $request->file('sec2_part1_file');
@@ -917,8 +938,15 @@ die();*/
         }
 
         $profile = Homepage::where('id', $homepage_id)->update([
+            'sec_1_file' => $imageNameSec1,
             'sec_1_heading' => $request->sec_1_heading,
             'sec_1_dec' => $request->sec_1_dec,
+            'sec_3_file' => $imageNameSec3,
+            'sec_3_heading' => $request->sec_3_heading,
+            'sec_3_dec' => $request->sec_3_dec,
+            'sec_4_file' => $imageNameSec4,
+            'sec_4_heading' => $request->sec_4_heading,
+            'sec_4_dec' => $request->sec_4_dec,
             'sec2_main_heading' => $request->sec2_main_heading,
             'sec2_part1_file' => $imageName,
             'sec2_part1_heading' => $request->sec2_part1_heading,
@@ -1081,7 +1109,71 @@ die();*/
                 $request->applestore = '';
             }
 
+            if (isset($request->sec_2_file)) {
+                $image = $request->file('sec_2_file');
+                $imageNameSec2 = time() . '_' . $image->getClientOriginalName();
+                $request->sec_2_file->move(public_path('images'), $imageNameSec2);
+            } else {
+                $imageNameSec2 = $request->hidden_sec_2_file;
+            }
+            if (isset($request->sec_3_file)) {
+                $image = $request->file('sec_3_file');
+                $imageNameSec3 = time() . '_' . $image->getClientOriginalName();
+                $request->sec_3_file->move(public_path('images'), $imageNameSec3);
+            } else {
+                $imageNameSec3 = $request->hidden_sec_3_file;
+            }
+            if (isset($request->sec_4_file)) {
+                $image = $request->file('sec_4_file');
+                $imageNameSec4 = time() . '_' . $image->getClientOriginalName();
+                $request->sec_4_file->move(public_path('images'), $imageNameSec4);
+            } else {
+                $imageNameSec4 = $request->hidden_sec_4_file;
+            }
+            if (isset($request->sec_5_c1_file)) {
+                $image = $request->file('sec_5_c1_file');
+                $sec_5_c1_file = time() . '_' . $image->getClientOriginalName();
+                $request->sec_5_c1_file->move(public_path('images'), $sec_5_c1_file);
+            } else {
+                $sec_5_c1_file = $request->hidden_sec_5_c1_file;
+            }
+            if (isset($request->sec_5_c2_file)) {
+                $image = $request->file('sec_5_c2_file');
+                $sec_5_c2_file = time() . '_' . $image->getClientOriginalName();
+                $request->sec_5_c2_file->move(public_path('images'), $sec_5_c2_file);
+            } else {
+                $sec_5_c2_file = $request->hidden_sec_5_c2_file;
+            }
+            if (isset($request->sec_5_c3_file)) {
+                $image = $request->file('sec_5_c3_file');
+                $sec_5_c3_file = time() . '_' . $image->getClientOriginalName();
+                $request->sec_5_c3_file->move(public_path('images'), $sec_5_c3_file);
+            } else {
+                $sec_5_c3_file = $request->hidden_sec_5_c3_file;
+            }
+
             $profile = Become_a_tutor::where('id', 1)->update([
+                'sec_1_heading' => $request->sec_1_heading,
+                'sec_1_dec' => $request->sec_1_dec,
+                'sec_2_file' => $imageNameSec2,
+                'sec_2_heading' => $request->sec_2_heading,
+                'sec_2_dec' => $request->sec_2_dec,
+                'sec_3_file' => $imageNameSec3,
+                'sec_3_heading' => $request->sec_3_heading,
+                'sec_3_dec' => $request->sec_3_dec,
+                'sec_4_file' => $imageNameSec4,
+                'sec_4_heading' => $request->sec_4_heading,
+                'sec_4_dec' => $request->sec_4_dec,
+                'sec_5_mainHeading' => $request->sec_5_mainHeading,
+                'sec_5_c1_file' => $sec_5_c1_file,
+                'sec_5_c1_heading' => $request->sec_5_c1_heading,
+                'sec_5_c1_dec' => $request->sec_5_c1_dec,
+                'sec_5_c2_file' => $sec_5_c2_file,
+                'sec_5_c2_heading' => $request->sec_5_c2_heading,
+                'sec_5_c2_dec' => $request->sec_5_c2_dec,
+                'sec_5_c3_file' => $sec_5_c3_file,
+                'sec_5_c3_heading' => $request->sec_5_c3_heading,
+                'sec_5_c3_dec' => $request->sec_5_c3_dec,
                 'sec_data1' => $sec1_data,
                 'img_sec2' => $imageName2,
                 'main_title_sec2' => $request->main_title,
@@ -1160,11 +1252,14 @@ die();*/
 
         $Footerdata =  Footer::where('id', 1)->first();
         $PageTitle = 'Update Support | ProTutor';
-        return view("admin/footer_data", compact('PageTitle', 'Footerdata'));
+        $subjects = DB::table('subjects')->select('id', 'subject')->get();
+        return view("admin/footer_data", compact('PageTitle', 'Footerdata','subjects'));
     }
 
     public function save_footer_content(Request $request)
     {
+
+        // dd($request->topSubjects);
 
         if ($request->post()) {
             if (isset($request->icon)) {
@@ -1201,6 +1296,7 @@ die();*/
                 'contact' => $request->f_contact,
                 'copyright' => $request->f_copyright,
                 'desc1' => $request->f_desc1,
+                'top_subjects'=> implode(',',$request->topSubjects),
                 'desc2' => $request->f_desc2,
             ]);
             return redirect("admin/update_footer")->with('success_msg', 'Content update successfully.');

@@ -7,7 +7,7 @@
   <h4 class="fw-700 mt-3">User Profile</h4>
   <div class="user-bar">
     <div class="user-bar-left">
-      <div class="user-bar-profile"><img src="{{ url('/') }}/public/images/{{$userdata[0]->profile_img}}" alt=""></div>
+      <div class="user-bar-profile"><img src="{{ url('/') }}/images/{{$userdata[0]->profile_img}}" alt=""></div>
       <div class="user-bar-txt">
         <h5>{{$userdata[0]->first_name.' '.$userdata[0]->last_name}} - {{$userdata[0]->user_id}}</h5>
         <p>@php

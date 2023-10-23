@@ -13,6 +13,7 @@ use App\Models\Hourly_rate;
 use App\Models\Payment;
 use App\Models\Rating;
 use App\Models\Spoken_language;
+use App\Models\Student_testimonial;
 use App\Models\Subject;
 use App\Models\Teaches_level;
 use App\Models\Tutors;
@@ -25,8 +26,9 @@ class GroupLessonController extends Controller
 {
     public function groupclasses()
     {
+        $PageTitle = 'Public Lessons | ProTutor';
         $todayDate = now()->format('Y-m-d');
-        $todayGroupLessons = GroupLesson::with(['teachLevel', 'subject', 'tutor', 'gallery'])->whereDate('class_start_date', $todayDate)->limit(4)->get();
+        $todayGroupLessons = GroupLesson::with(['teachLevel', 'subject', 'tutor', 'gallery','tutorDetails'])->whereDate('class_start_date', $todayDate)->limit(4)->get();
         $groupLessons = GroupLesson::with(['teachLevel', 'subject', 'tutor', 'gallery'])->simplePaginate(12);
 
         $teaches_levels = Teaches_level::select('id', 'teaches_level')->get();
@@ -34,10 +36,11 @@ class GroupLessonController extends Controller
         $subjects = Subject::select('id', 'subject')->get();
         $subjects = $subjects->toArray();
 
-        return view("frontend.grouplessons", compact('todayGroupLessons', 'groupLessons', 'teaches_levels', 'subjects'));
+        return view("frontend.grouplessons", compact('todayGroupLessons', 'groupLessons', 'teaches_levels', 'subjects','PageTitle'));
     }
     public function privategroupclasses()
     {
+        $Alltestimonial =  Student_testimonial::where('user_status', 1)->orderBy('id', 'desc')->get();
         $PageTitle = 'Private Lessons | ProTutor';
         //$Spoken_language = Spoken_language::all();
         $Spoken_language =  Spoken_language::where('user_status', 1)->get();
@@ -52,7 +55,7 @@ class GroupLessonController extends Controller
 
 
             if (isset($_REQUEST['subject']) and $_REQUEST['subject'] != '') {
-                $user_data .= " and " . 'userdetails.subject=' . $_REQUEST['subject'];
+                $user_data .= " and " . 'FIND_IN_SET("'.$_REQUEST['subject'].'", userdetails.subject) > 0';
             }
 
             if (isset($_REQUEST['hourly_rate']) and $_REQUEST['hourly_rate'] != '') {
@@ -80,7 +83,8 @@ class GroupLessonController extends Controller
             //\DB::enableQueryLog();
             $userdata = DB::select($user_data);
             //dd(\DB::getQueryLog());
-            return view('frontend.privateGroupLesson',compact('PageTitle','countryAll','rateAll','subjectAll','Spoken_language','userdata'));
+            $filter=1;
+            return view('frontend.privateGroupLesson',compact('PageTitle','countryAll','rateAll','subjectAll','Spoken_language','userdata','Alltestimonial','filter'));
         }else{
             $user_status='3';
             // $user_data='SELECT users.id as user_id,users.first_name,users.last_name,users.phone_number,users.role,users.user_status,users.email ,users.email_verify,users.password,userdetails.* FROM `users` LEFT JOIN `userdetails` ON users.id = userdetails.student_no WHERE users.role="'.$user_status.'" LIMIT 12';
@@ -89,8 +93,8 @@ class GroupLessonController extends Controller
             ->select('users.id as user_id', 'users.first_name', 'users.last_name', 'users.phone_number', 'users.role', 'users.user_status', 'users.email', 'users.email_verify', 'users.password','userdetails.*')
             ->join('userdetails', 'users.id', '=', 'userdetails.student_no')
             ->where('users.role', $user_status)
-            ->paginate(5);
-            return view('frontend.privateGroupLesson',compact('PageTitle','countryAll','rateAll','subjectAll','Spoken_language','userdata'));
+            ->paginate(2);
+            return view('frontend.privateGroupLesson',compact('PageTitle','countryAll','rateAll','subjectAll','Spoken_language','userdata','Alltestimonial'));
         }
     }
     public function openGroupDetails(GroupLesson $groupLesson)

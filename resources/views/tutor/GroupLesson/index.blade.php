@@ -519,7 +519,7 @@
                                                 <span class="quiz-inp-icon"><i
                                                         class="fa-solid fa-calendar"></i></span>
                                                 <input class="quiz-inp" type="date" name="class_End_Date"
-                                                    id="classEndDate" placeholder="End Date and Time">
+                                                    id="classEndDate" placeholder="End Date and Time" disabled>
 
                                                 <p class="text-danger error-msg" id="lesson_class_End_Date">
 
