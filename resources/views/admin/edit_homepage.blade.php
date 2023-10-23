@@ -279,8 +279,19 @@
                     <label for="">Description</label>
                     <textarea name="sec_3_dec" id="" class="input">{{ $Homepagedata[0]->sec_3_dec }}</textarea>
                 </div>
-
-                
+                <h4 class="fw-700 mt-3" style="text-align: center;">Testinomial Image</h4>
+                <div class="col-sm-6 col-lg-4">
+                    <div class="inp-outer">
+                        <label for="">Testimonial Image</label>
+                        <input class="input" type="file" name="s_t_file">
+                        <?php if(isset($Homepagedata[0]->s_t_file)){ ?>
+                        <input type="hidden" name="hidden_s_t_file"
+                            value="{{ $Homepagedata[0]->s_t_file }}">
+                        <img src="{{ url('/') }}/images/{{ $Homepagedata[0]->s_t_file }}"
+                            alt="" width="100" height="100">
+                        <?php } ?>
+                    </div>
+                </div>
 
 
 {{--

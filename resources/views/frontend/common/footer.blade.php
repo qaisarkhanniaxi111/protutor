@@ -69,18 +69,15 @@
                 {{$Footerdata[0]->title}}
               </p>
               <div class="d-flex align-items-center">
-                  <a href="">
-                      <img src="{{ url('newAssets/assets/images/fb.svg') }}" alt="" class="me-3">
+                <?php foreach($SocialPlatformrdata as $data){
+                  if($data->user_status == 1){
+                    ?>
+                    <a href="{{$data->url}}">
+                      <img src="{{ url("") }}/images/{{$data->title}}" alt="" class="me-3">
                   </a>
-                  <a href="">
-                      <img src="{{ url('newAssets/assets/images/tw.svg') }}" alt="" class="me-3">
-                  </a>
-                  <a href="">
-                      <img src="{{ url('newAssets/assets/images/insta.svg') }}" alt="" class="me-3">
-                  </a>
-                  <a href="">
-                      <img src="{{ url('newAssets/assets/images/youtube.svg') }}" alt="">
-                  </a>
+                  
+                <?php } } ?>
+                 
               </div>
           </div>
 

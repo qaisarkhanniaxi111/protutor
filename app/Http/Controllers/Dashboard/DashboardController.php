@@ -101,6 +101,11 @@ class DashboardController extends Controller
 
 	public function profileUpdate(Request $request, $id = NULL)
 	{
+		if(Session::has('userdata')){
+
+		}else{
+			return redirect(route('login'));
+		}
 
 		$data = Session::get('userdata');
 

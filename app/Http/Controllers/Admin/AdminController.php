@@ -905,6 +905,13 @@ die();*/
         } else {
             $imageNameSec4 = $request->hidden_sec_4_file;
         }
+        if (isset($request->s_t_file)) {
+            $image = $request->file('s_t_file');
+            $s_t_file = time() . '_' . $image->getClientOriginalName();
+            $request->s_t_file->move(public_path('images'), $s_t_file);
+        } else {
+            $s_t_file = $request->hidden_s_t_file;
+        }
 
         if (isset($request->sec2_part1_file)) {
             $image = $request->file('sec2_part1_file');
@@ -947,6 +954,7 @@ die();*/
             'sec_4_file' => $imageNameSec4,
             'sec_4_heading' => $request->sec_4_heading,
             'sec_4_dec' => $request->sec_4_dec,
+            's_t_file' => $s_t_file,
             'sec2_main_heading' => $request->sec2_main_heading,
             'sec2_part1_file' => $imageName,
             'sec2_part1_heading' => $request->sec2_part1_heading,
@@ -1316,13 +1324,18 @@ die();*/
     {
         if ($request->post()) {
             $request->validate([
-                'create_identifier' => ['required'],
+                'identifier' => ['required'],
                 'create_link' => ['required'],
             ]);
 
             $user_status = '1';
+            if (isset($request->identifier)) {
+                $image = $request->file('identifier');
+                $identifier = time() . '_' . $image->getClientOriginalName();
+                $request->identifier->move(public_path('images'), $identifier);
+            }
             $social_platforms = new Social_platform;
-            $social_platforms->title = $request->create_identifier;
+            $social_platforms->title = $identifier;
             $social_platforms->url = $request->create_link;
             $social_platforms->user_status = $user_status;
 
@@ -1346,11 +1359,15 @@ die();*/
     {
         if ($request->post()) {
             $request->validate([
-                'title' => ['required'],
+                'identifier' => ['required'],
                 'url' => ['required'],
             ]);
-
-            $result =  DB::table('social_media_platform')->where('id', $request->id)->update(['title' => $request->title, 'url' => $request->url]);
+            if (isset($request->identifier)) {
+                $image = $request->file('identifier');
+                $identifier = time() . '_' . $image->getClientOriginalName();
+                $request->identifier->move(public_path('images'), $identifier);
+            }
+            $result =  DB::table('social_media_platform')->where('id', $request->id)->update(['title' => $identifier, 'url' => $request->url]);
             return redirect("admin/social_platforms")->with('success_msg', 'User update successfully.');
         }
         return view("admin/social_platforms", compact('result'));

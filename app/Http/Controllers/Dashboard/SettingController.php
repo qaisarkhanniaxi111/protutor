@@ -11,13 +11,23 @@ class SettingController extends Controller
 {
     public function settings(){
         $PageTitle = 'Settings | ProTutor';
-        $userid = Session::get('tutorid');  
+       
+        if(Session::has('tutorid')){
+             
+        }else{
+            return redirect(route('login'));
+        }
+        $userid = Session::get('tutorid'); 
         $user_data =  User::where('id', $userid)->first();
         $calender = $user_data->role;
         return view("tutor.setting",compact('PageTitle','user_data','calender'));
     }
     public function change_password(Request $request){
-
+        if(Session::has('tutorid')){
+             
+        }else{
+            return redirect(route('login'));
+        }
         if($request->post())
         {
             $user = User::where('id',Session::get('tutorid'))->first();

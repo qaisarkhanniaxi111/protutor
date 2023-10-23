@@ -21,7 +21,11 @@ class TutorTeachingOrdersController extends Controller
     }
     public function teachingOrders()
     {
-
+        if(Session::has('tutordata')){
+             
+        }else{
+            return redirect(route('login'));
+        }
         $data = Session::get('tutordata');
         if ($data->role != 3) {
             return redirect('/dashboard');

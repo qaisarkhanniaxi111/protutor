@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Payment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class EarningController extends Controller
 {
@@ -16,7 +17,11 @@ class EarningController extends Controller
         $allPayments = null;
 
         $tutor = auth()->user();
-
+        if($tutor){
+             
+        }else{
+            return redirect(route('login'));
+        }
         if ($tutor->teacherPayments) {
 
             $totalPendingClearenceBalance = Payment::where('tutor_id', $tutor->id)->where('status', 'pending')->sum('amount');

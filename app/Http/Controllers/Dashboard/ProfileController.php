@@ -18,7 +18,11 @@ use Illuminate\Support\Facades\Session;
 class ProfileController extends Controller
 {
     public function profileUpdate(Request $request,$id =NULL){
-
+        if(Session::has('tutordata')){
+             
+        }else{
+            return redirect(route('login'));
+        }
         $data = Session::get('tutordata');
 
 

@@ -907,7 +907,7 @@
                     </div>
                 </div>
                 <div class="col-lg-6 d-flex justify-content-center order-lg-2 order-1 mb-lg-0 mb-4">
-                    <img src="{{ url('newAssets/assets/images/testimonials.png') }}" alt=""
+                    <img src="{{ url('/') }}/images/{{ $Homepagedata[0]->s_t_file }}" alt=""
                         class="mx-auto img-fluid">
                 </div>
 

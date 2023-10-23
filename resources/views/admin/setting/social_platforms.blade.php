@@ -49,7 +49,7 @@
             @foreach($platformAll as $data)
             <tr>
               <td>{{$i}}</td>
-              <td>{{$data->title}}</td>
+              <td><img src="{{ url("") }}/images/{{$data->title}}" alt=""></td>
               <td><a href="{{$data->url}}" target="_blank">{{$data->url}}</a></td>
               <td>
                 <label class="switch platform_status_change"  data-id="{{$data->id}}">
@@ -111,12 +111,13 @@
         <h5 class="fw-500">Meeting Tool Setup</h5>
         <div class="btn-close" data-bs-dismiss="modal" aria-label="Close"></div>
       </div>
-      <form method="post" action="{{url('admin/social_platform/create_platform')}}">
+      <form method="post" action="{{url('admin/social_platform/create_platform')}}" enctype="multipart/form-data">
         @csrf
         <div class="modal-body ps-5 pe-5">
           <div class="inp-outer mt-0">
             <label for="">Identifier</label>
-            <input class="input" type="text" name="create_identifier" value="">
+            <input type="file" name="identifier" class="form-control">
+            {{-- <input class="input" type="text" name="create_identifier" value=""> --}}
           </div>
           <div class="inp-outer">
             <label for="">Link</label>
@@ -139,13 +140,14 @@
         <h5 class="fw-500">Meeting Tool Setup</h5>
         <div class="btn-close" data-bs-dismiss="modal" aria-label="Close"></div>
       </div>
-      <form method="post" action="{{url('admin/social_platform/edit_platform')}}">
+      <form method="post" action="{{url('admin/social_platform/edit_platform')}}" enctype="multipart/form-data">
         @csrf
         <input type="hidden" name="id" value="id" class="data_id" id="data_check_update_id">
         <div class="modal-body ps-5 pe-5">
           <div class="inp-outer mt-0">
             <label for="">Identifier</label>
-            <input class="input" id="check_title" name="title" type="text">
+            <input type="file" name="identifier" class="form-control">
+            {{-- <input class="input" id="check_title" name="title" type="text"> --}}
           </div>
           <div class="inp-outer">
             <label for="">Link</label>
@@ -180,7 +182,7 @@
       
       dataType : 'json',
       success : function(result){ 
-        $('#check_title').val(result.title);
+        // $('#check_title').val(result.title);
         $('#check_url').val(result.url);
         $('#data_check_update_id').val(result.id);
       }
