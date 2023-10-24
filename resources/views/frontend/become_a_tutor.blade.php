@@ -1,4 +1,4 @@
-@include('/frontend/common/header')
+@include('/frontend/common/newHeader')
 
 
 {{-- new code  --}}
@@ -378,4 +378,4 @@
 			this.classList.toggle('fa-eye-slash');
 	});
 </script>
-@include('/frontend/common/footer')
+@include('/frontend/common/newFooter')

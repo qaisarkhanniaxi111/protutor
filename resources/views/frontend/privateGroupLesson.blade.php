@@ -1,7 +1,7 @@
 @php
     $lightNavbar = true;
 @endphp
-@include('frontend/common/header')
+@include('frontend/common/newHeader')
 <link rel="stylesheet" href="{{ url('newAssets/assets/css/private-lessons.css') }}">
 <style>
     p {
@@ -571,7 +571,7 @@
                         @foreach ($userdata as $userdata_val)
                         <div class="teacher-card-div mb-3" onmouseenter="changeCalendarContent('{{ $userdata_val->video_link }}')">
                             <div class="teacher-card--header">
-                                    <a class="w-100" href="{{url('/tutor-detail')}}/{{$userdata_val->user_id}}">
+                                    <a class="w-100 text-decoration-none" href="{{url('/tutor-detail')}}/{{$userdata_val->user_id}}">
 
                                     <div class="teacher-card--header-text w-100 align-items-start">
                                         <div class=" d-flex align-items-start flex-md-row flex-column mb-md-0 mb-3">
@@ -677,7 +677,7 @@
                                             </div>
                                             <button class="main-btn-blank-sm w-100 mx-3"><a
                                                     href="{{ url('chat', $userdata_val->user_id) }}"
-                                                    style="color: #FF6C0B">Message</a></button>
+                                                    style="color: #FF6C0B" class="text-decoration-none">Message</a></button>
                                         </div>
                                         <button class="main-btn-sm w-100" style="white-space: nowrap;"
                                             data-bs-toggle="modal" data-bs-target="#staticBackdrop"
@@ -1156,7 +1156,7 @@
 @endif
 
 <!-- Footer Section -->
-@include('/frontend/common/footer')
+@include('/frontend/common/newFooter')
 
 {{-- <script src="https://code.jquery.com/jquery-3.7.1.slim.js"
     integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc=" crossorigin="anonymous"></script>

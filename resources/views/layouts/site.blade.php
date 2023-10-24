@@ -36,10 +36,10 @@
 			<div class="site-nav">
 				<ul>
 					<li><a class="active" href="{{url('/')}}">Home</a></li>
-                    <li><a href="{{url('/find-a-tutor')}}">Find tutors</a></li>
-                    <li><a href="">Enterprise</a></li>
+                    <li><a href="{{url('/group')}}">Find tutors</a></li>
+                   
                     <li><a href="{{url('/become-a-tutor')}}">Become a tutor</a></li>
-                    <li><a href="{{url('/group')}}">Group Lesson</a></li>
+                  
                     <li style="background: #ff6c0b;margin-right: 5px;font-family: 'Inter', sans-serif;border-radius: 5px;color: white !important;"><a style="color: white !important;" href="{{url('/signup')}}">Sign Up</a></li>
                     <li><a href="{{url('/login')}}">{{ auth()->check() ? 'Dashboard': 'Login' }}</a></li>
 				</ul>
