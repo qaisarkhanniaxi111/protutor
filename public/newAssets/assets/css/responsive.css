@@ -192,19 +192,29 @@
     line-height: normal;
   }
 
-  .carousel-control-next span,
-  .carousel-control-prev span {
-    height: 32px;
-    width: 32px;
+  .carousel-control-next {
+    width: 32px !important;
+    height: 32px !important;
+    
+  }
+  
+  
+  
+  .carousel-control-prev {
+
+    height: 32px !important;
+    width: 32px !important;
+   right: 40px !important;
+  
   }
 
   .carousel-item h4 {
     font-size: 14px;
   }
 
-  .carousel-control-prev {
+  /* .carousel-control-prev {
     padding-right: 50px !important;
-  }
+  } */
 
   .work-card img {
     width: 100%;
@@ -219,6 +229,15 @@
   }
   .sm-100 {
     width: 100% !important;
+  }
+  .apply-filter-btn{
+    background-color: #ff6c0b;
+    font-size: 14px;
+    font-weight: 500;
+    color: white !important;
+    border-radius: 4px;
+    width: 100%;
+    margin: 7px 2px !important;
   }
 }
 
@@ -386,4 +405,15 @@
   /* .sm-100 {
     width: 100% !important;
   } */
+  
+  /* ================================find tutor */
+  .private-lesson{
+    padding: 14px 15px;
+    height: 44px;
+    font-size: 14px;
+  }
+  .teacher-card--header .online-image{
+    height: auto;
+  }
+ 
 }

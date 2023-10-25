@@ -113,8 +113,8 @@ faqs.forEach((faq) => {
   });
 });
   // jQuery code
-  $(document).ready(function () {
-    $(".like").click(function () {
-        $(".like-fill").toggleClass("liked");
-    });
-});
+//   $(document).ready(function () {
+//     $(".like").click(function () {
+//         $(".like-fill").toggleClass("liked");
+//     });
+// });

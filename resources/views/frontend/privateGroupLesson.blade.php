@@ -1,59 +1,59 @@
 @php
-    $lightNavbar = true;
+$lightNavbar = true;
 @endphp
 @include('frontend/common/newHeader')
 <link rel="stylesheet" href="{{ url('newAssets/assets/css/private-lessons.css') }}">
 <style>
-    p {
-        text-align: unset;
-    }
+p {
+    text-align: unset;
+}
 
-    /*calender*/
+/*calender*/
 
-    #schedule-calendar .fc-header-toolbar .fc-toolbar-chunk .fc-button-group button,
-    #model-schedule-calendar .fc-header-toolbar .fc-toolbar-chunk .fc-button-group button {
-        background: #fe6903;
-        border: solid 1px #fe6903;
-    }
+#schedule-calendar .fc-header-toolbar .fc-toolbar-chunk .fc-button-group button,
+#model-schedule-calendar .fc-header-toolbar .fc-toolbar-chunk .fc-button-group button {
+    background: #fe6903;
+    border: solid 1px #fe6903;
+}
 
-    #schedule-calendar .fc-header-toolbar .fc-toolbar-chunk .fc-button-group button:hover,
-    #model-schedule-calendar .fc-header-toolbar .fc-toolbar-chunk .fc-button-group button:hover {
-        color: #fff;
-        opacity: 0.7;
-    }
+#schedule-calendar .fc-header-toolbar .fc-toolbar-chunk .fc-button-group button:hover,
+#model-schedule-calendar .fc-header-toolbar .fc-toolbar-chunk .fc-button-group button:hover {
+    color: #fff;
+    opacity: 0.7;
+}
 
-    #schedule-calendar .fc-header-toolbar .fc-toolbar-chunk button.fc-today-button.fc-button.fc-button-primary,
-    #model-schedule-calendar .fc-header-toolbar .fc-toolbar-chunk button.fc-today-button.fc-button.fc-button-primary {
-        background: #a2b5ff;
-        border-color: #a2b5ff;
-    }
+#schedule-calendar .fc-header-toolbar .fc-toolbar-chunk button.fc-today-button.fc-button.fc-button-primary,
+#model-schedule-calendar .fc-header-toolbar .fc-toolbar-chunk button.fc-today-button.fc-button.fc-button-primary {
+    background: #a2b5ff;
+    border-color: #a2b5ff;
+}
 
 
-    #schedule-calendar .fc-view-harness thead th.fc-col-header-cell a.fc-col-header-cell-cushion,
-    #model-schedule-calendar .fc-view-harness thead th.fc-col-header-cell a.fc-col-header-cell-cushion {
-        color: #fe6903;
-        text-decoration: none
-    }
+#schedule-calendar .fc-view-harness thead th.fc-col-header-cell a.fc-col-header-cell-cushion,
+#model-schedule-calendar .fc-view-harness thead th.fc-col-header-cell a.fc-col-header-cell-cushion {
+    color: #fe6903;
+    text-decoration: none
+}
 
-    #schedule-calendar .fc-view-harness td .fc-timegrid-col-frame .fc-timegrid-event-harness a.fc-event,
-    #model-schedule-calendar .fc-view-harness td .fc-timegrid-col-frame .fc-timegrid-event-harness a.fc-event {
-        background: #422d5a;
-        border: none !important;
-        text-align: center;
-        font-size: 16px;
-    }
+#schedule-calendar .fc-view-harness td .fc-timegrid-col-frame .fc-timegrid-event-harness a.fc-event,
+#model-schedule-calendar .fc-view-harness td .fc-timegrid-col-frame .fc-timegrid-event-harness a.fc-event {
+    background: #422d5a;
+    border: none !important;
+    text-align: center;
+    font-size: 16px;
+}
 
-    #schedule-calendar .fc-header-toolbar .fc-toolbar-chunk .fc-button-group button:first-child,
-    #schedule-calendar .fc-header-toolbar .fc-toolbar-chunk .fc-button-group button.fc-prev-button,
-    #model-schedule-calendar .fc-header-toolbar .fc-toolbar-chunk .fc-button-group button:first-child,
-    #model-schedule-calendar .fc-header-toolbar .fc-toolbar-chunk .fc-button-group button.fc-prev-button {
-        border-right: solid 1px #fff;
-    }
+#schedule-calendar .fc-header-toolbar .fc-toolbar-chunk .fc-button-group button:first-child,
+#schedule-calendar .fc-header-toolbar .fc-toolbar-chunk .fc-button-group button.fc-prev-button,
+#model-schedule-calendar .fc-header-toolbar .fc-toolbar-chunk .fc-button-group button:first-child,
+#model-schedule-calendar .fc-header-toolbar .fc-toolbar-chunk .fc-button-group button.fc-prev-button {
+    border-right: solid 1px #fff;
+}
 
-    #schedule-calendar .fc-header-toolbar .fc-toolbar-chunk .fc-button-group button.fc-prev-button,
-    #model-schedule-calendar .fc-header-toolbar .fc-toolbar-chunk .fc-button-group button.fc-prev-button {
-        margin-right: 1px;
-    }
+#schedule-calendar .fc-header-toolbar .fc-toolbar-chunk .fc-button-group button.fc-prev-button,
+#model-schedule-calendar .fc-header-toolbar .fc-toolbar-chunk .fc-button-group button.fc-prev-button {
+    margin-right: 1px;
+}
 </style>
 
 
@@ -63,8 +63,8 @@
     <div class="modal-dialog modal-xl modal-dialog-scrollable modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <img src="" alt="" id="modelTutorImage"
-                    style="width:40px;height:40px;object-fit: cover;" class="rounded-circle me-3">
+                <img src="" alt="" id="modelTutorImage" style="width:40px;height:40px;object-fit: cover;"
+                    class="rounded-circle me-3">
                 <span class="h1 modal-title fs-5" id="modelTutorName"
                     style="font-family: Arial, Helvetica, sans-serif"></span>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -95,10 +95,10 @@
 
         <pre>
             {{ print_r($userdata_val) }}
-        </pre>
+    </pre>
 
-        @endforeach
-        @endif --}}
+    @endforeach
+    @endif --}}
 
 
     <section class="hero ">
@@ -140,8 +140,7 @@
                 </div>
                 <div class="col-lg-5 order-lg-2 order-1">
                     <div class="right-hero d-flex justify-content-center mb-lg-0 mb-3">
-                        <img src="{{ url('newAssets/assets/images/images/hero.png') }}" alt="img"
-                            class="img-fluid">
+                        <img src="{{ url('newAssets/assets/images/images/hero.png') }}" alt="img" class="img-fluid">
                     </div>
                 </div>
             </div>
@@ -160,8 +159,10 @@
                             <select class="form-select" name="subject" aria-label="Default select example">
                                 <option value="" selected> Select </option>
                                 @foreach ($subjectAll as $data2)
-                                    <option <?php echo isset($_GET['subject']) && $_GET['subject'] == $data2->id ? 'selected' : ''; ?> value="{{ $data2->id }}">{{ $data2->subject }}
-                                    </option>
+                                <option
+                                    <?php echo isset($_GET['subject']) && $_GET['subject'] == $data2->id ? 'selected' : ''; ?>
+                                    value="{{ $data2->id }}">{{ $data2->subject }}
+                                </option>
                                 @endforeach
 
                             </select>
@@ -172,16 +173,36 @@
                             <label for="">price per lesson</label>
                             <select class="form-select" name="hourly_rate" aria-label="Default select example">
                                 <option value="" selected> Select </option>
-                                <option value="1-5" <?php echo isset($_GET['hourly_rate']) && $_GET['hourly_rate'] == '1-5' ? 'selected' : ''; ?>>$1-5</option>
-                                <option value="6-10" <?php echo isset($_GET['hourly_rate']) && $_GET['hourly_rate'] == '6-10' ? 'selected' : ''; ?>>$6-10</option>
-                                <option value="11-15"<?php echo isset($_GET['hourly_rate']) && $_GET['hourly_rate'] == '11-15' ? 'selected' : ''; ?>>$11-15</option>
-                                <option value="16-20"<?php echo isset($_GET['hourly_rate']) && $_GET['hourly_rate'] == '16-20' ? 'selected' : ''; ?>>$16-20</option>
-                                <option value="21-25"<?php echo isset($_GET['hourly_rate']) && $_GET['hourly_rate'] == '21-25' ? 'selected' : ''; ?>>$21-25</option>
-                                <option value="26-30"<?php echo isset($_GET['hourly_rate']) && $_GET['hourly_rate'] == '26-30' ? 'selected' : ''; ?>>$26-30</option>
-                                <option value="31-35"<?php echo isset($_GET['hourly_rate']) && $_GET['hourly_rate'] == '31-35' ? 'selected' : ''; ?>>$31-35</option>
-                                <option value="36-40"<?php echo isset($_GET['hourly_rate']) && $_GET['hourly_rate'] == '36-40' ? 'selected' : ''; ?>>$36-40</option>
-                                <option value="41-45"<?php echo isset($_GET['hourly_rate']) && $_GET['hourly_rate'] == '41-45' ? 'selected' : ''; ?>>$41-45</option>
-                                <option value="46-50"<?php echo isset($_GET['hourly_rate']) && $_GET['hourly_rate'] == '46-50' ? 'selected' : ''; ?>>$46-50</option>
+                                <option value="1-5"
+                                    <?php echo isset($_GET['hourly_rate']) && $_GET['hourly_rate'] == '1-5' ? 'selected' : ''; ?>>
+                                    $1-5</option>
+                                <option value="6-10"
+                                    <?php echo isset($_GET['hourly_rate']) && $_GET['hourly_rate'] == '6-10' ? 'selected' : ''; ?>>
+                                    $6-10</option>
+                                <option value="11-15"
+                                    <?php echo isset($_GET['hourly_rate']) && $_GET['hourly_rate'] == '11-15' ? 'selected' : ''; ?>>
+                                    $11-15</option>
+                                <option value="16-20"
+                                    <?php echo isset($_GET['hourly_rate']) && $_GET['hourly_rate'] == '16-20' ? 'selected' : ''; ?>>
+                                    $16-20</option>
+                                <option value="21-25"
+                                    <?php echo isset($_GET['hourly_rate']) && $_GET['hourly_rate'] == '21-25' ? 'selected' : ''; ?>>
+                                    $21-25</option>
+                                <option value="26-30"
+                                    <?php echo isset($_GET['hourly_rate']) && $_GET['hourly_rate'] == '26-30' ? 'selected' : ''; ?>>
+                                    $26-30</option>
+                                <option value="31-35"
+                                    <?php echo isset($_GET['hourly_rate']) && $_GET['hourly_rate'] == '31-35' ? 'selected' : ''; ?>>
+                                    $31-35</option>
+                                <option value="36-40"
+                                    <?php echo isset($_GET['hourly_rate']) && $_GET['hourly_rate'] == '36-40' ? 'selected' : ''; ?>>
+                                    $36-40</option>
+                                <option value="41-45"
+                                    <?php echo isset($_GET['hourly_rate']) && $_GET['hourly_rate'] == '41-45' ? 'selected' : ''; ?>>
+                                    $41-45</option>
+                                <option value="46-50"
+                                    <?php echo isset($_GET['hourly_rate']) && $_GET['hourly_rate'] == '46-50' ? 'selected' : ''; ?>>
+                                    $46-50</option>
                             </select>
                         </div>
                     </div>
@@ -191,8 +212,10 @@
                             <select class="form-select" name="country" aria-label="Default select example">
                                 <option value="" selected>Any country </option>
                                 @foreach ($countryAll as $data)
-                                    <option <?php echo isset($_GET['country']) && $_GET['country'] == $data->id ? 'selected' : ''; ?> value="{{ $data->id }}">{{ $data->name }}
-                                    </option>
+                                <option
+                                    <?php echo isset($_GET['country']) && $_GET['country'] == $data->id ? 'selected' : ''; ?>
+                                    value="{{ $data->id }}">{{ $data->name }}
+                                </option>
                                 @endforeach
                             </select>
                         </div>
@@ -202,8 +225,12 @@
                             <label for="">I’m available</label>
                             <select class="form-select" name="user_status" aria-label="Default select example">
                                 <option value="" selected> Any time</option>
-                                <option value="1" <?php echo isset($_GET['user_status']) && $_GET['user_status'] == 1 ? 'selected' : ''; ?>>Active</option>
-                                <option value="0" <?php echo isset($_GET['user_status']) && $_GET['user_status'] == 0 ? 'selected' : ''; ?>>Inactive</option>
+                                <option value="1"
+                                    <?php echo isset($_GET['user_status']) && $_GET['user_status'] == 1 ? 'selected' : ''; ?>>
+                                    Active</option>
+                                <option value="0"
+                                    <?php echo isset($_GET['user_status']) && $_GET['user_status'] == 0 ? 'selected' : ''; ?>>
+                                    Inactive</option>
                             </select>
                         </div>
                     </div>
@@ -217,17 +244,17 @@
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                 @foreach ($Spoken_language as $spoken_language_data)
-                                    <li>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio"
-                                                value="{{ $spoken_language_data->id }}" id="flexCheckDefault"
-                                                <?php echo isset($_GET['spoken_language']) && $_GET['spoken_language'] == $spoken_language_data->id ? 'checked' : ''; ?>>
-                                            <label class="form-check-label" for="flexCheckDefault">
-                                                {{ $spoken_language_data->spoken_language }}
-                                            </label>
-                                        </div>
+                                <li>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio"
+                                            value="{{ $spoken_language_data->id }}" id="flexCheckDefault"
+                                            <?php echo isset($_GET['spoken_language']) && $_GET['spoken_language'] == $spoken_language_data->id ? 'checked' : ''; ?>>
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            {{ $spoken_language_data->spoken_language }}
+                                        </label>
+                                    </div>
 
-                                    </li>
+                                </li>
                                 @endforeach
                             </ul>
                         </div>
@@ -238,17 +265,17 @@
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                 @foreach ($Spoken_language as $spoken_language_data)
-                                    <li>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="spoken_language"
-                                                value="{{ $spoken_language_data->id }}" id="flexCheckDefault"
-                                                <?php echo isset($_GET['spoken_language']) && $_GET['spoken_language'] == $spoken_language_data->id ? 'checked' : ''; ?>>
-                                            <label class="form-check-label" for="flexCheckDefault">
-                                                {{ $spoken_language_data->spoken_language }}
-                                            </label>
-                                        </div>
+                                <li>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="spoken_language"
+                                            value="{{ $spoken_language_data->id }}" id="flexCheckDefault"
+                                            <?php echo isset($_GET['spoken_language']) && $_GET['spoken_language'] == $spoken_language_data->id ? 'checked' : ''; ?>>
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            {{ $spoken_language_data->spoken_language }}
+                                        </label>
+                                    </div>
 
-                                    </li>
+                                </li>
                                 @endforeach
                             </ul>
                         </div>
@@ -259,17 +286,17 @@
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                 @foreach ($Spoken_language as $spoken_language_data)
-                                    <li>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="native_language"
-                                                value="{{ $spoken_language_data->id }}" id="flexCheckDefault"
-                                                <?php echo isset($_GET['native_language']) && $_GET['native_language'] == $spoken_language_data->id ? 'checked' : ''; ?>>
-                                            <label class="form-check-label" for="flexCheckDefault">
-                                                {{ $spoken_language_data->spoken_language }}
-                                            </label>
-                                        </div>
+                                <li>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="native_language"
+                                            value="{{ $spoken_language_data->id }}" id="flexCheckDefault"
+                                            <?php echo isset($_GET['native_language']) && $_GET['native_language'] == $spoken_language_data->id ? 'checked' : ''; ?>>
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            {{ $spoken_language_data->spoken_language }}
+                                        </label>
+                                    </div>
 
-                                    </li>
+                                </li>
                                 @endforeach
                             </ul>
                         </div>
@@ -282,8 +309,7 @@
 
                                 <li>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value=""
-                                            id="flexCheckDefault">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                                         <label class="form-check-label" for="flexCheckDefault">
                                             Englis
                                         </label>
@@ -292,8 +318,7 @@
                                 </li>
                                 <li>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value=""
-                                            id="flexCheckDefault">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                                         <label class="form-check-label" for="flexCheckDefault">
                                             Urdu
                                         </label>
@@ -302,8 +327,7 @@
                                 </li>
                                 <li>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value=""
-                                            id="flexCheckDefault">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                                         <label class="form-check-label" for="flexCheckDefault">
                                             Mathmatics
                                         </label>
@@ -312,8 +336,7 @@
                                 </li>
                                 <li>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value=""
-                                            id="flexCheckDefault">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                                         <label class="form-check-label" for="flexCheckDefault">
                                             Computer
                                         </label>
@@ -322,8 +345,7 @@
                                 </li>
                                 <li>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value=""
-                                            id="flexCheckDefault">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                                         <label class="form-check-label" for="flexCheckDefault">
                                             Chemistry
                                         </label>
@@ -337,8 +359,7 @@
 
                                 <li>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value=""
-                                            id="flexCheckDefault">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                                         <label class="form-check-label" for="flexCheckDefault">
                                             Englis
                                         </label>
@@ -347,8 +368,7 @@
                                 </li>
                                 <li>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value=""
-                                            id="flexCheckDefault">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                                         <label class="form-check-label" for="flexCheckDefault">
                                             Urdu
                                         </label>
@@ -357,8 +377,8 @@
                                 </li>
                             </ul>
                         </div>
-                        <button class="btn me-2 rounded-5" style="background-color:#ff6c0b;border-color: #434b480a;color:#fff">submit</button>
-                        <a href="{{ url('/private/group/') }}" class="btn rounded-5" style="background-color:#ff6c0b;border-color: #434b480a;color:#fff">clear</a>
+                        <button class="btn me-2 rounded-5 apply-filter-btn">submit</button>
+                        <a href="{{ url('/private/group/') }}" class="btn rounded-5 apply-filter-btn">clear</a>
                     </div>
                     <div class="col-xl-4 d-flex align-items-center flex-md-row flex-column">
                         <div class="sort ms-auto d-flex align-items-center mb-md-0 mb-3">
@@ -377,8 +397,7 @@
                         </div>
                         <div class="search">
                             <input type="text" placeholder="Search by name or keyword">
-                            <img src="{{ url('newAssets') }}/assets/images/search.svg" alt=""
-                                class="search-icon">
+                            <img src="{{ url('newAssets') }}/assets/images/search.svg" alt="" class="search-icon">
                         </div>
 
                     </div>
@@ -397,7 +416,6 @@
                 <div class="col-xl-8">
                     <div class="teacher-card-div mb-3">
                         <div class="teacher-card--header">
-
                             <div class="teacher-card--header-text w-100 align-items-start">
                                 <div class=" d-flex align-items-start flex-md-row flex-column mb-md-0 mb-3">
                                     <div class="online-image">
@@ -409,15 +427,15 @@
                                             class="d-flex align-items-sm-center flex-sm-row flex-column align-items-start">
                                             <h1 class="mb-0 pb-0">Hanna Baptista</h1>
                                             <div class="d-flex align-items-center mt-sm-0 mt-2">
-                                                <img src="{{ url("") }}/newAssets/assets/images/star.svg" alt="" class="ms-sm-3 ms-0 me-1">
+                                                <img src="{{ url("") }}/newAssets/assets/images/star.svg" alt=""
+                                                    class="ms-sm-3 ms-0 me-1">
                                                 <h3 class="mb-0 pb-0">5.0</h3>
                                                 <span>(33 review)</span>
                                             </div>
                                         </div>
                                         <div class=" mb-2">
                                             <!-- <h2 class="mb-0 pb-0">English teacher</h2> -->
-                                            <div
-                                                class="d-flex align-items-lg-center mt-3 flex-wrap align-items-start">
+                                            <div class="d-flex align-items-lg-center mt-3 flex-wrap align-items-start">
                                                 <h2 class="text-primary me-2 ps-0">English teacher</h2>
                                                 <h2 class="text-primary me-2 ps-0">English teacher</h2>
                                                 <h2 class="text-primary me-2 ps-0">English teacher</h2>
@@ -427,7 +445,8 @@
                                             </div>
 
                                             <div class="d-flex align-items-center  mt-2">
-                                                <img src="{{ url("") }}/newAssets/assets/images/flag.png" alt="" class="me-1">
+                                                <img src="{{ url("") }}/newAssets/assets/images/flag.png" alt=""
+                                                    class="me-1">
                                                 <p class="mb-0 pb-0">United State</p>
                                             </div>
                                         </div>
@@ -495,15 +514,15 @@
                                             class="d-flex align-items-sm-center flex-sm-row flex-column align-items-start">
                                             <h1 class="mb-0 pb-0">Hanna Baptista</h1>
                                             <div class="d-flex align-items-center mt-sm-0 mt-2">
-                                                <img src="{{ url("") }}/newAssets/assets/images/star.svg" alt="" class="ms-sm-3 ms-0 me-1">
+                                                <img src="{{ url("") }}/newAssets/assets/images/star.svg" alt=""
+                                                    class="ms-sm-3 ms-0 me-1">
                                                 <h3 class="mb-0 pb-0">5.0</h3>
                                                 <span>(33 review)</span>
                                             </div>
                                         </div>
                                         <div class=" mb-2">
                                             <!-- <h2 class="mb-0 pb-0">English teacher</h2> -->
-                                            <div
-                                                class="d-flex align-items-lg-center mt-3 flex-wrap align-items-start">
+                                            <div class="d-flex align-items-lg-center mt-3 flex-wrap align-items-start">
                                                 <h2 class="text-primary me-2 ps-0">English teacher</h2>
                                                 <h2 class="text-primary me-2 ps-0">English teacher</h2>
                                                 <h2 class="text-primary me-2 ps-0">English teacher</h2>
@@ -513,7 +532,8 @@
                                             </div>
 
                                             <div class="d-flex align-items-center  mt-2">
-                                                <img src="{{ url("") }}/newAssets/assets/images/flag.png" alt="" class="me-1">
+                                                <img src="{{ url("") }}/newAssets/assets/images/flag.png" alt=""
+                                                    class="me-1">
                                                 <p class="mb-0 pb-0">United State</p>
                                             </div>
                                         </div>
@@ -568,36 +588,37 @@
                         </div>
                     </div>
                     @if (count($userdata))
-                        @foreach ($userdata as $userdata_val)
-                        <div class="teacher-card-div mb-3" onmouseenter="changeCalendarContent('{{ $userdata_val->video_link }}')">
-                            <div class="teacher-card--header">
-                                    <a class="w-100 text-decoration-none" href="{{url('/tutor-detail')}}/{{$userdata_val->user_id}}">
+                    @foreach ($userdata as $userdata_val)
+                    <div class="teacher-card-div mb-3"
+                        onmouseenter="changeCalendarContent('{{ $userdata_val->video_link }}')">
+                        <div class="teacher-card--header">
+                            <a class="w-100 text-decoration-none"
+                                href="{{url('/tutor-detail')}}/{{$userdata_val->user_id}}">
 
-                                    <div class="teacher-card--header-text w-100 align-items-start">
-                                        <div class=" d-flex align-items-start flex-md-row flex-column mb-md-0 mb-3">
-                                            <div class="online-image">
-                                                <img src="{{ url('/') }}/images/{{ $userdata_val->profile_img }}"
-                                                    alt="">
-                                                <div class="online"></div>
-                                            </div>
-                                            <div class="profile-data-text">
-                                                <div
-                                                    class="d-flex align-items-sm-center flex-sm-row flex-column align-items-start">
-                                                    <h1 class="mb-0 pb-0">
-                                                        {{ $userdata_val->first_name . ' ' . $userdata_val->last_name }}
-                                                    </h1>
-                                                    <div class="d-flex align-items-center mt-sm-0 mt-2">
-                                                        <img src="{{ url('newAssets') }}/assets/images/star.svg"
-                                                            alt="" class="ms-sm-3 ms-0 me-1">
-                                                        <h3 class="mb-0 pb-0">5.0</h3>
-                                                        <span>(33 review)</span>
-                                                    </div>
+                                <div class="teacher-card--header-text w-100 align-items-start">
+                                    <div class=" d-flex align-items-start flex-md-row flex-column mb-md-0 mb-3">
+                                        <div class="online-image">
+                                            <img src="{{ url('/') }}/images/{{ $userdata_val->profile_img }}" alt="">
+                                            <div class="online"></div>
+                                        </div>
+                                        <div class="profile-data-text">
+                                            <div
+                                                class="d-flex align-items-sm-center flex-sm-row flex-column align-items-start">
+                                                <h1 class="mb-0 pb-0">
+                                                    {{ $userdata_val->first_name . ' ' . $userdata_val->last_name }}
+                                                </h1>
+                                                <div class="d-flex align-items-center mt-sm-0 mt-2">
+                                                    <img src="{{ url('newAssets') }}/assets/images/star.svg" alt=""
+                                                        class="ms-sm-3 ms-0 me-1">
+                                                    <h3 class="mb-0 pb-0">5.0</h3>
+                                                    <span>(33 review)</span>
                                                 </div>
-                                                <div class=" mb-2">
-                                                    <!-- <h2 class="mb-0 pb-0">English teacher</h2> -->
-                                                    <div
-                                                        class="d-flex align-items-lg-center mt-3 flex-wrap align-items-start">
-                                                        <?php
+                                            </div>
+                                            <div class=" mb-2">
+                                                <!-- <h2 class="mb-0 pb-0">English teacher</h2> -->
+                                                <div
+                                                    class="d-flex align-items-lg-center mt-3 flex-wrap align-items-start">
+                                                    <?php
                                                         foreach ($subjectAll as $key => $value) {
                                                             $medi_arr = explode(',', $userdata_val->subject);
                                                             if (count($medi_arr) > 1) {
@@ -614,142 +635,46 @@
                                                         ?>
 
 
-                                                    </div>
+                                                </div>
 
-                                                    <div class="d-flex align-items-center  mt-2">
-                                                        <?php 
+                                                <div class="d-flex align-items-center  mt-2">
+                                                    <?php 
                                                     foreach ($countryAll as $key => $value) { 
                                                       if($userdata_val->country==$value->id){
                                                          ?>
-                                                        <span><img
-                                                                src="{{ url('/') }}/assets/frontpage_assets/flags/{{ Str::lower($value->iso) }}.png"
-                                                                alt=""></span>
-                                                        <p class="mb-0 pb-0 ps-1">{{ $value->nicename }}</p>
+                                                    <span><img
+                                                            src="{{ url('/') }}/assets/frontpage_assets/flags/{{ Str::lower($value->iso) }}.png"
+                                                            alt=""></span>
+                                                    <p class="mb-0 pb-0 ps-1">{{ $value->nicename }}</p>
 
-                                                        <?php 
+                                                    <?php 
                                                          
                                                      }
                                                  }
                                                  ?>
 
-                                                    </div>
                                                 </div>
-                                                <div>
-                                                    <p class="mb-0 pb-0 mt-2 mb-2">
-                                                        <span>Speaks:</span> English (Native) German (Advanced)
-                                                        Lithuanian
-                                                        (Native)
-                                                    </p>
-                                                </div>
-
                                             </div>
-                                        </div>
-                                        <div class="profile-price flex-shrink-0">
-                                            <h2 class="mb-0 pb-0">${{ $userdata_val->hourly_rate }}</h2>
-                                            <p class="mb-0 pb-0">60-mins lesson</p>
-                                        </div>
-                                    </div>
-                                </a>
-                                </div>
-                                <div class="teacher-card-body">
-                                    <p>
-                                        {{ $userdata_val->desc_about }}
-
-                                    </p>
-                                </div>
-                                <div
-                                    class="d-flex justify-content-between align-items-center flex-md-row flex-column ">
-                                    <div class="mb-md-0 mb-3">
-                                        <img src="{{ url('newAssets') }}/assets/images/veri.svg" alt="">
-                                    </div>
-                                    <div class="d-flex align-items-center flex-md-row flex-column sm-100 ">
-                                        <div class="d-flex align-items-center w-100 mb-md-0 mb-3">
-                                            <div class="like">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"
-                                                    viewBox="0 0 40 40" fill="none">
-                                                    <path
-                                                        d="M0 20C0 8.95431 8.95431 0 20 0C31.0457 0 40 8.95431 40 20C40 31.0457 31.0457 40 20 40C8.95431 40 0 31.0457 0 20Z"
-                                                        fill="#FF6C0B" fill-opacity="0.15" />
-                                                    <path class="like-fill "
-                                                        d="M18.6356 12.9894L18.6468 13.0001L18.6583 13.0104C19.0273 13.3404 19.505 13.5228 20 13.5228C20.495 13.5228 20.9727 13.3404 21.3417 13.0104L21.3535 12.9998L21.365 12.9888C22.2116 12.1818 23.8293 11 26 11C27.5801 11 28.7855 11.6184 29.6199 12.6803C30.4752 13.7688 31 15.4045 31 17.5C31 18.7417 30.4893 20.1505 29.5891 21.6176C28.696 23.073 27.467 24.5082 26.1492 25.7806C24.8327 27.0516 23.4532 28.1356 22.2806 28.895C21.6935 29.2752 21.1737 29.5641 20.7514 29.754C20.297 29.9584 20.0599 30 20 30C19.9401 30 19.703 29.9584 19.2486 29.754C18.8263 29.5641 18.3065 29.2752 17.7194 28.895C16.5468 28.1356 15.1673 27.0516 13.8508 25.7806C12.533 24.5082 11.304 23.073 10.4109 21.6176C9.51066 20.1505 9 18.7417 9 17.5C9 15.4045 9.52485 13.7688 10.3801 12.6803C11.2145 11.6184 12.4199 11 14 11C16.169 11 17.7883 12.183 18.6356 12.9894Z"
-                                                        stroke="#FF6C0B" stroke-width="2" />
-                                                </svg>
-                                            </div>
-                                            <button class="main-btn-blank-sm w-100 mx-3"><a
-                                                    href="{{ url('chat', $userdata_val->user_id) }}"
-                                                    style="color: #FF6C0B" class="text-decoration-none">Message</a></button>
-                                        </div>
-                                        <button class="main-btn-sm w-100" style="white-space: nowrap;"
-                                            data-bs-toggle="modal" data-bs-target="#staticBackdrop"
-                                            onclick="runModelCalendar({{ $userdata_val->user_id }},{{ $userdata_val->hourly_rate }},'{{ url('/') }}/images/{{ $userdata_val->profile_img }}','{{ $userdata_val->first_name . ' ' . $userdata_val->last_name }}')">Book
-                                            a trial
-                                            lesson</button>
-                                    </div>
-                                </div>
-                            </div>
-                           
-                        @endforeach
-                    @endif
-                    {{-- <div class="teacher-card-div mb-3">
-                        <div class="teacher-card--header">
-
-                            <div class="teacher-card--header-text w-100 align-items-start">
-                                <div class=" d-flex align-items-start flex-md-row flex-column mb-md-0 mb-3">
-                                    <div class="online-image">
-                                        <img src="{{ url('newAssets') }}/assets/images/ppp.png" alt="">
-                                        <div class="online"></div>
-                                    </div>
-                                    <div class="profile-data-text">
-                                        <div
-                                            class="d-flex align-items-sm-center flex-sm-row flex-column align-items-start">
-                                            <h1 class="mb-0 pb-0">Hanna Baptista</h1>
-                                            <div class="d-flex align-items-center mt-sm-0 mt-2">
-                                                <img src="{{ url('newAssets') }}/assets/images/star.svg"
-                                                    alt="" class="ms-sm-3 ms-0 me-1">
-                                                <h3 class="mb-0 pb-0">5.0</h3>
-                                                <span>(33 review)</span>
-                                            </div>
-                                        </div>
-                                        <div class=" mb-2">
-                                            <!-- <h2 class="mb-0 pb-0">English teacher</h2> -->
-                                            <div class="d-flex align-items-lg-center mt-3 flex-wrap align-items-start">
-                                                <h2 class="text-primary me-2 ps-0">English teacher</h2>
-                                                <h2 class="text-primary me-2 ps-0">English teacher</h2>
-                                                <h2 class="text-primary me-2 ps-0">English teacher</h2>
-                                                <h2 class="text-primary me-2 ps-0">English teacher</h2>
-                                                <h2 class="text-primary me-2 ps-0">English teacher</h2>
-
+                                            <div>
+                                                <p class="mb-0 pb-0 mt-2 mb-2">
+                                                    <span>Speaks:</span> English (Native) German (Advanced)
+                                                    Lithuanian
+                                                    (Native)
+                                                </p>
                                             </div>
 
-                                            <div class="d-flex align-items-center  mt-2">
-                                                <img src="{{ url('newAssets') }}/assets/images/flag.png"
-                                                    alt="" class="me-1">
-                                                <p class="mb-0 pb-0">United State</p>
-                                            </div>
                                         </div>
-                                        <div>
-                                            <p class="mb-0 pb-0 mt-2 mb-2">
-                                                <span>Speaks:</span> English (Native) German (Advanced)
-                                                Lithuanian
-                                                (Native)
-                                            </p>
-                                        </div>
-
+                                    </div>
+                                    <div class="profile-price flex-shrink-0">
+                                        <h2 class="mb-0 pb-0">${{ $userdata_val->hourly_rate }}</h2>
+                                        <p class="mb-0 pb-0">60-mins lesson</p>
                                     </div>
                                 </div>
-                                <div class="profile-price flex-shrink-0">
-                                    <h2 class="mb-0 pb-0">$105.00</h2>
-                                    <p class="mb-0 pb-0">50-min lesson</p>
-                                </div>
-                            </div>
+                            </a>
                         </div>
                         <div class="teacher-card-body">
                             <p>
-                                English tutor with over 5 years of teaching experience Hi! I'm Ugne. Originally I am
-                                from Lithuania, however, I have completed my high school education in an American
-                                International School and my bachelor's degree at a university in London, UK. I have
-                                quite a few interests and creative hobbies, however my favorite thing to do whenever
-                                I have the time is traveling as much as possible.
+                                {{ $userdata_val->desc_about }}
 
                             </p>
                         </div>
@@ -770,151 +695,221 @@
                                                 stroke="#FF6C0B" stroke-width="2" />
                                         </svg>
                                     </div>
-                                    <button class="main-btn-blank-sm w-100 mx-3">Message</button>
+                                    <button class="main-btn-blank-sm w-100 mx-3"><a
+                                            href="{{ url('chat', $userdata_val->user_id) }}" style="color: #FF6C0B"
+                                            class="text-decoration-none">Message</a></button>
                                 </div>
-                                <button class="main-btn-sm w-100" style="white-space: nowrap;">Book a trial
+                                <button class="main-btn-sm w-100" style="white-space: nowrap;" data-bs-toggle="modal"
+                                    data-bs-target="#staticBackdrop"
+                                    onclick="runModelCalendar({{ $userdata_val->user_id }},{{ $userdata_val->hourly_rate }},'{{ url('/') }}/images/{{ $userdata_val->profile_img }}','{{ $userdata_val->first_name . ' ' . $userdata_val->last_name }}')">Book
+                                    a trial
                                     lesson</button>
                             </div>
                         </div>
-                    </div> --}}
-
-                    <!-- Display pagination links -->
-                    <div class="mt-4">
-                        @if (!isset($filter))
-                            
-                        {{ $userdata->links() }}
-                        @endif
                     </div>
 
+                    @endforeach
+                    @endif
+                    {{-- <div class="teacher-card-div mb-3">
+                        <div class="teacher-card--header">
 
-                    {{-- <div class="pagination mt-4">
-
-                        <div class="hide-sm">
-                                <img class="arrow" src="{{ url('newAssets') }}/assets/images/images/arrow-left.svg" alt="">
-                                <a class="prev" href="#">Previous</a>
-                            </div>
-                            <ul class="pg-ul">
-                                <li id="pg-1" class="pg-list"><a href="#">1</a></li>
-                                <li class="pg-list"><a href="#">2</a></li>
-                                <li class="pg-list"><a href="#">3</a></li>
-                                <li class="pg-list">...</li>
-                                <li class="pg-list"><a href="#">8</a></li>
-                                <li class="pg-list"><a href="#">9</a></li>
-                                <li class="pg-list"><a href="#">10</a></li>
-                            </ul>
-                            <div class="hide-sm">
-                                <a class="next" href="#">Next</a>
-                                <img class="arrow" src="{{ url('newAssets') }}/assets/images/images/arrow-right.svg" alt="">
-                            </div>
-                    </div> --}}
+                            <div class="teacher-card--header-text w-100 align-items-start">
+                                <div class=" d-flex align-items-start flex-md-row flex-column mb-md-0 mb-3">
+                                    <div class="online-image">
+                                        <img src="{{ url('newAssets') }}/assets/images/ppp.png" alt="">
+                    <div class="online"></div>
                 </div>
-                <div class="col-xl-4">
-                    <div class="right-p-part-content">
-                        <div class="side-card">
-                            <video  id="tutorVideo" controls>
-                                <source src="{{ url('newAssets') }}/assets/images/SampleVideo_1280x720_1mb.mp4"
-                                    type="video/mp4">
-                                Your browser does not support the video tag.
-                            </video>
-
-                            <div class="world-div mt-1">
-                                <img src="{{ url('newAssets') }}/assets/images/images/world.svg" alt=""
-                                    class="me-2">
-                                <p class="mb-0 pb-0">Times are shown in your local timezone</p>
-                            </div>
-                            <div class="grid-container">
-                                <div class="grid-item"></div>
-                                <div class="grid-item day-name">Mon</div>
-                                <div class="grid-item day-name">Tue</div>
-                                <div class="grid-item day-name">Wed</div>
-                                <div class="grid-item day-name">Thu</div>
-                                <div class="grid-item day-name">Fri</div>
-                                <div class="grid-item day-name">Sat</div>
-                                <div class="grid-item"></div>
-                                <div class="grid-item"><span class="day">Morning</span><br><span
-                                        class="time">06:00-12:00</span>
-                                </div>
-                                <div class="grid-item"></div>
-                                <div class="grid-item"></div>
-                                <div class="grid-item"></div>
-                                <div class="grid-item"></div>
-                                <div class="grid-item"></div>
-                                <div class="grid-item"></div>
-                                <div class="grid-item"></div>
-                                <div class="grid-item"><span class="day">Afternoon</span><br><span
-                                        class="time">12:00-18:00</span>
-                                </div>
-                                <div class="grid-item tick"><img class="tick-img"
-                                        src="{{ url('newAssets') }}/assets/images/images/tick-mark.svg"
-                                        alt=""></div>
-                                <div class="grid-item tick"><img class="tick-img"
-                                        src="{{ url('newAssets') }}/assets/images/images/tick-mark.svg"
-                                        alt=""></div>
-                                <div class="grid-item tick"><img class="tick-img"
-                                        src="{{ url('newAssets') }}/assets/images/images/tick-mark.svg"
-                                        alt=""></div>
-                                <div class="grid-item tick"><img class="tick-img"
-                                        src="{{ url('newAssets') }}/assets/images/images/tick-mark.svg"
-                                        alt=""></div>
-                                <div class="grid-item tick"><img class="tick-img"
-                                        src="{{ url('newAssets') }}/assets/images/images/tick-mark.svg"
-                                        alt=""></div>
-                                <div class="grid-item tick"><img class="tick-img"
-                                        src="{{ url('newAssets') }}/assets/images/images/tick-mark.svg"
-                                        alt=""></div>
-                                <div class="grid-item tick"><img class="tick-img"
-                                        src="{{ url('newAssets') }}/assets/images/images/tick-mark.svg"
-                                        alt=""></div>
-                                <div class="grid-item"><span class="day">Evening</span><br><span
-                                        class="time">18:00-20:00</span>
-                                </div>
-                                <div class="grid-item tick"><img class="tick-img"
-                                        src="{{ url('newAssets') }}/assets/images/images/tick-mark.svg"
-                                        alt=""></div>
-                                <div class="grid-item tick"><img class="tick-img"
-                                        src="{{ url('newAssets') }}/assets/images/images/tick-mark.svg"
-                                        alt=""></div>
-                                <div class="grid-item tick"><img class="tick-img"
-                                        src="{{ url('newAssets') }}/assets/images/images/tick-mark.svg"
-                                        alt=""></div>
-                                <div class="grid-item tick"><img class="tick-img"
-                                        src="{{ url('newAssets') }}/assets/images/images/tick-mark.svg"
-                                        alt=""></div>
-                                <div class="grid-item tick"><img class="tick-img"
-                                        src="{{ url('newAssets') }}/assets/images/images/tick-mark.svg"
-                                        alt=""></div>
-                                <div class="grid-item"></div>
-                                <div class="grid-item"></div>
-                                <div class="grid-item"><span class="day">Night</span><br><span
-                                        class="time">00:00-16:00</span></div>
-                                <div class="grid-item tick"><img class="tick-img"
-                                        src="{{ url('newAssets') }}/assets/images/images/tick-mark.svg"
-                                        alt=""></div>
-                                <div class="grid-item tick"><img class="tick-img"
-                                        src="{{ url('newAssets') }}/assets/images/images/tick-mark.svg"
-                                        alt=""></div>
-                                <div class="grid-item tick"><img class="tick-img"
-                                        src="{{ url('newAssets') }}/assets/images/images/tick-mark.svg"
-                                        alt=""></div>
-                                <div class="grid-item tick"><img class="tick-img"
-                                        src="{{ url('newAssets') }}/assets/images/images/tick-mark.svg"
-                                        alt=""></div>
-                                <div class="grid-item tick"><img class="tick-img"
-                                        src="{{ url('newAssets') }}/assets/images/images/tick-mark.svg"
-                                        alt=""></div>
-                                <div class="grid-item tick"><img class="tick-img"
-                                        src="{{ url('newAssets') }}/assets/images/images/tick-mark.svg"
-                                        alt=""></div>
-                                <div class="grid-item tick"><img class="tick-img"
-                                        src="{{ url('newAssets') }}/assets/images/images/tick-mark.svg"
-                                        alt=""></div>
-                            </div>
-
-                            <button class="schedule-btn mt-3 mb-1">View full schedule</button>
+                <div class="profile-data-text">
+                    <div class="d-flex align-items-sm-center flex-sm-row flex-column align-items-start">
+                        <h1 class="mb-0 pb-0">Hanna Baptista</h1>
+                        <div class="d-flex align-items-center mt-sm-0 mt-2">
+                            <img src="{{ url('newAssets') }}/assets/images/star.svg" alt="" class="ms-sm-3 ms-0 me-1">
+                            <h3 class="mb-0 pb-0">5.0</h3>
+                            <span>(33 review)</span>
                         </div>
                     </div>
+                    <div class=" mb-2">
+                        <!-- <h2 class="mb-0 pb-0">English teacher</h2> -->
+                        <div class="d-flex align-items-lg-center mt-3 flex-wrap align-items-start">
+                            <h2 class="text-primary me-2 ps-0">English teacher</h2>
+                            <h2 class="text-primary me-2 ps-0">English teacher</h2>
+                            <h2 class="text-primary me-2 ps-0">English teacher</h2>
+                            <h2 class="text-primary me-2 ps-0">English teacher</h2>
+                            <h2 class="text-primary me-2 ps-0">English teacher</h2>
+
+                        </div>
+
+                        <div class="d-flex align-items-center  mt-2">
+                            <img src="{{ url('newAssets') }}/assets/images/flag.png" alt="" class="me-1">
+                            <p class="mb-0 pb-0">United State</p>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="mb-0 pb-0 mt-2 mb-2">
+                            <span>Speaks:</span> English (Native) German (Advanced)
+                            Lithuanian
+                            (Native)
+                        </p>
+                    </div>
+
                 </div>
             </div>
+            <div class="profile-price flex-shrink-0">
+                <h2 class="mb-0 pb-0">$105.00</h2>
+                <p class="mb-0 pb-0">50-min lesson</p>
+            </div>
+        </div>
+        </div>
+        <div class="teacher-card-body">
+            <p>
+                English tutor with over 5 years of teaching experience Hi! I'm Ugne. Originally I am
+                from Lithuania, however, I have completed my high school education in an American
+                International School and my bachelor's degree at a university in London, UK. I have
+                quite a few interests and creative hobbies, however my favorite thing to do whenever
+                I have the time is traveling as much as possible.
+
+            </p>
+        </div>
+        <div class="d-flex justify-content-between align-items-center flex-md-row flex-column ">
+            <div class="mb-md-0 mb-3">
+                <img src="{{ url('newAssets') }}/assets/images/veri.svg" alt="">
+            </div>
+            <div class="d-flex align-items-center flex-md-row flex-column sm-100 ">
+                <div class="d-flex align-items-center w-100 mb-md-0 mb-3">
+                    <div class="like">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+                            <path
+                                d="M0 20C0 8.95431 8.95431 0 20 0C31.0457 0 40 8.95431 40 20C40 31.0457 31.0457 40 20 40C8.95431 40 0 31.0457 0 20Z"
+                                fill="#FF6C0B" fill-opacity="0.15" />
+                            <path class="like-fill "
+                                d="M18.6356 12.9894L18.6468 13.0001L18.6583 13.0104C19.0273 13.3404 19.505 13.5228 20 13.5228C20.495 13.5228 20.9727 13.3404 21.3417 13.0104L21.3535 12.9998L21.365 12.9888C22.2116 12.1818 23.8293 11 26 11C27.5801 11 28.7855 11.6184 29.6199 12.6803C30.4752 13.7688 31 15.4045 31 17.5C31 18.7417 30.4893 20.1505 29.5891 21.6176C28.696 23.073 27.467 24.5082 26.1492 25.7806C24.8327 27.0516 23.4532 28.1356 22.2806 28.895C21.6935 29.2752 21.1737 29.5641 20.7514 29.754C20.297 29.9584 20.0599 30 20 30C19.9401 30 19.703 29.9584 19.2486 29.754C18.8263 29.5641 18.3065 29.2752 17.7194 28.895C16.5468 28.1356 15.1673 27.0516 13.8508 25.7806C12.533 24.5082 11.304 23.073 10.4109 21.6176C9.51066 20.1505 9 18.7417 9 17.5C9 15.4045 9.52485 13.7688 10.3801 12.6803C11.2145 11.6184 12.4199 11 14 11C16.169 11 17.7883 12.183 18.6356 12.9894Z"
+                                stroke="#FF6C0B" stroke-width="2" />
+                        </svg>
+                    </div>
+                    <button class="main-btn-blank-sm w-100 mx-3">Message</button>
+                </div>
+                <button class="main-btn-sm w-100" style="white-space: nowrap;">Book a trial
+                    lesson</button>
+            </div>
+        </div>
+        </div> --}}
+
+        <!-- Display pagination links -->
+        <div class="mt-4">
+            @if (!isset($filter))
+
+            {{ $userdata->links() }}
+            @endif
+        </div>
+
+
+        {{-- <div class="pagination mt-4">
+
+                        <div class="hide-sm">
+                                <img class="arrow" src="{{ url('newAssets') }}/assets/images/images/arrow-left.svg"
+        alt="">
+        <a class="prev" href="#">Previous</a>
+        </div>
+        <ul class="pg-ul">
+            <li id="pg-1" class="pg-list"><a href="#">1</a></li>
+            <li class="pg-list"><a href="#">2</a></li>
+            <li class="pg-list"><a href="#">3</a></li>
+            <li class="pg-list">...</li>
+            <li class="pg-list"><a href="#">8</a></li>
+            <li class="pg-list"><a href="#">9</a></li>
+            <li class="pg-list"><a href="#">10</a></li>
+        </ul>
+        <div class="hide-sm">
+            <a class="next" href="#">Next</a>
+            <img class="arrow" src="{{ url('newAssets') }}/assets/images/images/arrow-right.svg" alt="">
+        </div>
+        </div> --}}
+        </div>
+        <div class="col-xl-4">
+            <div class="right-p-part-content">
+                <div class="side-card">
+                    <video id="tutorVideo" controls>
+                        <source src="{{ url('newAssets') }}/assets/images/SampleVideo_1280x720_1mb.mp4"
+                            type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+
+                    <div class="world-div mt-1">
+                        <img src="{{ url('newAssets') }}/assets/images/images/world.svg" alt="" class="me-2">
+                        <p class="mb-0 pb-0">Times are shown in your local timezone</p>
+                    </div>
+                    <div class="grid-container">
+                        <div class="grid-item"></div>
+                        <div class="grid-item day-name">Mon</div>
+                        <div class="grid-item day-name">Tue</div>
+                        <div class="grid-item day-name">Wed</div>
+                        <div class="grid-item day-name">Thu</div>
+                        <div class="grid-item day-name">Fri</div>
+                        <div class="grid-item day-name">Sat</div>
+                        <div class="grid-item"></div>
+                        <div class="grid-item"><span class="day">Morning</span><br><span class="time">06:00-12:00</span>
+                        </div>
+                        <div class="grid-item"></div>
+                        <div class="grid-item"></div>
+                        <div class="grid-item"></div>
+                        <div class="grid-item"></div>
+                        <div class="grid-item"></div>
+                        <div class="grid-item"></div>
+                        <div class="grid-item"></div>
+                        <div class="grid-item"><span class="day">Afternoon</span><br><span
+                                class="time">12:00-18:00</span>
+                        </div>
+                        <div class="grid-item tick"><img class="tick-img"
+                                src="{{ url('newAssets') }}/assets/images/images/tick-mark.svg" alt=""></div>
+                        <div class="grid-item tick"><img class="tick-img"
+                                src="{{ url('newAssets') }}/assets/images/images/tick-mark.svg" alt=""></div>
+                        <div class="grid-item tick"><img class="tick-img"
+                                src="{{ url('newAssets') }}/assets/images/images/tick-mark.svg" alt=""></div>
+                        <div class="grid-item tick"><img class="tick-img"
+                                src="{{ url('newAssets') }}/assets/images/images/tick-mark.svg" alt=""></div>
+                        <div class="grid-item tick"><img class="tick-img"
+                                src="{{ url('newAssets') }}/assets/images/images/tick-mark.svg" alt=""></div>
+                        <div class="grid-item tick"><img class="tick-img"
+                                src="{{ url('newAssets') }}/assets/images/images/tick-mark.svg" alt=""></div>
+                        <div class="grid-item tick"><img class="tick-img"
+                                src="{{ url('newAssets') }}/assets/images/images/tick-mark.svg" alt=""></div>
+                        <div class="grid-item"><span class="day">Evening</span><br><span class="time">18:00-20:00</span>
+                        </div>
+                        <div class="grid-item tick"><img class="tick-img"
+                                src="{{ url('newAssets') }}/assets/images/images/tick-mark.svg" alt=""></div>
+                        <div class="grid-item tick"><img class="tick-img"
+                                src="{{ url('newAssets') }}/assets/images/images/tick-mark.svg" alt=""></div>
+                        <div class="grid-item tick"><img class="tick-img"
+                                src="{{ url('newAssets') }}/assets/images/images/tick-mark.svg" alt=""></div>
+                        <div class="grid-item tick"><img class="tick-img"
+                                src="{{ url('newAssets') }}/assets/images/images/tick-mark.svg" alt=""></div>
+                        <div class="grid-item tick"><img class="tick-img"
+                                src="{{ url('newAssets') }}/assets/images/images/tick-mark.svg" alt=""></div>
+                        <div class="grid-item"></div>
+                        <div class="grid-item"></div>
+                        <div class="grid-item"><span class="day">Night</span><br><span class="time">00:00-16:00</span>
+                        </div>
+                        <div class="grid-item tick"><img class="tick-img"
+                                src="{{ url('newAssets') }}/assets/images/images/tick-mark.svg" alt=""></div>
+                        <div class="grid-item tick"><img class="tick-img"
+                                src="{{ url('newAssets') }}/assets/images/images/tick-mark.svg" alt=""></div>
+                        <div class="grid-item tick"><img class="tick-img"
+                                src="{{ url('newAssets') }}/assets/images/images/tick-mark.svg" alt=""></div>
+                        <div class="grid-item tick"><img class="tick-img"
+                                src="{{ url('newAssets') }}/assets/images/images/tick-mark.svg" alt=""></div>
+                        <div class="grid-item tick"><img class="tick-img"
+                                src="{{ url('newAssets') }}/assets/images/images/tick-mark.svg" alt=""></div>
+                        <div class="grid-item tick"><img class="tick-img"
+                                src="{{ url('newAssets') }}/assets/images/images/tick-mark.svg" alt=""></div>
+                        <div class="grid-item tick"><img class="tick-img"
+                                src="{{ url('newAssets') }}/assets/images/images/tick-mark.svg" alt=""></div>
+                    </div>
+
+                    <button class="schedule-btn mt-3 mb-1">View full schedule</button>
+                </div>
+            </div>
+        </div>
+        </div>
         </div>
     </section>
 
@@ -939,46 +934,43 @@
                         </div>
                         <div class="carousel-inner">
                             @if (count($Alltestimonial))
-                                @php
-                                    $t_count = 1;
-                                @endphp
-                                @foreach ($Alltestimonial as $Alltestimonial_val)
-                                    @if ($t_count < 4)
-                                        <div class="carousel-item {{ $t_count == 1 ? 'active' : '' }}">
-                                            <p class="testimonial-text  text-lg-start text-center">
-                                                <img src="{{ url('newAssets/assets/images/comma.svg') }}"
-                                                    alt="">
-                                                {{ $Alltestimonial_val->student_desc }}
+                            @php
+                            $t_count = 1;
+                            @endphp
+                            @foreach ($Alltestimonial as $Alltestimonial_val)
+                            @if ($t_count < 4) <div class="carousel-item {{ $t_count == 1 ? 'active' : '' }}">
+                                <p class="testimonial-text  text-lg-start text-center">
+                                    <img src="{{ url('newAssets/assets/images/comma.svg') }}" alt="">
+                                    {{ $Alltestimonial_val->student_desc }}
 
-                                            </p>
-                                            <h4>{{ $Alltestimonial_val->student_name }} -
-                                                {{ $Alltestimonial_val->field }}</h4>
-                                        </div>
-                                        @php
-                                            $t_count++;
-                                        @endphp
-                                    @endif
-                                @endforeach
-                            @endif
+                                </p>
+                                <h4>{{ $Alltestimonial_val->student_name }} -
+                                    {{ $Alltestimonial_val->field }}</h4>
                         </div>
-                        <button class="carousel-control-prev" type="button"
-                            data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button"
-                            data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
+                        @php
+                        $t_count++;
+                        @endphp
+                        @endif
+                        @endforeach
+                        @endif
                     </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
                 </div>
-                <div class="col-lg-6 d-flex justify-content-center order-lg-2 order-1 mb-lg-0 mb-4">
-                    <img src="{{ url('newAssets') }}/assets/images/testimonials.png" alt=""
-                        class="mx-auto img-fluid">
-                </div>
-
             </div>
+            <div class="col-lg-6 d-flex justify-content-center order-lg-2 order-1 mb-lg-0 mb-4">
+                <img src="{{ url('newAssets') }}/assets/images/testimonials.png" alt="" class="mx-auto img-fluid">
+            </div>
+
+        </div>
         </div>
     </section>
 
@@ -987,15 +979,13 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6 d-flex justify-content-center  mb-lg-0 mb-4">
-                    <img src="{{ url('newAssets') }}/assets/images/lang.png" alt=""
-                        class="mx-auto img-fluid">
+                    <img src="{{ url('newAssets') }}/assets/images/lang.png" alt="" class="mx-auto img-fluid">
                 </div>
                 <div class="col-lg-6 pe-lg-5 ">
                     <h2 class="heading text-md-start">
                         Corporate language training for business
                     </h2>
-                    <p class="main-text2 text-md-start text-center text-gray mt-3"
-                        style="color: rgba(44, 44, 44, 0.80);
+                    <p class="main-text2 text-md-start text-center text-gray mt-3" style="color: rgba(44, 44, 44, 0.80);
                 ;">
                         ProTutor corporate training is designed for teams and businesses offering personalized
                         language learning with online tutors. Book a demo to learn more.
@@ -1033,8 +1023,7 @@
                             </h2>
                             <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#myAccordion">
                                 <div class="card-body">
-                                    <p class="main-text2  text-gray mt-3"
-                                        style="color: rgba(44, 44, 44, 0.80);
+                                    <p class="main-text2  text-gray mt-3" style="color: rgba(44, 44, 44, 0.80);
                                         ;">
                                         Live tutoring software enables tutors to teach students in real time
                                         utilizing interactive
@@ -1053,8 +1042,7 @@
                             <div id="collapseTwo" class="accordion-collapse collapse show"
                                 data-bs-parent="#myAccordion">
                                 <div class="card-body">
-                                    <p class="main-text2  text-gray mt-3"
-                                        style="color: rgba(44, 44, 44, 0.80);
+                                    <p class="main-text2  text-gray mt-3" style="color: rgba(44, 44, 44, 0.80);
                                         ;">
                                         Live tutoring software enables tutors to teach students in real time
                                         utilizing interactive
@@ -1070,11 +1058,9 @@
                                 <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
                                     data-bs-target="#collapseThree">What is your cancellation policy?</button>
                             </h2>
-                            <div id="collapseThree" class="accordion-collapse collapse"
-                                data-bs-parent="#myAccordion">
+                            <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#myAccordion">
                                 <div class="card-body">
-                                    <p class="main-text2  text-gray mt-3"
-                                        style="color: rgba(44, 44, 44, 0.80);
+                                    <p class="main-text2  text-gray mt-3" style="color: rgba(44, 44, 44, 0.80);
                                         ;">
                                         Live tutoring software enables tutors to teach students in real time
                                         utilizing interactive
@@ -1093,8 +1079,7 @@
                             </h2>
                             <div id="collapse4" class="accordion-collapse collapse" data-bs-parent="#myAccordion">
                                 <div class="card-body">
-                                    <p class="main-text2  text-gray mt-3"
-                                        style="color: rgba(44, 44, 44, 0.80);
+                                    <p class="main-text2  text-gray mt-3" style="color: rgba(44, 44, 44, 0.80);
                                         ;">
                                         Live tutoring software enables tutors to teach students in real time
                                         utilizing interactive
@@ -1114,8 +1099,7 @@
                             </h2>
                             <div id="collapse5" class="accordion-collapse collapse" data-bs-parent="#myAccordion">
                                 <div class="card-body">
-                                    <p class="main-text2  text-gray mt-3"
-                                        style="color: rgba(44, 44, 44, 0.80);
+                                    <p class="main-text2  text-gray mt-3" style="color: rgba(44, 44, 44, 0.80);
                                         ;">
                                         Live tutoring software enables tutors to teach students in real time
                                         utilizing interactive
@@ -1143,16 +1127,16 @@
 
 </main>
 @if (isset($userdata_val))
-    <!-- Container -->
-    <form id="submitPrivateLesson" action="{{ route('private.charge') }}" method="post">
-        @csrf
-        <input type="number" name="tutor_id" id="tutor_bookTrial" value="" hidden>
-        <input type="number" name="student_id" value="{{ auth()->check() ? auth()->user()->id : null }}" hidden>
-        <input type="number" name="price" id="hourly_rate" value="" hidden>
-        <input type="number" name="calendar_sch_id" id="calendar_sch_id" hidden>
-        <input type="datetime" name="start" id="session_start" hidden>
-        <input type="datetime" name="end" id="session_end" hidden>
-    </form>
+<!-- Container -->
+<form id="submitPrivateLesson" action="{{ route('private.charge') }}" method="post">
+    @csrf
+    <input type="number" name="tutor_id" id="tutor_bookTrial" value="" hidden>
+    <input type="number" name="student_id" value="{{ auth()->check() ? auth()->user()->id : null }}" hidden>
+    <input type="number" name="price" id="hourly_rate" value="" hidden>
+    <input type="number" name="calendar_sch_id" id="calendar_sch_id" hidden>
+    <input type="datetime" name="start" id="session_start" hidden>
+    <input type="datetime" name="end" id="session_end" hidden>
+</form>
 @endif
 
 <!-- Footer Section -->
@@ -1254,99 +1238,116 @@
 {{-- <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script> --}}
 <script src='https://cdn.jsdelivr.net/npm/fullcalendar/index.global.min.js'></script>
 <script>
-    // Get the client's time zone
-    const clientTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+// Get the client's time zone
+const clientTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
-    function runModelCalendar(tutorId, hourly_rate, img, name) {
-        document.querySelector("#modelTutorImage").src = img;
-        document.querySelector("#modelTutorName").innerHTML = name;
-        document.querySelector("#tutor_bookTrial").value = tutorId;
-        document.querySelector("#hourly_rate").value = hourly_rate;
-        $("#model-schedule-calendar").empty();
-        setTimeout(() => {
-
-
-            var calendarEl = document.getElementById('model-schedule-calendar');
-
-            var calendar = new FullCalendar.Calendar(calendarEl, {
-                headerToolbar: {
-                    left: 'prev,next',
-                    right: 'title'
-                },
-
-                defaultView: 'timeGridWeek',
-                selectable: true,
-                editable: true,
-                timeZone: clientTimeZone, // Use the client's time zone
-                events: "{{ url('/') }}/fetchCalendarAvailability/" + tutorId,
-                eventClick: function(eventClickInfo, jsEvent, view) {
-                    // Reset the background color of all events to their default styling
-                    calendar.getEvents().forEach(function(event) {
-                        event.setProp('backgroundColor', event.extendedProps
-                            .originalBackgroundColor || '');
-                    });
-
-                    // Set the background color of the clicked event
-                    eventClickInfo.event.setProp('backgroundColor', '#fe6903');
-                    eventID = eventClickInfo.el.fcSeg.eventRange.def.publicId;
-
-                    $("#continueSubmitShcdulebtn").removeClass("disabled")
-                    $("#session_start").val(moment(eventClickInfo.el.fcSeg.start).add(0, 'minute')
-                        .format('YYYY-MM-DD HH:mm'))
-                    $("#session_end").val(moment(eventClickInfo.el.fcSeg.end).add(0, 'minute')
-                        .format(
-                            'YYYY-MM-DD HH:mm'))
-                    $("#calendar_sch_id").val(eventID);
-                },
-                eventDataTransform: function(event, element, info) {
-                    if (event.status == 'time_off') {
-                        event.editable = false;
-                        event.color = "red";
-
-                    }
-                    return event;
-                },
-            });
+function runModelCalendar(tutorId, hourly_rate, img, name) {
+    document.querySelector("#modelTutorImage").src = img;
+    document.querySelector("#modelTutorName").innerHTML = name;
+    document.querySelector("#tutor_bookTrial").value = tutorId;
+    document.querySelector("#hourly_rate").value = hourly_rate;
+    $("#model-schedule-calendar").empty();
+    setTimeout(() => {
 
 
-            calendar.render();
-            calendar.changeView('timeGridWeek');
+        var calendarEl = document.getElementById('model-schedule-calendar');
+
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            headerToolbar: {
+                left: 'prev,next',
+                right: 'title'
+            },
+
+            defaultView: 'timeGridWeek',
+            selectable: true,
+            editable: true,
+            timeZone: clientTimeZone, // Use the client's time zone
+            events: "{{ url('/') }}/fetchCalendarAvailability/" + tutorId,
+            eventClick: function(eventClickInfo, jsEvent, view) {
+                // Reset the background color of all events to their default styling
+                calendar.getEvents().forEach(function(event) {
+                    event.setProp('backgroundColor', event.extendedProps
+                        .originalBackgroundColor || '');
+                });
+
+                // Set the background color of the clicked event
+                eventClickInfo.event.setProp('backgroundColor', '#fe6903');
+                eventID = eventClickInfo.el.fcSeg.eventRange.def.publicId;
+
+                $("#continueSubmitShcdulebtn").removeClass("disabled")
+                $("#session_start").val(moment(eventClickInfo.el.fcSeg.start).add(0, 'minute')
+                    .format('YYYY-MM-DD HH:mm'))
+                $("#session_end").val(moment(eventClickInfo.el.fcSeg.end).add(0, 'minute')
+                    .format(
+                        'YYYY-MM-DD HH:mm'))
+                $("#calendar_sch_id").val(eventID);
+            },
+            eventDataTransform: function(event, element, info) {
+                if (event.status == 'time_off') {
+                    event.editable = false;
+                    event.color = "red";
+
+                }
+                return event;
+            },
+        });
 
 
-            // fake dummy data
-            // Static events
-            var currentDate = new Date(); // Current date
-            var formattedCurrentDate = currentDate.toISOString().slice(0, 10); // Format as 'YYYY-MM-DD'
-        var staticEvents = [
-            {
+        calendar.render();
+        calendar.changeView('timeGridWeek');
+
+
+        // fake dummy data
+        // Static events
+        var currentDate = new Date(); // Current date
+        var formattedCurrentDate = currentDate.toISOString().slice(0, 10); // Format as 'YYYY-MM-DD'
+        var staticEvents = [{
                 title: 'Static Event 1',
-                start: formattedCurrentDate+'T08:00:00',
-                end: formattedCurrentDate+'T10:00:00',
-                
+                start: formattedCurrentDate + 'T08:00:00',
+                end: formattedCurrentDate + 'T10:00:00',
+
             },
             {
                 title: 'Static Event 2',
-                start: formattedCurrentDate+'T14:00:00',
-                end: formattedCurrentDate+'T16:00:00',
-                
+                start: formattedCurrentDate + 'T14:00:00',
+                end: formattedCurrentDate + 'T16:00:00',
+
             },
             // Add more static events as needed
         ];
 
-        staticEvents.forEach(function (eventData) {
+        staticEvents.forEach(function(eventData) {
             var event = calendar.addEvent(eventData);
         });
-        }, 400);
-    }
+    }, 400);
+}
 
-    function submitStudentSchedule() {
-        if ($("#session_start").val() != '' && $("#session_end").val() != '' && $("#calendar_sch_id").val() != '') {
-            $('#submitPrivateLesson').submit();
-        }
+function submitStudentSchedule() {
+    if ($("#session_start").val() != '' && $("#session_end").val() != '' && $("#calendar_sch_id").val() != '') {
+        $('#submitPrivateLesson').submit();
     }
+}
 
 
-    function changeCalendarContent(videoSource){
-        document.querySelector('#tutorVideo').src='/videos/'+videoSource;
-    }
+function changeCalendarContent(videoSource) {
+    document.querySelector('#tutorVideo').src = '/videos/' + videoSource;
+}
+</script>
+<script>
+// jQuery code
+$(document).ready(function() {
+    $(".teacher-card-div").each(function() {
+        // Find the "like" button within the current teacher card
+        var $likeButton = $(this).find(".like");
+
+        // Add a click event listener to the found "like" button
+        $likeButton.click(function() {
+            // Find the corresponding ".like-fill" element within the current teacher card
+            var $likeFill = $(this).closest(".teacher-card-div").find(".like-fill");
+
+            // Toggle the "liked" class for the targeted ".like-fill" element
+            $likeFill.toggleClass("liked");
+        });
+    });
+});
 </script>
