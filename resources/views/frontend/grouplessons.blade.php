@@ -130,18 +130,23 @@
 <main class="pt-4 mt-4">
 <div class="hero">
     <div class="container">
-    <section class="lesson-btns">
+    <div class="col-lg-11 mx-auto">
+    <section class="lesson-btns px-0">
         <div class="btns-box">
             <button class="private-lesson"><a href="{{ route('private.lessons') }}">Private Lesson</a></button>
-            <button class="group-classes"><a href="#">Group Classes</a></button>
+            <button class="group-classes text-white"><a href="#" class="text-white">Group Classes</a></button>
         </div>
-        <h1 class="text-online mt-5">Online English classes to practice speaking together</h1>
+        <h1 class="main-heading mt-5 text-dark">Online English classes to practice speaking together</h1>
         <p class="tagline mt-4">Learn, speak and connect with a small group of students, guided by an expert tutor</p>
     </section>
+    </div>
 </div>
 </div>
 
-<div class="search-container">
+<div class="container">
+    <div class="row">
+        <div class="col-lg-11 mx-auto">
+        <div class="search-container">
     <form id="filter-form">
         <div class="search-menu">
             <div class="search-items">
@@ -253,6 +258,9 @@
             </div>
         </div>
     </form>
+</div>
+        </div>
+    </div>
 </div>
 <!-- slider 1-->
 <section id="card-section" class="px-lg-2">

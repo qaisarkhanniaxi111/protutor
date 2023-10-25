@@ -1057,3 +1057,10 @@
         }
     }
 </script>
+<script>
+     $(document).ready(function () {
+    $(".like").click(function () {
+        $(".like-fill").toggleClass("liked");
+    });
+});
+</script>
