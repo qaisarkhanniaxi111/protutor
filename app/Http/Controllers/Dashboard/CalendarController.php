@@ -157,8 +157,8 @@ class CalendarController extends Controller
 
     public function add_availability_Schedule(Request $request)
     { 
-
         if($request->post()){ 
+            
 
 
             //DB::enableQueryLog();
@@ -172,6 +172,7 @@ class CalendarController extends Controller
             }  
             $startDateTime = Carbon::parse($request->start_date_a);
             $endDateTime = Carbon::parse($request->end_date_a);
+            
            $is_submit=false;
             // Divide the availability slot into 1-hour time slots
             while ($startDateTime->lt($endDateTime)) {
@@ -193,6 +194,7 @@ class CalendarController extends Controller
                 }
                 $startDateTime = $nextHour;
             }
+            
             // $schedule = new Calendar;
             // $schedule->start_date =  $request->start_date_a; 
             // $schedule->end_date =  $request->end_date_a; 
@@ -222,7 +224,7 @@ class CalendarController extends Controller
 
                 return true;
             } else{
-                return false;
+                return "zxcvkzlxcjkvzjlcv";
             }
         }
         

@@ -58,6 +58,7 @@ class GroupLesson extends Model
     {
         return $this->belongsToMany(User::class, 'group_lesson_student', 'group_lesson_id', 'student_id');
     }
+    
 
     public function rating()
     {

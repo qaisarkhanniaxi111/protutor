@@ -1,7 +1,7 @@
 @php
     $lightNavbar = true;
 @endphp
-@include('frontend/common/header')
+@include('frontend/common/newHeader')
 {{-- <link rel="stylesheet" href="{{ url('/') }}/fullcalendar/fullcalendar.min.css" /> --}}
 <link rel="stylesheet" href="https://fullcalendar.io/releases/fullcalendar/3.10.0/fullcalendar.min.css">
 <style>
@@ -864,7 +864,7 @@
     <input type="datetime" name="start" id="session_start" hidden>
     <input type="datetime" name="end" id="session_end" hidden>
 </form>
-@include('/frontend/common/footer')
+@include('/frontend/common/newFooter')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
     integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>

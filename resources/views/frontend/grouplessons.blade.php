@@ -2,7 +2,6 @@
     $lightNavbar = true;
 @endphp
 @include('frontend/common/header')
-
 <link rel="stylesheet" href="assets/frontpage_assets/css/lessons.css">
 <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -14,6 +13,7 @@
 <link rel="stylesheet" href="assets/frontpage_assets/css/testimonials.css">
 <link rel="stylesheet" href="{{ asset('assets/frontpage_assets/css/footer.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/tutor/css/toastr.min.css') }}">
+
 <style>
     p{
         text-align: unset;
@@ -318,6 +318,7 @@
                                             </div>
                                         </div>
                                         <hr width="100%" color="#E3E3E3" />
+                                        
                                         <div class="price-panal">
                                             <button class="price-box">
                                                 <div class="price-wrapper">
@@ -333,7 +334,7 @@
                                             <div class="top-reviews">
                                                 <div class="reviews-box">
                                                     @foreach (groupLessonParticipants($groupLesson->id) as $key => $user)
-                                                        <img src="{{ $user->avatar }}"
+                                                        <img src="{{ $user->profile_img }}"
                                                             class="review-{{ 3 + $key }}" alt="Image"
                                                             style="height:24px; width:24px; border-radius:100%; object-fit:cover"/>
                                                     @endforeach
@@ -370,7 +371,7 @@
                 style="max-width:1360px;" id="filter-cards-id">
                 @if (count($groupLessons) > 0)
                     @foreach ($groupLessons as $groupLesson)
-
+                    
                         <div class="">
                             <div class="card-wrapper">
                                 <div class="slider-card ">
@@ -420,6 +421,7 @@
                                             </div>
                                         </div>
                                         <hr width="100%" color="#E3E3E3" />
+                                      
                                         <div class="price-panal">
                                             <button class="price-box">
                                                 <div class="price-wrapper">
@@ -434,8 +436,9 @@
 
                                             <div class="top-reviews">
                                                 <div class="reviews-box">
-                                                    @foreach (groupLessonParticipants($groupLesson->id) as $key => $user)
-                                                        <img src="{{ $user->avatar }}"
+                                                    
+                                                    @foreach (groupLessonParticipants2($groupLesson->id) as $key => $user)
+                                                        <img src="{{ url("") }}/images/{{ $user->profile_img }}"
                                                             class="review-{{ 3 + $key }}" alt="Image"
                                                             style="height:24px; width:24px; border-radius:100%; object-fit:cover"/>
                                                     @endforeach

@@ -43,6 +43,8 @@ class TutorController extends \App\Http\Controllers\Controller
 			$GraphDates[]=$value->month;
 			$GraphValues[]=$value->monthly_earnings/100;
 		}
+
+    
     return view("tutor/dashboard",compact('PageTitle', 'tutorData', 'quizes','currentDateTime','startDateTimeForTimer','GraphValues','GraphDates'));
   }
 

@@ -54,4 +54,5 @@ class Userdetail extends Authenticatable
      {
          return $this->uploadsDir. $value;
      }
+   
 }

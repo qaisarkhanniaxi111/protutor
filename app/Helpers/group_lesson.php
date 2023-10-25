@@ -4,6 +4,7 @@ use App\Models\GroupLesson;
 use App\Models\Payment;
 use App\Models\Rating;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 if (! function_exists('remainingGroupLessonParticipants')) {
 
@@ -81,6 +82,20 @@ if (! function_exists('groupLessonParticipants')) {
         }
 
         $enrolledParticipants = $groupLesson->enrolledStudents;
+
+        return $enrolledParticipants;
+    }
+}
+if (! function_exists('groupLessonParticipants2')) {
+
+    function groupLessonParticipants2($groupLessonId) {
+
+        $enrolledParticipants = DB::select("select `userdetails`.*, `group_lesson_student`.`group_lesson_id` as `pivot_lesson_id`, `group_lesson_student`.`student_id` as `pivot_std_id` from `userdetails` inner join `group_lesson_student` on `userdetails`.`student_no` = `group_lesson_student`.`student_id` where `group_lesson_student`.`group_lesson_id` = $groupLessonId");
+
+        if (! $enrolledParticipants) {
+            abort(404, config('protutor.error_message.404'));
+        }
+
 
         return $enrolledParticipants;
     }
