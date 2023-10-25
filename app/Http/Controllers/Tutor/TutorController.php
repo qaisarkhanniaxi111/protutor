@@ -44,8 +44,8 @@ class TutorController extends \App\Http\Controllers\Controller
 			$GraphValues[]=$value->monthly_earnings/100;
 		}
 
-    
-    return view("tutor/dashboard",compact('PageTitle', 'tutorData', 'quizes','currentDateTime','startDateTimeForTimer','GraphValues','GraphDates'));
+    $tutorSch=DB::select("SELECT o.user_id, o.teacher_id, calendars.* FROM `order` as o JOIN calendars ON calendars.id = o.calender_sch_id WHERE DATE(calendars.start_date)=CURDATE() and o.teacher_id=$tutorId;");
+    return view("tutor/dashboard",compact('PageTitle', 'tutorData', 'quizes','currentDateTime','startDateTimeForTimer','GraphValues','GraphDates','tutorSch'));
   }
 
   public function getSortByTutorGraphData(Request $request){
