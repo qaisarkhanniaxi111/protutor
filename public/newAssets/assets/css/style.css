@@ -2212,3 +2212,25 @@ height: 10px;
   color: white !important;
   border-radius: 4px;
 }
+
+.hoverable-dahboard{
+  position: relative;
+}
+
+.hoverable-dahboard-dropdown{
+  position: absolute;
+  bottom: 0;
+  top: 99%;
+  left: 15px;
+  right: 0;
+  padding: 15px;
+  background-color: #00000021;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
+  display: none;
+}
+.hoverable-dahboard:hover .hoverable-dahboard-dropdown{
+  display: block;
+  }
