@@ -123,6 +123,28 @@
         padding: 20px 15px;
         /* color: transparent; */
       }
+      .hoverable-dahboard{
+        position: relative;
+        display: flex;
+      }
+      
+      .hoverable-dahboard-dropdown{
+        position: relative;
+        bottom: unset;
+        top:unset;
+        left: 15px;
+        right: unset;
+        padding: 0px;
+        background-color: #00000021;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: unset;
+        display: block;
+      }
+      .hoverable-dahboard:hover .hoverable-dahboard-dropdown{
+        display: block;
+        }
 }
 
 @media only screen and (max-width:991px) {

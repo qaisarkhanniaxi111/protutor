@@ -1049,7 +1049,7 @@ p {
                 </div>
                 @if (count($userdata))
                 @foreach ($userdata as $userdata_val)
-                <div class="col-lg-3 col-md-6 col-sm-10 col-12 mt-4 mx-auto">
+                <div class="col-lg-3 col-md-6 col-sm-10 col-12 mt-4">
                     <a href="{{ url('/tutor-detail') }}/{{ $userdata_val->user_id }}" class="text-decoration-none">
                         <div class="tutors-card h-100 bg-white">
                             <!--<img src="images/{{ $userdata_val->profile_img }}" alt="">-->
@@ -1057,7 +1057,7 @@ p {
                                 <figure>
                                     <div>
                                         <img src="images/{{ $userdata_val->profile_img }}" alt=""
-                                           >
+                                            style="height: 300px; object-fit:cover;">
                                     </div>
                                 </figure>
                             </div>
