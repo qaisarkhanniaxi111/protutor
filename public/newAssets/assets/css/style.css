@@ -2233,7 +2233,7 @@ height: 10px;
   display: none;
 }
 .hoverable-dahboard:hover .hoverable-dahboard-dropdown{
-  display: block !important;
+  display: block;
   }
 
 
