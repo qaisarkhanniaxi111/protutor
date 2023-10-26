@@ -24,6 +24,9 @@
     font-weight: 600;
     line-height: 110%;
   }
+  .filter-btn-div{
+    margin-top: 10px;
+  }
 }
 @media only screen and (max-width:1240px){
   .teacher-card--header-text{
@@ -41,6 +44,9 @@
   }
 }
 @media only screen and (max-width: 1200px) {
+  .filter-btn-div{
+    margin-top: 0px;
+  }
   .filter-search .dropdown{
     display: flex;
     flex-grow: 1;
@@ -438,4 +444,39 @@
     height: auto;
   }
  
+
+  /* ============================group lessons */
+  .filter-main-div{
+    width: 100%;
+    margin:7px 0px !important;
+  }
+  .filter-btn-div{
+   width: 100%;
+  }
+  .filter-btn{
+    width: 100%;
+    margin-top: 7px;
+  }
+  .group-card-heading h1{
+    font-size: 16px;
+    line-height: 22px;
+  }
+  .group-card-profile p{
+    font-size: 14px;
+  }
+  .group-card-profile img{
+    height: 25px !important;
+    width: 25px !important;
+  }
+  
+.group-card-slider .owl-nav {
+  margin-left:-10px ;
+  margin-right: -10px;
+}
+
+.group-card-slider.owl-theme .owl-nav [class*='owl-'] {
+  width: 38px;
+  height: 38px;
+  margin-top: -50px;
+}
 }
