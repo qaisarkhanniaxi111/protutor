@@ -84,20 +84,44 @@
                             <a href="{{url('/signup')}}" class="mt-md-0 mt-3 main-btn ms-3 w-auto">SignUp</a>
                             @endif
                         @else
-                            <a href="{{url('/signup')}}" class="mt-md-0 mt-3 main-btn ms-3 w-auto">SignUp</a>
+                        
+                            <a href="{{url('/signup')}}" class="mt-md-0 mt-3 main-btn ms-3 w-auto ">SignUp</a>
                         @endif
+                        @if (!auth()->check())
+                        <a href="{{url('/login')}}" class="mt-md-0 mt-3 main-btn ms-3 w-auto ">Login</a>
+                        @endif
+                        @if (auth()->user())
+                        @if (auth()->user()->role == 3 || auth()->user()->role == 4)
+                            
+                       
+                        <div class="hoverable-dahboard">
                             <a href="
                       @if (auth()->user()) @if (auth()->user()->role == 3)
                               {{ url('/tutordashboard') }}
                           @elseif (auth()->user()->role == 4)
                               {{ url('/dashboard') }}
-                          @else
-                              {{ url('/login') }} @endif
-@else
-{{ url('/login') }}
+                          @endif
+
                       @endif"
-                                class="main-btn ms-3 w-auto">{{ auth()->check() ? 'Dashboard' : 'Login' }}</a>
-                                @if (auth()->user())
+                                class="mt-md-0 mt-3 main-btn ms-3 mb-md-0 mb-3 w-auto">{{ auth()->check() ? 'Dashboard' : '' }}</a>
+                                <div class="hoverable-dahboard-dropdown">
+                                    @if (auth()->user())
+                                    @if (auth()->user()->role == 3)
+                                    <a href="{{url('/tutorlogout')}}" class="main-btn  mb-md-0 mb-3 w-auto">Logout</a>
+                                    @elseif (auth()->user()->role == 4)
+                                    <a href="{{url('/logout')}}" class="main-btn  mb-md-0 mb-3 w-auto">Logout</a>
+                                    @else
+                                    
+                                    @endif
+                                @else
+                                    
+                                @endif
+                                </div>
+                            </div>
+                            @endif
+                            
+                            @endif
+                                {{-- @if (auth()->user())
                             @if (auth()->user()->role == 3)
                             <a href="{{url('/tutorlogout')}}" class="mt-md-0 mt-3 main-btn ms-3 w-auto">Logout</a>
                             @elseif (auth()->user()->role == 4)
@@ -107,7 +131,7 @@
                             @endif
                         @else
                             
-                        @endif
+                        @endif --}}
                     </div>
                 </div>
             </div>

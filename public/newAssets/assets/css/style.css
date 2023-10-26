@@ -2219,6 +2219,7 @@ height: 10px;
 
 .hoverable-dahboard-dropdown{
   position: absolute;
+  width: 100%;
   bottom: 0;
   top: 99%;
   left: 15px;
@@ -2232,5 +2233,5 @@ height: 10px;
   display: none;
 }
 .hoverable-dahboard:hover .hoverable-dahboard-dropdown{
-  display: block;
+  display: block !important;
   }

@@ -149,69 +149,89 @@
             <div class="box today">
                 <div class="box-title">
                     <div class="box-title-left">
-                        <h2 class="small">Today | Sep 22, 2021</h2>
+                        <h2 class="small">Today | {{ now()->format('M d, Y') }}</h2>
                     </div>
                 </div>
+                @php
+                    $current=now()->format('d D');
+
+
+// Get two previous dates
+$twoDaysAgo = now()->subDays(2)->format('d D');
+$oneDayAgo = now()->subDay()->format('d D');
+
+// Reset $currentDate to the original value
+$currentDate = now()->parse($current);
+
+// Get two future dates
+$oneDayAhead = now()->addDay()->format('d D');
+$twoDaysAhead = now()->addDays(2)->format('d D');
+
+                @endphp
                 <div class="date-scroll">
                     <ul>
                         <li>
                             <div class="date-scroll-single">
-                                <h5>20</h5>
-                                <h6>Mon</h6>
+                                @php
+                                    list($day, $dayOfWeek) = explode(' ', $twoDaysAgo);
+                                @endphp
+                                <h5>{{ $day }}</h5>
+                                <h6>{{ $dayOfWeek }}</h6>
                             </div>
                         </li>
                         <li>
                             <div class="date-scroll-single">
-                                <h5>21</h5>
-                                <h6>Tue</h6>
+                                @php
+                                    list($day, $dayOfWeek) = explode(' ', $oneDayAgo);
+                                @endphp
+                                <h5>{{ $day }}</h5>
+                                <h6>{{ $dayOfWeek }}</h6>
                             </div>
                         </li>
                         <li>
                             <div class="date-scroll-single active">
-                                <h5>22</h5>
-                                <h6>Wed</h6>
+                                @php
+                                    list($day, $dayOfWeek) = explode(' ', $current);
+                                @endphp
+                                <h5>{{ $day }}</h5>
+                                <h6>{{ $dayOfWeek }}</h6>
                             </div>
                         </li>
                         <li>
                             <div class="date-scroll-single">
-                                <h5>23</h5>
-                                <h6>Thu</h6>
+                                @php
+                                    list($day, $dayOfWeek) = explode(' ', $oneDayAhead);
+                                @endphp
+                                <h5>{{ $day }}</h5>
+                                <h6>{{ $dayOfWeek }}</h6>
                             </div>
                         </li>
                         <li>
                             <div class="date-scroll-single">
-                                <h5>24</h5>
-                                <h6>Fri</h6>
+                                @php
+                                    list($day, $dayOfWeek) = explode(' ', $twoDaysAhead);
+                                @endphp
+                                <h5>{{ $day }}</h5>
+                                <h6>{{ $dayOfWeek }}</h6>
                             </div>
                         </li>
                     </ul>
                 </div>
 
                 <div class="date-list">
+                    @foreach ($tutorSch as $tutorSchs)
+                        
+                   
                     <div class="date-list-single">
-                        <div class="date-list-left">08 AM</div>
+                        <div class="date-list-left">{{ date('h:i A', strtotime($tutorSchs->start_date)) }}</div>
                         <div class="date-list-right">
-                        </div>
-                    </div>
-                    <div class="date-list-single">
-                        <div class="date-list-left">09 AM</div>
-                        <div class="date-list-right">
-                        </div>
-                    </div>
-                    <div class="date-list-single">
-                        <div class="date-list-left">10 AM</div>
-                        <div class="date-list-right">
-                        </div>
-                    </div>
-                    <div class="date-list-single">
-                        <div class="date-list-left">11 AM</div>
-                        <div class="date-list-right">
-                            <div class="date-invite">
+                            <div class="date-invite" style="height: 55px">
                                 <span><i class="fa-solid fa-video"></i></span>
-                                <p>Video Session With Malik Start 10 AM - End 11 AM</p>
+                                <p>Video Session With Malik Start {{ date('h:i A', strtotime($tutorSchs->start_date)) }} - End {{ date('h:i A', strtotime($tutorSchs->end_date)) }}</p>
                             </div>
                         </div>
                     </div>
+                    @endforeach
                 </div>
             </div>
         </div>
