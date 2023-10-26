@@ -531,7 +531,7 @@
                                                     data-bs-toggle="modal" data-bs-target="#exampleModal"
                                                     onclick="setRange()">Add</button>
                                                 <b class="text-success p-3 error-msg" id="make_plan">
-                                                    Add a Plan for this GroupLesson ( optional) 
+                                                    Add a Plan for this Group Lesson ( optional) 
                                                 </b>
                                             </div>
                                             <div class="create-btn">
