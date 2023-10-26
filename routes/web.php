@@ -150,6 +150,7 @@ Route::group(['middleware' => ['dashboardmiddleware']], function () {
     });
 });
 
+Route::any('/fetch/tutor/sch', [TutorController::class, 'fetchTutorSch'])->name('fetch.tutor.sch');
 Route::group(['middleware' => ['tutormiddleware']], function () {
 
 

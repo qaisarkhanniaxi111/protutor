@@ -298,11 +298,11 @@
                                         style="background-color:transparent !important; box-shadow:none !importnat; padding:0px !important;">
                                         <div class="person-data" style="box-shadow:none !importnat">
                                             <div class="person" style="box-shadow:none !importnat">
-                                                @if ($groupLesson->tutor)
-                                                    @if ($groupLesson->tutor->avatar != null)
+                                                @if ($groupLesson->tutorDetails)
+                                                    @if ($groupLesson->tutorDetails->profile_img != null)
                                                     <img class="-person-image" alt="Image"
                                                         style="height:30px; width:30px; border-radius:100%; object-fit:cover; box-shadow:none !important;"
-                                                        src="{{ $groupLesson->tutor->avatar }}"/>
+                                                        src="{{ $groupLesson->tutorDetails->profile_img }}"/>
                                                     @else
                                                     <img class="-person-image" alt="Image"
                                                         style="height:30px; width:30px; border-radius:100%; object-fit:cover; box-shadow:none !important;"
@@ -341,8 +341,8 @@
 
                                             <div class="top-reviews">
                                                 <div class="reviews-box">
-                                                    @foreach (groupLessonParticipants($groupLesson->id) as $key => $user)
-                                                        <img src="{{ $user->profile_img }}"
+                                                    @foreach (groupLessonParticipants2($groupLesson->id) as $key => $user)
+                                                        <img src="{{ url("") }}/images/{{ $user->profile_img }}"
                                                             class="review-{{ 3 + $key }}" alt="Image"
                                                             style="height:24px; width:24px; border-radius:100%; object-fit:cover"/>
                                                     @endforeach

@@ -153,63 +153,80 @@
                     </div>
                 </div>
                 @php
-                    $current=now()->format('d D');
-
+                   $current = now()->format('d D');
 
 // Get two previous dates
-$twoDaysAgo = now()->subDays(2)->format('d D');
-$oneDayAgo = now()->subDay()->format('d D');
-
-// Reset $currentDate to the original value
-$currentDate = now()->parse($current);
+$twoDaysAgo = now()
+    ->subDays(2)
+    ->format('d D');
+$oneDayAgo = now()
+    ->subDay()
+    ->format('d D');
+$oneDayAgoDate = now()
+    ->subDay()
+    ->format('Y-m-d');
+$twoDaysAgoDate = now()
+    ->subDay(2)
+    ->format('Y-m-d');
 
 // Get two future dates
-$oneDayAhead = now()->addDay()->format('d D');
-$twoDaysAhead = now()->addDays(2)->format('d D');
+$oneDayAhead = now()
+    ->addDay()
+    ->format('d D');
+$twoDaysAhead = now()
+    ->addDays(2)
+    ->format('d D');
+$oneDayAheadDate = now()
+    ->addDays()
+    ->format('Y-m-d');
+$twoDaysAheadDate = now()
+    ->addDays(2)
+    ->format('Y-m-d');
 
                 @endphp
                 <div class="date-scroll">
                     <ul>
                         <li>
-                            <div class="date-scroll-single">
+                            <div class="date-scroll-single" onclick="fetchTutorSch(this,'{{ $twoDaysAgoDate }}')">
                                 @php
-                                    list($day, $dayOfWeek) = explode(' ', $twoDaysAgo);
+                                    [$day, $dayOfWeek] = explode(' ', $twoDaysAgo);
                                 @endphp
                                 <h5>{{ $day }}</h5>
                                 <h6>{{ $dayOfWeek }}</h6>
                             </div>
                         </li>
                         <li>
-                            <div class="date-scroll-single">
+                            <div class="date-scroll-single" onclick="fetchTutorSch(this,'{{ $oneDayAgoDate }}')">
                                 @php
-                                    list($day, $dayOfWeek) = explode(' ', $oneDayAgo);
+                                    [$day, $dayOfWeek] = explode(' ', $oneDayAgo);
                                 @endphp
                                 <h5>{{ $day }}</h5>
                                 <h6>{{ $dayOfWeek }}</h6>
                             </div>
                         </li>
                         <li>
-                            <div class="date-scroll-single active">
+                            <div class="date-scroll-single active"
+                                onclick="fetchTutorSch(this,'{{ now()->format('Y-m-d') }}')">
                                 @php
-                                    list($day, $dayOfWeek) = explode(' ', $current);
+                                    [$day, $dayOfWeek] = explode(' ', $current);
                                 @endphp
                                 <h5>{{ $day }}</h5>
                                 <h6>{{ $dayOfWeek }}</h6>
                             </div>
                         </li>
                         <li>
-                            <div class="date-scroll-single">
+                            <div class="date-scroll-single" onclick="fetchTutorSch(this,'{{ $oneDayAheadDate }}')">
                                 @php
-                                    list($day, $dayOfWeek) = explode(' ', $oneDayAhead);
+                                    [$day, $dayOfWeek] = explode(' ', $oneDayAhead);
                                 @endphp
                                 <h5>{{ $day }}</h5>
                                 <h6>{{ $dayOfWeek }}</h6>
                             </div>
                         </li>
                         <li>
-                            <div class="date-scroll-single">
+                            <div class="date-scroll-single" onclick="fetchTutorSch(this,'{{ $twoDaysAheadDate }}')">
                                 @php
-                                    list($day, $dayOfWeek) = explode(' ', $twoDaysAhead);
+                                    [$day, $dayOfWeek] = explode(' ', $twoDaysAhead);
                                 @endphp
                                 <h5>{{ $day }}</h5>
                                 <h6>{{ $dayOfWeek }}</h6>
@@ -218,7 +235,7 @@ $twoDaysAhead = now()->addDays(2)->format('d D');
                     </ul>
                 </div>
 
-                <div class="date-list">
+                <div class="date-list" id="tutorSchCards">
                     @foreach ($tutorSch as $tutorSchs)
                         
                    
@@ -385,4 +402,35 @@ $twoDaysAhead = now()->addDays(2)->format('d D');
             }
         });
     })
+
+
+
+    studentId = {{ $studentId }}
+
+    function fetchTutorSch(element, date) {
+        $('.date-scroll-single').each(function() {
+            $(this).removeClass('active')
+        })
+        element.classList.add("active")
+        $.ajax({
+            url: '{{ route('fetch.tutor.sch') }}',
+            type: 'POST',
+            headers: {
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            },
+            data: {
+                'id': studentId,
+                'date': date,
+                'for': 2
+            },
+            success: function(result) {
+                if(result.html){
+                    $("#tutorSchCards").html(result.html)
+                }else{
+                    $("#tutorSchCards").html('')
+                }
+                console.log(result)
+            }
+        })
+    }
 </script>

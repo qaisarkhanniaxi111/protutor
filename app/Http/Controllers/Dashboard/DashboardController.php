@@ -54,7 +54,7 @@ class DashboardController extends Controller
 
 		// dd($GraphValues);
 		$tutorSch=DB::select("SELECT o.user_id, o.teacher_id, calendars.* FROM `order` as o JOIN calendars ON calendars.id = o.calender_sch_id WHERE DATE(calendars.start_date)=CURDATE() and o.user_id=$studentId;");
-		return view("dashboard/dashboard", compact('PageTitle', 'tutorData', 'quizes', 'startDateTimeForTimer', 'currentDateTime','GraphValues','GraphDates','tutorSch'));
+		return view("dashboard/dashboard", compact('PageTitle', 'tutorData', 'quizes', 'startDateTimeForTimer', 'currentDateTime','GraphValues','GraphDates','tutorSch','studentId'));
 	}
 
 	public function getSortByStudentGraphData(Request $request){

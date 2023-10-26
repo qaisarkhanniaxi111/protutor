@@ -44,8 +44,25 @@ class TutorController extends \App\Http\Controllers\Controller
 			$GraphValues[]=$value->monthly_earnings/100;
 		}
 
-    $tutorSch=DB::select("SELECT o.user_id, o.teacher_id, calendars.* FROM `order` as o JOIN calendars ON calendars.id = o.calender_sch_id WHERE DATE(calendars.start_date)=CURDATE() and o.teacher_id=$tutorId;");
-    return view("tutor/dashboard",compact('PageTitle', 'tutorData', 'quizes','currentDateTime','startDateTimeForTimer','GraphValues','GraphDates','tutorSch'));
+    $tutorSch=DB::select("SELECT users.first_name,users.last_name,o.user_id, o.teacher_id, calendars.* FROM `order` as o JOIN calendars ON calendars.id = o.calender_sch_id JOIN users ON o.user_id=users.id WHERE DATE(calendars.start_date)=CURDATE() and o.teacher_id=$tutorId;");
+    return view("tutor/dashboard",compact('PageTitle', 'tutorData', 'quizes','currentDateTime','startDateTimeForTimer','GraphValues','GraphDates','tutorSch','tutorId'));
+  }
+
+  public function fetchTutorSch(Request $request){
+    if($request->for==1){
+
+      $tutorSch=DB::select("SELECT users.first_name,users.last_name,o.user_id, o.teacher_id, calendars.* FROM `order` as o JOIN calendars ON calendars.id = o.calender_sch_id JOIN users ON o.user_id=users.id WHERE DATE(calendars.start_date)='$request->date' and o.teacher_id=$request->id;");
+      // return $tutorSch;
+      $viewRender = view('tutor.includes.tutorSch', ['tutorSch' => $tutorSch])->render();
+
+      return response()->json(['html' => $viewRender]);
+    }elseif($request->for==2){
+      $tutorSch=DB::select("SELECT users.first_name,users.last_name,o.user_id, o.teacher_id, calendars.* FROM `order` as o JOIN calendars ON calendars.id = o.calender_sch_id JOIN users ON o.teacher_id=users.id WHERE DATE(calendars.start_date)='$request->date' and o.user_id=$request->id;");
+      // return $tutorSch;
+      $viewRender = view('tutor.includes.tutorSch', ['tutorSch' => $tutorSch])->render();
+
+      return response()->json(['html' => $viewRender]);
+    }
   }
 
   public function getSortByTutorGraphData(Request $request){

@@ -81,7 +81,7 @@
                 <div class="quiz-table">
                     <div class="table-responsive">
                         <table class="table theme-table">
-                          @foreach ($quizes as $quiz)
+                            @foreach ($quizes as $quiz)
                                 <tr>
                                     <td>{{ $quiz->quiztitle }}</td>
                                     <td>{{ $quiz->teaches_level }}</td>
@@ -98,7 +98,7 @@
                                     </td>
                                 </tr>
                             @endforeach
-                          
+
                         </table>
                     </div>
                 </div>
@@ -145,7 +145,8 @@
                             <li>
                                 <a href="{{ url('chat/' . $tutor_data->id) }}" class="text-capitalize">
                                     <h5>{{ $tutor_data->first_name }} {{ $tutor_data->last_name }}</h5>
-                                    <h6><span>{{ $tutor_data->body }}</span> <span><i class="fa-regular fa-clock"></i></span></h6>
+                                    <h6><span>{{ $tutor_data->body }}</span> <span><i
+                                                class="fa-regular fa-clock"></i></span></h6>
                                 </a>
                             </li>
                         @endforeach
@@ -155,67 +156,86 @@
             <div class="box today">
                 <div class="box-title">
                     <div class="box-title-left">
+
                         <h2 class="small">Today | {{ now()->format('M d, Y') }}</h2>
                     </div>
                 </div>
                 @php
-                    $current=now()->format('d D');
+                    $current = now()->format('d D');
 
+                    // Get two previous dates
+                    $twoDaysAgo = now()
+                        ->subDays(2)
+                        ->format('d D');
+                    $oneDayAgo = now()
+                        ->subDay()
+                        ->format('d D');
+                    $oneDayAgoDate = now()
+                        ->subDay()
+                        ->format('Y-m-d');
+                    $twoDaysAgoDate = now()
+                        ->subDay(2)
+                        ->format('Y-m-d');
 
-// Get two previous dates
-$twoDaysAgo = now()->subDays(2)->format('d D');
-$oneDayAgo = now()->subDay()->format('d D');
-
-// Reset $currentDate to the original value
-$currentDate = now()->parse($current);
-
-// Get two future dates
-$oneDayAhead = now()->addDay()->format('d D');
-$twoDaysAhead = now()->addDays(2)->format('d D');
+                    // Get two future dates
+                    $oneDayAhead = now()
+                        ->addDay()
+                        ->format('d D');
+                    $twoDaysAhead = now()
+                        ->addDays(2)
+                        ->format('d D');
+                    $oneDayAheadDate = now()
+                        ->addDays()
+                        ->format('Y-m-d');
+                    $twoDaysAheadDate = now()
+                        ->addDays(2)
+                        ->format('Y-m-d');
 
                 @endphp
                 <div class="date-scroll">
+                    
                     <ul>
                         <li>
-                            <div class="date-scroll-single">
+                            <div class="date-scroll-single" onclick="fetchTutorSch(this,'{{ $twoDaysAgoDate }}')">
                                 @php
-                                    list($day, $dayOfWeek) = explode(' ', $twoDaysAgo);
+                                    [$day, $dayOfWeek] = explode(' ', $twoDaysAgo);
                                 @endphp
                                 <h5>{{ $day }}</h5>
                                 <h6>{{ $dayOfWeek }}</h6>
                             </div>
                         </li>
                         <li>
-                            <div class="date-scroll-single">
+                            <div class="date-scroll-single" onclick="fetchTutorSch(this,'{{ $oneDayAgoDate }}')">
                                 @php
-                                    list($day, $dayOfWeek) = explode(' ', $oneDayAgo);
+                                    [$day, $dayOfWeek] = explode(' ', $oneDayAgo);
                                 @endphp
                                 <h5>{{ $day }}</h5>
                                 <h6>{{ $dayOfWeek }}</h6>
                             </div>
                         </li>
                         <li>
-                            <div class="date-scroll-single active">
+                            <div class="date-scroll-single active"
+                                onclick="fetchTutorSch(this,'{{ now()->format('Y-m-d') }}')">
                                 @php
-                                    list($day, $dayOfWeek) = explode(' ', $current);
+                                    [$day, $dayOfWeek] = explode(' ', $current);
                                 @endphp
                                 <h5>{{ $day }}</h5>
                                 <h6>{{ $dayOfWeek }}</h6>
                             </div>
                         </li>
                         <li>
-                            <div class="date-scroll-single">
+                            <div class="date-scroll-single" onclick="fetchTutorSch(this,'{{ $oneDayAheadDate }}')">
                                 @php
-                                    list($day, $dayOfWeek) = explode(' ', $oneDayAhead);
+                                    [$day, $dayOfWeek] = explode(' ', $oneDayAhead);
                                 @endphp
                                 <h5>{{ $day }}</h5>
                                 <h6>{{ $dayOfWeek }}</h6>
                             </div>
                         </li>
                         <li>
-                            <div class="date-scroll-single">
+                            <div class="date-scroll-single" onclick="fetchTutorSch(this,'{{ $twoDaysAheadDate }}')">
                                 @php
-                                    list($day, $dayOfWeek) = explode(' ', $twoDaysAhead);
+                                    [$day, $dayOfWeek] = explode(' ', $twoDaysAhead);
                                 @endphp
                                 <h5>{{ $day }}</h5>
                                 <h6>{{ $dayOfWeek }}</h6>
@@ -224,21 +244,21 @@ $twoDaysAhead = now()->addDays(2)->format('d D');
                     </ul>
                 </div>
 
-                <div class="date-list">
-                    
-                   
+                <div class="date-list" id="tutorSchCards">
+
+
                     @foreach ($tutorSch as $tutorSchs)
-                        
-                   
-                    <div class="date-list-single">
-                        <div class="date-list-left">{{ date('h:i A', strtotime($tutorSchs->start_date)) }}</div>
-                        <div class="date-list-right">
-                            <div class="date-invite" style="height: 55px">
-                                <span><i class="fa-solid fa-video"></i></span>
-                                <p>Video Session With Malik Start {{ date('h:i A', strtotime($tutorSchs->start_date)) }} - End {{ date('h:i A', strtotime($tutorSchs->end_date)) }}</p>
+                        <div class="date-list-single">
+                            <div class="date-list-left">{{ date('h:i A', strtotime($tutorSchs->start_date)) }}</div>
+                            <div class="date-list-right">
+                                <div class="date-invite" style="height: 75px">
+                                    <span><i class="fa-solid fa-video"></i></span>
+                                    <p>Video Session With {{ $tutorSchs->first_name.' '.$tutorSchs->last_name }} Start
+                                        {{ date('h:i A', strtotime($tutorSchs->start_date)) }} - End
+                                        {{ date('h:i A', strtotime($tutorSchs->end_date)) }}</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
                     @endforeach
                 </div>
             </div>
@@ -249,152 +269,179 @@ $twoDaysAhead = now()->addDays(2)->format('d D');
 @include('/tutor/common/footer')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 <script>
-  // Fetch the target datetime from the PHP variable
-  var targetDatetime = "{{ $startDateTimeForTimer }}";
+    // Fetch the target datetime from the PHP variable
+    var targetDatetime = "{{ $startDateTimeForTimer }}";
 
-  if(targetDatetime==''){
-    console.log("no upcomping session");
-  }else{
-  // Calculate the time remaining
-  function updateTimer() {
-      var now = moment();
-      var target = moment(targetDatetime);
-      var duration = moment.duration(target.diff(now));
+    if (targetDatetime == '') {
+        console.log("no upcomping session");
+    } else {
+        // Calculate the time remaining
+        function updateTimer() {
+            var now = moment();
+            var target = moment(targetDatetime);
+            var duration = moment.duration(target.diff(now));
 
-      var days = Math.floor(duration.asDays());
-      duration.subtract(moment.duration(days, 'days'));
+            var days = Math.floor(duration.asDays());
+            duration.subtract(moment.duration(days, 'days'));
 
-      var hours = duration.hours();
-      var minutes = duration.minutes();
-      var seconds = duration.seconds();
+            var hours = duration.hours();
+            var minutes = duration.minutes();
+            var seconds = duration.seconds();
 
-      // Format the timer as "2D : 24H : 3M : 4S"
-      var timerText = "<p>" + days + "D : " + hours + "H : " + minutes + "M : " + seconds + "S" + "</p>";
-      document.getElementById('timer').innerHTML = timerText;
+            // Format the timer as "2D : 24H : 3M : 4S"
+            var timerText = "<p>" + days + "D : " + hours + "H : " + minutes + "M : " + seconds + "S" + "</p>";
+            document.getElementById('timer').innerHTML = timerText;
 
-      // Update the timer every second
-      setTimeout(updateTimer, 1000);
-  }
+            // Update the timer every second
+            setTimeout(updateTimer, 1000);
+        }
 
-  // Initial call to start the timer
-  updateTimer();
-}
+        // Initial call to start the timer
+        updateTimer();
+    }
 </script>
 <script type="text/javascript">
-  labels = @json($GraphDates);
-  data = @json($GraphValues);
-  createBarChart(labels, data)
+    labels = @json($GraphDates);
+    data = @json($GraphValues);
+    createBarChart(labels, data)
 
-  function createBarChart(labelsArray, dataArray) {
-
-
-      // chart-2 Bar chart
-      var ctx2 = document.getElementById('myChart2').getContext('2d');
-      var gradient = ctx2.createLinearGradient(0, 0, 0, 400);
-      gradient.addColorStop(0, 'rgba(251, 133, 0, 1)');
-      gradient.addColorStop(1, 'rgba(255, 183, 3, 1)');
-      var myChart2 = new Chart(ctx2, {
-          type: 'bar',
-          fillOpacity: 1,
-          data: {
-              labels: labelsArray,
-              datasets: [{
-                  label: "",
-                  backgroundColor: gradient,
-                  borderColor: "none",
-                  pointBorderColor: "#CFEECE",
-                  borderWidth: 0,
-                  pointRadius: 4,
-                  pointHoverRadius: 4,
-                  pointBackgroundColor: "#FFF",
-                  data: dataArray
-              }]
-          },
-          options: {
-              responsive: true,
-              maintainAspectRatio: false,
-              bezierCurve: false,
-              elements: {
-                  line: {
-                      tension: 0
-                  }
-              },
-              scales: {
-                  xAxes: [{
-                      gridLines: {
-                          color: "rgba(0, 0, 0, 0)"
-                      },
-                      categoryPercentage: 3 / 10
-                  }],
-                  yAxes: [{
-                      ticks: {
-                          beginAtZero: true
-                      },
-                      gridLines: {
-                          color: "rgba(0, 148, 68, 0.2)"
-                      }
-                  }]
-              },
-
-              tooltips: {
-                  custom: function(tooltip) {
-                      if (!tooltip) return;
-                      // disable displaying the color box;
-                      tooltip.displayColors = false;
-                  },
-                  callbacks: {
-                      // use label callback to return the desired label
-                      label: function(tooltipItem, data) {
-                          return "$" + tooltipItem.yLabel;
-                      },
-                      // remove title
-                      title: function(tooltipItem, data) {
-                          return;
-                      }
-                  },
-                  backgroundColor: "#FFF",
-                  borderColor: "rgba(0, 0, 0, 0.09)",
-                  borderWidth: 1,
-                  bodyFontColor: "rgba(0, 0, 0, 1)",
-                  bodyAlign: 'center',
-                  bodyFontSize: 14,
-                  bodyFontStyle: 500
-              },
-              legend: {
-                  align: 'end',
-                  labels: {
-                      boxWidth: 12,
-                      fontColor: "#A4A7B0"
-                  }
-              }
-          }
-      });
-      // chart-2 Bar chart
-  }
-
-  $("#sortByGraph").on('change', () => {
-      sort = sortByGraph.value;
-
-      $.ajax({
-          url: "/getSortByTutorGraphData?sortBy=" + sort, // URL to your Laravel route
-          type: "GET",
-          dataType: "json",
-          success: function(data) {
-              labels = data.labels;
-              data = data.data;
-              createBarChart(labels, data)
-              // Data received as a JavaScript array
-              var jsArray = data;
-
-              // Use the data in your JavaScript code
-              console.log(jsArray);
-          },
-          error: function(xhr, status, error) {
-              console.error(error);
-          }
-      });
-  })
+    function createBarChart(labelsArray, dataArray) {
 
 
-  
+        // chart-2 Bar chart
+        var ctx2 = document.getElementById('myChart2').getContext('2d');
+        var gradient = ctx2.createLinearGradient(0, 0, 0, 400);
+        gradient.addColorStop(0, 'rgba(251, 133, 0, 1)');
+        gradient.addColorStop(1, 'rgba(255, 183, 3, 1)');
+        var myChart2 = new Chart(ctx2, {
+            type: 'bar',
+            fillOpacity: 1,
+            data: {
+                labels: labelsArray,
+                datasets: [{
+                    label: "",
+                    backgroundColor: gradient,
+                    borderColor: "none",
+                    pointBorderColor: "#CFEECE",
+                    borderWidth: 0,
+                    pointRadius: 4,
+                    pointHoverRadius: 4,
+                    pointBackgroundColor: "#FFF",
+                    data: dataArray
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                bezierCurve: false,
+                elements: {
+                    line: {
+                        tension: 0
+                    }
+                },
+                scales: {
+                    xAxes: [{
+                        gridLines: {
+                            color: "rgba(0, 0, 0, 0)"
+                        },
+                        categoryPercentage: 3 / 10
+                    }],
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        },
+                        gridLines: {
+                            color: "rgba(0, 148, 68, 0.2)"
+                        }
+                    }]
+                },
+
+                tooltips: {
+                    custom: function(tooltip) {
+                        if (!tooltip) return;
+                        // disable displaying the color box;
+                        tooltip.displayColors = false;
+                    },
+                    callbacks: {
+                        // use label callback to return the desired label
+                        label: function(tooltipItem, data) {
+                            return "$" + tooltipItem.yLabel;
+                        },
+                        // remove title
+                        title: function(tooltipItem, data) {
+                            return;
+                        }
+                    },
+                    backgroundColor: "#FFF",
+                    borderColor: "rgba(0, 0, 0, 0.09)",
+                    borderWidth: 1,
+                    bodyFontColor: "rgba(0, 0, 0, 1)",
+                    bodyAlign: 'center',
+                    bodyFontSize: 14,
+                    bodyFontStyle: 500
+                },
+                legend: {
+                    align: 'end',
+                    labels: {
+                        boxWidth: 12,
+                        fontColor: "#A4A7B0"
+                    }
+                }
+            }
+        });
+        // chart-2 Bar chart
+    }
+
+    $("#sortByGraph").on('change', () => {
+        sort = sortByGraph.value;
+
+        $.ajax({
+            url: "/getSortByTutorGraphData?sortBy=" + sort, // URL to your Laravel route
+            type: "GET",
+            dataType: "json",
+            success: function(data) {
+                labels = data.labels;
+                data = data.data;
+                createBarChart(labels, data)
+                // Data received as a JavaScript array
+                var jsArray = data;
+
+                // Use the data in your JavaScript code
+                console.log(jsArray);
+            },
+            error: function(xhr, status, error) {
+                console.error(error);
+            }
+        });
+    })
+
+
+    tutorId = {{ $tutorId }}
+
+    function fetchTutorSch(element, date) {
+        $('.date-scroll-single').each(function() {
+            $(this).removeClass('active')
+        })
+        element.classList.add("active")
+        $.ajax({
+            url: '{{ route('fetch.tutor.sch') }}',
+            type: 'POST',
+            headers: {
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            },
+            data: {
+                'id': tutorId,
+                'date': date,
+                'for': 1
+            },
+            success: function(result) {
+                if(result.html){
+                    $("#tutorSchCards").html(result.html)
+                }else{
+                    $("#tutorSchCards").html('')
+                }
+                console.log(result)
+            }
+        })
+    }
 </script>

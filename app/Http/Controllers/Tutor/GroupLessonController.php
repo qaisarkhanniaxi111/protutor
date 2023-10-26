@@ -94,7 +94,12 @@ class GroupLessonController extends Controller
             ->join('userdetails', 'users.id', '=', 'userdetails.student_no')
             ->where('users.role', $user_status)
             ->paginate(2);
-            return view('frontend.privateGroupLesson',compact('PageTitle','countryAll','rateAll','subjectAll','Spoken_language','userdata','Alltestimonial'));
+            $totalTutors = DB::table('users')
+            ->select('users.id as user_id')
+            ->join('userdetails', 'users.id', '=', 'userdetails.student_no')
+            ->where('users.role', $user_status)
+            ->count();
+            return view('frontend.privateGroupLesson',compact('PageTitle','countryAll','rateAll','subjectAll','Spoken_language','userdata','Alltestimonial','totalTutors'));
         }
     }
     public function openGroupDetails(GroupLesson $groupLesson)
