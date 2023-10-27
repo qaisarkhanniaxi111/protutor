@@ -1,6 +1,6 @@
 @include('/tutor/common/header')
 @include('/tutor/common/sidebar')
-<!doctype html>
+{{-- <!doctype html>
 <html lang="en">
 
 <head>
@@ -80,7 +80,7 @@
         margin-top: auto;
         margin-bottom: auto;
     }
-</style>
+</style> --}}
 
 <body>
     <div id="message">

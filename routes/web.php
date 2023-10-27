@@ -84,6 +84,7 @@ Route::any('/tutor-signup/{userid}', [FrontendController::class, 'tutor_details_
 Route::any('/submit_tutor_signup', [FrontendController::class, 'submit_tutor_signup']);
 Route::any('/tutor-detail/{tutorid}', [FrontendController::class, 'tutor_detail_single_page']);
 Route::any('/group', [GroupLessonController::class, 'groupclasses'])->name('public.lessons');
+Route::any('/group2', [GroupLessonController::class, 'groupclasses2'])->name('public.lessons.2');
 Route::any('/private/group', [GroupLessonController::class, 'privategroupclasses'])->name('private.lessons');
 Route::any('/group/details/{groupLesson}', [GroupLessonController::class, 'openGroupDetails'])->name('group.details');
 Route::get('/game1', [TutorController::class, 'game']);

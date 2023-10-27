@@ -39,6 +39,20 @@ class GroupLessonController extends Controller
 
         return view("frontend.grouplessons", compact('todayGroupLessons', 'groupLessons', 'teaches_levels', 'subjects','PageTitle'));
     }
+    public function groupclasses2()
+    {
+        $PageTitle = 'Public Lessons | ProTutor';
+        $todayDate = now()->format('Y-m-d');
+        $todayGroupLessons = GroupLesson::with(['teachLevel', 'subject', 'tutor', 'gallery','tutorDetails'])->whereDate('class_start_date', $todayDate)->limit(4)->get();
+        $groupLessons = GroupLesson::with(['teachLevel', 'subject', 'tutor', 'gallery'])->simplePaginate(12);
+
+        $teaches_levels = Teaches_level::select('id', 'teaches_level')->get();
+        $teaches_levels = $teaches_levels->toArray();
+        $subjects = Subject::select('id', 'subject')->get();
+        $subjects = $subjects->toArray();
+
+        return view("frontend.grouplessons2", compact('todayGroupLessons', 'groupLessons', 'teaches_levels', 'subjects','PageTitle'));
+    }
     public function privategroupclasses()
     {
         $Homepagedata = Homepage::where('id',1)->get();
