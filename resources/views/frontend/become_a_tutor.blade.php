@@ -247,109 +247,109 @@
 							</div>
 							<div class="col-lg-6 pe-lg-5 ">
 
-
-									<div class="accordion mt-3 faq-accordian" id="myAccordion">
-											<div class="accordion-item">
-													<h2 class="accordion-header" id="headingOne">
-															<button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
-																	data-bs-target="#collapseOne">Is there a free trial available?</button>
-													</h2>
-													<div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#myAccordion">
-															<div class="card-body">
-																	<p class="main-text2  text-gray mt-3" style="color: rgba(44, 44, 44, 0.80);
+								<div class="accordion mt-3 faq-accordian" id="myAccordion">
+									<div class="accordion-item">
+											<h2 class="accordion-header" id="headingTwo">
+													<button type="button" class="accordion-button" data-bs-toggle="collapse"
+															data-bs-target="#collapseTwo">Can I change my plan later?</button>
+											</h2>
+											<div id="collapseTwo" class="accordion-collapse collapse show"
+													data-bs-parent="#myAccordion">
+													<div class="card-body">
+															<p class="main-text2  text-gray mt-3"
+																	style="color: rgba(44, 44, 44, 0.80);
 																	;">
-																			Live tutoring software enables tutors to teach students in real time
-																			utilizing interactive
-																			video conferencing features. As a Student or Parent, you can browse through
-																			Tutor profiles
-																			and their subject expertise, and thereafter book live lesson.
-																	</p>
-															</div>
+																	Live tutoring software enables tutors to teach students in real time
+																	utilizing interactive
+																	video conferencing features. As a Student or Parent, you can browse through
+																	Tutor profiles
+																	and their subject expertise, and thereafter book live lesson.
+															</p>
 													</div>
 											</div>
-											<div class="accordion-item">
-													<h2 class="accordion-header" id="headingTwo">
-															<button type="button" class="accordion-button" data-bs-toggle="collapse"
-																	data-bs-target="#collapseTwo">Can I change my plan later?</button>
-													</h2>
-													<div id="collapseTwo" class="accordion-collapse collapse show"
-															data-bs-parent="#myAccordion">
-															<div class="card-body">
-																	<p class="main-text2  text-gray mt-3" style="color: rgba(44, 44, 44, 0.80);
+									</div>
+									<div class="accordion-item">
+											<h2 class="accordion-header" id="headingOne">
+													<button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
+															data-bs-target="#collapseOne">Is there a free trial available?</button>
+											</h2>
+											<div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#myAccordion">
+													<div class="card-body">
+															<p class="main-text2  text-gray mt-3"
+																	style="color: rgba(44, 44, 44, 0.80);
 																	;">
-																			Live tutoring software enables tutors to teach students in real time
-																			utilizing interactive
-																			video conferencing features. As a Student or Parent, you can browse through
-																			Tutor profiles
-																			and their subject expertise, and thereafter book live lesson.
-																	</p>
-															</div>
+																	Live tutoring software enables tutors to teach students in real time
+																	utilizing interactive
+																	video conferencing features. As a Student or Parent, you can browse through
+																	Tutor profiles
+																	and their subject expertise, and thereafter book live lesson.
+															</p>
 													</div>
 											</div>
-											<div class="accordion-item">
-													<h2 class="accordion-header" id="headingThree">
-															<button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
-																	data-bs-target="#collapseThree">What is your cancellation policy?</button>
-													</h2>
-													<div id="collapseThree" class="accordion-collapse collapse"
-															data-bs-parent="#myAccordion">
-															<div class="card-body">
-																	<p class="main-text2  text-gray mt-3" style="color: rgba(44, 44, 44, 0.80);
+									</div>
+								
+									<div class="accordion-item">
+											<h2 class="accordion-header" id="headingThree">
+													<button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
+															data-bs-target="#collapseThree">What is your cancellation policy?</button>
+											</h2>
+											<div id="collapseThree" class="accordion-collapse collapse"
+													data-bs-parent="#myAccordion">
+													<div class="card-body">
+															<p class="main-text2  text-gray mt-3"
+																	style="color: rgba(44, 44, 44, 0.80);
 																	;">
-																			Live tutoring software enables tutors to teach students in real time
-																			utilizing interactive
-																			video conferencing features. As a Student or Parent, you can browse through
-																			Tutor profiles
-																			and their subject expertise, and thereafter book live lesson.
-																	</p>
-															</div>
-													</div>
-											</div>
-
-											<div class="accordion-item">
-													<h2 class="accordion-header" id="headingThree">
-															<button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
-																	data-bs-target="#collapseThree">Can other info be added to an invoice?</button>
-													</h2>
-													<div id="collapseThree" class="accordion-collapse collapse"
-															data-bs-parent="#myAccordion">
-															<div class="card-body">
-																	<p class="main-text2  text-gray mt-3" style="color: rgba(44, 44, 44, 0.80);
-																	;">
-																			Live tutoring software enables tutors to teach students in real time
-																			utilizing interactive
-																			video conferencing features. As a Student or Parent, you can browse through
-																			Tutor profiles
-																			and their subject expertise, and thereafter book live lesson.
-																	</p>
-															</div>
-
-													</div>
-											</div>
-
-											<div class="accordion-item">
-													<h2 class="accordion-header" id="headingThree">
-															<button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
-																	data-bs-target="#collapseThree">How does billing work?</button>
-													</h2>
-													<div id="collapseThree" class="accordion-collapse collapse"
-															data-bs-parent="#myAccordion">
-															<div class="card-body">
-																	<p class="main-text2  text-gray mt-3" style="color: rgba(44, 44, 44, 0.80);
-																	;">
-																			Live tutoring software enables tutors to teach students in real time
-																			utilizing interactive
-																			video conferencing features. As a Student or Parent, you can browse through
-																			Tutor profiles
-																			and their subject expertise, and thereafter book live lesson.
-																	</p>
-															</div>
+																	Live tutoring software enables tutors to teach students in real time
+																	utilizing interactive
+																	video conferencing features. As a Student or Parent, you can browse through
+																	Tutor profiles
+																	and their subject expertise, and thereafter book live lesson.
+															</p>
 													</div>
 											</div>
 									</div>
 
+									<div class="accordion-item">
+											<h2 class="accordion-header" id="heading4">
+													<button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
+															data-bs-target="#collapse4">Can other info be added to an invoice?</button>
+											</h2>
+											<div id="collapse4" class="accordion-collapse collapse" data-bs-parent="#myAccordion">
+													<div class="card-body">
+															<p class="main-text2  text-gray mt-3"
+																	style="color: rgba(44, 44, 44, 0.80);
+																	;">
+																	Live tutoring software enables tutors to teach students in real time
+																	utilizing interactive
+																	video conferencing features. As a Student or Parent, you can browse through
+																	Tutor profiles
+																	and their subject expertise, and thereafter book live lesson.
+															</p>
+													</div>
 
+											</div>
+									</div>
 
+									<div class="accordion-item">
+											<h2 class="accordion-header" id="heading5">
+													<button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
+															data-bs-target="#collapse5">How does billing work?</button>
+											</h2>
+											<div id="collapse5" class="accordion-collapse collapse" data-bs-parent="#myAccordion">
+													<div class="card-body">
+															<p class="main-text2  text-gray mt-3"
+																	style="color: rgba(44, 44, 44, 0.80);
+																	;">
+																	Live tutoring software enables tutors to teach students in real time
+																	utilizing interactive
+																	video conferencing features. As a Student or Parent, you can browse through
+																	Tutor profiles
+																	and their subject expertise, and thereafter book live lesson.
+															</p>
+													</div>
+											</div>
+									</div>
+							</div>
 
 
 							</div>

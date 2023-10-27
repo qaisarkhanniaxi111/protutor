@@ -141,12 +141,12 @@
         left: 15px;
         right: unset;
         padding: 0px;
-        background-color: #00000021;
+        background-color: transparent;
         display: flex;
-        justify-content: center;
-        align-items: center;
+        justify-content: flex-end;
+        align-items:flex-end;
         height: unset;
-        display: block;
+ 
       }
       .hoverable-dahboard:hover .hoverable-dahboard-dropdown{
         display: block;
