@@ -1366,7 +1366,7 @@
                     </div>
                 </div>
                 <div class="col-lg-6 d-flex justify-content-center order-lg-2 order-1 mb-lg-0 mb-4">
-                    <img src="{{ url('newAssets') }}/assets/images/testimonials.png" alt=""
+                    <img src="{{ url('/') }}/images/{{ $Homepagedata[0]->s_t_file }}" alt=""
                         class="mx-auto img-fluid">
                 </div>
 
@@ -1379,19 +1379,17 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6 d-flex justify-content-center  mb-lg-0 mb-4">
-                    <img src="{{ url('newAssets') }}/assets/images/lang.png" alt=""
+                    <img src="{{ url('/') }}/images/{{ $Homepagedata[0]->sec_3_file }}" alt=""
                         class="mx-auto img-fluid">
                 </div>
                 <div class="col-lg-6 pe-lg-5 ">
                     <h2 class="heading text-md-start">
-                        Corporate language training for business
+                        <?php echo $Homepagedata[0]->sec_3_heading; ?>
                     </h2>
                     <p class="main-text2 text-md-start text-center text-gray mt-3"
                         style="color: rgba(44, 44, 44, 0.80);
                 ;">
-                        ProTutor corporate training is designed for teams and businesses offering personalized
-                        language learning with online tutors. Book a demo to learn more.
-                        Want your employer to pay for your lessons? Refer your company! </p>
+                        {{ $Homepagedata[0]->sec_3_dec }} </p>
 
                     <div
                         class="d-flex align-items-center justify-content-lg-start justify-content-center flex-md-row flex-column mt-3 pt-3 mb-3">
@@ -1549,6 +1547,7 @@
 
 <!-- Footer Section -->
 @include('/frontend/common/newFooter')
+
 
 {{-- <script src="https://code.jquery.com/jquery-3.7.1.slim.js"
     integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc=" crossorigin="anonymous"></script>
@@ -1757,5 +1756,34 @@
                 $likeFill.toggleClass("liked");
             });
         });
+    });
+</script>
+<script>
+    const carousel = new bootstrap.Carousel(document.getElementById('carouselExampleIndicators'), {
+        interval: false // Disable auto-advancing
+    });
+
+    const prevButton = document.querySelector('.carousel-control-prev');
+    const nextButton = document.querySelector('.carousel-control-next');
+
+    carousel._element.addEventListener('slide.bs.carousel', (e) => {
+        // Get the current slide index from the event
+        const currentIndex = e.to;
+        console.log(e.to)
+        // Get the total number of slides
+        const totalSlides = carousel._items.length - 1;
+
+        // Add or remove 'disabled' class based on the current slide
+        if (currentIndex === 0) {
+            console.log("hi")
+            prevButton.classList.add('disabled');
+            nextButton.classList.remove('disabled');
+        } else if (currentIndex === totalSlides) {
+            nextButton.classList.add('disabled');
+            prevButton.classList.remove('disabled');
+        } else {
+            prevButton.classList.remove('disabled');
+            nextButton.classList.remove('disabled');
+        }
     });
 </script>

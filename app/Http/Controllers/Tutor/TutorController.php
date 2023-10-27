@@ -16,6 +16,7 @@ use Illuminate\Support\Str;
 use App\Services\PayUService\Exception;
 use App\Jobs\SendQuizInvites;
 use App\Models\GroupLesson;
+use App\Models\Subject;
 
 class TutorController extends \App\Http\Controllers\Controller
 {
@@ -417,10 +418,11 @@ class TutorController extends \App\Http\Controllers\Controller
       
 
       $subj=$tutor->getSubjects($tutorid);
+      $allSubjects=Subject::select('*')->get();
 
       $teaches_levels=$tutor->teaches_levels();
 
-      return view("tutor.GroupLesson.index",["teaches_levels"=>$teaches_levels,"subjects"=>$subj,"groupLessonsCompleted"=>$groupLessonsCompleted]);
+      return view("tutor.GroupLesson.index",["teaches_levels"=>$teaches_levels,"subjects"=>$subj,"groupLessonsCompleted"=>$groupLessonsCompleted,"allSubjects"=>$allSubjects]);
     }
 
     public function game()

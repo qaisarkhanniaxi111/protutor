@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Countries;
 use App\Models\Gallery;
 use App\Models\GroupLessonPlan;
+use App\Models\Homepage;
 use App\Models\Hourly_rate;
 use App\Models\Payment;
 use App\Models\Rating;
@@ -40,6 +41,7 @@ class GroupLessonController extends Controller
     }
     public function privategroupclasses()
     {
+        $Homepagedata = Homepage::where('id',1)->get();
         $Alltestimonial =  Student_testimonial::where('user_status', 1)->orderBy('id', 'desc')->get();
         $PageTitle = 'Private Lessons | ProTutor';
         //$Spoken_language = Spoken_language::all();
@@ -84,7 +86,7 @@ class GroupLessonController extends Controller
             $userdata = DB::select($user_data);
             //dd(\DB::getQueryLog());
             $filter=1;
-            return view('frontend.privateGroupLesson',compact('PageTitle','countryAll','rateAll','subjectAll','Spoken_language','userdata','Alltestimonial','filter'));
+            return view('frontend.privateGroupLesson',compact('PageTitle','countryAll','rateAll','subjectAll','Spoken_language','userdata','Alltestimonial','filter','Homepagedata'));
         }else{
             $user_status='3';
             // $user_data='SELECT users.id as user_id,users.first_name,users.last_name,users.phone_number,users.role,users.user_status,users.email ,users.email_verify,users.password,userdetails.* FROM `users` LEFT JOIN `userdetails` ON users.id = userdetails.student_no WHERE users.role="'.$user_status.'" LIMIT 12';
@@ -99,7 +101,7 @@ class GroupLessonController extends Controller
             ->join('userdetails', 'users.id', '=', 'userdetails.student_no')
             ->where('users.role', $user_status)
             ->count();
-            return view('frontend.privateGroupLesson',compact('PageTitle','countryAll','rateAll','subjectAll','Spoken_language','userdata','Alltestimonial','totalTutors'));
+            return view('frontend.privateGroupLesson',compact('PageTitle','countryAll','rateAll','subjectAll','Spoken_language','userdata','Alltestimonial','totalTutors','Homepagedata'));
         }
     }
     public function openGroupDetails(GroupLesson $groupLesson)

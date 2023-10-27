@@ -244,19 +244,26 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    
                                     @foreach ($groupLessonsCompleted as $groupLesson)
                                         <tr valign='middle'>
                                             <td>{{ $groupLesson['title'] }}</td>
+                                            <td>
                                             @foreach ($teaches_levels as $teach_level)
                                                 @if ($groupLesson['teach_level_id'] == $teach_level->id)
-                                                    <td>{{ $teach_level->teaches_level }}</td>
+                                                    {{ $teach_level->teaches_level }}
                                                 @endif
                                             @endforeach
-                                            @foreach ($subjects as $subject)
+                                        </td>
+                                            <td>
+                                              
+                                                @foreach ($allSubjects as $subject)
+                                                
                                                 @if ($groupLesson['subject_id'] == $subject->id)
-                                                    <td>{{ $subject->subject }}</td>
+                                                    {{ $subject->subject }} 
                                                 @endif
                                             @endforeach
+                                        </td>
                                             <td>{{ date('m-d-Y', strtotime($groupLesson['registration_start_date'])) }}
                                             </td>
                                             <td>{{ date('m-d-Y', strtotime($groupLesson['registration_end_date'])) }}
