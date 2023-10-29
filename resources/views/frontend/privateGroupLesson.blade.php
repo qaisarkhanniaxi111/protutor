@@ -56,7 +56,38 @@
     }
 </style>
 
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-scrollable modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <img src="{{ url('') }}/newAssets/assets/images/ppp.png" alt="" id="modelTutorImage"
+                    style="width:40px;height:40px;object-fit: cover;" class="rounded-circle me-3">
+                <span class="h1 modal-title fs-5" id="modelTutorName"
+                    style="font-family: Arial, Helvetica, sans-serif">Hanna Bapasta</span>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
 
+                <p>Choose the time for your first lesson. The timings are displayed in your local
+                    timezone.</p>
+
+                <div class="tabtable-responsive">
+                    <div class="fulltab-table">
+                        <div id='schedule-calendar'></div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" class="btn disabled" style="background-color: #fe6903;color:#fff"
+                    id="continueSubmitShcdulebtn" onclick="submitStudentSchedule()">Continue</button>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- Modal -->
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -108,7 +139,7 @@
                     <div class="left-hero">
                         <div class="btn-hero">
                             <button id="btn-hero-1" class="btns-hero">Private lessons</button>
-                            <a href="{{ route('public.lessons') }}" class="text-decoration-none"> <button
+                            <a href="{{ route('public.lessons.2') }}" class="text-decoration-none"> <button
                                     id="btn-hero-2" class="btns-hero" style="color: #FF6C0B">Group Lessons</button></a>
                         </div>
                         <h1 class="main-heading text-dark mt-5">
@@ -408,9 +439,9 @@
                     </div>
                 </div>
             </div>
-                
 
-                    {{-- @if (count($userdata))
+
+            {{-- @if (count($userdata))
                     @foreach ($userdata as $userdata_val)
                     <div class="teacher-card-div mb-3"
                         onmouseenter="changeCalendarContent('{{ $userdata_val->video_link }}')">
@@ -533,7 +564,7 @@
 
                     @endforeach
                     @endif --}}
-                    {{-- <div class="teacher-card-div mb-3">
+            {{-- <div class="teacher-card-div mb-3">
                         <div class="teacher-card--header">
 
                             <div class="teacher-card--header-text w-100 align-items-start">
@@ -620,7 +651,7 @@
 
 
 
-                    {{-- <div class="pagination mt-4">
+            {{-- <div class="pagination mt-4">
 
                         <div class="hide-sm">
                                 <img class="arrow" src="{{ url('newAssets') }}/assets/images/images/arrow-left.svg"
@@ -642,672 +673,677 @@
         </div>
         </div> --}}
 
-        <div class="row mb-3 card-main-section">
-            <div class="col-xl-8 ">
-                <div class="teacher-card-div">
-                    <div class="teacher-card--header">
+            <div class="row mb-3 card-main-section">
+                <div class="col-xl-8 ">
+                    <div class="teacher-card-div">
+                        <div class="teacher-card--header">
 
-                        <div class="teacher-card--header-text w-100 align-items-start">
-                            <div class=" d-flex align-items-start flex-md-row flex-column mb-md-0 mb-3">
-                                <div class="online-image">
-                                    <img src="{{ url("") }}/newAssets/assets/images/ppp.png" alt="">
-                                    <div class="online"></div>
-                                </div>
-                                <div class="profile-data-text">
-                                    <div
-                                        class="d-flex align-items-sm-center flex-sm-row flex-column align-items-start">
-                                        <h1 class="mb-0 pb-0">Hanna Baptista</h1>
-                                        <div class="d-flex align-items-center mt-sm-0 mt-2">
-                                            <img src="{{ url("") }}/newAssets/assets/images/star.svg" alt="" class="ms-sm-3 ms-0 me-1">
-                                            <h3 class="mb-0 pb-0">5.0</h3>
-                                            <span>(33 review)</span>
-                                        </div>
+                            <div class="teacher-card--header-text w-100 align-items-start">
+                                <div class=" d-flex align-items-start flex-md-row flex-column mb-md-0 mb-3">
+                                    <div class="online-image">
+                                        <img src="{{ url('') }}/newAssets/assets/images/ppp.png"
+                                            alt="">
+                                        <div class="online"></div>
                                     </div>
-                                    <div class=" mb-2">
-                                        <!-- <h2 class="mb-0 pb-0">English teacher</h2> -->
+                                    <div class="profile-data-text">
                                         <div
-                                            class="d-flex align-items-lg-center mt-3 flex-wrap align-items-start">
-                                            <h2 class="text-primary me-2 ps-0">English teacher</h2>
-                                            <h2 class="text-primary me-2 ps-0">English teacher</h2>
-                                            <h2 class="text-primary me-2 ps-0">English teacher</h2>
-                                            <h2 class="text-primary me-2 ps-0">English teacher</h2>
-                                            <h2 class="text-primary me-2 ps-0">English teacher</h2>
+                                            class="d-flex align-items-sm-center flex-sm-row flex-column align-items-start">
+                                            <h1 class="mb-0 pb-0">Hanna Baptista</h1>
+                                            <div class="d-flex align-items-center mt-sm-0 mt-2">
+                                                <img src="{{ url('') }}/newAssets/assets/images/star.svg"
+                                                    alt="" class="ms-sm-3 ms-0 me-1">
+                                                <h3 class="mb-0 pb-0">5.0</h3>
+                                                <span>(33 review)</span>
+                                            </div>
+                                        </div>
+                                        <div class=" mb-2">
+                                            <!-- <h2 class="mb-0 pb-0">English teacher</h2> -->
+                                            <div class="d-flex align-items-lg-center mt-3 flex-wrap align-items-start">
+                                                <h2 class="text-primary me-2 ps-0">English teacher</h2>
+                                                <h2 class="text-primary me-2 ps-0">English teacher</h2>
+                                                <h2 class="text-primary me-2 ps-0">English teacher</h2>
+                                                <h2 class="text-primary me-2 ps-0">English teacher</h2>
+                                                <h2 class="text-primary me-2 ps-0">English teacher</h2>
 
+                                            </div>
+
+                                            <div class="d-flex align-items-center  mt-2">
+                                                <img src="{{ url('') }}/newAssets/assets/images/flag.png"
+                                                    alt="" class="me-1">
+                                                <p class="mb-0 pb-0">United State</p>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <p class="mb-0 pb-0 mt-2 mb-2">
+                                                <span>Speaks:</span> English (Native) German (Advanced)
+                                                Lithuanian
+                                                (Native)
+                                            </p>
                                         </div>
 
-                                        <div class="d-flex align-items-center  mt-2">
-                                            <img src="{{ url("") }}/newAssets/assets/images/flag.png" alt="" class="me-1">
-                                            <p class="mb-0 pb-0">United State</p>
-                                        </div>
                                     </div>
-                                    <div>
-                                        <p class="mb-0 pb-0 mt-2 mb-2">
-                                            <span>Speaks:</span> English (Native) German (Advanced)
-                                            Lithuanian
-                                            (Native)
-                                        </p>
-                                    </div>
-
+                                </div>
+                                <div class="profile-price flex-shrink-0">
+                                    <h2 class="mb-0 pb-0">$105.00</h2>
+                                    <p class="mb-0 pb-0">50-min lesson</p>
                                 </div>
                             </div>
-                            <div class="profile-price flex-shrink-0">
-                                <h2 class="mb-0 pb-0">$105.00</h2>
-                                <p class="mb-0 pb-0">50-min lesson</p>
+                        </div>
+                        <div class="teacher-card-body">
+                            <p>
+                                English tutor with over 5 years of teaching experience Hi! I'm Ugne. Originally I am
+                                from Lithuania, however, I have completed my high school education in an American
+                                International School and my bachelor's degree at a university in London, UK. I have
+                                quite a few interests and creative hobbies, however my favorite thing to do whenever
+                                I have the time is traveling as much as possible.
+
+                            </p>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center flex-md-row flex-column ">
+                            <div class="mb-md-0 mb-3">
+                                <img src="{{ url('') }}/newAssets/assets/images/veri.svg" alt="">
+                            </div>
+                            <div class="d-flex align-items-center flex-md-row flex-column sm-100 ">
+                                <div class="d-flex align-items-center w-100 mb-md-0 mb-3">
+                                    <div class="like">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"
+                                            viewBox="0 0 40 40" fill="none">
+                                            <path
+                                                d="M0 20C0 8.95431 8.95431 0 20 0C31.0457 0 40 8.95431 40 20C40 31.0457 31.0457 40 20 40C8.95431 40 0 31.0457 0 20Z"
+                                                fill="#FF6C0B" fill-opacity="0.15" />
+                                            <path class="like-fill "
+                                                d="M18.6356 12.9894L18.6468 13.0001L18.6583 13.0104C19.0273 13.3404 19.505 13.5228 20 13.5228C20.495 13.5228 20.9727 13.3404 21.3417 13.0104L21.3535 12.9998L21.365 12.9888C22.2116 12.1818 23.8293 11 26 11C27.5801 11 28.7855 11.6184 29.6199 12.6803C30.4752 13.7688 31 15.4045 31 17.5C31 18.7417 30.4893 20.1505 29.5891 21.6176C28.696 23.073 27.467 24.5082 26.1492 25.7806C24.8327 27.0516 23.4532 28.1356 22.2806 28.895C21.6935 29.2752 21.1737 29.5641 20.7514 29.754C20.297 29.9584 20.0599 30 20 30C19.9401 30 19.703 29.9584 19.2486 29.754C18.8263 29.5641 18.3065 29.2752 17.7194 28.895C16.5468 28.1356 15.1673 27.0516 13.8508 25.7806C12.533 24.5082 11.304 23.073 10.4109 21.6176C9.51066 20.1505 9 18.7417 9 17.5C9 15.4045 9.52485 13.7688 10.3801 12.6803C11.2145 11.6184 12.4199 11 14 11C16.169 11 17.7883 12.183 18.6356 12.9894Z"
+                                                stroke="#FF6C0B" stroke-width="2" />
+                                        </svg>
+                                    </div>
+                                    <button class="main-btn-blank-sm w-100 mx-3">Message</button>
+                                </div>
+                                <button data-bs-toggle="modal" data-bs-target="#staticBackdrop2" class="main-btn-sm w-100" style="white-space: nowrap;" onclick="staticModelCalendar()">Book a trial
+                                    lesson</button>
                             </div>
                         </div>
                     </div>
-                    <div class="teacher-card-body">
-                        <p>
-                            English tutor with over 5 years of teaching experience Hi! I'm Ugne. Originally I am
-                            from Lithuania, however, I have completed my high school education in an American
-                            International School and my bachelor's degree at a university in London, UK. I have
-                            quite a few interests and creative hobbies, however my favorite thing to do whenever
-                            I have the time is traveling as much as possible.
+                </div>
+                <div class="col-xl-4  card-detail-section">
+                    <div class="right-p-part-content">
+                        <div class="side-card">
 
-                        </p>
-                    </div>
-                    <div class="d-flex justify-content-between align-items-center flex-md-row flex-column ">
-                        <div class="mb-md-0 mb-3">
-                            <img src="{{ url("") }}/newAssets/assets/images/veri.svg" alt="">
-                        </div>
-                        <div class="d-flex align-items-center flex-md-row flex-column sm-100 ">
-                            <div class="d-flex align-items-center w-100 mb-md-0 mb-3">
-                                <div class="like">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"
-                                        viewBox="0 0 40 40" fill="none">
-                                        <path
-                                            d="M0 20C0 8.95431 8.95431 0 20 0C31.0457 0 40 8.95431 40 20C40 31.0457 31.0457 40 20 40C8.95431 40 0 31.0457 0 20Z"
-                                            fill="#FF6C0B" fill-opacity="0.15" />
-                                        <path class="like-fill "
-                                            d="M18.6356 12.9894L18.6468 13.0001L18.6583 13.0104C19.0273 13.3404 19.505 13.5228 20 13.5228C20.495 13.5228 20.9727 13.3404 21.3417 13.0104L21.3535 12.9998L21.365 12.9888C22.2116 12.1818 23.8293 11 26 11C27.5801 11 28.7855 11.6184 29.6199 12.6803C30.4752 13.7688 31 15.4045 31 17.5C31 18.7417 30.4893 20.1505 29.5891 21.6176C28.696 23.073 27.467 24.5082 26.1492 25.7806C24.8327 27.0516 23.4532 28.1356 22.2806 28.895C21.6935 29.2752 21.1737 29.5641 20.7514 29.754C20.297 29.9584 20.0599 30 20 30C19.9401 30 19.703 29.9584 19.2486 29.754C18.8263 29.5641 18.3065 29.2752 17.7194 28.895C16.5468 28.1356 15.1673 27.0516 13.8508 25.7806C12.533 24.5082 11.304 23.073 10.4109 21.6176C9.51066 20.1505 9 18.7417 9 17.5C9 15.4045 9.52485 13.7688 10.3801 12.6803C11.2145 11.6184 12.4199 11 14 11C16.169 11 17.7883 12.183 18.6356 12.9894Z"
-                                            stroke="#FF6C0B" stroke-width="2" />
-                                    </svg>
-                                </div>
-                                <button class="main-btn-blank-sm w-100 mx-3">Message</button>
+                            <div class="side-card-arrow">
+                                <svg width="11" height="17" viewBox="0 0 11 17" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M1.23432 9.83135C0.535517 9.06722 0.535516 7.89605 1.23432 7.13192L7.0241 0.800865C8.25583 -0.546015 10.5 0.32541 10.5 2.15058L10.5 14.8127C10.5 16.6379 8.25583 17.5093 7.0241 16.1624L1.23432 9.83135Z"
+                                        fill="#F9F9FB" />
+                                </svg>
                             </div>
-                            <button class="main-btn-sm w-100" style="white-space: nowrap;">Book a trial
-                                lesson</button>
+
+                            <video controls>
+                                <source src="{{ url('') }}/newAssets/assets/images/SampleVideo_1280x720_1mb.mp4"
+                                    type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+
+                            <div class="world-div mt-1">
+                                <img src="{{ url('') }}/newAssets/assets/images/images/world.svg"
+                                    alt="" class="me-2">
+                                <p class="mb-0 pb-0">Times are shown in your local timezone</p>
+                            </div>
+                            <div class="grid-container">
+                                <div class="grid-item"></div>
+                                <div class="grid-item day-name">Mon</div>
+                                <div class="grid-item day-name">Tue</div>
+                                <div class="grid-item day-name">Wed</div>
+                                <div class="grid-item day-name">Thu</div>
+                                <div class="grid-item day-name">Fri</div>
+                                <div class="grid-item day-name">Sat</div>
+                                <div class="grid-item"></div>
+                                <div class="grid-item"><span class="day">Morning</span><br><span
+                                        class="time">06:00-12:00</span>
+                                </div>
+                                <div class="grid-item"></div>
+                                <div class="grid-item"></div>
+                                <div class="grid-item"></div>
+                                <div class="grid-item"></div>
+                                <div class="grid-item"></div>
+                                <div class="grid-item"></div>
+                                <div class="grid-item"></div>
+                                <div class="grid-item"><span class="day">Afternoon</span><br><span
+                                        class="time">12:00-18:00</span>
+                                </div>
+                                <div class="grid-item tick"><img class="tick-img"
+                                        src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
+                                        alt=""></div>
+                                <div class="grid-item tick"><img class="tick-img"
+                                        src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
+                                        alt=""></div>
+                                <div class="grid-item tick"><img class="tick-img"
+                                        src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
+                                        alt=""></div>
+                                <div class="grid-item tick"><img class="tick-img"
+                                        src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
+                                        alt=""></div>
+                                <div class="grid-item tick"><img class="tick-img"
+                                        src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
+                                        alt=""></div>
+                                <div class="grid-item tick"><img class="tick-img"
+                                        src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
+                                        alt=""></div>
+                                <div class="grid-item tick"><img class="tick-img"
+                                        src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
+                                        alt=""></div>
+                                <div class="grid-item"><span class="day">Evening</span><br><span
+                                        class="time">18:00-20:00</span>
+                                </div>
+                                <div class="grid-item tick"><img class="tick-img"
+                                        src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
+                                        alt=""></div>
+                                <div class="grid-item tick"><img class="tick-img"
+                                        src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
+                                        alt=""></div>
+                                <div class="grid-item tick"><img class="tick-img"
+                                        src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
+                                        alt=""></div>
+                                <div class="grid-item tick"><img class="tick-img"
+                                        src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
+                                        alt=""></div>
+                                <div class="grid-item tick"><img class="tick-img"
+                                        src="assets/images/images/tick-mark.svg" alt=""></div>
+                                <div class="grid-item"></div>
+                                <div class="grid-item"></div>
+                                <div class="grid-item"><span class="day">Night</span><br><span
+                                        class="time">00:00-16:00</span></div>
+                                <div class="grid-item tick"><img class="tick-img"
+                                        src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
+                                        alt=""></div>
+                                <div class="grid-item tick"><img class="tick-img"
+                                        src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
+                                        alt=""></div>
+                                <div class="grid-item tick"><img class="tick-img"
+                                        src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
+                                        alt=""></div>
+                                <div class="grid-item tick"><img class="tick-img"
+                                        src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
+                                        alt=""></div>
+                                <div class="grid-item tick"><img class="tick-img"
+                                        src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
+                                        alt=""></div>
+                                <div class="grid-item tick"><img class="tick-img"
+                                        src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
+                                        alt=""></div>
+                                <div class="grid-item tick"><img class="tick-img"
+                                        src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
+                                        alt=""></div>
+                            </div>
+
+                            <button class="schedule-btn mt-3 mb-1">View full schedule</button>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-xl-4  card-detail-section">
-                <div class="right-p-part-content">
-                    <div class="side-card">
+            <div class="row mb-3 card-main-section">
+                <div class="col-xl-8 ">
+                    <div class="teacher-card-div">
+                        <div class="teacher-card--header">
 
-                        <div class="side-card-arrow">
-                            <svg width="11" height="17" viewBox="0 0 11 17" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M1.23432 9.83135C0.535517 9.06722 0.535516 7.89605 1.23432 7.13192L7.0241 0.800865C8.25583 -0.546015 10.5 0.32541 10.5 2.15058L10.5 14.8127C10.5 16.6379 8.25583 17.5093 7.0241 16.1624L1.23432 9.83135Z"
-                                fill="#F9F9FB" />
-                        </svg>
-                        </div>
-
-                        <video controls>
-                            <source src="{{ url("") }}/newAssets/assets/images/SampleVideo_1280x720_1mb.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-
-                        <div class="world-div mt-1">
-                            <img src="{{ url('') }}/newAssets/assets/images/images/world.svg"
-                                alt="" class="me-2">
-                            <p class="mb-0 pb-0">Times are shown in your local timezone</p>
-                        </div>
-                        <div class="grid-container">
-                            <div class="grid-item"></div>
-                            <div class="grid-item day-name">Mon</div>
-                            <div class="grid-item day-name">Tue</div>
-                            <div class="grid-item day-name">Wed</div>
-                            <div class="grid-item day-name">Thu</div>
-                            <div class="grid-item day-name">Fri</div>
-                            <div class="grid-item day-name">Sat</div>
-                            <div class="grid-item"></div>
-                            <div class="grid-item"><span class="day">Morning</span><br><span
-                                    class="time">06:00-12:00</span>
-                            </div>
-                            <div class="grid-item"></div>
-                            <div class="grid-item"></div>
-                            <div class="grid-item"></div>
-                            <div class="grid-item"></div>
-                            <div class="grid-item"></div>
-                            <div class="grid-item"></div>
-                            <div class="grid-item"></div>
-                            <div class="grid-item"><span class="day">Afternoon</span><br><span
-                                    class="time">12:00-18:00</span>
-                            </div>
-                            <div class="grid-item tick"><img class="tick-img"
-                                    src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
-                                    alt=""></div>
-                            <div class="grid-item tick"><img class="tick-img"
-                                    src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
-                                    alt=""></div>
-                            <div class="grid-item tick"><img class="tick-img"
-                                    src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
-                                    alt=""></div>
-                            <div class="grid-item tick"><img class="tick-img"
-                                    src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
-                                    alt=""></div>
-                            <div class="grid-item tick"><img class="tick-img"
-                                    src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
-                                    alt=""></div>
-                            <div class="grid-item tick"><img class="tick-img"
-                                    src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
-                                    alt=""></div>
-                            <div class="grid-item tick"><img class="tick-img"
-                                    src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
-                                    alt=""></div>
-                            <div class="grid-item"><span class="day">Evening</span><br><span
-                                    class="time">18:00-20:00</span>
-                            </div>
-                            <div class="grid-item tick"><img class="tick-img"
-                                    src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
-                                    alt=""></div>
-                            <div class="grid-item tick"><img class="tick-img"
-                                    src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
-                                    alt=""></div>
-                            <div class="grid-item tick"><img class="tick-img"
-                                    src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
-                                    alt=""></div>
-                            <div class="grid-item tick"><img class="tick-img"
-                                    src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
-                                    alt=""></div>
-                            <div class="grid-item tick"><img class="tick-img"
-                                    src="assets/images/images/tick-mark.svg" alt=""></div>
-                            <div class="grid-item"></div>
-                            <div class="grid-item"></div>
-                            <div class="grid-item"><span class="day">Night</span><br><span
-                                    class="time">00:00-16:00</span></div>
-                            <div class="grid-item tick"><img class="tick-img"
-                                    src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
-                                    alt=""></div>
-                            <div class="grid-item tick"><img class="tick-img"
-                                    src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
-                                    alt=""></div>
-                            <div class="grid-item tick"><img class="tick-img"
-                                    src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
-                                    alt=""></div>
-                            <div class="grid-item tick"><img class="tick-img"
-                                    src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
-                                    alt=""></div>
-                            <div class="grid-item tick"><img class="tick-img"
-                                    src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
-                                    alt=""></div>
-                            <div class="grid-item tick"><img class="tick-img"
-                                    src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
-                                    alt=""></div>
-                            <div class="grid-item tick"><img class="tick-img"
-                                    src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
-                                    alt=""></div>
-                        </div>
-
-                        <button class="schedule-btn mt-3 mb-1">View full schedule</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row mb-3 card-main-section">
-            <div class="col-xl-8 ">
-                <div class="teacher-card-div">
-                    <div class="teacher-card--header">
-
-                        <div class="teacher-card--header-text w-100 align-items-start">
-                            <div class=" d-flex align-items-start flex-md-row flex-column mb-md-0 mb-3">
-                                <div class="online-image">
-                                    <img src="{{ url("") }}/newAssets/assets/images/ppp.png" alt="">
-                                    <div class="online"></div>
-                                </div>
-                                <div class="profile-data-text">
-                                    <div
-                                        class="d-flex align-items-sm-center flex-sm-row flex-column align-items-start">
-                                        <h1 class="mb-0 pb-0">Hanna Baptista</h1>
-                                        <div class="d-flex align-items-center mt-sm-0 mt-2">
-                                            <img src="{{ url("") }}/newAssets/assets/images/star.svg" alt="" class="ms-sm-3 ms-0 me-1">
-                                            <h3 class="mb-0 pb-0">5.0</h3>
-                                            <span>(33 review)</span>
-                                        </div>
+                            <div class="teacher-card--header-text w-100 align-items-start">
+                                <div class=" d-flex align-items-start flex-md-row flex-column mb-md-0 mb-3">
+                                    <div class="online-image">
+                                        <img src="{{ url('') }}/newAssets/assets/images/ppp.png"
+                                            alt="">
+                                        <div class="online"></div>
                                     </div>
-                                    <div class=" mb-2">
-                                        <!-- <h2 class="mb-0 pb-0">English teacher</h2> -->
+                                    <div class="profile-data-text">
                                         <div
-                                            class="d-flex align-items-lg-center mt-3 flex-wrap align-items-start">
-                                            <h2 class="text-primary me-2 ps-0">English teacher</h2>
-                                            <h2 class="text-primary me-2 ps-0">English teacher</h2>
-                                            <h2 class="text-primary me-2 ps-0">English teacher</h2>
-                                            <h2 class="text-primary me-2 ps-0">English teacher</h2>
-                                            <h2 class="text-primary me-2 ps-0">English teacher</h2>
+                                            class="d-flex align-items-sm-center flex-sm-row flex-column align-items-start">
+                                            <h1 class="mb-0 pb-0">Hanna Baptista</h1>
+                                            <div class="d-flex align-items-center mt-sm-0 mt-2">
+                                                <img src="{{ url('') }}/newAssets/assets/images/star.svg"
+                                                    alt="" class="ms-sm-3 ms-0 me-1">
+                                                <h3 class="mb-0 pb-0">5.0</h3>
+                                                <span>(33 review)</span>
+                                            </div>
+                                        </div>
+                                        <div class=" mb-2">
+                                            <!-- <h2 class="mb-0 pb-0">English teacher</h2> -->
+                                            <div class="d-flex align-items-lg-center mt-3 flex-wrap align-items-start">
+                                                <h2 class="text-primary me-2 ps-0">English teacher</h2>
+                                                <h2 class="text-primary me-2 ps-0">English teacher</h2>
+                                                <h2 class="text-primary me-2 ps-0">English teacher</h2>
+                                                <h2 class="text-primary me-2 ps-0">English teacher</h2>
+                                                <h2 class="text-primary me-2 ps-0">English teacher</h2>
 
+                                            </div>
+
+                                            <div class="d-flex align-items-center  mt-2">
+                                                <img src="{{ url('') }}/newAssets/assets/images/flag.png"
+                                                    alt="" class="me-1">
+                                                <p class="mb-0 pb-0">United State</p>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <p class="mb-0 pb-0 mt-2 mb-2">
+                                                <span>Speaks:</span> English (Native) German (Advanced)
+                                                Lithuanian
+                                                (Native)
+                                            </p>
                                         </div>
 
-                                        <div class="d-flex align-items-center  mt-2">
-                                            <img src="{{ url("") }}/newAssets/assets/images/flag.png" alt="" class="me-1">
-                                            <p class="mb-0 pb-0">United State</p>
-                                        </div>
                                     </div>
-                                    <div>
-                                        <p class="mb-0 pb-0 mt-2 mb-2">
-                                            <span>Speaks:</span> English (Native) German (Advanced)
-                                            Lithuanian
-                                            (Native)
-                                        </p>
-                                    </div>
-
+                                </div>
+                                <div class="profile-price flex-shrink-0">
+                                    <h2 class="mb-0 pb-0">$105.00</h2>
+                                    <p class="mb-0 pb-0">50-min lesson</p>
                                 </div>
                             </div>
-                            <div class="profile-price flex-shrink-0">
-                                <h2 class="mb-0 pb-0">$105.00</h2>
-                                <p class="mb-0 pb-0">50-min lesson</p>
+                        </div>
+                        <div class="teacher-card-body">
+                            <p>
+                                English tutor with over 5 years of teaching experience Hi! I'm Ugne. Originally I am
+                                from Lithuania, however, I have completed my high school education in an American
+                                International School and my bachelor's degree at a university in London, UK. I have
+                                quite a few interests and creative hobbies, however my favorite thing to do whenever
+                                I have the time is traveling as much as possible.
+
+                            </p>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center flex-md-row flex-column ">
+                            <div class="mb-md-0 mb-3">
+                                <img src="{{ url('') }}/newAssets/assets/images/veri.svg" alt="">
+                            </div>
+                            <div class="d-flex align-items-center flex-md-row flex-column sm-100 ">
+                                <div class="d-flex align-items-center w-100 mb-md-0 mb-3">
+                                    <div class="like">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"
+                                            viewBox="0 0 40 40" fill="none">
+                                            <path
+                                                d="M0 20C0 8.95431 8.95431 0 20 0C31.0457 0 40 8.95431 40 20C40 31.0457 31.0457 40 20 40C8.95431 40 0 31.0457 0 20Z"
+                                                fill="#FF6C0B" fill-opacity="0.15" />
+                                            <path class="like-fill "
+                                                d="M18.6356 12.9894L18.6468 13.0001L18.6583 13.0104C19.0273 13.3404 19.505 13.5228 20 13.5228C20.495 13.5228 20.9727 13.3404 21.3417 13.0104L21.3535 12.9998L21.365 12.9888C22.2116 12.1818 23.8293 11 26 11C27.5801 11 28.7855 11.6184 29.6199 12.6803C30.4752 13.7688 31 15.4045 31 17.5C31 18.7417 30.4893 20.1505 29.5891 21.6176C28.696 23.073 27.467 24.5082 26.1492 25.7806C24.8327 27.0516 23.4532 28.1356 22.2806 28.895C21.6935 29.2752 21.1737 29.5641 20.7514 29.754C20.297 29.9584 20.0599 30 20 30C19.9401 30 19.703 29.9584 19.2486 29.754C18.8263 29.5641 18.3065 29.2752 17.7194 28.895C16.5468 28.1356 15.1673 27.0516 13.8508 25.7806C12.533 24.5082 11.304 23.073 10.4109 21.6176C9.51066 20.1505 9 18.7417 9 17.5C9 15.4045 9.52485 13.7688 10.3801 12.6803C11.2145 11.6184 12.4199 11 14 11C16.169 11 17.7883 12.183 18.6356 12.9894Z"
+                                                stroke="#FF6C0B" stroke-width="2" />
+                                        </svg>
+                                    </div>
+                                    <button class="main-btn-blank-sm w-100 mx-3">Message</button>
+                                </div>
+                                <button data-bs-toggle="modal" data-bs-target="#staticBackdrop2"
+                                    class="main-btn-sm w-100" style="white-space: nowrap;"
+                                    onclick="staticModelCalendar()">Book a trial
+                                    lesson</button>
                             </div>
                         </div>
                     </div>
-                    <div class="teacher-card-body">
-                        <p>
-                            English tutor with over 5 years of teaching experience Hi! I'm Ugne. Originally I am
-                            from Lithuania, however, I have completed my high school education in an American
-                            International School and my bachelor's degree at a university in London, UK. I have
-                            quite a few interests and creative hobbies, however my favorite thing to do whenever
-                            I have the time is traveling as much as possible.
+                </div>
+                <div class="col-xl-4  card-detail-section">
+                    <div class="right-p-part-content">
+                        <div class="side-card">
 
-                        </p>
-                    </div>
-                    <div class="d-flex justify-content-between align-items-center flex-md-row flex-column ">
-                        <div class="mb-md-0 mb-3">
-                            <img src="{{ url("") }}/newAssets/assets/images/veri.svg" alt="">
-                        </div>
-                        <div class="d-flex align-items-center flex-md-row flex-column sm-100 ">
-                            <div class="d-flex align-items-center w-100 mb-md-0 mb-3">
-                                <div class="like">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"
-                                        viewBox="0 0 40 40" fill="none">
-                                        <path
-                                            d="M0 20C0 8.95431 8.95431 0 20 0C31.0457 0 40 8.95431 40 20C40 31.0457 31.0457 40 20 40C8.95431 40 0 31.0457 0 20Z"
-                                            fill="#FF6C0B" fill-opacity="0.15" />
-                                        <path class="like-fill "
-                                            d="M18.6356 12.9894L18.6468 13.0001L18.6583 13.0104C19.0273 13.3404 19.505 13.5228 20 13.5228C20.495 13.5228 20.9727 13.3404 21.3417 13.0104L21.3535 12.9998L21.365 12.9888C22.2116 12.1818 23.8293 11 26 11C27.5801 11 28.7855 11.6184 29.6199 12.6803C30.4752 13.7688 31 15.4045 31 17.5C31 18.7417 30.4893 20.1505 29.5891 21.6176C28.696 23.073 27.467 24.5082 26.1492 25.7806C24.8327 27.0516 23.4532 28.1356 22.2806 28.895C21.6935 29.2752 21.1737 29.5641 20.7514 29.754C20.297 29.9584 20.0599 30 20 30C19.9401 30 19.703 29.9584 19.2486 29.754C18.8263 29.5641 18.3065 29.2752 17.7194 28.895C16.5468 28.1356 15.1673 27.0516 13.8508 25.7806C12.533 24.5082 11.304 23.073 10.4109 21.6176C9.51066 20.1505 9 18.7417 9 17.5C9 15.4045 9.52485 13.7688 10.3801 12.6803C11.2145 11.6184 12.4199 11 14 11C16.169 11 17.7883 12.183 18.6356 12.9894Z"
-                                            stroke="#FF6C0B" stroke-width="2" />
-                                    </svg>
-                                </div>
-                                <button class="main-btn-blank-sm w-100 mx-3">Message</button>
+                            <div class="side-card-arrow">
+                                <svg width="11" height="17" viewBox="0 0 11 17" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M1.23432 9.83135C0.535517 9.06722 0.535516 7.89605 1.23432 7.13192L7.0241 0.800865C8.25583 -0.546015 10.5 0.32541 10.5 2.15058L10.5 14.8127C10.5 16.6379 8.25583 17.5093 7.0241 16.1624L1.23432 9.83135Z"
+                                        fill="#F9F9FB" />
+                                </svg>
                             </div>
-                            <button class="main-btn-sm w-100" style="white-space: nowrap;">Book a trial
-                                lesson</button>
+
+                            <video controls>
+                                <source src="{{ url('') }}/newAssets/assets/images/2.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+
+                            <div class="world-div mt-1">
+                                <img src="{{ url('') }}/newAssets/assets/images/images/world.svg"
+                                    alt="" class="me-2">
+                                <p class="mb-0 pb-0">Times are shown in your local timezone</p>
+                            </div>
+                            <div class="grid-container">
+                                <div class="grid-item"></div>
+                                <div class="grid-item day-name">Mon</div>
+                                <div class="grid-item day-name">Tue</div>
+                                <div class="grid-item day-name">Wed</div>
+                                <div class="grid-item day-name">Thu</div>
+                                <div class="grid-item day-name">Fri</div>
+                                <div class="grid-item day-name">Sat</div>
+                                <div class="grid-item"></div>
+                                <div class="grid-item"><span class="day">Morning</span><br><span
+                                        class="time">06:00-12:00</span>
+                                </div>
+                                <div class="grid-item"></div>
+                                <div class="grid-item"></div>
+                                <div class="grid-item"></div>
+                                <div class="grid-item"></div>
+                                <div class="grid-item"></div>
+                                <div class="grid-item"></div>
+                                <div class="grid-item"></div>
+                                <div class="grid-item"><span class="day">Afternoon</span><br><span
+                                        class="time">12:00-18:00</span>
+                                </div>
+                                <div class="grid-item tick"><img class="tick-img"
+                                        src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
+                                        alt=""></div>
+                                <div class="grid-item tick"><img class="tick-img"
+                                        src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
+                                        alt=""></div>
+                                <div class="grid-item tick"><img class="tick-img"
+                                        src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
+                                        alt=""></div>
+                                <div class="grid-item tick"><img class="tick-img"
+                                        src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
+                                        alt=""></div>
+                                <div class="grid-item tick"><img class="tick-img"
+                                        src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
+                                        alt=""></div>
+                                <div class="grid-item tick"><img class="tick-img"
+                                        src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
+                                        alt=""></div>
+                                <div class="grid-item tick"><img class="tick-img"
+                                        src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
+                                        alt=""></div>
+                                <div class="grid-item"><span class="day">Evening</span><br><span
+                                        class="time">18:00-20:00</span>
+                                </div>
+                                <div class="grid-item tick"><img class="tick-img"
+                                        src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
+                                        alt=""></div>
+                                <div class="grid-item tick"><img class="tick-img"
+                                        src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
+                                        alt=""></div>
+                                <div class="grid-item tick"><img class="tick-img"
+                                        src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
+                                        alt=""></div>
+                                <div class="grid-item tick"><img class="tick-img"
+                                        src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
+                                        alt=""></div>
+                                <div class="grid-item tick"><img class="tick-img"
+                                        src="assets/images/images/tick-mark.svg" alt=""></div>
+                                <div class="grid-item"></div>
+                                <div class="grid-item"></div>
+                                <div class="grid-item"><span class="day">Night</span><br><span
+                                        class="time">00:00-16:00</span></div>
+                                <div class="grid-item tick"><img class="tick-img"
+                                        src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
+                                        alt=""></div>
+                                <div class="grid-item tick"><img class="tick-img"
+                                        src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
+                                        alt=""></div>
+                                <div class="grid-item tick"><img class="tick-img"
+                                        src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
+                                        alt=""></div>
+                                <div class="grid-item tick"><img class="tick-img"
+                                        src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
+                                        alt=""></div>
+                                <div class="grid-item tick"><img class="tick-img"
+                                        src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
+                                        alt=""></div>
+                                <div class="grid-item tick"><img class="tick-img"
+                                        src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
+                                        alt=""></div>
+                                <div class="grid-item tick"><img class="tick-img"
+                                        src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
+                                        alt=""></div>
+                            </div>
+
+                            <button class="schedule-btn mt-3 mb-1">View full schedule</button>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-xl-4  card-detail-section">
-                <div class="right-p-part-content">
-                    <div class="side-card">
 
-                        <div class="side-card-arrow">
-                            <svg width="11" height="17" viewBox="0 0 11 17" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M1.23432 9.83135C0.535517 9.06722 0.535516 7.89605 1.23432 7.13192L7.0241 0.800865C8.25583 -0.546015 10.5 0.32541 10.5 2.15058L10.5 14.8127C10.5 16.6379 8.25583 17.5093 7.0241 16.1624L1.23432 9.83135Z"
-                                fill="#F9F9FB" />
-                        </svg>
-                        </div>
+            @if (count($userdata))
+                @foreach ($userdata as $userdata_val)
+                    <div class="row mb-3 card-main-section">
+                        <div class="col-lg-8 ">
+                            <div class="teacher-card-div mb-3">
+                                <div class="teacher-card--header">
 
-                        <video controls>
-                            <source src="{{ url("") }}/newAssets/assets/images/2.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-
-                        <div class="world-div mt-1">
-                            <img src="{{ url('') }}/newAssets/assets/images/images/world.svg"
-                                alt="" class="me-2">
-                            <p class="mb-0 pb-0">Times are shown in your local timezone</p>
-                        </div>
-                        <div class="grid-container">
-                            <div class="grid-item"></div>
-                            <div class="grid-item day-name">Mon</div>
-                            <div class="grid-item day-name">Tue</div>
-                            <div class="grid-item day-name">Wed</div>
-                            <div class="grid-item day-name">Thu</div>
-                            <div class="grid-item day-name">Fri</div>
-                            <div class="grid-item day-name">Sat</div>
-                            <div class="grid-item"></div>
-                            <div class="grid-item"><span class="day">Morning</span><br><span
-                                    class="time">06:00-12:00</span>
-                            </div>
-                            <div class="grid-item"></div>
-                            <div class="grid-item"></div>
-                            <div class="grid-item"></div>
-                            <div class="grid-item"></div>
-                            <div class="grid-item"></div>
-                            <div class="grid-item"></div>
-                            <div class="grid-item"></div>
-                            <div class="grid-item"><span class="day">Afternoon</span><br><span
-                                    class="time">12:00-18:00</span>
-                            </div>
-                            <div class="grid-item tick"><img class="tick-img"
-                                    src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
-                                    alt=""></div>
-                            <div class="grid-item tick"><img class="tick-img"
-                                    src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
-                                    alt=""></div>
-                            <div class="grid-item tick"><img class="tick-img"
-                                    src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
-                                    alt=""></div>
-                            <div class="grid-item tick"><img class="tick-img"
-                                    src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
-                                    alt=""></div>
-                            <div class="grid-item tick"><img class="tick-img"
-                                    src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
-                                    alt=""></div>
-                            <div class="grid-item tick"><img class="tick-img"
-                                    src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
-                                    alt=""></div>
-                            <div class="grid-item tick"><img class="tick-img"
-                                    src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
-                                    alt=""></div>
-                            <div class="grid-item"><span class="day">Evening</span><br><span
-                                    class="time">18:00-20:00</span>
-                            </div>
-                            <div class="grid-item tick"><img class="tick-img"
-                                    src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
-                                    alt=""></div>
-                            <div class="grid-item tick"><img class="tick-img"
-                                    src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
-                                    alt=""></div>
-                            <div class="grid-item tick"><img class="tick-img"
-                                    src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
-                                    alt=""></div>
-                            <div class="grid-item tick"><img class="tick-img"
-                                    src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
-                                    alt=""></div>
-                            <div class="grid-item tick"><img class="tick-img"
-                                    src="assets/images/images/tick-mark.svg" alt=""></div>
-                            <div class="grid-item"></div>
-                            <div class="grid-item"></div>
-                            <div class="grid-item"><span class="day">Night</span><br><span
-                                    class="time">00:00-16:00</span></div>
-                            <div class="grid-item tick"><img class="tick-img"
-                                    src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
-                                    alt=""></div>
-                            <div class="grid-item tick"><img class="tick-img"
-                                    src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
-                                    alt=""></div>
-                            <div class="grid-item tick"><img class="tick-img"
-                                    src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
-                                    alt=""></div>
-                            <div class="grid-item tick"><img class="tick-img"
-                                    src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
-                                    alt=""></div>
-                            <div class="grid-item tick"><img class="tick-img"
-                                    src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
-                                    alt=""></div>
-                            <div class="grid-item tick"><img class="tick-img"
-                                    src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
-                                    alt=""></div>
-                            <div class="grid-item tick"><img class="tick-img"
-                                    src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
-                                    alt=""></div>
-                        </div>
-
-                        <button class="schedule-btn mt-3 mb-1">View full schedule</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-                    @if (count($userdata))
-                        @foreach ($userdata as $userdata_val)
-                            <div class="row mb-3 card-main-section">
-                                <div class="col-lg-8 ">
-                                    <div class="teacher-card-div mb-3">
-                                        <div class="teacher-card--header">
-
-                                            <div class="teacher-card--header-text w-100 align-items-start">
+                                    <div class="teacher-card--header-text w-100 align-items-start">
+                                        <div class=" d-flex align-items-start flex-md-row flex-column mb-md-0 mb-3">
+                                            <div class="online-image">
+                                                <img src="{{ url('/') }}/images/{{ $userdata_val->profile_img }}"
+                                                    alt="">
+                                                <div class="online"></div>
+                                            </div>
+                                            <div class="profile-data-text">
                                                 <div
-                                                    class=" d-flex align-items-start flex-md-row flex-column mb-md-0 mb-3">
-                                                    <div class="online-image">
-                                                        <img src="{{ url('/') }}/images/{{ $userdata_val->profile_img }}"
-                                                            alt="">
-                                                        <div class="online"></div>
+                                                    class="d-flex align-items-sm-center flex-sm-row flex-column align-items-start">
+                                                    <h1 class="mb-0 pb-0">
+                                                        {{ $userdata_val->first_name . ' ' . $userdata_val->last_name }}
+                                                    </h1>
+                                                    <div class="d-flex align-items-center mt-sm-0 mt-2">
+                                                        <img src="assets/images/star.svg" alt=""
+                                                            class="ms-sm-3 ms-0 me-1">
+                                                        <h3 class="mb-0 pb-0">5.0</h3>
+                                                        <span>(33 review)</span>
                                                     </div>
-                                                    <div class="profile-data-text">
-                                                        <div
-                                                            class="d-flex align-items-sm-center flex-sm-row flex-column align-items-start">
-                                                            <h1 class="mb-0 pb-0">
-                                                                {{ $userdata_val->first_name . ' ' . $userdata_val->last_name }}
-                                                            </h1>
-                                                            <div class="d-flex align-items-center mt-sm-0 mt-2">
-                                                                <img src="assets/images/star.svg" alt=""
-                                                                    class="ms-sm-3 ms-0 me-1">
-                                                                <h3 class="mb-0 pb-0">5.0</h3>
-                                                                <span>(33 review)</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class=" mb-2">
-                                                            <!-- <h2 class="mb-0 pb-0">English teacher</h2> -->
-                                                            <div
-                                                                class="d-flex align-items-lg-center mt-3 flex-wrap align-items-start">
-                                                                <?php
-                                                                foreach ($subjectAll as $key => $value) {
-                                                                    $medi_arr = explode(',', $userdata_val->subject);
-                                                                    if (count($medi_arr) > 1) {
-                                                                        if (in_array($value->id, $medi_arr)) {
-                                                                            echo '<h2 class="text-primary me-2 ps-0">' . $value->subject . ' </h2>';
-                                                                        }
-                                                                    } else {
-                                                                        if ($userdata_val->subject == $value->id) {
-                                                                            echo '<h2 class="text-primary me-2 ps-0">' . $value->subject . '</h2>';
-                                                                        }
-                                                                    }
+                                                </div>
+                                                <div class=" mb-2">
+                                                    <!-- <h2 class="mb-0 pb-0">English teacher</h2> -->
+                                                    <div
+                                                        class="d-flex align-items-lg-center mt-3 flex-wrap align-items-start">
+                                                        <?php
+                                                        foreach ($subjectAll as $key => $value) {
+                                                            $medi_arr = explode(',', $userdata_val->subject);
+                                                            if (count($medi_arr) > 1) {
+                                                                if (in_array($value->id, $medi_arr)) {
+                                                                    echo '<h2 class="text-primary me-2 ps-0">' . $value->subject . ' </h2>';
                                                                 }
-                                                                
-                                                                ?>
+                                                            } else {
+                                                                if ($userdata_val->subject == $value->id) {
+                                                                    echo '<h2 class="text-primary me-2 ps-0">' . $value->subject . '</h2>';
+                                                                }
+                                                            }
+                                                        }
+                                                        
+                                                        ?>
 
 
 
-                                                            </div>
+                                                    </div>
 
-                                                            <div class="d-flex align-items-center  mt-2">
-                                                                <img src="assets/images/flag.png" alt=""
-                                                                    class="me-1">
-                                                                <?php 
+                                                    <div class="d-flex align-items-center  mt-2">
+                                                        <img src="assets/images/flag.png" alt=""
+                                                            class="me-1">
+                                                        <?php 
                                             foreach ($countryAll as $key => $value) { 
                                               if($userdata_val->country==$value->id){
                                                  ?>
-                                                                <span><img
-                                                                        src="{{ url('/') }}/assets/frontpage_assets/flags/{{ Str::lower($value->iso) }}.png"
-                                                                        alt=""></span>
-                                                                <p class="mb-0 pb-0 ps-1">{{ $value->nicename }}</p>
+                                                        <span><img
+                                                                src="{{ url('/') }}/assets/frontpage_assets/flags/{{ Str::lower($value->iso) }}.png"
+                                                                alt=""></span>
+                                                        <p class="mb-0 pb-0 ps-1">{{ $value->nicename }}</p>
 
-                                                                <?php 
+                                                        <?php 
                                                  
                                              }
                                          }
                                          ?>
-                                                            </div>
-                                                        </div>
-                                                        <div>
-                                                            <p class="mb-0 pb-0 mt-2 mb-2">
-                                                                <span>Speaks:</span> English (Native) German (Advanced)
-                                                                Lithuanian
-                                                                (Native)
-                                                            </p>
-                                                        </div>
-
                                                     </div>
                                                 </div>
-                                                <div class="profile-price flex-shrink-0">
-                                                    <h2 class="mb-0 pb-0">${{ $userdata_val->hourly_rate }}</h2>
-                                                    <p class="mb-0 pb-0">60-mins lesson</p>
+                                                <div>
+                                                    <p class="mb-0 pb-0 mt-2 mb-2">
+                                                        <span>Speaks:</span> English (Native) German (Advanced)
+                                                        Lithuanian
+                                                        (Native)
+                                                    </p>
                                                 </div>
-                                            </div>
-                                        </div>
-                                        <div class="teacher-card-body">
-                                            <p>
-                                                {{ $userdata_val->desc_about }}
 
-                                            </p>
+                                            </div>
                                         </div>
-                                        <div
-                                            class="d-flex justify-content-between align-items-center flex-md-row flex-column ">
-                                            <div class="mb-md-0 mb-3">
-                                                <img src="{{ url('') }}/newAssets/assets/images/veri.svg"
-                                                    alt="">
-                                            </div>
-                                            <div class="d-flex align-items-center flex-md-row flex-column sm-100 ">
-                                                <div class="d-flex align-items-center w-100 mb-md-0 mb-3">
-                                                    <div class="like">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="40"
-                                                            height="40" viewBox="0 0 40 40" fill="none">
-                                                            <path
-                                                                d="M0 20C0 8.95431 8.95431 0 20 0C31.0457 0 40 8.95431 40 20C40 31.0457 31.0457 40 20 40C8.95431 40 0 31.0457 0 20Z"
-                                                                fill="#FF6C0B" fill-opacity="0.15" />
-                                                            <path class="like-fill "
-                                                                d="M18.6356 12.9894L18.6468 13.0001L18.6583 13.0104C19.0273 13.3404 19.505 13.5228 20 13.5228C20.495 13.5228 20.9727 13.3404 21.3417 13.0104L21.3535 12.9998L21.365 12.9888C22.2116 12.1818 23.8293 11 26 11C27.5801 11 28.7855 11.6184 29.6199 12.6803C30.4752 13.7688 31 15.4045 31 17.5C31 18.7417 30.4893 20.1505 29.5891 21.6176C28.696 23.073 27.467 24.5082 26.1492 25.7806C24.8327 27.0516 23.4532 28.1356 22.2806 28.895C21.6935 29.2752 21.1737 29.5641 20.7514 29.754C20.297 29.9584 20.0599 30 20 30C19.9401 30 19.703 29.9584 19.2486 29.754C18.8263 29.5641 18.3065 29.2752 17.7194 28.895C16.5468 28.1356 15.1673 27.0516 13.8508 25.7806C12.533 24.5082 11.304 23.073 10.4109 21.6176C9.51066 20.1505 9 18.7417 9 17.5C9 15.4045 9.52485 13.7688 10.3801 12.6803C11.2145 11.6184 12.4199 11 14 11C16.169 11 17.7883 12.183 18.6356 12.9894Z"
-                                                                stroke="#FF6C0B" stroke-width="2" />
-                                                        </svg>
-                                                    </div>
-                                                    <button class="main-btn-blank-sm w-100 mx-3"><a
-                                                            href="{{ url('chat', $userdata_val->user_id) }}"
-                                                            style="color: #FF6C0B"
-                                                            class="text-decoration-none">Message</a></button>
-                                                </div>
-                                                <button class="main-btn-sm w-100" style="white-space: nowrap;"
-                                                    data-bs-toggle="modal" data-bs-target="#staticBackdrop"
-                                                    onclick="runModelCalendar({{ $userdata_val->user_id }},{{ $userdata_val->hourly_rate }},'{{ url('/') }}/images/{{ $userdata_val->profile_img }}','{{ $userdata_val->first_name . ' ' . $userdata_val->last_name }}')">Book
-                                                    a trial
-                                                    lesson</button>
-                                            </div>
+                                        <div class="profile-price flex-shrink-0">
+                                            <h2 class="mb-0 pb-0">${{ $userdata_val->hourly_rate }}</h2>
+                                            <p class="mb-0 pb-0">60-mins lesson</p>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-xl-4 ">
-                                    <div class="right-p-part-content card-detail-section">
-                                        <div class="side-card">
+                                <div class="teacher-card-body">
+                                    <p>
+                                        {{ $userdata_val->desc_about }}
 
-                                            <div class="side-card-arrow">
-                                                <svg width="11" height="17" viewBox="0 0 11 17"
-                                                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    </p>
+                                </div>
+                                <div
+                                    class="d-flex justify-content-between align-items-center flex-md-row flex-column ">
+                                    <div class="mb-md-0 mb-3">
+                                        <img src="{{ url('') }}/newAssets/assets/images/veri.svg"
+                                            alt="">
+                                    </div>
+                                    <div class="d-flex align-items-center flex-md-row flex-column sm-100 ">
+                                        <div class="d-flex align-items-center w-100 mb-md-0 mb-3">
+                                            <div class="like">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"
+                                                    viewBox="0 0 40 40" fill="none">
                                                     <path
-                                                        d="M1.23432 9.83135C0.535517 9.06722 0.535516 7.89605 1.23432 7.13192L7.0241 0.800865C8.25583 -0.546015 10.5 0.32541 10.5 2.15058L10.5 14.8127C10.5 16.6379 8.25583 17.5093 7.0241 16.1624L1.23432 9.83135Z"
-                                                        fill="#F9F9FB" />
+                                                        d="M0 20C0 8.95431 8.95431 0 20 0C31.0457 0 40 8.95431 40 20C40 31.0457 31.0457 40 20 40C8.95431 40 0 31.0457 0 20Z"
+                                                        fill="#FF6C0B" fill-opacity="0.15" />
+                                                    <path class="like-fill "
+                                                        d="M18.6356 12.9894L18.6468 13.0001L18.6583 13.0104C19.0273 13.3404 19.505 13.5228 20 13.5228C20.495 13.5228 20.9727 13.3404 21.3417 13.0104L21.3535 12.9998L21.365 12.9888C22.2116 12.1818 23.8293 11 26 11C27.5801 11 28.7855 11.6184 29.6199 12.6803C30.4752 13.7688 31 15.4045 31 17.5C31 18.7417 30.4893 20.1505 29.5891 21.6176C28.696 23.073 27.467 24.5082 26.1492 25.7806C24.8327 27.0516 23.4532 28.1356 22.2806 28.895C21.6935 29.2752 21.1737 29.5641 20.7514 29.754C20.297 29.9584 20.0599 30 20 30C19.9401 30 19.703 29.9584 19.2486 29.754C18.8263 29.5641 18.3065 29.2752 17.7194 28.895C16.5468 28.1356 15.1673 27.0516 13.8508 25.7806C12.533 24.5082 11.304 23.073 10.4109 21.6176C9.51066 20.1505 9 18.7417 9 17.5C9 15.4045 9.52485 13.7688 10.3801 12.6803C11.2145 11.6184 12.4199 11 14 11C16.169 11 17.7883 12.183 18.6356 12.9894Z"
+                                                        stroke="#FF6C0B" stroke-width="2" />
                                                 </svg>
                                             </div>
-
-                                            <video controls>
-                                                <source
-                                                    src="{{ url('') }}/videos/{{ $userdata_val->video_link }}"
-                                                    type="video/mp4">
-                                                Your browser does not support the video tag.
-                                            </video>
-
-                                            <div class="world-div mt-1">
-                                                <img src="{{ url('') }}/newAssets/assets/images/images/world.svg"
-                                                    alt="" class="me-2">
-                                                <p class="mb-0 pb-0">Times are shown in your local timezone</p>
-                                            </div>
-                                            <div class="grid-container">
-                                                <div class="grid-item"></div>
-                                                <div class="grid-item day-name">Mon</div>
-                                                <div class="grid-item day-name">Tue</div>
-                                                <div class="grid-item day-name">Wed</div>
-                                                <div class="grid-item day-name">Thu</div>
-                                                <div class="grid-item day-name">Fri</div>
-                                                <div class="grid-item day-name">Sat</div>
-                                                <div class="grid-item"></div>
-                                                <div class="grid-item"><span class="day">Morning</span><br><span
-                                                        class="time">06:00-12:00</span>
-                                                </div>
-                                                <div class="grid-item"></div>
-                                                <div class="grid-item"></div>
-                                                <div class="grid-item"></div>
-                                                <div class="grid-item"></div>
-                                                <div class="grid-item"></div>
-                                                <div class="grid-item"></div>
-                                                <div class="grid-item"></div>
-                                                <div class="grid-item"><span class="day">Afternoon</span><br><span
-                                                        class="time">12:00-18:00</span>
-                                                </div>
-                                                <div class="grid-item tick"><img class="tick-img"
-                                                        src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
-                                                        alt=""></div>
-                                                <div class="grid-item tick"><img class="tick-img"
-                                                        src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
-                                                        alt=""></div>
-                                                <div class="grid-item tick"><img class="tick-img"
-                                                        src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
-                                                        alt=""></div>
-                                                <div class="grid-item tick"><img class="tick-img"
-                                                        src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
-                                                        alt=""></div>
-                                                <div class="grid-item tick"><img class="tick-img"
-                                                        src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
-                                                        alt=""></div>
-                                                <div class="grid-item tick"><img class="tick-img"
-                                                        src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
-                                                        alt=""></div>
-                                                <div class="grid-item tick"><img class="tick-img"
-                                                        src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
-                                                        alt=""></div>
-                                                <div class="grid-item"><span class="day">Evening</span><br><span
-                                                        class="time">18:00-20:00</span>
-                                                </div>
-                                                <div class="grid-item tick"><img class="tick-img"
-                                                        src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
-                                                        alt=""></div>
-                                                <div class="grid-item tick"><img class="tick-img"
-                                                        src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
-                                                        alt=""></div>
-                                                <div class="grid-item tick"><img class="tick-img"
-                                                        src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
-                                                        alt=""></div>
-                                                <div class="grid-item tick"><img class="tick-img"
-                                                        src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
-                                                        alt=""></div>
-                                                <div class="grid-item tick"><img class="tick-img"
-                                                        src="assets/images/images/tick-mark.svg" alt=""></div>
-                                                <div class="grid-item"></div>
-                                                <div class="grid-item"></div>
-                                                <div class="grid-item"><span class="day">Night</span><br><span
-                                                        class="time">00:00-16:00</span></div>
-                                                <div class="grid-item tick"><img class="tick-img"
-                                                        src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
-                                                        alt=""></div>
-                                                <div class="grid-item tick"><img class="tick-img"
-                                                        src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
-                                                        alt=""></div>
-                                                <div class="grid-item tick"><img class="tick-img"
-                                                        src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
-                                                        alt=""></div>
-                                                <div class="grid-item tick"><img class="tick-img"
-                                                        src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
-                                                        alt=""></div>
-                                                <div class="grid-item tick"><img class="tick-img"
-                                                        src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
-                                                        alt=""></div>
-                                                <div class="grid-item tick"><img class="tick-img"
-                                                        src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
-                                                        alt=""></div>
-                                                <div class="grid-item tick"><img class="tick-img"
-                                                        src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
-                                                        alt=""></div>
-                                            </div>
-
-                                            <button class="schedule-btn mt-3 mb-1">View full schedule</button>
+                                            <button class="main-btn-blank-sm w-100 mx-3"><a
+                                                    href="{{ url('chat', $userdata_val->user_id) }}"
+                                                    style="color: #FF6C0B"
+                                                    class="text-decoration-none">Message</a></button>
                                         </div>
+                                        <button class="main-btn-sm w-100" style="white-space: nowrap;"
+                                            data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                                            onclick="runModelCalendar({{ $userdata_val->user_id }},{{ $userdata_val->hourly_rate }},'{{ url('/') }}/images/{{ $userdata_val->profile_img }}','{{ $userdata_val->first_name . ' ' . $userdata_val->last_name }}')">Book
+                                            a trial
+                                            lesson</button>
                                     </div>
                                 </div>
                             </div>
-                        @endforeach
-                    @endif
-                    <!-- Display pagination links -->
-                    <div class="row">
+                        </div>
+                        <div class="col-xl-4 ">
+                            <div class="right-p-part-content card-detail-section">
+                                <div class="side-card">
 
+                                    <div class="side-card-arrow">
+                                        <svg width="11" height="17" viewBox="0 0 11 17" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M1.23432 9.83135C0.535517 9.06722 0.535516 7.89605 1.23432 7.13192L7.0241 0.800865C8.25583 -0.546015 10.5 0.32541 10.5 2.15058L10.5 14.8127C10.5 16.6379 8.25583 17.5093 7.0241 16.1624L1.23432 9.83135Z"
+                                                fill="#F9F9FB" />
+                                        </svg>
+                                    </div>
 
-                        <div class="col-lg-8 mt-4">
-                            @if (!isset($filter))
-                                {{ $userdata->links() }}
-                            @endif
+                                    <video controls>
+                                        <source src="{{ url('') }}/videos/{{ $userdata_val->video_link }}"
+                                            type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+
+                                    <div class="world-div mt-1">
+                                        <img src="{{ url('') }}/newAssets/assets/images/images/world.svg"
+                                            alt="" class="me-2">
+                                        <p class="mb-0 pb-0">Times are shown in your local timezone</p>
+                                    </div>
+                                    <div class="grid-container">
+                                        <div class="grid-item"></div>
+                                        <div class="grid-item day-name">Mon</div>
+                                        <div class="grid-item day-name">Tue</div>
+                                        <div class="grid-item day-name">Wed</div>
+                                        <div class="grid-item day-name">Thu</div>
+                                        <div class="grid-item day-name">Fri</div>
+                                        <div class="grid-item day-name">Sat</div>
+                                        <div class="grid-item"></div>
+                                        <div class="grid-item"><span class="day">Morning</span><br><span
+                                                class="time">06:00-12:00</span>
+                                        </div>
+                                        <div class="grid-item"></div>
+                                        <div class="grid-item"></div>
+                                        <div class="grid-item"></div>
+                                        <div class="grid-item"></div>
+                                        <div class="grid-item"></div>
+                                        <div class="grid-item"></div>
+                                        <div class="grid-item"></div>
+                                        <div class="grid-item"><span class="day">Afternoon</span><br><span
+                                                class="time">12:00-18:00</span>
+                                        </div>
+                                        <div class="grid-item tick"><img class="tick-img"
+                                                src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
+                                                alt=""></div>
+                                        <div class="grid-item tick"><img class="tick-img"
+                                                src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
+                                                alt=""></div>
+                                        <div class="grid-item tick"><img class="tick-img"
+                                                src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
+                                                alt=""></div>
+                                        <div class="grid-item tick"><img class="tick-img"
+                                                src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
+                                                alt=""></div>
+                                        <div class="grid-item tick"><img class="tick-img"
+                                                src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
+                                                alt=""></div>
+                                        <div class="grid-item tick"><img class="tick-img"
+                                                src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
+                                                alt=""></div>
+                                        <div class="grid-item tick"><img class="tick-img"
+                                                src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
+                                                alt=""></div>
+                                        <div class="grid-item"><span class="day">Evening</span><br><span
+                                                class="time">18:00-20:00</span>
+                                        </div>
+                                        <div class="grid-item tick"><img class="tick-img"
+                                                src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
+                                                alt=""></div>
+                                        <div class="grid-item tick"><img class="tick-img"
+                                                src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
+                                                alt=""></div>
+                                        <div class="grid-item tick"><img class="tick-img"
+                                                src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
+                                                alt=""></div>
+                                        <div class="grid-item tick"><img class="tick-img"
+                                                src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
+                                                alt=""></div>
+                                        <div class="grid-item tick"><img class="tick-img"
+                                                src="assets/images/images/tick-mark.svg" alt=""></div>
+                                        <div class="grid-item"></div>
+                                        <div class="grid-item"></div>
+                                        <div class="grid-item"><span class="day">Night</span><br><span
+                                                class="time">00:00-16:00</span></div>
+                                        <div class="grid-item tick"><img class="tick-img"
+                                                src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
+                                                alt=""></div>
+                                        <div class="grid-item tick"><img class="tick-img"
+                                                src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
+                                                alt=""></div>
+                                        <div class="grid-item tick"><img class="tick-img"
+                                                src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
+                                                alt=""></div>
+                                        <div class="grid-item tick"><img class="tick-img"
+                                                src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
+                                                alt=""></div>
+                                        <div class="grid-item tick"><img class="tick-img"
+                                                src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
+                                                alt=""></div>
+                                        <div class="grid-item tick"><img class="tick-img"
+                                                src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
+                                                alt=""></div>
+                                        <div class="grid-item tick"><img class="tick-img"
+                                                src="{{ url('') }}/newAssets/assets/images/images/tick-mark.svg"
+                                                alt=""></div>
+                                    </div>
+
+                                    <button class="schedule-btn mt-3 mb-1">View full schedule</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                @endforeach
+            @endif
+            <!-- Display pagination links -->
+            <div class="row">
+
+
+                <div class="col-lg-8 mt-4">
+                    @if (!isset($filter))
+                        {{ $userdata->links() }}
+                    @endif
                 </div>
             </div>
+        </div>
+        </div>
     </section>
 
 
@@ -1354,15 +1390,15 @@
                             @endif
                         </div>
                         <button class="carousel-control-prev" type="button"
-                                data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                                <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                 <span class="visually-hidden">Previous</span> -->
-                            </button>
-                            <button class="carousel-control-next" type="button"
-                                data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                                <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        </button>
+                        <button class="carousel-control-next" type="button"
+                            data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                 <span class="visually-hidden">Next</span> -->
-                            </button>
+                        </button>
                     </div>
                 </div>
                 <div class="col-lg-6 d-flex justify-content-center order-lg-2 order-1 mb-lg-0 mb-4">
@@ -1455,7 +1491,7 @@
                                 </div>
                             </div>
                         </div>
-                      
+
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="headingThree">
                                 <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
@@ -1712,6 +1748,64 @@
             var staticEvents = [{
                     title: 'Static Event 1',
                     start: formattedCurrentDate + 'T08:00:00',
+                    end: formattedCurrentDate + 'T9:00:00',
+
+                },
+                {
+                    title: 'Static Event 2',
+                    start: formattedCurrentDate + 'T14:00:00',
+                    end: formattedCurrentDate + 'T15:00:00',
+
+                },
+                // Add more static events as needed
+            ];
+
+            staticEvents.forEach(function(eventData) {
+                var event = calendar.addEvent(eventData);
+            });
+        }, 400);
+    }
+    
+    function staticModelCalendar() {
+        setTimeout(() => {
+
+
+            var calendarEl = document.getElementById('schedule-calendar');
+
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                headerToolbar: {
+                    left: 'prev,next',
+                    right: 'title'
+                },
+
+                defaultView: 'timeGridWeek',
+                selectable: true,
+                editable: true,
+                timeZone: clientTimeZone, // Use the client's time zone
+
+
+                eventDataTransform: function(event, element, info) {
+                    if (event.status == 'time_off') {
+                        event.editable = false;
+                        event.color = "red";
+
+                    }
+                    return event;
+                },
+            });
+
+
+            calendar.render();
+            calendar.changeView('timeGridWeek');
+
+
+            // fake dummy data
+            // Static events
+            var currentDate = new Date(); // Current date
+            var formattedCurrentDate = currentDate.toISOString().slice(0, 10); // Format as 'YYYY-MM-DD'
+            var staticEvents = [{
+                    title: 'Static Event 1',
+                    start: formattedCurrentDate + 'T08:00:00',
                     end: formattedCurrentDate + 'T10:00:00',
 
                 },
@@ -1729,6 +1823,7 @@
             });
         }, 400);
     }
+
 
     function submitStudentSchedule() {
         if ($("#session_start").val() != '' && $("#session_end").val() != '' && $("#calendar_sch_id").val() != '') {

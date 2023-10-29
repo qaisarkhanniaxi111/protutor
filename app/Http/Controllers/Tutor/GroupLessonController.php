@@ -42,16 +42,20 @@ class GroupLessonController extends Controller
     public function groupclasses2()
     {
         $PageTitle = 'Public Lessons | ProTutor';
+        $Homepagedata = Homepage::where('id',1)->get();
+
+		$Alltestimonial =  Student_testimonial::where('user_status', 1)->orderBy('id', 'desc')->get();
         $todayDate = now()->format('Y-m-d');
-        $todayGroupLessons = GroupLesson::with(['teachLevel', 'subject', 'tutor', 'gallery','tutorDetails'])->whereDate('class_start_date', $todayDate)->limit(4)->get();
-        $groupLessons = GroupLesson::with(['teachLevel', 'subject', 'tutor', 'gallery'])->simplePaginate(12);
+        $todayGroupLessons = GroupLesson::with(['teachLevel', 'subject', 'tutor', 'gallery','tutorDetails'])->whereDate('registration_start_date', $todayDate)->limit(4)->get();
+        // dd($todayGroupLessons);
+        $groupLessons = GroupLesson::with(['teachLevel', 'subject', 'tutor', 'gallery'])->Paginate(4);
 
         $teaches_levels = Teaches_level::select('id', 'teaches_level')->get();
         $teaches_levels = $teaches_levels->toArray();
         $subjects = Subject::select('id', 'subject')->get();
         $subjects = $subjects->toArray();
 
-        return view("frontend.grouplessons2", compact('todayGroupLessons', 'groupLessons', 'teaches_levels', 'subjects','PageTitle'));
+        return view("frontend.grouplessons2", compact('todayGroupLessons', 'groupLessons', 'teaches_levels', 'subjects','PageTitle','Homepagedata','Alltestimonial'));
     }
     public function privategroupclasses()
     {
@@ -212,7 +216,7 @@ class GroupLessonController extends Controller
 
         $request->validate(
             [
-                'image' => 'required | image',
+                'image' => 'required',
                 'title' => 'required',
                 'teaches_level' => 'required',
                 'subject' => 'required',

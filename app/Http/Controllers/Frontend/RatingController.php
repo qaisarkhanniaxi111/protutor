@@ -13,10 +13,10 @@ class RatingController extends Controller
     {
         $query = GroupLesson::with(['teachLevel', 'subject', 'tutor','tutorDetails', 'gallery']);
         if (!empty($request->subject)) {
-            $query->where('subject_id', $request->subject);
+            $query->where('subject_id', (int)$request->subject);
         }
         if (!empty($request->teaches_level)) {
-            $query->where('teach_level_id', $request->teaches_level);
+            $query->where('teach_level_id', (int)$request->teaches_level);
         }
         if (!empty($request->sort_by)) {
             $query->orderBy('title', $request->sort_by === 'ascending' ? 'ASC' : 'DESC');
@@ -52,13 +52,13 @@ class RatingController extends Controller
     {
         try {
             $todayDate = now()->format('Y-m-d');
-            $query = GroupLesson::with(['teachLevel', 'subject', 'tutor','tutorDetails', 'gallery'])->whereDate('class_start_date', $todayDate);
+            $query = GroupLesson::with(['teachLevel', 'subject', 'tutor','tutorDetails', 'gallery'])->whereDate('registration_start_date', $todayDate);
 
             if (!empty($request->subject)) {
-                $query->where('subject_id', $request->subject);
+                $query->where('subject_id', (int)$request->subject);
             }
             if (!empty($request->teaches_level)) {
-                $query->where('teach_level_id', $request->teaches_level);
+                $query->where('teach_level_id', (int)$request->teaches_level);
             }
             if (!empty($request->sort_by)) {
                 $query->orderBy('title', $request->sort_by === 'ascending' ? 'ASC' : 'DESC');

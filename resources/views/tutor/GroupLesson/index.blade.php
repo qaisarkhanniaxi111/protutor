@@ -1,6 +1,6 @@
 @include('/tutor/common/header')
 @include('/tutor/common/sidebar')
-{{-- <!doctype html>
+<!doctype html>
 <html lang="en">
 
 <head>
@@ -9,78 +9,13 @@
     <meta name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, shrink-to-fit=no">
     <link rel="shortcut icon" href="assets/images/favicon.png">
-    <title>Teachers Portal : Quiz</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
-    <link rel="stylesheet" href="assets/css/custom.css">
+   
 
     {{-- DataTable CSS  --}}
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css" />
 
 </head>
-<style>
-    .image-label {
-        position: relative;
-        overflow: hidden;
-        text-align: center;
-        flex-grow: 1;
-    }
 
-    .image-container {
-        display: inline-block;
-    }
-
-    .view-button {
-        position: absolute;
-        bottom: 10px;
-        /* Adjust the distance from the bottom as needed */
-        left: 50%;
-        transform: translateX(-50%);
-        background-color: #FF6C0B;
-        /* Customize button background color */
-        color: #fff;
-        /* Customize button text color */
-        padding: 8px 12px;
-        border-radius: 4px;
-        text-decoration: none;
-        opacity: 0;
-        /* Initially, hide the button */
-        transition: opacity 0.3s;
-        /* Add a transition effect to the button */
-    }
-
-    .image-label:hover .view-button {
-        opacity: 1;
-        /* Show the button on hover */
-    }
-
-    .view-button:hover {
-        background-color: #FFA545;
-        /* Customize button background color on hover */
-    }
-
-
-    .row {
-        display: flex;
-        justify-content: space-between;
-        /* Optional, to evenly space the columns */
-    }
-
-    .checkbox-container {
-
-        position: relative;
-        display: flex;
-        align-items: center;
-
-    }
-
-    .checkbox-container label {
-        margin-top: auto;
-        margin-bottom: auto;
-    }
-</style> --}}
 
 <body>
     <div id="message">

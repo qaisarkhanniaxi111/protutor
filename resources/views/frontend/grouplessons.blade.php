@@ -341,8 +341,8 @@
 
                                             <div class="top-reviews">
                                                 <div class="reviews-box">
-                                                    @foreach (groupLessonParticipants2($groupLesson->id) as $key => $user)
-                                                        <img src="{{ url("") }}/images/{{ $user->profile_img }}"
+                                                    @foreach (groupLessonParticipants($groupLesson->id) as $key => $user)
+                                                        <img src="{{ url("") }}/images/"
                                                             class="review-{{ 3 + $key }}" alt="Image"
                                                             style="height:24px; width:24px; border-radius:100%; object-fit:cover"/>
                                                     @endforeach
@@ -445,8 +445,8 @@
                                             <div class="top-reviews">
                                                 <div class="reviews-box">
                                                     
-                                                    @foreach (groupLessonParticipants2($groupLesson->id) as $key => $user)
-                                                        <img src="{{ url("") }}/images/{{ $user->profile_img }}"
+                                                    @foreach (groupLessonParticipants($groupLesson->id) as $key => $user)
+                                                        <img src="{{ url("") }}/images/"
                                                             class="review-{{ 3 + $key }}" alt="Image"
                                                             style="height:24px; width:24px; border-radius:100%; object-fit:cover"/>
                                                     @endforeach
