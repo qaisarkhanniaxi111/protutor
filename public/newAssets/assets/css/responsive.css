@@ -450,6 +450,12 @@
     width: 100%;
     margin:7px 0px !important;
   }
+  .filter-main-div input{
+    max-width: 100% !important;
+    width: 100%;
+    border: none;
+    padding: 10px 0px 10px 7px;
+  }
   .filter-btn-div{
    width: 100%;
   }
@@ -460,6 +466,7 @@
   .group-card-heading h1{
     font-size: 16px;
     line-height: 22px;
+    height: 45px;
   }
   .group-card-profile p{
     font-size: 14px;

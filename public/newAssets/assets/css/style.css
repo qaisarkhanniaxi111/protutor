@@ -2245,12 +2245,30 @@ height: 10px;
   display: flex;
   align-items: center;
   margin: 0px 5px;
+  flex-grow: 1;
 }
 
 .active-filter {
   border: 1px solid #FF6C0B !important;
 }
-
+.filter-main-div input{
+  /* max-width: 151px !important; */
+  border: none;
+  padding: 10px 0px 10px 7px;
+  color: rgba(44, 44, 44, 0.80);
+  text-align: left;
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+  width: 100%;
+}
+.filter-main-div input:focus,
+.filter-main-div input:active{
+outline: none;
+border: none;
+}
 .filter-main-div select {
   margin-top: 0px !important;
 
@@ -2448,13 +2466,14 @@ height: 10px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: normal;
+  height: 60px;
 }
 
 .group-card-profile img {
   border-radius: 30px;
   border: 1px solid #D3E1E3;
-  width: 30px !important;
-  height: 30px !important;
+  width: 24px !important;
+  height: 24px !important;
   flex-shrink: 0;
   object-fit: cover;
 }
@@ -2583,7 +2602,22 @@ height: 10px;
   align-items: center;
   border-radius: 100px;
 }
-.select-section{
+/* .select-section{
   padding-left: 10px !important;
   padding-right: 10px !important;
+} */
+
+
+.pagination .hide-sm a{
+  color:  #FF6C0B !important;
+    font-family: Poppins;
+    font-size: 1em;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1.625;
+    text-decoration: none;
+}
+
+.pagination .hide-sm a.disabled {
+  filter: grayscale(100%);
 }

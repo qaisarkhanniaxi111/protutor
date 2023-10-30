@@ -43,7 +43,8 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
     <div class="">
         <form id="filter-form">
             <div class="container">
-                <div class="row select-section select-section2 justify-content-xl-around justify-content-center">
+                <div class="row select-section justify-content-xl-around justify-content-center">
+                    
                     <div class="filter-main-div mb-xl-0 mb-3" id="active-filter">
                         <img src="{{ url('') }}/newAssets/assets/images/group-icons/level.svg" alt=""
                             class="">
@@ -73,7 +74,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
                         </select>
                     </div>
                     <div class="filter-main-div mb-xl-0 mb-3">
-                        <img src="{{ url('') }}/newAssets/assets/images/group-icons/day.svg" alt=""
+                        <img src="{{ url('') }}/newAssets/assets/images/group-icons/price.svg" alt=""
                             class="">
                         <select class="form-select" aria-label="Default select example" name="price"
                             onchange="submit_filter()">
@@ -91,10 +92,13 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
                         </select>
                     </div>
                     <div class="filter-main-div mb-xl-0 mb-3">
-                        
-                        <input class="form-control" type="date" name="date" id="date_filter"
-                            onchange="submit_filter()">
+                        <img src="{{ url("") }}/newAssets/assets/images/group-icons/day.svg" alt="" class="">
+                        {{-- <input class="form-control" type="date" name="date" id="date_filter"
+                            onchange="submit_filter()"> --}}
+                            
+                            <input type="date"  placeholder="Date" required="" name="date" onchange="submit_filter()">
 
+                            {{-- ispy apni backend apply kr lien --}}
                     </div>
                     {{-- <div class="filter-main-div mb-xl-0 mb-3">
                   <img src="{{ url("") }}/newAssets/assets/images/group-icons/price.svg" alt="" class="">
@@ -126,7 +130,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
                         </select>
                     </div>
                     <div class="filter-btn-div px-0 py-0 ps-lg-2  ">
-                        <button type="button" class="filter-btn flex-grow-1" onclick="reset_filter();submit_filter()">Clear
+                        <button type="button" class="filter-btn flex-grow-1" onclick="location.reload()">Clear
                             Filter</button>
                     </div>
                 </div>
