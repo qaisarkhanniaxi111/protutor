@@ -14,7 +14,7 @@ use App\Http\Controllers\Dashboard\StudentGroupLessonController;
 use App\Http\Controllers\Dashboard\SupportController;
 use App\Http\Controllers\Dashboard\TeachingOrdersController;
 use App\Http\Controllers\Frontend\PaymentController;
-use App\Http\Controllers\FrontEnd\RatingController;
+use App\Http\Controllers\Frontend\RatingController;
 use App\Http\Controllers\Tutor\EarningController;
 use App\Http\Controllers\Tutor\TutorController;
 use App\Http\Controllers\Tutor\GroupLessonController;
