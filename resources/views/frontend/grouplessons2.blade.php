@@ -1332,39 +1332,28 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
                             </div>
                         </div>
                     @endforeach
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="mt-4">
+                                {{ $groupLessons->links() }}
+                               
+                            </div>
+                        </div>
+                    </div>
                 @else
                     <h4 class="text-danger text-center">No lesson uploaded yet</h4>
                 @endif
             </div>
             </div>
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-lg-12">
                     <div class="mt-4">
                         {{ $groupLessons->links() }}
-                        {{-- <div class="hide-sm">
-                            <img class="arrow"
-                                src="{{ url('') }}/newAssets/assets/images/images/arrow-left.svg"
-                                alt="">
-                            <a class="prev" href="#">Previous</a>
-                        </div>
-                        <ul class="pg-ul">
-                            <li id="pg-1" class="pg-list"><a href="#">1</a></li>
-                            <li class="pg-list"><a href="#">2</a></li>
-                            <li class="pg-list"><a href="#">3</a></li>
-                            <li class="pg-list">...</li>
-                            <li class="pg-list"><a href="#">8</a></li>
-                            <li class="pg-list"><a href="#">9</a></li>
-                            <li class="pg-list"><a href="#">10</a></li>
-                        </ul>
-                        <div class="hide-sm">
-                            <a class="next" href="#">Next</a>
-                            <img class="arrow"
-                                src="{{ url('') }}/newAssets/assets/images/images/arrow-right.svg"
-                                alt="">
-                        </div> --}}
+                       
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </section>
     <section class="testimonials">
