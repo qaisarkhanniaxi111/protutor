@@ -147,7 +147,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
                     </div>
                 </div>
                 <div class="col-12 row" id="filter-today-cards-id">
-                <div class="col-lg-3 col-md-6 mb-3 ">
+                <div class="col-xl-3 col-lg-4 col-md-6 mb-3 ">
                     <div class="group-card ">
                         <a href="listing.html" class="carousel__slide-1">
                             <figure>
@@ -202,7 +202,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 mb-3">
+                <div class="col-xl-3 col-lg-4 col-md-6 mb-3">
                     <div class="group-card ">
                         <a href="listing.html" class="carousel__slide-1">
                             <figure>
@@ -257,7 +257,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 mb-3">
+                <div class="col-xl-3 col-lg-4 col-md-6 mb-3">
                     <div class="group-card ">
                         <a href="listing.html" class="carousel__slide-1">
                             <figure>
@@ -315,7 +315,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
                 @if (count($todayGroupLessons) > 0)
                     @foreach ($todayGroupLessons as $groupLesson)
                         
-                        <div class="col-lg-3 col-md-6 mb-3">
+                        <div class="col-xl-3 col-lg-4 col-md-6 mb-3">
                             <div class="group-card ">
                                 <a href="listing.html" class="carousel__slide-1">
                                     <figure>
