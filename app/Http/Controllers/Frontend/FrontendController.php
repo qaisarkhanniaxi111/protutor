@@ -478,6 +478,11 @@ class FrontendController extends Controller
     {
         $PageTitle = 'Tutor Detail | ProTutor';
         $teacher_data=  Userdetail::where('student_no', $tutorid)->get();
+        if(isset($teacher_data[0])){
+
+        }else{
+            return abort(404);
+        }
         $subjects=explode(',',$teacher_data[0]->subject);
         // dd($subjects);
         $relatedTeachers=Userdetail::where('subject',$subjects[0]);

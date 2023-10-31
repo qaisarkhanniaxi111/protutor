@@ -92,6 +92,11 @@ class FindTutorController extends Controller
 
         $PageTitle = 'Tutor Detail | ProTutor';
         $teacher_data =  Userdetail::where('student_no', $tutorid)->get();
+        if(isset($teacher_data[0])){
+
+        }else{
+            return abort(404);
+        }
         $subjects = Subject::all();
         $languages = Spoken_language::all();
         $country = Countries::all();

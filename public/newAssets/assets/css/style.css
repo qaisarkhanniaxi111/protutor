@@ -2420,6 +2420,7 @@ border: none;
   border: 1px solid rgba(255, 108, 11, 0.10);
   background: #F9F9FB;
   padding: 10px;
+  height: 100%;
 }
 
 .group-card-content {

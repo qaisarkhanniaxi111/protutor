@@ -59,7 +59,7 @@
                         {{-- <li class="nav-item">
                             <a class="nav-link {{ $getUrl=='find-a-tutor' ? "active-nav" : "" }}" href="{{ url('/find-a-tutor') }}">Find Tutors</a>
                         </li> --}}
-                        <li class="nav-item"><a class="nav-link {{ $getUrl=='group2' ? "active-nav" : "" }}" href="{{ url('/group2') }}">Find Tutors</a></li>
+                        <li class="nav-item"><a class="nav-link {{ $getUrl=='group' ? "active-nav" : "" }}" href="{{ url('/group') }}">Find Tutors</a></li>
                         
                         <li class="nav-item">
                             <a class="nav-link {{ $getUrl=='become-a-tutor' ? "active-nav" : "" }}" href="{{ url('/become-a-tutor') }}">Become a tutor</a>

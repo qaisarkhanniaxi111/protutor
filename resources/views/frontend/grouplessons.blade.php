@@ -1,7 +1,7 @@
 @php
     $lightNavbar = true;
 @endphp
-@include('frontend/common/header')
+@include('frontend/common/newHeader')
 <link rel="stylesheet" href="assets/frontpage_assets/css/lessons.css">
 <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -525,7 +525,7 @@
 </section>
 </main>
 <!-- Footer Section -->
-@include('/frontend/common/footer')
+@include('/frontend/common/newFooter')
 <script src="{{ asset('assets/tutor/js/toastr.min.js') }}"></script>
 <script type="text/javascript">
     $(document).ready(function() {

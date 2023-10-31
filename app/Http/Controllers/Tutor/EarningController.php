@@ -30,7 +30,7 @@ class EarningController extends Controller
             $totalAvailableBalance = Payment::where('tutor_id', $tutor->id)->where('status', 'available')->sum('amount');
             $totalAvailableBalance = $totalAvailableBalance/ 100;
 
-            $allPayments = Payment::where('tutor_id', $tutor->id)->notFetchInActivePayments()->get();
+            $allPayments = Payment::where('tutor_id', $tutor->id)->notFetchInActivePayments()->orderBy('created_at', 'desc')->get();
 
         }
         $tutorAccountId=$tutor->account_id;

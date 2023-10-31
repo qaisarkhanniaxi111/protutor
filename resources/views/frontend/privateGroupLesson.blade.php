@@ -62,9 +62,9 @@
     <div class="modal-dialog modal-xl modal-dialog-scrollable modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <img src="{{ url('') }}/newAssets/assets/images/ppp.png" alt="" id="modelTutorImage"
+                <img src="{{ url('') }}/newAssets/assets/images/ppp.png" alt=""
                     style="width:40px;height:40px;object-fit: cover;" class="rounded-circle me-3">
-                <span class="h1 modal-title fs-5" id="modelTutorName"
+                <span class="h1 modal-title fs-5"
                     style="font-family: Arial, Helvetica, sans-serif">Hanna Bapasta</span>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -83,7 +83,7 @@
             <div class="modal-footer">
 
                 <button type="button" class="btn disabled" style="background-color: #fe6903;color:#fff"
-                    id="continueSubmitShcdulebtn" onclick="submitStudentSchedule()">Continue</button>
+                     onclick="submitStudentSchedule()">Continue</button>
             </div>
         </div>
     </div>
@@ -139,7 +139,7 @@
                     <div class="left-hero">
                         <div class="btn-hero">
                             <button id="btn-hero-1" class="btns-hero">Private lessons</button>
-                            <a href="{{ route('public.lessons.2') }}" class="text-decoration-none"> <button
+                            <a href="{{ route('public.lessons') }}" class="text-decoration-none"> <button
                                     id="btn-hero-2" class="btns-hero" style="color: #FF6C0B">Group Lessons</button></a>
                         </div>
                         <h1 class="main-heading text-dark mt-5">
