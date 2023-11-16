@@ -472,7 +472,7 @@
                                                 <button type="button" class="btn btn-dark px-5"
                                                     data-bs-toggle="modal" data-bs-target="#exampleModal"
                                                     onclick="setRange()">Add</button>
-                                                <b class="text-success p-3 error-msg" id="make_plan">
+                                                <b class="text-success p-3" id="make_plan">
                                                     Add a Plan for this Group Lesson ( optional) 
                                                 </b>
                                             </div>
