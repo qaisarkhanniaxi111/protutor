@@ -332,6 +332,11 @@ class FrontendController extends Controller
                 return redirect('/dashboard');
 
             }
+            $tutorid = Session::get('tutorid');
+            if(isset($tutorid) && $tutorid!=""){
+                return redirect('/tutordashboard');
+
+            }
 
             $PageTitle = 'Login | ProTutor';
             return view("frontend/login",compact('PageTitle'));
@@ -355,9 +360,9 @@ class FrontendController extends Controller
                 'subject' => ['required'],
                 'hourly_rate' => ['required'],
                 'desc_first_last' => ['required'],
-                'desc_about' => ['required'],
+                'desc_about' => 'required|min:400',
                 'your_picture' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
-                'upload_video' => 'required|file|mimetypes:video/mp4',
+                'upload_video' => 'required',
             ]);
 
             $image = $req->file('your_picture');
@@ -365,10 +370,15 @@ class FrontendController extends Controller
             $req->your_picture->move(public_path('images'), $imageName);
 
             //video uplaod
-            $image1 = $req->file('upload_video');
+            if($req->file('upload_video')){
+                  $image1 = $req->file('upload_video');
             $imageName1 = time().'_'.$image1->getClientOriginalName();
             $req->upload_video->move(public_path('videos'), $imageName1);
 
+            }else{
+                $imageName1=$req->upload_video;
+            }
+          
             $result = Userdetail::create([
                 "student_no"=>  $req->userid,
                 "first_name"=>  $req->first_name,
@@ -377,9 +387,9 @@ class FrontendController extends Controller
                 "email"=>  $req->email,
                 "phone"=>  $req->phone_number,
                 "languages"=> implode(',', $req->languages),
-                "native_language"=> $req->native_language,
+                "native_language"=> implode(',',$req->native_language),
                 "over_18"=>  $req->over_18,
-                "level"=>  $req->level,
+                "level"=> implode(',',$req->level) ,
                 "subject"=> implode(',', $req->subject),
                 "hourly_rate"=>  $req->hourly_rate,
                 "desc_first_last"=>  $req->desc_first_last,
@@ -478,8 +488,9 @@ class FrontendController extends Controller
     {
         $PageTitle = 'Tutor Detail | ProTutor';
         $teacher_data=  Userdetail::where('student_no', $tutorid)->get();
+        
         if(isset($teacher_data[0])){
-
+            
         }else{
             return abort(404);
         }

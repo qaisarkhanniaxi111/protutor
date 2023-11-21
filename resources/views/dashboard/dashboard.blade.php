@@ -71,14 +71,18 @@
                         </div>
                     </div>
                 </div>
+             
                 <div class="quiz-table">
                     <div class="table-responsive">
                         <table class="table theme-table">
                             @foreach ($quizes as $quiz)
+                            @if (isset($enrolledLessons[$quiz->group_lesson_id]))
+                                
+                            
                                 <tr>
                                     <td>{{ $quiz->quiztitle }}</td>
-                                    <td>{{ $quiz->teaches_level }}</td>
-                                    <td>{{ $quiz->subject }}</td>
+                                    <td></td>
+                                    <td></td>
                                     {{-- <td>Quiz Type</td> --}}
                                     <td>{{ $quiz->startdate }}</td>
                                     <td>{{ $quiz->enddate }}</td>
@@ -90,6 +94,7 @@
                                         @endif
                                     </td>
                                 </tr>
+                                @endif
                             @endforeach
 
                         </table>

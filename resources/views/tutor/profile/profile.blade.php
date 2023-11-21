@@ -1,5 +1,5 @@
-@include('/tutor/common/header')
-@include('/tutor/common/sidebar')
+@include('tutor/common/header')
+@include('tutor/common/sidebar')
 <!-- Container -->
 <style type="text/css">
 	li.nav-item a {
@@ -134,6 +134,26 @@ $getVal =  end($parts);
 										</select>
 
 									</div>
+									<div class="inp-group">
+										<label for="">Native Language</label> 
+										<select id="nativeLanguages" name="nativeLanguages[]" class="shadow-none form-select rounded-pill" multiple data-allow-clear="1">
+											<option value="">Select</option>
+											@foreach($nativeLanguages as $nativeLanguage)
+											<option  value="{{ $nativeLanguage->id }}">{{ $nativeLanguage->spoken_language }}</option>
+											@endforeach
+										</select>
+
+									</div>
+									<div class="inp-group">
+										<label for="">Spoken Language</label> 
+										<select id="spokenLanguages" name="spokenLanguages[]" class="shadow-none form-select rounded-pill" multiple data-allow-clear="1">
+											<option value="">Select</option>
+											@foreach($nativeLanguages as $nativeLanguage)
+											<option  value="{{ $nativeLanguage->id }}">{{ $nativeLanguage->spoken_language }}</option>
+											@endforeach
+										</select>
+
+									</div>
 								</div>
 								<div class="bg-block mt-4">
 									<h5 class="text-center">Subjects Taught</h5>
@@ -146,6 +166,23 @@ $getVal =  end($parts);
 												<option value="">Select Subject</option>
 												<?php foreach ($subject as $key => $value) { ?>
 													<option value="<?php echo $value->id ?>"><?php echo $value->subject ?></option>  
+												<?php  } ?> 
+											</select>
+										</div>
+										<div class="col-lg-3"></div> 
+									</div>
+								</div>
+								<div class="bg-block mt-4">
+									<h5 class="text-center">Teach level</h5>
+									<p class="info-txt">You can select up to 20 levels. Some levels may require a knowledge quiz in the next step.</p>
+
+									<div class="row">
+										<div class="col-lg-3"></div>
+										<div class="col-lg-6">
+											<select name="level[]" multiple data-allow-clear="1" id="t_level">
+												<option value="">Select Subject</option>
+												<?php foreach ($level as $key => $value) { ?>
+													<option value="<?php echo $value->id ?>"><?php echo $value->teaches_level ?></option>  
 												<?php  } ?> 
 											</select>
 										</div>
@@ -308,9 +345,15 @@ $getVal =  end($parts);
 										<div class="vid-prev">
 											<div class="vid-icon">
 												<video width="400" controls>
+												    @if(strpos($listUser[0]->video_link,'http')!== false)
+													<source src="{{$listUser[0]->video_link}}" id="video_here">
+														Your browser does not support HTML5 video.
+													</video>
+													@else
 													<source src="{{url('/')}}/videos/{{$listUser[0]->video_link}}" id="video_here">
 														Your browser does not support HTML5 video.
 													</video>
+													@endif
 												</div>
 											</div>
 											<div class="pt-3"> 
@@ -322,6 +365,7 @@ $getVal =  end($parts);
 									<div class="photo-list-wrap">
 										<div class="photo-list-txt">
 											<h2>Tips for an amazing introduction video</h2>
+											<video src="{{ url('') }}/videos/exampleVideo.mp4" controls class='w-100 rounded my-3'></video>
 											<h2 class="pt-4">Technical</h2>
 											<ul class="pt-2">
 												<li>Keep your video between 30 seconds and 2 minutes long</li>
@@ -844,6 +888,9 @@ $getVal =  end($parts);
 @include('/dashboard/common/footer') 
 <script type="text/javascript">
 	$('#subject').val([<?php echo $listUser[0]->subject; ?>]);
+	$('#t_level').val([<?php echo $listUser[0]->level; ?>]);
+	$('#nativeLanguages').val([<?php echo $listUser[0]->native_language; ?>]);
+	$('#spokenLanguages').val([<?php echo $listUser[0]->languages; ?>]);
 	$('#type_of_document').val([<?php echo (isset($getIdentification[0]->type_of_document) && $getIdentification[0]->type_of_document ? $getIdentification[0]->type_of_document : ""); ?>]);
 	$(function () {
 		$('select').each(function () {

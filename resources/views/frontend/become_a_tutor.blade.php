@@ -245,7 +245,7 @@
 											Find an Online English Teacher to Help You Master English
 									</h2>
 							</div>
-							<div class="col-lg-6 pe-lg-5 ">
+							<div class="col-lg-6 pe-lg-5 order-lg-1 order-2">
 
 								<div class="accordion mt-3 faq-accordian" id="myAccordion">
 									<div class="accordion-item">
@@ -353,9 +353,11 @@
 
 
 							</div>
-							<div class="col-lg-6">
-
-							</div>
+							  <div class="col-lg-6 order-lg-2 order-1">
+                       <div class="w-100 d-flex justify-content-center">
+                        <img src="{{ url('') }}/newAssets/assets/images/Questions.gif" alt="" class="img-fluid">
+                       </div>
+                    </div>
 
 					</div>
 			</div>

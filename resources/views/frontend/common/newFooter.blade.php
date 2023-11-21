@@ -53,16 +53,16 @@
               <h2 class="mb-3">About</h2>
               <ul class="ms-0 ps-0 d-flex flex-column align-items-md-start align-items-center">
                   <li>
-                      <a href="index.html">Home</a>
+                      <a href="{{ url('/') }}">Home</a>
                   </li>
                   <li>
-                      <a href="">Find tutor</a>
+                      <a href="{{ url('/') }}/private/group">Find tutor</a>
                   </li>
                   <li>
                       <a href="">Enterprise</a>
                   </li>
                   <li>
-                      <a href="become-tutor.html">Become a tutor</a>
+                      <a href="{{ url('/') }}/become-a-tutor">Become a tutor</a>
                   </li>
               </ul>
           </div>

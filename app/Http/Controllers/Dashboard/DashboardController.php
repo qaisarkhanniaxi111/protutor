@@ -19,6 +19,7 @@ use App\Models\Certificate;
 use App\Models\Experience;
 use App\Models\Identification;
 use App\Models\Hourly_rate;
+use App\Models\Payment;
 use App\Models\StudentHelper;
 use Carbon\Carbon;
 use Mail;
@@ -36,7 +37,7 @@ class DashboardController extends Controller
 		$studentId = $student ? $student->id : '';
 		$tutorData = DB::select("SELECT ch_messages.to_id AS id, userdetails.first_name,userdetails.last_name, MAX(ch_messages.created_at) AS created_at, ch_messages.body AS body FROM users JOIN ch_messages ON (users.id = ch_messages.from_id) JOIN userdetails ON ch_messages.to_id = userdetails.student_no WHERE users.id = $studentId GROUP BY ch_messages.to_id, userdetails.first_name,userdetails.last_name ORDER BY ch_messages.created_at;");
 		
-		$quizes = DB::select("SELECT * FROM quiz INNER JOIN teaches_levels ON teaches_levels.id=quiz.teaches_level INNER JOIN subjects ON quiz.subjectid=subjects.id INNER JOIN students_quiz_invites ON quiz.id=students_quiz_invites.quizid AND students_quiz_invites.studentid=$studentId ORDER BY quiz.startdate ASC;");
+		$quizes = DB::select("SELECT quiz.*,group_lessons.id as g_l_id FROM quiz INNER JOIN students_quiz_invites ON quiz.id=students_quiz_invites.quizid AND students_quiz_invites.studentid=$studentId INNER JOIN group_lessons ON quiz.group_lesson_id=group_lessons.id ORDER BY quiz.startdate ASC;");
 
 		$currentDateTime = date('Y-m-d H:i:s');
 		$upcommingDate = DB::select("SELECT startdate FROM quiz INNER JOIN teaches_levels ON teaches_levels.id=quiz.teaches_level INNER JOIN subjects ON quiz.subjectid=subjects.id INNER JOIN students_quiz_invites ON quiz.id=students_quiz_invites.quizid AND students_quiz_invites.studentid=$studentId AND quiz.startdate > '$currentDateTime' ORDER BY quiz.startdate ASC LIMIT 1;");
@@ -54,7 +55,27 @@ class DashboardController extends Controller
 
 		// dd($GraphValues);
 		$tutorSch=DB::select("SELECT o.user_id, o.teacher_id, calendars.* FROM `order` as o JOIN calendars ON calendars.id = o.calender_sch_id WHERE DATE(calendars.start_date)=CURDATE() and o.user_id=$studentId;");
-		return view("dashboard/dashboard", compact('PageTitle', 'tutorData', 'quizes', 'startDateTimeForTimer', 'currentDateTime','GraphValues','GraphDates','tutorSch','studentId'));
+
+		$enrolledQuizes=[];
+		$student = auth()->user();
+        $studentId = $student ? $student->id: '';
+        if ($student) {
+            $payments = Payment::whereHas('studentPayments', function($query) use($studentId) {
+                    $query->where('student_id', $studentId);
+                })
+                ->notFetchInActivePayments()
+                ->get();
+        }
+        $enrolled=$payments->toArray();
+				$enrolledLessons=[];
+				foreach ($enrolled as $enrolledLesson) {
+					$enrolledLessons[$enrolledLesson['group_lesson_id']]=$enrolledLesson['group_lesson_id'];
+			}
+				// dd(isset($enrolledLessons[2]));
+				// foreach ($enrolled as $key => $value) {
+					
+				// }
+		return view("dashboard/dashboard", compact('PageTitle', 'tutorData', 'quizes', 'startDateTimeForTimer', 'currentDateTime','GraphValues','GraphDates','tutorSch','studentId','enrolledLessons'));
 	}
 
 	public function getSortByStudentGraphData(Request $request){

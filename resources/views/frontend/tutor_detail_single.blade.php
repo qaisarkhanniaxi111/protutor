@@ -513,11 +513,21 @@
 
                 <div class="col-xl-4">
                     <div class="side-card">
+                        
+                        @if(strpos($teacher_data[0]->video_link,'http')!== false)
+                        <iframe src="{{ $teacher_data[0]->video_link }}" frameborder="0"></iframe>
+                        <!--<video controls>-->
+                        <!--    <source src="{{ $teacher_data[0]->video_link }}"-->
+                        <!--        type="video/mp4">-->
+                        <!--    Your browser does not support the video tag.-->
+                        <!--</video>-->
+                        @else
                         <video controls>
                             <source src="{{ url('/') }}/videos/{{ $teacher_data[0]->video_link }}"
                                 type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
+                        @endif
                         <div class="d-flex justify-content-between align-items-center flex-wrap mt-2">
                             <div class="d-flex align-items-center mb-3">
                                 <img src="{{ url('') }}/newAssets/assets/images/star.svg" alt="">
@@ -544,7 +554,7 @@
                                         stroke="#FF6C0B" stroke-width="2" />
                                 </svg>
                             </div>
-                            <button class="main-btn-blank-sm w-100"><a href="{{ url('/chat',$teacher_data[0]->student_no) }}" style="color: #fe6903">Send message</a></button>
+                            <a href="{{ url('/chat',$teacher_data[0]->student_no) }}" class="text-decoration-none w-100" style="color: #fe6903"><button class="main-btn-blank-sm w-100">Send message</button></a>
                         </div>
                         <div class="d-flex align-items-center mt-3">
                             <img src="{{ url('newAssets/assets/images/pro.svg') }}" alt="" class="me-2">
@@ -582,8 +592,8 @@
                 </div>
                 <div class="col-lg-12">
                     <div class="owl-carousel ">
-                        <div>
-                            <div class="tutors-card h-100 bg-white">
+                        <div class="w-100">
+                            <div class="tutors-card w-100 h-100 bg-white">
                                 <img src="{{ url("") }}/newAssets/assets/images/team (1).png" alt="">
                                 <div class="tutors-card--text bg-white">
                                     <div class="mb-2">
@@ -607,8 +617,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div>
-                            <div class="tutors-card h-100 bg-white">
+                        <div class="w-100">
+                            <div class="tutors-card w-100 h-100 bg-white">
                                 <img src="{{ url("") }}/newAssets/assets/images/team (2).png" alt="">
                                 <div class="tutors-card--text bg-white">
                                     <div class="mb-2">
@@ -632,7 +642,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div>
+                        <div class="w-100">
                             <div class="tutors-card h-100 bg-white">
                                 <img src="{{ url("") }}/newAssets/assets/images/team (3).png" alt="">
                                 <div class="tutors-card--text bg-white">
@@ -658,9 +668,9 @@
                             </div>
                         </div>
                         @foreach ($relatedTeachers as $relatedTeacher)
-                        <a href="{{ url('tutor-detail',$relatedTeacher->student_no) }}">
-                            <div>
-                                <div class="tutors-card h-100 bg-white">
+                        <div class="w-100">
+                            <div class="tutors-card w-100 h-100 bg-white">
+                                    <a href="{{ url('tutor-detail',$relatedTeacher->student_no) }}" class="text-decoration-none tutors-card w-100 h-100">
                                     <img src="{{ url('') }}/images/{{ $relatedTeacher->profile_img }}"
                                         alt="" class="tutors-card-image">
                                     <div class="tutors-card--text bg-white">
@@ -708,10 +718,11 @@
                                             </div>
                                         </div>
                                     </div>
+                                </a>
                                 </div>
 
                             </div>
-                        </a>
+                        
                         @endforeach
 
 
@@ -733,29 +744,10 @@
                         Find an Online English Teacher to Help You Master English
                     </h2>
                 </div>
-                <div class="col-lg-6 pe-lg-5 ">
+                <div class="col-lg-6 pe-lg-5 order-lg-1 order-2">
 
 
                     <div class="accordion mt-3 faq-accordian" id="myAccordion">
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingOne">
-                                <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseOne">Is there a free trial available?</button>
-                            </h2>
-                            <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#myAccordion">
-                                <div class="card-body">
-                                    <p class="main-text2  text-gray mt-3"
-                                        style="color: rgba(44, 44, 44, 0.80);
-                                    ;">
-                                        Live tutoring software enables tutors to teach students in real time
-                                        utilizing interactive
-                                        video conferencing features. As a Student or Parent, you can browse through
-                                        Tutor profiles
-                                        and their subject expertise, and thereafter book live lesson.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="headingTwo">
                                 <button type="button" class="accordion-button" data-bs-toggle="collapse"
@@ -766,7 +758,7 @@
                                 <div class="card-body">
                                     <p class="main-text2  text-gray mt-3"
                                         style="color: rgba(44, 44, 44, 0.80);
-                                    ;">
+                                        ;">
                                         Live tutoring software enables tutors to teach students in real time
                                         utilizing interactive
                                         video conferencing features. As a Student or Parent, you can browse through
@@ -777,6 +769,26 @@
                             </div>
                         </div>
                         <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseOne">Is there a free trial available?</button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#myAccordion">
+                                <div class="card-body">
+                                    <p class="main-text2  text-gray mt-3"
+                                        style="color: rgba(44, 44, 44, 0.80);
+                                        ;">
+                                        Live tutoring software enables tutors to teach students in real time
+                                        utilizing interactive
+                                        video conferencing features. As a Student or Parent, you can browse through
+                                        Tutor profiles
+                                        and their subject expertise, and thereafter book live lesson.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
                             <h2 class="accordion-header" id="headingThree">
                                 <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
                                     data-bs-target="#collapseThree">What is your cancellation policy?</button>
@@ -786,7 +798,7 @@
                                 <div class="card-body">
                                     <p class="main-text2  text-gray mt-3"
                                         style="color: rgba(44, 44, 44, 0.80);
-                                    ;">
+                                        ;">
                                         Live tutoring software enables tutors to teach students in real time
                                         utilizing interactive
                                         video conferencing features. As a Student or Parent, you can browse through
@@ -806,7 +818,7 @@
                                 <div class="card-body">
                                     <p class="main-text2  text-gray mt-3"
                                         style="color: rgba(44, 44, 44, 0.80);
-                                    ;">
+                                        ;">
                                         Live tutoring software enables tutors to teach students in real time
                                         utilizing interactive
                                         video conferencing features. As a Student or Parent, you can browse through
@@ -827,7 +839,7 @@
                                 <div class="card-body">
                                     <p class="main-text2  text-gray mt-3"
                                         style="color: rgba(44, 44, 44, 0.80);
-                                    ;">
+                                        ;">
                                         Live tutoring software enables tutors to teach students in real time
                                         utilizing interactive
                                         video conferencing features. As a Student or Parent, you can browse through
@@ -844,9 +856,13 @@
 
 
                 </div>
-                <div class="col-lg-6">
-
+                <div class="col-lg-6 order-lg-2 order-1">
+                    <div class="w-100 d-flex justify-content-center">
+                        <img src="{{ url('') }}/newAssets/assets/images/Questions.gif" alt=""
+                            class="img-fluid">
+                    </div>
                 </div>
+
 
             </div>
         </div>

@@ -106,16 +106,16 @@
               <h2 class="mb-3">About</h2>
               <ul class="ms-0 ps-0 d-flex flex-column align-items-md-start align-items-center">
                   <li>
-                      <a href="index.html">Home</a>
+                      <a href="{{ url('/') }}">Home</a>
                   </li>
                   <li>
-                      <a href="">Find tutor</a>
+                      <a href="{{ url('/') }}/private/group">Find tutor</a>
                   </li>
                   <li>
                       <a href="">Enterprise</a>
                   </li>
                   <li>
-                      <a href="become-tutor.html">Become a tutor</a>
+                      <a href="{{ url('/') }}/become-a-tutor">Become a tutor</a>
                   </li>
               </ul>
           </div>
@@ -178,7 +178,7 @@
 
 {{-- old code  --}}
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-{{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script> --}}
+<!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>-->
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script src="https://unpkg.com/tilt.js@1.2.1/dest/tilt.jquery.min.js"></script>
 <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>

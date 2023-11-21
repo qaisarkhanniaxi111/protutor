@@ -9,7 +9,9 @@ use App\Models\Education;
 use App\Models\Experience;
 use App\Models\Hourly_rate;
 use App\Models\Identification;
+use App\Models\Spoken_language;
 use App\Models\Subject;
+use App\Models\Teaches_level;
 use App\Models\Userdetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -68,12 +70,15 @@ class ProfileController extends Controller
 
             
             $subject =  Subject::all();
+            $level =  Teaches_level::all();
+            $nativeLanguages=Spoken_language::all();
 
             $getEgducation = Education::where('userdetail_id',$userid)->get();
             $getCertificate = Certificate::where('userdetail_id',$userid)->get();
             $getExperience = Experience::where('userdetail_id',$userid)->get();
             $getIdentification = Identification::where('userdetail_id',$userid)->get();
             $rateAll = Hourly_rate::all();
+            // dd($listUser[0]->native_language);
 
 
 
@@ -87,10 +92,40 @@ class ProfileController extends Controller
                             'subject' => implode(',', $request->subject)
                         ]);     
                     }
+                    if($request->level){
+                        $profile = Userdetail::where('student_no', $request->id)->update([
+                            'level' => implode(',', $request->level)
+                        ]);     
+                    }
+                    if($request->nativeLanguages){
+                        $profile = Userdetail::where('student_no', $request->id)->update([
+                            'native_language' => implode(',', $request->nativeLanguages)
+                        ]);     
+                    }
+                    if($request->spokenLanguages){
+                        $profile = Userdetail::where('student_no', $request->id)->update([
+                            'languages' => implode(',', $request->spokenLanguages)
+                        ]);     
+                    }
 
                     if($request->subject ==""){
                         $profile = Userdetail::where('student_no', $request->id)->update([
                             'subject' => ""
+                        ]);     
+                    }
+                    if($request->level ==""){
+                        $profile = Userdetail::where('student_no', $request->id)->update([
+                            'level' => ""
+                        ]);     
+                    }
+                    if($request->nativeLanguages ==""){
+                        $profile = Userdetail::where('student_no', $request->id)->update([
+                            'native_language' => ""
+                        ]);     
+                    }
+                    if($request->spokenLanguages ==""){
+                        $profile = Userdetail::where('student_no', $request->id)->update([
+                            'language' => ""
                         ]);     
                     }
 
@@ -221,7 +256,7 @@ class ProfileController extends Controller
                // return redirect('/profile')->with('success_msg',__('Profile update successfully'));
 
             }
-            return view("tutor.profile.profile",compact('PageTitle','listUser','countries','subject','getEgducation','getCertificate','getExperience','getIdentification','rateAll'));
+            return view("tutor.profile.profile",compact('PageTitle','listUser','countries','subject','getEgducation','getCertificate','getExperience','getIdentification','rateAll','level','nativeLanguages'));
         }
     }
 

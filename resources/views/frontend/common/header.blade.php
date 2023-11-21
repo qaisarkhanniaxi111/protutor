@@ -16,14 +16,14 @@
     {{-- old code  --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
-    {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"> --}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ url('assets/frontpage_assets/css/custom.css') }}">
     <link rel="stylesheet" href="{{ url('assets/frontpage_assets/css/style.css') }}">
-    {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> --}}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
-    {{-- <link href="https://raw.githack.com/ttskch/select2-bootstrap4-theme/master/dist/select2-bootstrap4.css"
-        rel="stylesheet"> --}}
+    <link href="https://raw.githack.com/ttskch/select2-bootstrap4-theme/master/dist/select2-bootstrap4.css"
+        rel="stylesheet">
     
 
     {{-- new code  --}}
@@ -63,10 +63,10 @@
             <div class="site-nav">
                 <ul>
                     <li><a class="active" href="{{ url('/') }}">Home</a></li>
-                    <li><a href="{{ url('/find-a-tutor') }}">Find tutors</a></li>
+                    <li><a href="{{ url('/private/group') }}">Find tutors</a></li>
                     <li><a href="">Enterprise</a></li>
                     <li><a href="{{ url('/become-a-tutor') }}">Become a tutor</a></li>
-                    <li><a href="{{ url('/group') }}">Group Lesson</a></li>
+                    
                     <li
                         style="background: #ff6c0b;margin-right: 5px;font-family: 'Inter', sans-serif;border-radius: 5px;color: white !important;">
                         <a style="color: white !important;" href="{{ url('/signup') }}">Sign Up</a></li>
@@ -107,7 +107,7 @@
                         {{-- <li class="nav-item">
                             <a class="nav-link {{ $getUrl=='find-a-tutor' ? "active-nav" : "" }}" href="{{ url('/find-a-tutor') }}">Find Tutors</a>
                         </li> --}}
-                        <li class="nav-item"><a class="nav-link {{ $getUrl=='group' ? "active-nav" : "" }}" href="{{ url('/group') }}">Find Tutors</a></li>
+                        <li class="nav-item"><a class="nav-link {{ $getUrl=='group' ? "active-nav" : "" }}" href="{{ url('/private/group') }}">Find Tutors</a></li>
                         
                         <li class="nav-item">
                             <a class="nav-link {{ $getUrl=='become-a-tutor' ? "active-nav" : "" }}" href="{{ url('/become-a-tutor') }}">Become a tutor</a>

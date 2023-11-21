@@ -24,6 +24,8 @@ class StudentGroupLessonController extends Controller
                 ->get();
         }
         $enrolled=$payments->toArray();
+        
+        // dd(isset($enrolled[2]));
         $AllLessons=$groupLessons->toArray();
        
         return view('dashboard.groupLessons.groupLessons',['enrolled'=>$enrolled,'AllLessons'=>$AllLessons]);

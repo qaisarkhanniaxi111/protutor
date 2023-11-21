@@ -44,6 +44,29 @@ class Tutors extends Model
         return [];
       }
 }
+    public function getTeachesLevels($tutorid)
+    {
+      $result=  DB::select(DB::raw("select * from userdetails where student_no=$tutorid"));
+      if(count($result)>0)
+      {
+        $levels=$result[0]->level;
+        if($levels!="" && $levels!=null)
+        {
+          $levels=explode(",",$levels);
+        }
+        $levelIds = $levels;
+
+        $levels = DB::table('teaches_levels')
+            ->whereIn('id', $levelIds)
+            ->get();
+
+              return $levels;
+            }
+
+      else {
+        return [];
+      }
+}
 
 public function getSubj()
 {
@@ -60,20 +83,20 @@ public function getTeachesLevelIdFromName($name)
   $result=  DB::select(DB::raw("select * from teaches_levels where teaches_level='$name'"));
   return $result;
 }
-public function createQuiz($tutorid,$subjectid,$teaches_level,$quiztitle,$startdate,$enddate)
+public function createQuiz($tutorid,$groupLessonId,$quiztitle,$startdate,$enddate)
 {
    $currentDateTime = date('Y-m-d H:i:s');
 
-   $result=  DB::select(DB::raw("insert into quiz(tutorid,subjectid,teaches_level,status,createdat,updatedat,quiztitle,startdate,enddate) values($tutorid,$subjectid,$teaches_level,'Drafts','$currentDateTime','$currentDateTime','$quiztitle','$startdate','$enddate')"));
+   $result=  DB::select(DB::raw("insert into quiz(tutorid,group_lesson_id,status,createdat,updatedat,quiztitle,startdate,enddate) values($tutorid,$groupLessonId,'Drafts','$currentDateTime','$currentDateTime','$quiztitle','$startdate','$enddate')"));
    $result=  DB::select(DB::raw("select LAST_INSERT_ID() as last;"));
    return $result;
 }
 
-public function updateQuiz($tutorid,$subjectid,$teaches_level,$quiztitle,$quizid,$startdate,$enddate)
+public function updateQuiz($id,$groupLessonId,$quiztitle,$quizid,$startdate,$enddate)
 {
    $currentDateTime = date('Y-m-d H:i:s');
 
-   $result=  DB::select(DB::raw("update quiz set subjectid=$subjectid,teaches_level=$teaches_level,quiztitle='$quiztitle',updatedat='$currentDateTime',startdate='$startdate',enddate='$enddate' where id=$quizid"));
+   $result=  DB::select(DB::raw("update quiz set group_lesson_id=$groupLessonId,quiztitle='$quiztitle',updatedat='$currentDateTime',startdate='$startdate',enddate='$enddate' where id=$quizid"));
 }
 
 public function updateQuizInstructions($quizid,$instructions)
@@ -135,7 +158,7 @@ $result=  DB::select(DB::raw("delete from quiz_questions where quizid=$quizid"))
 public function getTutorAllQuizes($tutorid,$filter="")
 {
   try{
-$result=  DB::select(DB::raw("select quiz.id as quizid,quiz.quiztitle, subjects.subject,teaches_levels.teaches_level,quiz.startdate,quiz.enddate,quiz.status,users.first_name,users.last_name from quiz,subjects,teaches_levels,users where quiz.tutorid=users.id and subjects.id=quiz.subjectid and teaches_levels.id=quiz.teaches_level and quiz.tutorid=$tutorid $filter"));
+$result=  DB::select(DB::raw("select quiz.id as quizid,quiz.quiztitle, quiz.startdate,quiz.enddate,quiz.status,users.first_name,users.last_name,subjects.subject as subject , teaches_levels.teaches_level as teach_level from quiz,users,group_lessons,subjects,teaches_levels where quiz.tutorid=users.id and quiz.group_lesson_id=group_lessons.id and group_lessons.subject_id=subjects.id and group_lessons.teach_level_id=teaches_levels.id and quiz.tutorid=$tutorid $filter"));
 return $result;
 }
 catch(\Exception $e)
@@ -148,7 +171,7 @@ catch(\Exception $e)
 public function getTutorAllQuizesUpcoming($tutorid)
 {
   $currentDateTime = date('Y-m-d H:i:s');
-$result=  DB::select(DB::raw("select quiz.id as quizid,quiz.quiztitle, subjects.subject,teaches_levels.teaches_level,quiz.startdate,quiz.enddate,quiz.status,users.first_name,users.last_name from quiz,subjects,teaches_levels,users where quiz.tutorid=users.id and subjects.id=quiz.subjectid and teaches_levels.id=quiz.teaches_level and quiz.tutorid=$tutorid
+$result=  DB::select(DB::raw("select quiz.id as quizid,quiz.quiztitle, quiz.startdate,quiz.enddate,quiz.status,users.first_name,users.last_name,subjects.subject as subject , teaches_levels.teaches_level as teach_level from quiz,users,group_lessons,subjects,teaches_levels where quiz.tutorid=users.id and quiz.group_lesson_id=group_lessons.id and group_lessons.subject_id=subjects.id and group_lessons.teach_level_id=teaches_levels.id and quiz.tutorid=$tutorid
  and quiz.status='Upcoming' and enddate>'$currentDateTime' "));
 return $result;
 }
@@ -156,14 +179,14 @@ return $result;
 public function getTutorAllQuizesExpired($tutorid)
 {
   $currentDateTime = date('Y-m-d H:i:s');
-$result=  DB::select(DB::raw("select quiz.id as quizid,quiz.quiztitle, subjects.subject,teaches_levels.teaches_level,quiz.startdate,quiz.enddate,quiz.status,users.first_name,users.last_name from quiz,subjects,teaches_levels,users where quiz.tutorid=users.id and subjects.id=quiz.subjectid and teaches_levels.id=quiz.teaches_level and quiz.tutorid=$tutorid
+$result=  DB::select(DB::raw("select quiz.id as quizid,quiz.quiztitle, quiz.startdate,quiz.enddate,quiz.status,users.first_name,users.last_name,subjects.subject as subject , teaches_levels.teaches_level as teach_level from quiz,users,group_lessons,subjects,teaches_levels where quiz.tutorid=users.id and quiz.group_lesson_id=group_lessons.id and group_lessons.subject_id=subjects.id and group_lessons.teach_level_id=teaches_levels.id and quiz.tutorid=$tutorid
  and quiz.status='Upcoming' and enddate<'$currentDateTime' "));
 return $result;
 }
 
 public function getTutorAllQuizesDrafts($tutorid)
 {
-$result=  DB::select(DB::raw("select quiz.id as quizid,quiz.quiztitle, subjects.subject,teaches_levels.teaches_level,quiz.startdate,quiz.enddate,quiz.status,users.first_name,users.last_name from quiz,subjects,teaches_levels,users where quiz.tutorid=users.id and subjects.id=quiz.subjectid and teaches_levels.id=quiz.teaches_level and quiz.tutorid=$tutorid
+$result=  DB::select(DB::raw("select quiz.id as quizid,quiz.quiztitle, quiz.startdate,quiz.enddate,quiz.status,users.first_name,users.last_name,subjects.subject as subject , teaches_levels.teaches_level as teach_level from quiz,users,group_lessons,subjects,teaches_levels where quiz.tutorid=users.id and quiz.group_lesson_id=group_lessons.id and group_lessons.subject_id=subjects.id and group_lessons.teach_level_id=teaches_levels.id and quiz.tutorid=$tutorid
  and quiz.status='Drafts'"));
 return $result;
 }
@@ -177,7 +200,7 @@ public function getQuizQuestions($quizid)
 
 public function getQuiz($quizid)
 {
-  $result=  DB::select(DB::raw("select quiz.id as quizid,quiz.quiztitle,quiz.instructions,quiz.quizprogressbar,quiz.randomizequestions,quiz.quiztimer,quiz.quiztimeinseconds,quiz.quiztemplate,quiz.autoadvance,quiz.quiztries,quiz.quiznooftries,subjects.subject,teaches_levels.teaches_level,quiz.startdate,quiz.enddate,quiz.status,users.first_name,users.last_name from quiz,subjects,teaches_levels,users where quiz.tutorid=users.id and subjects.id=quiz.subjectid and teaches_levels.id=quiz.teaches_level and quiz.id=$quizid"));
+  $result=  DB::select(DB::raw("select quiz.id as quizid,quiz.quiztitle,quiz.instructions,quiz.quizprogressbar,quiz.randomizequestions,quiz.quiztimer,quiz.quiztimeinseconds,quiz.quiztemplate,quiz.autoadvance,quiz.quiztries,quiz.quiznooftries,quiz.startdate,quiz.enddate,quiz.status,users.first_name,users.last_name from quiz,users where quiz.tutorid=users.id and quiz.id=$quizid"));
   return $result;
 }
 
@@ -189,7 +212,7 @@ public function republishQuiz($quizid,$startdate,$enddate)
 
 public function getStudentsSubscribedForTutor($tutorid)
 {
-  $result=  DB::select(DB::raw("select users.id as userid, users.email from students_registered_courses,subjects,teaches_levels,users where students_registered_courses.subjectid=subjects.id and students_registered_courses.teaches_level=teaches_levels.id and students_registered_courses.tutorid=$tutorid and students_registered_courses.status='active' and students_registered_courses.studentid=users.id"));
+  $result=  DB::select(DB::raw("select DISTINCT users.id as userid, users.email from students_registered_courses,users where students_registered_courses.tutorid=$tutorid and students_registered_courses.status='active' and students_registered_courses.studentid=users.id;"));
   return $result;
 }
 

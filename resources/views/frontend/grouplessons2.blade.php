@@ -146,7 +146,8 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
                         Starting today
                     </div>
                 </div>
-                <div class="col-12 row" id="filter-today-cards-id">
+                <div class="col-12" >
+                    <div class="row" id="filter-today-cards-id">
                 <div class="col-xl-3 col-lg-4 col-md-6 mb-3 ">
                     <div class="group-card ">
                         <a href="listing.html" class="carousel__slide-1">
@@ -378,7 +379,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
                                                 alt="">
                                             <img src="{{ url('') }}/newAssets/assets/images/image 150.png"
                                                 alt="">
-                                            <div class="group-review-profile-number">120</div>
+                                            <div class="group-review-profile-number">{{ totalEnrolledGroupLessonParticipants($groupLesson->id) }}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -389,7 +390,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
                     <h4 class="text-danger text-center">No lesson uploaded yet</h4>
                 @endif
             </div>
-
+</div>
             </div>
         </div>
         </div>
@@ -979,7 +980,8 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
                     </div>
 
                 </div>
-                <div class="col-12 row" id="filter-cards-id">
+                <div class="col-12 " >
+                    <div class="row" id="filter-cards-id">
                 <div class="col-lg-4 col-md-6">
                     <div class="group-card mb-3">
                         <a href="listing.html" class="carousel__slide-1">
@@ -1325,14 +1327,14 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
                                                 alt="">
                                             <img src="{{ url('') }}/newAssets/assets/images/image 150.png"
                                                 alt="">
-                                            <div class="group-review-profile-number">120</div>
+                                            <div class="group-review-profile-number">{{ totalEnrolledGroupLessonParticipants($groupLesson->id) }}</div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     @endforeach
-
+</div>
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="mt-4">
@@ -1451,7 +1453,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
                         Find an Online English Teacher to Help You Master English
                     </h2>
                 </div>
-                <div class="col-lg-6 pe-lg-5 ">
+                <div class="col-lg-6 pe-lg-5 order-lg-1 order-2">
 
 
                     <div class="accordion mt-3 faq-accordian" id="myAccordion">
@@ -1568,9 +1570,11 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
                 </div>
-                <div class="col-lg-6">
-
-                </div>
+                 <div class="col-lg-6 order-lg-2 order-1">
+                       <div class="w-100 d-flex justify-content-center">
+                        <img src="{{ url('') }}/newAssets/assets/images/Questions.gif" alt="" class="img-fluid">
+                       </div>
+                    </div>
 
             </div>
         </div>

@@ -64,7 +64,7 @@
                                                 alt="">
                                             <img src="{{ url('') }}/newAssets/assets/images/image 150.png"
                                                 alt="">
-                                            <div class="group-review-profile-number">120</div>
+                                            <div class="group-review-profile-number">{{ totalEnrolledGroupLessonParticipants($groupLesson->id) }}</div>
                                         </div>
                                     </div>
                                 </div>

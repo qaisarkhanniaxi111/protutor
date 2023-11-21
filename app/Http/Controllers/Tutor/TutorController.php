@@ -33,7 +33,7 @@ class TutorController extends \App\Http\Controllers\Controller
     $tutorData = DB::select("SELECT ch_messages.to_id AS id, userdetails.first_name,userdetails.last_name, MAX(ch_messages.created_at) AS created_at, ch_messages.body AS body FROM users JOIN ch_messages ON (users.id = ch_messages.from_id) JOIN userdetails ON ch_messages.to_id = userdetails.student_no WHERE users.id = $tutorId GROUP BY ch_messages.to_id, userdetails.first_name,userdetails.last_name ORDER BY ch_messages.created_at;");
     $currentDateTime = date('Y-m-d H:i:s');
     // dd($currentDateTime);
-		$quizes = DB::select("SELECT * FROM quiz INNER JOIN teaches_levels ON teaches_levels.id=quiz.teaches_level INNER JOIN subjects ON quiz.subjectid=subjects.id AND quiz.tutorid=$tutorId ORDER BY quiz.startdate ASC;");
+		$quizes = DB::select("select quiz.id as quizid,quiz.quiztitle, quiz.startdate,quiz.enddate,quiz.status,users.first_name,users.last_name,subjects.subject as subject , teaches_levels.teaches_level as teach_level from quiz,users,group_lessons,subjects,teaches_levels where quiz.tutorid=users.id and quiz.group_lesson_id=group_lessons.id and group_lessons.subject_id=subjects.id and group_lessons.teach_level_id=teaches_levels.id and quiz.tutorid=$tutorId ORDER BY quiz.startdate ASC;");
     $upcommingDate = DB::select("SELECT startdate FROM quiz INNER JOIN teaches_levels ON teaches_levels.id=quiz.teaches_level INNER JOIN subjects ON quiz.subjectid=subjects.id AND quiz.tutorId=$tutorId AND quiz.startdate > '$currentDateTime' ORDER BY quiz.startdate ASC LIMIT 1;");
     // dd($upcommingDate);
 		$startDateTimeForTimer = isset($upcommingDate[0]->startdate) ? $upcommingDate[0]->startdate : '';
@@ -116,33 +116,32 @@ class TutorController extends \App\Http\Controllers\Controller
     $drafts=$tutor->getTutorAllQuizesDrafts($tutorid);
     $expired=$tutor->getTutorAllQuizesExpired($tutorid);
 
+    $groupLessons=GroupLesson::where('tutor_id',$tutorid)->orderBy('id','DESC')->get();
     $subj=$tutor->getSubjects($tutorid);
 
-    $teaches_levels=$tutor->teaches_levels();
-    return view("tutor/quiz",["teaches_levels"=>$teaches_levels,"subjects"=>$subj,"quizes"=>$quizes,"upcoming"=>$upcoming,"drafts"=>$drafts,"expired"=>$expired]);
+    
+    $teaches_levels=$tutor->getTeachesLevels($tutorid);
+    return view("tutor/quiz",["teaches_levels"=>$teaches_levels,"subjects"=>$subj,"quizes"=>$quizes,"upcoming"=>$upcoming,"drafts"=>$drafts,"expired"=>$expired,'groupLessons'=>$groupLessons]);
   }
   public function createQuiz(Request $r)
   {
     try{
     $id=Session::get("tutorid");
-    $teaches_level=$r->get("teaches_level");
+    $groupLessonId=$r->get("groupLessonId");
     $quiztitle=$r->get("quiztitle");
-    $subject=$r->get("subject");
+    
     $startdate=$r->get("startdate");
     $enddate=$r->get("enddate");
     $quizid=$r->get("quizid");
     $tutor=new Tutors();
-    $result=$tutor->getSubjectIdFromName($subject);
-    $subject=$result[0]->id;
-    $result=$tutor->getTeachesLevelIdFromName($teaches_level);
-    $teaches_level=$result[0]->id;
+    
     if($quizid==0)
     {
-      $result=$tutor->createQuiz($id,$subject,$teaches_level,$quiztitle,$startdate,$enddate);
+      $result=$tutor->createQuiz($id,$groupLessonId,$quiztitle,$startdate,$enddate);
       return $result[0]->last;
     }
     else {
-      $result=$tutor->updateQuiz($id,$subject,$teaches_level,$quiztitle,$quizid,$startdate,$enddate);
+      $result=$tutor->updateQuiz($id,$groupLessonId,$quiztitle,$quizid,$startdate,$enddate);
       return $quizid;
     }
   }
@@ -158,6 +157,7 @@ class TutorController extends \App\Http\Controllers\Controller
     try{
     $quizid=$r->get("quizid");
     $instructions=$r->get("instructions");
+    $instructions=addslashes($instructions);
     $tutor=new Tutors();
     $result=$tutor->updateQuizInstructions($quizid,$instructions);
     return "";
@@ -420,7 +420,7 @@ class TutorController extends \App\Http\Controllers\Controller
       $subj=$tutor->getSubjects($tutorid);
       $allSubjects=Subject::select('*')->get();
 
-      $teaches_levels=$tutor->teaches_levels();
+      $teaches_levels=$tutor->getTeachesLevels($tutorid);
 
       return view("tutor.GroupLesson.index",["teaches_levels"=>$teaches_levels,"subjects"=>$subj,"groupLessonsCompleted"=>$groupLessonsCompleted,"allSubjects"=>$allSubjects]);
     }

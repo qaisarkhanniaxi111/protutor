@@ -36,7 +36,7 @@ class CalendarController extends Controller
         $tutorid=Session::get("tutorid");
         $subjs=$tutor->getSubjects($tutorid);
         $subject =  Subject::all();
-        $teache_level =  Teaches_level::all();
+        $teache_level =  $tutor->getTeachesLevels($tutorid);
 
         $PageTitle = 'Calendar | ProTutor';
 

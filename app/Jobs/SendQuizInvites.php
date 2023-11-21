@@ -38,7 +38,8 @@ class SendQuizInvites implements ShouldQueue
         $tutors=new Tutors();
         $quizdata=$tutors->getQuiz($this->quizid);
         $tutorsdata=$tutors->getStudentsSubscribedForTutor($this->tutorid);
-
+        // print_r($tutorsdata);
+        // return dd($quizdata);
         foreach($tutorsdata as $t)
         {
           $result=$tutors->seeIfStudentsInviteSend($t->userid,$this->quizid);

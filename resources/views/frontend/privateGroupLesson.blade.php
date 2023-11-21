@@ -62,9 +62,9 @@
     <div class="modal-dialog modal-xl modal-dialog-scrollable modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <img src="{{ url('') }}/newAssets/assets/images/ppp.png" alt=""
+                <img src="{{ url('') }}/newAssets/assets/images/ppp.png" alt="" 
                     style="width:40px;height:40px;object-fit: cover;" class="rounded-circle me-3">
-                <span class="h1 modal-title fs-5"
+                <span class="h1 modal-title fs-5" 
                     style="font-family: Arial, Helvetica, sans-serif">Hanna Bapasta</span>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -259,19 +259,29 @@
                                 Specialist
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                @foreach ($Spoken_language as $spoken_language_data)
-                                    <li>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio"
-                                                value="{{ $spoken_language_data->id }}" id="flexCheckDefault"
-                                                <?php echo isset($_GET['spoken_language']) && $_GET['spoken_language'] == $spoken_language_data->id ? 'checked' : ''; ?>>
-                                            <label class="form-check-label" for="flexCheckDefault">
-                                                {{ $spoken_language_data->spoken_language }}
-                                            </label>
-                                        </div>
+                                <li>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value=""
+                                            id="flexCheckDefault">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            English
+                                        </label>
+                                    </div>
 
-                                    </li>
-                                @endforeach
+                                </li>
+                                <!--@foreach ($Spoken_language as $spoken_language_data)-->
+                                <!--    <li>-->
+                                <!--        <div class="form-check">-->
+                                <!--            <input class="form-check-input" type="radio"-->
+                                <!--                value="{{ $spoken_language_data->id }}" id="flexCheckDefault"-->
+                                <!--                <?php echo isset($_GET['spoken_language']) && $_GET['spoken_language'] == $spoken_language_data->id ? 'checked' : ''; ?>>-->
+                                <!--            <label class="form-check-label" for="flexCheckDefault">-->
+                                <!--                {{ $spoken_language_data->spoken_language }}-->
+                                <!--            </label>-->
+                                <!--        </div>-->
+
+                                <!--    </li>-->
+                                <!--@endforeach-->
                             </ul>
                         </div>
                         <div class="dropdown my-3 mx-2">
@@ -328,76 +338,76 @@
                                         <input class="form-check-input" type="checkbox" value=""
                                             id="flexCheckDefault">
                                         <label class="form-check-label" for="flexCheckDefault">
-                                            Englis
+                                            English
                                         </label>
                                     </div>
 
                                 </li>
-                                <li>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value=""
-                                            id="flexCheckDefault">
-                                        <label class="form-check-label" for="flexCheckDefault">
-                                            Urdu
-                                        </label>
-                                    </div>
+                                <!--<li>-->
+                                <!--    <div class="form-check">-->
+                                <!--        <input class="form-check-input" type="checkbox" value=""-->
+                                <!--            id="flexCheckDefault">-->
+                                <!--        <label class="form-check-label" for="flexCheckDefault">-->
+                                <!--            Urdu-->
+                                <!--        </label>-->
+                                <!--    </div>-->
 
-                                </li>
-                                <li>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value=""
-                                            id="flexCheckDefault">
-                                        <label class="form-check-label" for="flexCheckDefault">
-                                            Mathmatics
-                                        </label>
-                                    </div>
+                                <!--</li>-->
+                                <!--<li>-->
+                                <!--    <div class="form-check">-->
+                                <!--        <input class="form-check-input" type="checkbox" value=""-->
+                                <!--            id="flexCheckDefault">-->
+                                <!--        <label class="form-check-label" for="flexCheckDefault">-->
+                                <!--            Mathmatics-->
+                                <!--        </label>-->
+                                <!--    </div>-->
 
-                                </li>
-                                <li>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value=""
-                                            id="flexCheckDefault">
-                                        <label class="form-check-label" for="flexCheckDefault">
-                                            Computer
-                                        </label>
-                                    </div>
+                                <!--</li>-->
+                                <!--<li>-->
+                                <!--    <div class="form-check">-->
+                                <!--        <input class="form-check-input" type="checkbox" value=""-->
+                                <!--            id="flexCheckDefault">-->
+                                <!--        <label class="form-check-label" for="flexCheckDefault">-->
+                                <!--            Computer-->
+                                <!--        </label>-->
+                                <!--    </div>-->
 
-                                </li>
-                                <li>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value=""
-                                            id="flexCheckDefault">
-                                        <label class="form-check-label" for="flexCheckDefault">
-                                            Chemistry
-                                        </label>
-                                    </div>
-                                </li>
-                                <li class="more-heading">
-                                    <h2 class="">
-                                        More Languages
-                                    </h2>
-                                </li>
+                                <!--</li>-->
+                                <!--<li>-->
+                                <!--    <div class="form-check">-->
+                                <!--        <input class="form-check-input" type="checkbox" value=""-->
+                                <!--            id="flexCheckDefault">-->
+                                <!--        <label class="form-check-label" for="flexCheckDefault">-->
+                                <!--            Chemistry-->
+                                <!--        </label>-->
+                                <!--    </div>-->
+                                <!--</li>-->
+                                <!--<li class="more-heading">-->
+                                <!--    <h2 class="">-->
+                                <!--        More Languages-->
+                                <!--    </h2>-->
+                                <!--</li>-->
 
-                                <li>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value=""
-                                            id="flexCheckDefault">
-                                        <label class="form-check-label" for="flexCheckDefault">
-                                            Englis
-                                        </label>
-                                    </div>
+                                <!--<li>-->
+                                <!--    <div class="form-check">-->
+                                <!--        <input class="form-check-input" type="checkbox" value=""-->
+                                <!--            id="flexCheckDefault">-->
+                                <!--        <label class="form-check-label" for="flexCheckDefault">-->
+                                <!--            Englis-->
+                                <!--        </label>-->
+                                <!--    </div>-->
 
-                                </li>
-                                <li>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value=""
-                                            id="flexCheckDefault">
-                                        <label class="form-check-label" for="flexCheckDefault">
-                                            Urdu
-                                        </label>
-                                    </div>
+                                <!--</li>-->
+                                <!--<li>-->
+                                <!--    <div class="form-check">-->
+                                <!--        <input class="form-check-input" type="checkbox" value=""-->
+                                <!--            id="flexCheckDefault">-->
+                                <!--        <label class="form-check-label" for="flexCheckDefault">-->
+                                <!--            Urdu-->
+                                <!--        </label>-->
+                                <!--    </div>-->
 
-                                </li>
+                                <!--</li>-->
                             </ul>
                         </div>
                         <button class="btn me-2 rounded-5 apply-filter-btn">submit</button>
@@ -700,10 +710,7 @@
                                             <!-- <h2 class="mb-0 pb-0">English teacher</h2> -->
                                             <div class="d-flex align-items-lg-center mt-3 flex-wrap align-items-start">
                                                 <h2 class="text-primary me-2 ps-0">English teacher</h2>
-                                                <h2 class="text-primary me-2 ps-0">English teacher</h2>
-                                                <h2 class="text-primary me-2 ps-0">English teacher</h2>
-                                                <h2 class="text-primary me-2 ps-0">English teacher</h2>
-                                                <h2 class="text-primary me-2 ps-0">English teacher</h2>
+                                               
 
                                             </div>
 
@@ -888,14 +895,14 @@
                             <div class="teacher-card--header-text w-100 align-items-start">
                                 <div class=" d-flex align-items-start flex-md-row flex-column mb-md-0 mb-3">
                                     <div class="online-image">
-                                        <img src="{{ url('') }}/newAssets/assets/images/ppp.png"
+                                        <img src="{{ url('') }}/newAssets/assets/images/3.png"
                                             alt="">
                                         <div class="online"></div>
                                     </div>
                                     <div class="profile-data-text">
                                         <div
                                             class="d-flex align-items-sm-center flex-sm-row flex-column align-items-start">
-                                            <h1 class="mb-0 pb-0">Hanna Baptista</h1>
+                                            <h1 class="mb-0 pb-0">Ali</h1>
                                             <div class="d-flex align-items-center mt-sm-0 mt-2">
                                                 <img src="{{ url('') }}/newAssets/assets/images/star.svg"
                                                     alt="" class="ms-sm-3 ms-0 me-1">
@@ -906,18 +913,16 @@
                                         <div class=" mb-2">
                                             <!-- <h2 class="mb-0 pb-0">English teacher</h2> -->
                                             <div class="d-flex align-items-lg-center mt-3 flex-wrap align-items-start">
-                                                <h2 class="text-primary me-2 ps-0">English teacher</h2>
-                                                <h2 class="text-primary me-2 ps-0">English teacher</h2>
-                                                <h2 class="text-primary me-2 ps-0">English teacher</h2>
-                                                <h2 class="text-primary me-2 ps-0">English teacher</h2>
-                                                <h2 class="text-primary me-2 ps-0">English teacher</h2>
+                                                <h2 class="text-primary me-2 ps-0">PHP teacher</h2>
+                                                <h2 class="text-primary me-2 ps-0">Laravel teacher</h2>
+                                                
 
                                             </div>
 
                                             <div class="d-flex align-items-center  mt-2">
-                                                <img src="{{ url('') }}/newAssets/assets/images/flag.png"
+                                                <img src="{{ url('') }}/assets/frontpage_assets/flags/pk.png"
                                                     alt="" class="me-1">
-                                                <p class="mb-0 pb-0">United State</p>
+                                                <p class="mb-0 pb-0">Pakistan</p>
                                             </div>
                                         </div>
                                         <div>
@@ -938,11 +943,7 @@
                         </div>
                         <div class="teacher-card-body">
                             <p>
-                                English tutor with over 5 years of teaching experience Hi! I'm Ugne. Originally I am
-                                from Lithuania, however, I have completed my high school education in an American
-                                International School and my bachelor's degree at a university in London, UK. I have
-                                quite a few interests and creative hobbies, however my favorite thing to do whenever
-                                I have the time is traveling as much as possible.
+                                Hello, I'm Ali, a PHP tutor with extensive teaching experience, proudly hailing from Pakistan. I've been guiding students in mastering PHP for over 5 years, helping them unlock the power of web development. My journey in the tech world has been shaped by a solid educational background, having completed my degree in Computer Science from a reputable university in Islamabad.
 
                             </p>
                         </div>
@@ -1094,6 +1095,7 @@
                     <div class="row mb-3 card-main-section">
                         <div class="col-lg-8 ">
                             <div class="teacher-card-div mb-3">
+                                <a href="{{ url('/tutor-detail') }}/{{ $userdata_val->user_id }}" class="text-decoration-none">
                                 <div class="teacher-card--header">
 
                                     <div class="teacher-card--header-text w-100 align-items-start">
@@ -1181,6 +1183,7 @@
 
                                     </p>
                                 </div>
+                            </a>
                                 <div
                                     class="d-flex justify-content-between align-items-center flex-md-row flex-column ">
                                     <div class="mb-md-0 mb-3">
@@ -1213,6 +1216,7 @@
                                     </div>
                                 </div>
                             </div>
+                        
                         </div>
                         <div class="col-xl-4 ">
                             <div class="right-p-part-content card-detail-section">
@@ -1228,10 +1232,17 @@
                                     </div>
 
                                     <video controls>
-                                        <source src="{{ url('') }}/videos/{{ $userdata_val->video_link }}"
+                                         @if(strpos($userdata_val->video_link,'http')!== false)
+                                        <source src="{{ $userdata_val->video_link }}"
                                             type="video/mp4">
                                         Your browser does not support the video tag.
                                     </video>
+                                    @else
+                                    <source src="{{ url('') }}/videos/{{ $userdata_val->video_link }}"
+                                            type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    @endif
 
                                     <div class="world-div mt-1">
                                         <img src="{{ url('') }}/newAssets/assets/images/images/world.svg"
@@ -1448,7 +1459,7 @@
                         Find an Online English Teacher to Help You Master English
                     </h2>
                 </div>
-                <div class="col-lg-6 pe-lg-5 ">
+                <div class="col-lg-6 pe-lg-5 order-lg-1 order-2 ">
 
 
                     <div class="accordion mt-3 faq-accordian" id="myAccordion">
@@ -1560,9 +1571,11 @@
 
 
                 </div>
-                <div class="col-lg-6">
-
-                </div>
+                 <div class="col-lg-6 order-lg-2 order-1">
+                       <div class="w-100 d-flex justify-content-center">
+                        <img src="{{ url('') }}/newAssets/assets/images/Questions.gif" alt="" class="img-fluid">
+                       </div>
+                    </div>
 
             </div>
         </div>

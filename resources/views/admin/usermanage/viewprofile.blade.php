@@ -30,7 +30,14 @@
         @endphp</p>
       </div>
     </div>
-    <div class="user-bar-right">
+    <div class="user-bar-right d-flex align-items-center">
+        <div class=" me-3">
+            <span class="h4">Approve: </span>
+            <label class="switch status_change" data='<?php echo $userdata[0]->student_no ?>'>
+          <input type="checkbox" <?php echo ($userdata[0]->user_status == 1 ? 'checked':"") ?>>
+          <span class="slider round"></span>
+        </label>
+        </div>
       <a class="site-link sm" href="{{ url('admin/edit-profile/'.$userdata[0]->user_id) }}">Edit user’s details</a>
     </div>
   </div>

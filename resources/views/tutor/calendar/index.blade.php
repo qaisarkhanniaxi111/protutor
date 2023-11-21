@@ -138,9 +138,9 @@ $getId = Session::get('tutorid');
 													<div class="row">
 														<div class="col-lg-6">
 															<div class="block-inp-wrap">
-																<label for="">Grade</label>
+																<label for="">Teach level</label>
 																<select class="block-inp" name="grade" id="grade" >
-																	<option value="">Select Grade</option>
+																	<option value="">Select level to teach</option>
 																	<?php 
 
 																	foreach ($teache_level as $teache_level_val) 
@@ -380,9 +380,9 @@ $getId = Session::get('tutorid');
 											<div class="row">
 												<div class="col-lg-6">
 													<div class="block-inp-wrap">
-														<label for="">Grade</label>
+														<label for="">Teach level</label>
 														<select class="block-inp" name="grade_a" id="grade_a" >
-															<option value="">Select Grade</option>
+															<option value="">Select level to teach</option>
 															<?php 
 
 															foreach ($teache_level as $teache_level_val) 

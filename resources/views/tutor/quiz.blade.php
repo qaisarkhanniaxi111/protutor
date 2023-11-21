@@ -9,6 +9,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, shrink-to-fit=no">
     <link rel="shortcut icon" href="assets/images/favicon.png">
     <title>Teachers Portal : Quiz</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0/css/select2.min.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0/js/select2.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"/>
@@ -221,34 +224,34 @@
                   <tr>
                     <th>
                       <span class="table-title">Quiz Title <i class="fa-solid fa-sort"></i></span>
-                      <span class="table-inp"><input id="search_all_quiz_title" type="text" placeholder="Enter Quiz Title to Search"  onkeyup="allQuizFilter()"></span>
+                      {{-- <span class="table-inp"><input id="search_all_quiz_title" type="text" placeholder="Enter Quiz Title to Search"  onkeyup="allQuizFilter()"></span> --}}
                     </th>
                     <th>
                       <span class="table-title">Class / Grade <i class="fa-solid fa-sort"></i></span>
-                      <span class="table-inp">
+                      {{-- <span class="table-inp">
                         <select name="" id="search_teaches_level_all_quiz" onchange="allQuizFilter()">
                           <option value="Select Class / Grade">Select Class / Grade</option>
                           @foreach($teaches_levels as $t)
                           <option value="{{$t->teaches_level}}">{{$t->teaches_level}}</option>
                           @endforeach
                         </select>
-                      </span>
+                      </span> --}}
                     </th>
                     <th>
                       <span class="table-title">Course <i class="fa-solid fa-sort"></i></span>
-                      <span class="table-inp">
+                      {{-- <span class="table-inp">
                         <select name="" id="search_subject_all_quiz"  onchange="allQuizFilter()">
                           <option value="Select Course">Select Course</option>
                           @foreach($subjects as $t)
                           <option value="{{$t->subject}}">{{$t->subject}}</option>
                           @endforeach
                         </select>
-                      </span>
+                      </span> --}}
                     </th>
 
                     <th>
                       <span class="table-title">Quiz Status <i class="fa-solid fa-sort"></i></span>
-                      <span class="table-inp">
+                      {{-- <span class="table-inp">
                         <span class="table-inp">
                           <select name="" id="search_status_all_quiz" onchange="allQuizFilter()">
                             <option value="Select Quiz Status">Select Quiz Status</option>
@@ -257,7 +260,7 @@
                             <option value="Expired">Expired</option>
                           </select>
                         </span>
-                      </span>
+                      </span> --}}
                     </th>
                     <th>
                       <span class="table-title">Actions</span>
@@ -268,7 +271,7 @@
                   @foreach($quizes as $q)
                   <tr id="allQuizes_{{$q->quizid}}">
                     <td>{{$q->quiztitle}}</td>
-                    <td>{{$q->teaches_level}}</td>
+                    <td>{{$q->teach_level}}</td>
                     <td>{{$q->subject}}</td>
                     <?php
                     if($q->status=="Upcoming")
@@ -316,41 +319,41 @@
                   <tr>
                     <th>
                       <span class="table-title">Quiz Title <i class="fa-solid fa-sort"></i></span>
-                      <span class="table-inp"><input type="text" placeholder="Enter Quiz Title to Search"></span>
+                      {{-- <span class="table-inp"><input type="text" placeholder="Enter Quiz Title to Search"></span> --}}
                     </th>
                     <th>
                       <span class="table-title">Class / Grade <i class="fa-solid fa-sort"></i></span>
-                      <span class="table-inp">
+                      {{-- <span class="table-inp">
                         <select name="" id="">
                           <option value="">Select Grade / Class</option>
                         </select>
-                      </span>
+                      </span> --}}
                     </th>
                     <th>
                       <span class="table-title">Course <i class="fa-solid fa-sort"></i></span>
-                      <span class="table-inp">
+                      {{-- <span class="table-inp">
                         <select name="" id="">
                           <option value="">Select Course</option>
                         </select>
-                      </span>
+                      </span> --}}
                     </th>
 
                     <th>
                       <span class="table-title">Start Date <i class="fa-solid fa-sort"></i></span>
-                      <span class="table-inp">
+                      {{-- <span class="table-inp">
                         <select name="" id="">
                           <option value="">Select Start Date</option>
                         </select>
-                      </span>
+                      </span> --}}
                     </th>
 
                     <th>
                       <span class="table-title">End Date <i class="fa-solid fa-sort"></i></span>
-                      <span class="table-inp">
+                      {{-- <span class="table-inp">
                         <select name="" id="">
                           <option value="">Select End Date</option>
                         </select>
-                      </span>
+                      </span> --}}
                     </th>
 
                     <th>
@@ -362,7 +365,7 @@
                   @foreach($expired as $q)
                   <tr id="expiredQuizes_{{$q->quizid}}">
                     <td id="quiztitle_activate_{{$q->quizid}}">{{$q->quiztitle}}</td>
-                    <td id="teaches_level_activate_{{$q->quizid}}">{{$q->teaches_level}}</td>
+                    <td id="teaches_level_activate_{{$q->quizid}}">{{$q->teach_level}}</td>
                     <td id="subject_activate_{{$q->quizid}}">{{$q->subject}}</td>
                     <td><input type="datetime-local" name="" id="startdate_activate_{{$q->quizid}}" value="{{$q->startdate}}"></td>
                     <td><input  type="datetime-local" name="" id="enddate_activate_{{$q->quizid}}" value="{{$q->enddate}}"></td>
@@ -392,19 +395,13 @@
                                           <span class="quiz-inp-icon"><i class="fa-solid fa-heading"></i></span>
                                           <input class="quiz-inp" type="text" name="" id="quiztitle" placeholder="Enter Quiz Name / Title">
                                         </div>
-                                        <div class="quiz-inp-wrap">
-                                          <span class="quiz-inp-icon"><i class="fa-solid fa-star"></i></span>
-                                          <select required class="quiz-inp" name="" id="teaches_level">
-                                            @foreach($teaches_levels as $t)
-                                            <option value="{{$t->teaches_level}}">{{$t->teaches_level}}</option>
-                                            @endforeach
-                                          </select>
-                                        </div>
+                                        
                                         <div class="quiz-inp-wrap">
                                           <span class="quiz-inp-icon"><i class="fa-solid fa-book-bookmark"></i></span>
-                                          <select class="quiz-inp" name="" id="subjectt">
-                                            @foreach($subjects as $sub)
-                                            <option value="{{$sub->subject}}">{{$sub->subject}}</option>
+                                          <select class="quiz-inp" name="" id="groupLessonId">
+                                            <option value=''>Select Group Lesson</option>
+                                            @foreach($groupLessons as $groupLesson)
+                                            <option value="{{$groupLesson->id}}">{{$groupLesson->title}}</option>
                                             @endforeach
                                           </select>
                                         </div>
@@ -412,13 +409,13 @@
                                         <div class="row"><div class="col-lg-4"></div><div class="col-lg-4 quiz-inp-wrap"><label>Start date and time</label></div></div>
                                         <div class="quiz-inp-wrap">
                                           <span class="quiz-inp-icon"><i class="fa-solid fa-calendar"></i></span>
-                                          <input class="quiz-inp" type="datetime-local" name="" id="startdate" placeholder="Start Date and Time">
+                                          <input class="quiz-inp" type="datetime-local" name="" id="startDateTime" placeholder="Start Date and Time" onchange="updateEndDateMin()" min="{{ date('Y-m-d\TH:i') }}">
                                         </div>
                                         <br>
                                         <div class="row"><div class="col-lg-4"></div><div class="col-lg-4 quiz-inp-wrap"><label>End date and time</label></div></div>
                                         <div class="quiz-inp-wrap">
                                           <span class="quiz-inp-icon"><i class="fa-solid fa-calendar"></i></span>
-                                          <input class="quiz-inp" type="datetime-local" name="" id="enddate" placeholder="End Date and Time">
+                                          <input class="quiz-inp" type="datetime-local" name="" id="endDateTime" placeholder="End Date and Time" disabled>
                                         </div>
 
                                         <div class="create-btn">
@@ -478,7 +475,7 @@
                                               <option value="True / False">True / False</option>
                                               <option value="Fill-in-the-Blanks">Fill-in-the-Blanks</option>
                                               <option value="Multiple Answers">Multiple Answers</option>
-                                              <option value="Numerical Answer">Numerical Answer</option>
+                                              
                                               <option value="Short Answer">Short Answer</option>
                                               <option value="Long Answer">Long Answer</option>
                                             </select>
@@ -653,29 +650,29 @@
                   <tr>
                     <th>
                       <span class="table-title">Quiz Title <i class="fa-solid fa-sort"></i></span>
-                      <span class="table-inp"><input type="text" placeholder="Enter Quiz Title to Search" id="search_drafts_quiz_title" onkeyup="filterDrafts()"></span>
+                      {{-- <span class="table-inp"><input type="text" placeholder="Enter Quiz Title to Search" id="search_drafts_quiz_title" onkeyup="filterDrafts()"></span> --}}
                     </th>
                     <th>
                       <span class="table-title">Class / Grade <i class="fa-solid fa-sort"></i></span>
-                      <span class="table-inp">
+                      {{-- <span class="table-inp">
                         <select name="" id="search_teaches_level_drafts_quiz" onchange="filterDrafts()">
                           <option value="Select Class / Grade">Select Class / Grade</option>
                           @foreach($teaches_levels as $t)
                           <option value="{{$t->teaches_level}}">{{$t->teaches_level}}</option>
                           @endforeach
                         </select>
-                      </span>
+                      </span> --}}
                     </th>
                     <th>
                       <span class="table-title">Course <i class="fa-solid fa-sort"></i></span>
-                      <span class="table-inp">
+                      {{-- <span class="table-inp">
                         <select name="" id="search_subject_drafts_quiz"  onchange="filterDrafts()">
                           <option value="Select Course">Select Course</option>
                           @foreach($subjects as $t)
                           <option value="{{$t->subject}}">{{$t->subject}}</option>
                           @endforeach
                         </select>
-                      </span>
+                      </span> --}}
                     </th>
                     <th>
                       <span class="table-title">Actions</span>
@@ -686,7 +683,7 @@
                   @foreach($drafts as $u)
                   <tr id="drafts_{{$u->quizid}}">
                     <td>{{$u->quiztitle}}</td>
-                    <td>{{$u->teaches_level}}</td>
+                    <td>{{$u->teach_level}}</td>
                     <td>{{$u->subject}}</td>
                     <td>
                       <a class="tableLink" onclick="editQuizAll({{$u->quizid}})"><i class="fa-regular fa-pen-to-square"></i></a>
@@ -758,7 +755,7 @@
                   <?php ?>
                   <tr id="upcomingquiz_{{$u->quizid}}">
                     <td>{{$u->quiztitle}}</td>
-                    <td>{{$u->teaches_level}}</td>
+                    <td>{{$u->teach_level}}</td>
                     <td>{{$u->subject}}</td>
                     <td>{{$u->startdate}}</td>
                     <td>{{$u->enddate}}</td>
@@ -1095,6 +1092,14 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
   <script src="./assets/js/custom.js"></script>
+//   <script>
+//   $(document).ready(function() {
+//     $('#teaches_level').select2({
+//       placeholder: 'Select level to teach',
+//       allowClear: true, // Optional: If you want to allow clearing the selection
+//     });
+//   });
+// </script>
   <script>
 
 
@@ -2047,28 +2052,23 @@ $("#previewQuestionArea").html(txt)
 
   $("#firstStepNext").click(function(){
 
-    if(quizid==0)
+    if(quizid)
     {
       var quiztitle=$("#quiztitle").val()
-      var teaches_level=$("#teaches_level").val()
-      if(teaches_level=="")
+      var groupLessonId=$("#groupLessonId").val()
+      if(groupLessonId=="")
       {
-        Swal.fire("Please select the Education level","","error")
+        Swal.fire("Please select the Group Lesson","","error")
         return
       }
-      var subject=$("#subjectt").val()
-      if(subject=="")
-      {
-        Swal.fire("Please select the Subject","","error")
-        return
-      }
-      var startDate=$("#startdate").val()
+     
+      var startDate=$("#startDateTime").val()
       if(startDate=="")
       {
         Swal.fire("Please select the Quiz Start Date","","error")
         return
       }
-      var endDate=$("#enddate").val()
+      var endDate=$("#endDateTime").val()
       if(endDate=="")
       {
         Swal.fire("Please select the Quiz End Date","","error")
@@ -2083,7 +2083,7 @@ $("#previewQuestionArea").html(txt)
 $.ajax({
    type:'post',
    url:'createQuiz',
-   data:{quiztitle:quiztitle,teaches_level:teaches_level,subject:subject,quizid:quizid,startdate:startDate,enddate:endDate},
+   data:{quiztitle:quiztitle,groupLessonId:groupLessonId,quizid:quizid,startdate:startDate,enddate:endDate},
    success:function(data) {
 
    quizid=data;
@@ -2238,7 +2238,7 @@ $.ajax({
  url:'submitQuizSettings',
  data:{quizid:quizid,quizprogressbar:quizprogressbar,randomizequestions:randomizequestions,quiztimer:quiztimer,autoadvance:autoadvance,quiztries:quiztries,quiztimeinseconds:quiztimeinseconds,quiznooftries:quiznooftries,templateUsed:templateUsed},
  success:function(data) {
-   alert(data)
+   
   hideAllShow1(5)
  }
 });
@@ -2270,8 +2270,8 @@ $.ajax({
           <td>'+$("#quiztitle").val()+'</td>\
           <td>'+$("#teaches_level").val()+'</td>\
           <td>'+$("#subjectt").val()+'</td>\
-          <td>'+$("#startdate").val()+'</td>\
-          <td>'+$("#enddate").val()+'</td>\
+          <td>'+$("#startDateTime").val()+'</td>\
+          <td>'+$("#endDateTime").val()+'</td>\
           <td>\
             <a class="tableLink" onclick="viewQuizAll('+quizid+')"><i class="fa-regular fa-eye"></i></a>\
             <a class="tableLink grey" href=""><i class="fa-regular fa-pen-to-square"></i></a>\
@@ -2368,8 +2368,9 @@ function clearAll()
   $("#quiztries").prop("checked",false)
   $("#quiztimeinseconds").val("")
   $("#noofquiztries").val("")
-  $("#startdate").val("")
-  $("#enddate").val("")
+  $("#startDateTime").val("")
+  $("#endDateTime").val("")
+  $("#endDateTime").prop("disabled",true)
   allQuestions=[]
   activeQuiz=[]
   quizid=0
@@ -2458,9 +2459,9 @@ $("#quizQuestionsNumber").html((allQuestions.length+1)+" of "+(allQuestions.leng
  seconds=""
  $("#quiztitle").val(quizes[0].quiztitle)
  $("#teaches_level").val(quizes[0].teaches_level)
- $("#subjectt").val(quizes[0].subject)
- $("#startdate").val(quizes[0].startdate)
- $("#enddate").val(quizes[0].enddate)
+ $("#groupLessonId").val(quizes[0].group_lesson_id)
+ $("#startDateTime").val(quizes[0].startdate)
+ $("#endDateTime").val(quizes[0].enddate)
  $("#instructionsforquiz").val(quizes[0].instructions)
  if(quizes[0].quizprogressbar=="y")
  {
@@ -2987,11 +2988,11 @@ function delme(id)
   if($("#selectQuestionType").val()!="Select Question Type")
   {
   $.ajaxSetup({
-headers: {
+  headers: {
   'X-CSRF-TOKEN': $("meta[name='csrf_token']").attr('content')
-}
-});
-$.ajax({
+  }
+  });
+  $.ajax({
  type:'post',
  url:'deleteQuestion',
  data:{quizid:quizid,questionid:id},
@@ -3037,11 +3038,11 @@ function activateQuiz(id)
   var enddate=$("#enddate_activate_"+id).val()
 
   $.ajaxSetup({
-headers: {
+  headers: {
   'X-CSRF-TOKEN': $("meta[name='csrf_token']").attr('content')
-}
-});
-$.ajax({
+  }
+  });
+  $.ajax({
  type:'post',
  url:'republishQuiz',
  data:{quizid:id,startdate:startdate,enddate:enddate},
@@ -3107,7 +3108,7 @@ function filterDrafts()
 
   txt+='<tr id="drafts_'+data[i].quizid+'">\
     <td>'+data[i].quiztitle+'</td>\
-    <td>'+data[i].teaches_level+'</td>\
+    <td>'+data[i].teach_level+'</td>\
     <td>'+data[i].subject+'</td>\
     <td>\
       <a class="tableLink" onclick="editQuizAll('+data[i].quizid+')"><i class="fa-regular fa-pen-to-square"></i></a>\
@@ -3139,7 +3140,7 @@ function upcomingFilter()
     {
     txt+='<tr id="upcomingquiz_'+data[i].quizid+'">\
       <td>'+data[i].quiztitle+'</td>\
-      <td>'+data[i].teaches_level+'</td>\
+      <td>'+data[i].teach_level+'</td>\
       <td>'+data[i].subject+'</td>\
       <td>'+data[i].startdate+'</td>\
       <td>'+data[i].enddate+'</td>\
@@ -3190,7 +3191,7 @@ function upcomingFilter()
        }
      txt+='<tr id="allQuizes_'+data[i].quizid+'">\
        <td>'+data[i].quiztitle+'</td>\
-       <td>'+data[i].teaches_level+'</td>\
+       <td>'+data[i].teach_level+'</td>\
        <td>'+data[i].subject+'</td>\
        <td>'+status+'</td>\
        <td>\
@@ -3225,6 +3226,24 @@ function upcomingFilter()
    }
  })
  }
+
+
+
+  function updateEndDateMin() {
+      // Get the value of the start date and time input
+      const startDateTimeInput = document.getElementById('startDateTime');
+      const startDateTimeValue = startDateTimeInput.value;
+
+      // Set the minimum value for the end date and time input
+      const endDateTimeInput = document.getElementById('endDateTime');
+      endDateTimeInput.min = startDateTimeValue;
+
+      // Set the value of the end date and time input to be the same as the start date and time
+      endDateTimeInput.value = startDateTimeValue;
+
+      // Enable the end date and time input
+      endDateTimeInput.disabled = false;
+    }
   </script>
   </body>
 </html>

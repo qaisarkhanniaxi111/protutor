@@ -25,6 +25,7 @@ use Illuminate\Support\Facades\DB;
 
 class GroupLessonController extends Controller
 {
+   
     public function groupclasses()
     {
         $PageTitle = 'Public Lessons | ProTutor';
@@ -46,9 +47,9 @@ class GroupLessonController extends Controller
 
 		$Alltestimonial =  Student_testimonial::where('user_status', 1)->orderBy('id', 'desc')->get();
         $todayDate = now()->format('Y-m-d');
-        $todayGroupLessons = GroupLesson::with(['teachLevel', 'subject', 'tutor', 'gallery','tutorDetails'])->whereDate('registration_start_date', $todayDate)->limit(4)->get();
+        $todayGroupLessons = GroupLesson::with(['teachLevel', 'subject', 'tutor', 'gallery','tutorDetails'])->whereDate('registration_start_date', $todayDate)->whereDate('registration_end_date','>=', $todayDate)->limit(4)->get();
         // dd($todayGroupLessons);
-        $groupLessons = GroupLesson::with(['teachLevel', 'subject', 'tutor', 'gallery'])->Paginate(4);
+        $groupLessons = GroupLesson::with(['teachLevel', 'subject', 'tutor', 'gallery'])->whereDate('registration_end_date','>=', $todayDate)->Paginate(4);
 
         $teaches_levels = Teaches_level::select('id', 'teaches_level')->get();
         $teaches_levels = $teaches_levels->toArray();

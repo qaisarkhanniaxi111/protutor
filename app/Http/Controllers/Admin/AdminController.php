@@ -1359,16 +1359,20 @@ die();*/
     {
         if ($request->post()) {
             $request->validate([
-                'identifier' => ['required'],
+                // 'identifier' => ['required'],
                 'url' => ['required'],
             ]);
             if (isset($request->identifier)) {
                 $image = $request->file('identifier');
                 $identifier = time() . '_' . $image->getClientOriginalName();
                 $request->identifier->move(public_path('images'), $identifier);
-            }
-            $result =  DB::table('social_media_platform')->where('id', $request->id)->update(['title' => $identifier, 'url' => $request->url]);
+                $result =  DB::table('social_media_platform')->where('id', $request->id)->update(['title' => $identifier, 'url' => $request->url]);
             return redirect("admin/social_platforms")->with('success_msg', 'User update successfully.');
+            }else{
+                $result =  DB::table('social_media_platform')->where('id', $request->id)->update(['url' => $request->url]);
+            return redirect("admin/social_platforms")->with('success_msg', 'User update successfully.');
+            }
+            
         }
         return view("admin/social_platforms", compact('result'));
     }

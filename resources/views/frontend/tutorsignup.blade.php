@@ -1,5 +1,23 @@
 @include('/frontend/common/header')
 <link rel="stylesheet" href="{{url('/')}}/assets/frontpage_assets/css/tutor-signup.css">
+<script src="{{url('/')}}/multiDropdown/multiselect_dropdown.js"></script>
+<style>
+    #nextPhotoBtn{
+        pointer-events:none
+    }
+    #nextVideoBtn{
+        pointer-events:none
+    }
+    .move{
+        pointer-events:auto !important
+    }
+		.multiselect-dropdown-list label{
+			display: inline;
+		}
+		.menuDisabled{
+			pointer-events:none !important;
+		}
+</style>
 <div class="sign-step">
 	<div class="sign-step-top">
 		<div class="container">
@@ -14,7 +32,7 @@
 					</a>
 				</li>
 
-				<li class="nav-item">
+				<li class="nav-item menuDisabled" id="descriptionDisabled">
 					<a class="nav-link" data-bs-toggle="tab" href="#tab-2">
 						<span class="circle">2</span>
 						<span class="circle-icon"><i class="fa-solid fa-location-dot"></i></span>
@@ -23,7 +41,7 @@
 					</a>
 				</li>
 
-				<li class="nav-item">
+				<li class="nav-item menuDisabled" id="photoDisabled">
 					<a class="nav-link" data-bs-toggle="tab" href="#tab-3">
 						<span class="circle">3</span>
 						<span class="circle-icon"><i class="fa-solid fa-location-dot"></i></span>
@@ -32,7 +50,7 @@
 					</a>
 				</li>
 
-				<li class="nav-item">
+				<li class="nav-item menuDisabled" id="videoDisabled">
 					<a class="nav-link" data-bs-toggle="tab" href="#tab-4">
 						<span class="circle">4</span>
 						<span class="circle-icon"><i class="fa-solid fa-location-dot"></i></span>
@@ -41,7 +59,7 @@
 					</a>
 				</li>
 
-				<li class="nav-item">
+				<li class="nav-item menuDisabled" id="lastDisabled">
 					<a class="nav-link" data-bs-toggle="tab" href="#tab-5">
 						<span class="circle">5</span>
 						<span class="circle-icon"><i class="fa-solid fa-location-dot"></i></span>
@@ -124,8 +142,8 @@
 							<div class="col-sm-6">
 								<div class="inp-wrap">
 									<label for="">Native Language<span style="color: red;">*</span></label>
-									<select class="inp" name="native_language">
-									<option value="">Select Native Language</option> 
+									<select class="inp" name="native_language[]" multiple data-allow-clear="1">
+									
 										@foreach($spoken_languages as $spoken_languages_data)
 										<option {{ old('native_language') == $spoken_languages_data->id ? "selected" : "" }} value="{{$spoken_languages_data->id}}">{{$spoken_languages_data->spoken_language}}</option>
 										@endforeach
@@ -150,9 +168,9 @@
 							</div>
 							<div class="col-sm-6">
 								<div class="inp-wrap">
-									<label for="">Level <span style="color: red;">*</span></label>
-									<select class="inp" name="level" id=""> 
-										<option value="">Select level</option>
+									<label for="">Level to teach <span style="color: red;">*</span></label>
+									<select class="inp" name="level[]" id="" multiple data-allow-clear="1"> 
+									
 										@foreach($teaches_levels as $teaches_levels_data)
 										<option {{ old('level') == $teaches_levels_data->id ? "selected" : "" }} value="{{$teaches_levels_data->id}}">{{$teaches_levels_data->teaches_level}}</option>
 										@endforeach
@@ -164,7 +182,7 @@
 							</div>
 							<div class="col-sm-6">
 								<div class="inp-wrap">
-									<label for="">Subject taught <span style="color: red;">*</span></label>
+									<label for="">Subject to teach <span style="color: red;">*</span></label>
 									<select class="inp" name="subject[]" multiple data-allow-clear="1"> 
 										@foreach($subject as $subject_data)
 
@@ -182,7 +200,7 @@
 									<select class="inp" name="hourly_rate" id=""> 
 										<option value="">Select Hourly Rate</option>
 										@foreach($hourly_rate as $hourly_rate_data)
-										<option {{ old('hourly_rate') == $hourly_rate_data->id ? "selected" : "" }} value="{{$hourly_rate_data->id}}">{{$hourly_rate_data->hourly_rate}}</option>
+										<option {{ old('hourly_rate') == $hourly_rate_data->id ? "selected" : "" }} value="{{$hourly_rate_data->id}}">{{ config('protutor.currency') }}{{$hourly_rate_data->hourly_rate}}</option>
 										@endforeach
 									</select>
 
@@ -218,7 +236,7 @@
 							<h3 class="pt-5">Description for English-speaking students</h3>
 
 							<div class="profile-desc">
-								<div class="profile-desc-img"><img src="{{url('/')}}/public/assets/frontpage_assets/images/user.jpg" alt=""></div>
+								<div class="profile-desc-img"><img src="{{url('/')}}/assets/frontpage_assets/images/user.jpg" alt=""></div>
 								<div class="profile-desc-txt">
 									<div class="inp-wrap mt-0">
 										<label for="">Profile Headline<span style="color: red;">*</span></label>
@@ -229,14 +247,14 @@
 									</div>
 									<div class="inp-wrap">
 										<label for="">Profile description <span style="color: red;">*</span></label>
-										<textarea class="inp" placeholder="Your description" name="desc_about" id="">{{ old('desc_about') }}</textarea>
+										<textarea class="inp" placeholder="Your description" name="desc_about" id="" minlength="">{{ old('desc_about') }}</textarea>
 										<span style="color: red;">@if($errors->has('desc_about'))
 											{{ $errors->first('desc_about');}} 
 										@endif</span>
 										<p><span>400 characters minimum. 0 characters currently.</span></p>
 									</div>
 									<div class="tab-next">
-										<a class="site-link btnNext">Next</a>
+										<a class="site-link btnNext" onclick="document.getElementById('descriptionDisabled').classList.remove('menuDisabled')">Next</a>
 									</div>
 								</div>
 							</div>
@@ -251,7 +269,7 @@
 							<div class="inp-wrap">
 								<div class="upBtn">
 									<a class="site-link">Take a Picture </a>
-									<input type="file" name="your_picture" onchange="loadFile(event)">
+									<input type="file" name="your_picture" onchange="loadFile(event);document.getElementById('nextPhotoBtn').classList.add('move')">
 									<span style="color: red;">@if($errors->has('your_picture'))
 										{{ $errors->first('your_picture');}} 
 									@endif</span>
@@ -266,20 +284,31 @@
 							</div>
 
 							<div class="tab-next">
-								<a class="site-link btnNext">Next</a>
+								<a class="site-link btnNext" id="nextPhotoBtn" onclick="document.getElementById('photoDisabled').classList.remove('menuDisabled')" >Next</a>
 							</div>
 						</div>
 					</div>
 
 					<div class="tab-pane fade" id="tab-4">
-						<div class="">
+					    						<div class="row">
+						<div class="col-lg-7">
 							<h2>Video introduction <span style="color: red;">*</span></h2>
 							<p class="pt-2">Choose a video file to upload. Make sure it follows our guidelines</p>
 
 							<div class="inp-wrap">
 								<div class="upBtn">
 									<a class="site-link">Upload Video</a>
-									<input type="file" name="upload_video" class="file_multi_video" accept="video/*">
+									<input type="file" name="upload_video" class="file_multi_video" accept="video/*" onchange="document.getElementById('nextVideoBtn').classList.add('move')">
+									<span style="color: red;">@if($errors->has('upload_video'))
+										{{ $errors->first('upload_video');}} 
+									@endif</span>
+								</div>
+							</div>
+							<div class="mt-3">Or</div>
+							<div class="mt-3">
+								<div class="" style="max-width:500px">
+									
+									<input type="url" name="upload_video" class="form-control" placeholder="Enter the video Url">
 									<span style="color: red;">@if($errors->has('upload_video'))
 										{{ $errors->first('upload_video');}} 
 									@endif</span>
@@ -295,9 +324,39 @@
 								</div>
 
 								<div class="tab-next">
-									<a class="site-link btnNext">Next</a>
+									<a class="site-link btnNext" id="nextVideoBtn" onclick="document.getElementById('videoDisabled').classList.remove('menuDisabled');document.getElementById('lastDisabled').classList.remove('menuDisabled')">Next</a>
 								</div>
 							</div>
+							<div class="col-lg-5">
+									<div class="photo-list-wrap">
+										<div class="photo-list-txt">
+											<h3>Tips for an amazing introduction video</h3>
+											<video src="{{ url('') }}/videos/exampleVideo.mp4" controls class='w-100 rounded my-3'></video>
+											<h3 class="pt-4">Technical</h3>
+											<ul class="pt-2">
+												<li>Keep your video between 30 seconds and 2 minutes long</li>
+												<li>Record in a horizontal mode</li>
+												<li>Position the camera at eye level</li>
+												<li>Use neutral lighting and background</li>
+												<li>Your face and eyes are fully visible (except for religious reasons)</li>
+												<li>No logos, links or contact details</li>
+												<li>No slideshows or presentations</li>
+											</ul>
+											<h3 class="pt-4">Content</h3>
+											<ul class="pt-2">
+												<li>Greet your students warmly</li>
+												<li>Highlight any teaching certification</li>
+												<li>Present your tutoring experience</li>
+												<li>Invite students to book a lesson</li>
+											</ul>
+											<h3 class="pt-4">Example</h3>
+											<ul class="pt-2">
+												<li>Profile introduction video example</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								</div>
 						</div>
 						<div class="tab-pane fade" id="tab-5">
 							<div class="success">

@@ -9,8 +9,9 @@
     <meta name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, shrink-to-fit=no">
     <link rel="shortcut icon" href="assets/images/favicon.png">
-   
-
+    
+   <!--sweet Alert cdn-->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     {{-- DataTable CSS  --}}
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css" />
 
@@ -204,7 +205,7 @@
                                             <td>{{ date('m-d-Y', strtotime($groupLesson['registration_end_date'])) }}
                                             </td>
                                             <td>{{ $groupLesson['participants'] }}</td>
-                                            <td></td>
+                                            <td>{{ totalEnrolledGroupLessonParticipants($groupLesson['id']) }}</td>
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -428,9 +429,9 @@
                                             </div>
                                             <div class="quiz-inp-wrap mt-0">
                                                 <span class="quiz-inp-icon"><i
-                                                        class="fa-solid fa-calendar"></i></span>
-                                                <input class="quiz-inp" type="date" name="register_End_Date"
-                                                    id="registerenddate" placeholder="End Date and Time" disabled  onchange="document.querySelector('#classStartDate').removeAttribute('disabled');document.querySelector('#classStartDate').min=this.value">
+                                                        class="fa-solid fa-calendar "></i></span>
+                                                <input class="quiz-inp disabledOnCreate" type="date" name="register_End_Date"
+                                                    id="registerenddate" placeholder="End Date and Time" disabled   onchange="document.querySelector('#classStartDate').removeAttribute('disabled');document.querySelector('#classStartDate').min=this.value">
 
                                                 <p class="text-danger error-msg" id="lesson_register_End_Date">
 
@@ -445,8 +446,8 @@
                                             <div class="quiz-inp-wrap mt-0">
                                                 <span class="quiz-inp-icon"><i
                                                         class="fa-solid fa-calendar"></i></span>
-                                                <input class="quiz-inp" type="date" name="class_Start_Date"
-                                                    id="classStartDate" placeholder="Start Date and Time" disabled   onchange="document.querySelector('#classEndDate').removeAttribute('disabled');document.querySelector('#classEndDate').min=this.value">
+                                                <input class="quiz-inp disabledOnCreate" type="date" name="class_Start_Date"
+                                                    id="classStartDate" placeholder="Start Date and Time" disabled onchange="document.querySelector('#classEndDate').removeAttribute('disabled');document.querySelector('#classEndDate').min=this.value">
 
                                                 <p class="text-danger error-msg" id="lesson_class_Start_Date">
 
@@ -460,8 +461,8 @@
                                             <div class="quiz-inp-wrap mt-0">
                                                 <span class="quiz-inp-icon"><i
                                                         class="fa-solid fa-calendar"></i></span>
-                                                <input class="quiz-inp" type="date" name="class_End_Date"
-                                                    id="classEndDate" placeholder="End Date and Time" disabled>
+                                                <input class="quiz-inp disabledOnCreate" type="date" name="class_End_Date"
+                                                    id="classEndDate" placeholder="End Date and Time" disabled >
 
                                                 <p class="text-danger error-msg" id="lesson_class_End_Date">
 
@@ -1194,12 +1195,27 @@
                     $("#submit").html('Create');
                     fetchUncompletedGroupLessons();
                     $("#ajaxForm")[0].reset();
+                    $('.disabledOnCreate').prop('disabled',true)
                     $("#createGroupLessonMsg").html(`<div class="alert alert-success alert-dismissible fade show" role="alert">
   <strong>Created Successfully!</strong> New Group Lesson has been added.
   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>`);
 
+// Swal.fire({
+//   position: "center",
+//   icon: "success",
+//   title: "<strong>Created Successfully!</strong> New Group Lesson has been added.",
+//   showConfirmButton: false,
+//   timer: 2500
+// });
+Swal.fire({
+  title: "Created Successfully!",
+  text: "New Group Lesson has been added.",
+  icon: "success"
+});
+
                 },
+                
                 error: function(error) {
                     if (error) {
 
@@ -1700,6 +1716,11 @@
                 success: function(result) {
 
                     $("#updateGroupLessonBtn").html('Updated');
+                    Swal.fire({
+  title: "Updated Successfully!",
+  text: "This Group Lesson has been Updated.",
+  icon: "success"
+});
                     fetchUncompletedGroupLessons();
                     fetchCompletedGroupLessons();
 

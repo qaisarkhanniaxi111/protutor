@@ -20,7 +20,7 @@ $endDate = new DateTime($endDate);
 $currentDateTime = new DateTime();
 
 // Compare the current date and time with the start and end dates
-if ($currentDateTime <= $endDate) {
+if ($currentDateTime <= $endDate && $currentDateTime >= $startDate) {
 
     return true;
 } else {

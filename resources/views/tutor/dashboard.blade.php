@@ -79,12 +79,12 @@
                     </div>
                 </div>
                 <div class="quiz-table">
-                    <div class="table-responsive">
+                    <div class="table-responsive overflow-auto" style="max-height: 400px">
                         <table class="table theme-table">
                             @foreach ($quizes as $quiz)
                                 <tr>
                                     <td>{{ $quiz->quiztitle }}</td>
-                                    <td>{{ $quiz->teaches_level }}</td>
+                                    <td>{{ $quiz->teach_level }}</td>
                                     <td>{{ $quiz->subject }}</td>
                                     {{-- <td>Quiz Type</td> --}}
                                     <td>{{ $quiz->startdate }}</td>
