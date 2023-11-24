@@ -2624,3 +2624,18 @@ border: none;
 .pagination .hide-sm a.disabled {
   filter: grayscale(100%);
 }
+
+
+
+
+
+/* new code for tutor signUp page  */
+.photo-list ul li{ display: inline-block; margin-left: 20px;}
+.photo-list ul li:first-child{ margin-left: 0;}
+.photo-list-single{ width: 150px; height: 150px; border-radius: 100%; overflow: hidden;}
+.photo-list-single img{ width: 100%; height: 100%; object-fit: cover;}
+.photo-list h3{ color: var(--orange); padding-bottom: 20px; font-size: 20px; font-weight: 500;}
+.photo-list-wrap{ padding-left: 50px;}
+.photo-list-txt ul{ padding: 25px 0 0 0;}
+.photo-list-txt ul li{ position: relative; font-size: 18px; margin-top: 10px; padding: 0 0 0 40px;}
+.photo-list-txt ul li::after{ content: ''; width: 24px; height: 24px; background: url('../images/check.png') no-repeat; background-size: 100% auto; position: absolute; left: 0; top: 2px;}

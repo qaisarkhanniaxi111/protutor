@@ -22,6 +22,8 @@ use App\Models\Homepage;
 use App\Models\Notifications;
 use App\Models\Become_a_tutor;
 use App\Models\Certificate;
+use App\Models\Education;
+use App\Models\Experience;
 use App\Models\GroupLesson;
 use App\Models\Order;
 use App\Models\Payment;
@@ -360,9 +362,20 @@ class FrontendController extends Controller
                 'subject' => ['required'],
                 'hourly_rate' => ['required'],
                 'desc_first_last' => ['required'],
-                'desc_about' => 'required|min:400',
+                'desc_about' => 'required',
                 'your_picture' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
                 'upload_video' => 'required',
+                'university_name' => 'required',
+                'degree_name' => 'required',
+                'degree_type' => 'required',
+                'specialization' => 'required',
+                'year_of_study' => 'required',
+                'year_of_study_end' => 'required',
+                'degree_verification_pic' => 'required',
+                'company_name' => 'required',
+                'position' => 'required',
+                'period_of_employment' => 'required',
+                'period_of_employment_end' => 'required',
             ]);
 
             $image = $req->file('your_picture');
@@ -401,6 +414,50 @@ class FrontendController extends Controller
             $update = array('phone_number'=>$req->phone_number,'first_name'=>$req->first_name,'last_name'=>$req->last_name);
 
             DB::table('users')->where('id',$req->userid)->update($update);
+
+
+            $tutorDetailsId=$result->id;
+            // $result=Education::create([
+            //     'userdetail_id'=>$tutorDetailsId,
+            //     'university_name'=>$req->university_name,
+            //     'degree_name'=>$req->degree_name,
+            //     'degree_type'=>$req->degree_type,
+            //     'specialization'=>$req->specialization,
+            //     'year_of_study'=>$req->year_of_study,
+            //     'degree_verification_pic'=>$req->degree_verification_pic,
+            // ]);
+            foreach ($req->university_name as $key => $value) {
+                $education =  new Education;
+
+                $filess = $req->file('degree_verification_pic');
+                $fileNames = time().'_'.$filess[$key]->getClientOriginalName();  
+                $req->degree_verification_pic[$key]->move(public_path('educations'), $fileNames);
+
+                $education->userdetail_id =  $tutorDetailsId;
+                $education->university_name =  $value;
+                $education->degree_name =  $req->degree_name[$key];
+                $education->degree_type =  $req->degree_type[$key];
+                $education->specialization =  $req->specialization[$key];
+                $education->year_of_study =  $req->year_of_study[$key].'-'.$req->year_of_study_end[$key];
+                $education->degree_verification_pic =  $fileNames; 
+                $education->save();
+            } 
+
+            // $result=Experience::create([
+            //     'userdetail_id'=>$tutorDetailsId,
+            //     'company_name'=>$req->company_name,
+            //     'position'=>$req->position,
+            //     'period_of_employment'=>$req->period_of_employment.'-'.$req->period_of_employment_end,
+            // ]);
+            foreach ($req->company_name as $key => $value) {
+                $experience =  new Experience; 
+
+                $experience->userdetail_id =  $tutorDetailsId;
+                $experience->company_name =  $value;
+                $experience->position =  $req->position[$key]; 
+                $experience->period_of_employment =  $req->period_of_employment[$key].'-'.$req->period_of_employment_end[$key];
+                $experience->save();
+            }  
 
             $superadmin='1';
             $admin='2';

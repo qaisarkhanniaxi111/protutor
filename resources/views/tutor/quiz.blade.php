@@ -2052,7 +2052,7 @@ $("#previewQuestionArea").html(txt)
 
   $("#firstStepNext").click(function(){
 
-    if(quizid)
+    if(quizid>=0)
     {
       var quiztitle=$("#quiztitle").val()
       var groupLessonId=$("#groupLessonId").val()

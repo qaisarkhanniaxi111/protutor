@@ -1,4 +1,4 @@
-@include('/dashboard/common/header')
+@include('dashboard/common/header')
 @include('/dashboard/common/sidebar')
 <!-- Container -->
 <style type="text/css">

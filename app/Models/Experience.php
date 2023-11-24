@@ -11,5 +11,5 @@ class Experience extends Model
     protected $table = 'experiences';
 
 
-    protected $fillable = [];
+    protected $fillable = ['userdetail_id','company_name','position','period_of_employment'];
 }

@@ -11,5 +11,5 @@ class Education extends Model
     protected $table = 'educations';
 
 
-    protected $fillable = [];
+    protected $fillable = ['userdetail_id','university_name','degree_name','degree_type','specialization','year_of_study','degree_verification_pic'];
 }
