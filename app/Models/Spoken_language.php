@@ -9,6 +9,6 @@ class Spoken_language extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'spoken_language','status','created_at', 'updated_at',
+        'spoken_language','user_status','created_at', 'updated_at',
     ];
 }

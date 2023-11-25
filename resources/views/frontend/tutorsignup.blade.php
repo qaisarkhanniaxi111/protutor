@@ -26,7 +26,193 @@
     .menuDisabled {
         pointer-events: none !important;
     }
+    .
+element.style {
+}
+.select2-container {
+    display: block;
+}
+.select2-container{
+    z-index: 1080 !important;
+}
 </style>
+<!-- Educational Modal -->
+<div class="modal fade" id="exampleModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add Ecudation</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="field_wrapper">
+                    <div class="row p-3">
+                        <div class="col-lg-6 p-2 mb-3">
+                            <div class="block-inp-wrap">
+                                <label for="">University</label>
+                                <input class="block-inp" name="university_name[]" type="text" required>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 p-2 mb-3">
+                            <div class="block-inp-wrap">
+                                <label for="">Degree</label>
+                                <input class="block-inp" name="degree_name[]" type="text" required>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 p-2 mb-3">
+                            <div class="block-inp-wrap">
+                                <label for="">Degree Type</label>
+                                <input type="text" name="degree_type[]" class="block-inp" required>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 p-2 mb-3">
+                            <div class="block-inp-wrap">
+                                <label for="">Specialization</label>
+                                <input class="block-inp" name="specialization[]" type="text" required>
+                            </div>
+                        </div>
+
+                        <div class="block-inp-wrap mb-5">
+                            <label for="">Year of Study</label>
+                            <div class="row">
+                                <div class="col-6">
+                                    <select class="block-inp" name="year_of_study[]" required>
+                                        <option value="">Start Year</option>
+                                        <?php
+                                        $firstYear = (int) date('Y') - 63;
+                                        $lastYear = $year = date('Y');
+                                        for ($i = $firstYear; $i <= $lastYear; $i++) {
+                                            echo '<option value=' . $i . '>' . $i . '</option>';
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                                <div class="col-6">
+                                    <select class="block-inp" name="year_of_study_end[]" required>
+                                        <option value="">End Year</option>
+                                        <?php
+                                        $firstYear = (int) date('Y') - 63;
+                                        $lastYear = $year = date('Y');
+                                        for ($i = $firstYear; $i <= $lastYear; $i++) {
+                                            echo '<option value=' . $i . '>' . $i . '</option>';
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="block-inp-wrap">
+                            <div class="verify-stat gery">
+                                <div class="verify-stat-icon"><i class="fa-solid fa-file-lines"></i></div>
+                                <div class="verify-stat-txt">
+                                    <h5>Degree Verification</h5>
+                                    <p>Upload most recent degree/certificate for profile verification</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="up-image">
+                            <p class="txt-blue"><i class="fa-solid fa-upload"></i></p>
+                            <p class="txt-green">JPG or PNG format maximum size of 20MB <br> <span>UPLOAD
+                                    IMAGE</span></p>
+                            <input type="file" name="degree_verification_pic[]"
+                                class="degree_verification_pic" required>
+                        </div><br />
+                        <div class="degree_verification_pic_out"> </div>
+                    </div>
+
+
+
+                </div>
+               
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="site-link" data-bs-dismiss="modal">Add Record</button>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Work Experience Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Add Experience</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="field_wrapper_experience">
+                <div class="row p-3">
+
+
+                    <div class="col-lg-6 p-2 mb-3">
+                        <div class="block-inp-wrap">
+                            <label for="">Company</label>
+                            <input class="block-inp" type="text" name="company_name[]" required>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 p-2 mb-3">
+                        <div class="block-inp-wrap">
+                            <label for="">Position</label>
+                            <input class="block-inp" type="text" name="position[]" required>
+                        </div>
+                    </div>
+                    <div class="block-inp-wrap">
+                        <label for="">Period of Employment</label>
+                        <div class="row">
+                            <div class="col-lg-6 mb-3">
+
+
+                                <div class="block-inp-wrap">
+                                    <select class="block-inp" name="period_of_employment[]" required>
+                                        <option value="">Start Year</option>
+                                        <?php
+                                        $firstYear = (int) date('Y') - 43;
+                                        $lastYear = $year = date('Y');
+                                        for ($i = $firstYear; $i <= $lastYear; $i++) {
+                                            echo '<option value=' . $i . '>' . $i . '</option>';
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 mb-3">
+                                <div class="block-inp-wrap">
+                                    <select class="block-inp" name="period_of_employment_end[]" required>
+                                        <option value="">End Year</option>
+                                        <?php
+                                        $firstYear = (int) date('Y') - 43;
+                                        $lastYear = $year = date('Y');
+                                        for ($i = $firstYear; $i <= $lastYear; $i++) {
+                                            echo '<option value=' . $i . '>' . $i . '</option>';
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="site-link" data-bs-dismiss="modal">Add Record</button>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
 <div class="sign-step">
     <div class="sign-step-top" style="padding-top: 100px !important">
         <div class="container pt-5">
@@ -183,7 +369,8 @@
                             <div class="col-sm-6">
                                 <div class="inp-wrap">
                                     <label for="">Native Language<span style="color: red;">*</span></label>
-                                    <select class="inp nativeLanguage customDropdown" name="native_language[]" multiple>
+                                    <select class="inp nativeLanguage customDropdown" name="native_language[]"
+                                        multiple>
 
                                         @foreach ($spoken_languages as $spoken_languages_data)
                                             <option
@@ -202,7 +389,8 @@
                             <div class="col-sm-6">
                                 <div class="inp-wrap">
                                     <label for="">Languages spoken <span style="color: red;">*</span></label>
-                                    <select class="inp" name="languages[]" multiple data-allow-clear="1">
+                                    <select class="inp customDropdown" name="languages[]" multiple
+                                        data-allow-clear="1">
                                         @foreach ($spoken_languages as $spoken_languages_data)
                                             <option
                                                 {{ in_array($spoken_languages_data->id, old('languages') ?: []) ? 'selected' : '' }}
@@ -220,7 +408,7 @@
                             <div class="col-sm-6">
                                 <div class="inp-wrap">
                                     <label for="">Level to teach <span style="color: red;">*</span></label>
-                                    <select class="inp" name="level[]" id="" multiple
+                                    <select class="inp customDropdown" name="level[]" id="" multiple
                                         data-allow-clear="1">
 
                                         @foreach ($teaches_levels as $teaches_levels_data)
@@ -237,9 +425,10 @@
                                 </div>
                             </div>
                             <div class="col-sm-6">
-                                <div class="inp-wrap">
+                                <div class="inp-wrap ">
                                     <label for="">Subject to teach <span style="color: red;">*</span></label>
-                                    <select class="inp" name="subject[]" multiple data-allow-clear="1">
+                                    <select class="inp customDropdown" name="subject[]" multiple
+                                        data-allow-clear="1">
                                         @foreach ($subject as $subject_data)
                                             <option
                                                 {{ in_array($subject_data->id, old('subject') ?: []) ? 'selected' : '' }}
@@ -256,7 +445,7 @@
                             <div class="col-lg-6">
                                 <div class="inp-wrap">
                                     <label for="">Hourly rate($) <span style="color: red;">*</span></label>
-																		<input type="number" name="hourly_rate" class="inp">
+                                    <input type="number" name="hourly_rate" class="inp">
                                     {{-- <select class="inp" name="hourly_rate" id="">
                                         <option value="">Select Hourly Rate</option>
                                         @foreach ($hourly_rate as $hourly_rate_data)
@@ -274,13 +463,13 @@
                                     </span>
                                 </div>
                             </div>
-														<div class="col-lg-6">
-                            <div class="inp-wrap">
-                                <label for="">Phone number (optional)</label>
-                                <input class="inp" type="text" value="{{ old('phone_number') }}"
-                                    name="phone_number" id="" placeholder="">
+                            <div class="col-lg-6">
+                                <div class="inp-wrap">
+                                    <label for="">Phone number (optional)</label>
+                                    <input class="inp" type="text" value="{{ old('phone_number') }}"
+                                        name="phone_number" id="" placeholder="">
+                                </div>
                             </div>
-														</div>
                             <div class="inp-wrap">
                                 <label class="custom-check">I confirm I’m over 18
                                     <input type="checkbox" name="over_18">
@@ -327,7 +516,7 @@
                                                 {{ $errors->first('desc_about') }}
                                             @endif
                                         </span>
-                                       
+
                                     </div>
                                     <div class="tab-next">
                                         <a class="site-link btnNext"
@@ -343,7 +532,7 @@
                             <div class="col-lg-5">
                                 <h2>Profile photo <span style="color: red;">*</span></h2>
                                 <p class="pt-2">Make a great first impression. Photo must be lower than 3MB</p>
-                                
+
 
                                 <div class="inp-wrap">
                                     <div class="upBtn">
@@ -413,7 +602,8 @@
                         <div class="row">
                             <div class="col-lg-7">
                                 <h2>Video introduction <span style="color: red;">*</span></h2>
-                                <p class="pt-2">Choose a video file to upload. Make sure it follows our guidelines and size should be lower than 5MB
+                                <p class="pt-2">Choose a video file to upload. Make sure it follows our guidelines
+                                    and size should be lower than 5MB
                                 </p>
 
                                 <div class="inp-wrap">
@@ -488,157 +678,90 @@
                         </div>
                     </div>
                     <div class="tab-pane fade" id="tab-6">
-											
-											
-											<div class="field_wrapper">
-																	<div class="row p-3">
-																			<div class="col-lg-6 p-2 mb-3">
-                                    <div class="block-inp-wrap">
-                                        <label for="">University</label>
-                                        <input class="block-inp" name="university_name[]" type="text" required>
-                                    </div>
-																	</div>
-																	<div class="col-lg-6 p-2 mb-3">
-                                    <div class="block-inp-wrap">
-                                        <label for="">Degree</label>
-                                        <input class="block-inp" name="degree_name[]" type="text" required>
-                                    </div>
-																	</div>
-																	<div class="col-lg-6 p-2 mb-3">
-                                    <div class="block-inp-wrap">
-                                        <label for="">Degree Type</label>
-                                        <input type="text" name="degree_type[]" class="block-inp" required>
-                                    </div>
-																	</div>
-																	<div class="col-lg-6 p-2 mb-3">
-                                    <div class="block-inp-wrap">
-                                        <label for="">Specialization</label>
-                                        <input class="block-inp" name="specialization[]" type="text" required>
-                                    </div>
-																	</div>
-																		
-                                    <div class="block-inp-wrap mb-5">
-                                        <label for="">Year of Study</label>
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <select class="block-inp" name="year_of_study[]" required>
-                                                    <option value="">Start Year</option>
-                                                    <?php
-                                                    $firstYear = (int) date('Y') - 63;
-                                                    $lastYear = $year = date('Y');
-                                                    for ($i = $firstYear; $i <= $lastYear; $i++) {
-                                                        echo '<option value=' . $i . '>' . $i . '</option>';
-                                                    }
-                                                    ?>
-                                                </select>
-                                            </div>
-                                            <div class="col-6">
-                                                <select class="block-inp" name="year_of_study_end[]" required>
-                                                    <option value="">End Year</option>
-                                                    <?php
-                                                    $firstYear = (int) date('Y') - 63;
-                                                    $lastYear = $year = date('Y');
-                                                    for ($i = $firstYear; $i <= $lastYear; $i++) {
-                                                        echo '<option value=' . $i . '>' . $i . '</option>';
-                                                    }
-                                                    ?>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-																		
 
-                                    <div class="block-inp-wrap">
-                                        <div class="verify-stat gery">
-                                            <div class="verify-stat-icon"><i class="fa-solid fa-file-lines"></i></div>
-                                            <div class="verify-stat-txt">
-                                                <h5>Degree Verification</h5>
-                                                <p>Upload most recent degree/certificate for profile verification</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="up-image">
-                                        <p class="txt-blue"><i class="fa-solid fa-upload"></i></p>
-                                        <p class="txt-green">JPG or PNG format maximum size of 20MB <br> <span>UPLOAD
-                                                IMAGE</span></p>
-                                        <input type="file" name="degree_verification_pic[]"
-                                            class="degree_verification_pic" required>
-                                    </div><br />
-                                    <div class="degree_verification_pic_out"> </div>
-																	</div>
-																	
-																	
-																	
-																</div>
-																<div class="add-btn add_button"><i class="fa-solid fa-circle-plus  "></i> Add Education</div>
-															<div class="tab-next text-center">
-																<a class="site-link btnNext move" id="nextVideoBtn"
-																		onclick="document.getElementById('videoDisabled').classList.remove('menuDisabled');document.getElementById('lastDisabled').classList.remove('menuDisabled')">Next</a>
-														</div>
+                        <div class="d-flex justify-content-between align-items-center flex-wrap mb-3">
+                            <div class="h3">Education Records</div>
+                            <button type="button" class="site-link" data-bs-toggle="modal" data-bs-target="#exampleModal">Add</button>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-stripped">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>Sr.No</th>
+                                        <th>University</th>
+                                        <th>Degree</th>
+                                        <th>Degree type</th>
+                                        <th>Specialization</th>
+                                        <th>Study Session</th>
+                                        <th>Degree Pic</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="educationalTableBody">
+                                    <tr style="vertical-align: middle;">
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td style="width: 120px; height: 120px;"><img
+                                                src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                                                alt="" class="rounded overflow-hidden"
+                                                style="object-fit:cover; width: 120px; height: 120px; "></td>
+                                        <td style="min-width: 200px">
+                                            <button type="button" class="site-link">Edit</button>
+                                            <button type="button" class="site-link">Delete</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="tab-next text-center">
+                            <a class="site-link btnNext move" id="nextVideoBtn"
+                                onclick="document.getElementById('videoDisabled').classList.remove('menuDisabled');document.getElementById('lastDisabled').classList.remove('menuDisabled')">Next</a>
+                        </div>
                     </div>
                     <div class="tab-pane fade" id="tab-7">
-											
-											
-											<div class="field_wrapper_experience">
-																	<div class="row p-3">
-																			
-						
-																			<div class="col-lg-6 p-2 mb-3">
-                                    <div class="block-inp-wrap">
-                                        <label for="">Company</label>
-                                        <input class="block-inp" type="text" name="company_name[]" required>
-                                    </div>
-																	</div>
-																	<div class="col-lg-6 p-2 mb-3">
-                                    <div class="block-inp-wrap">
-                                        <label for="">Position</label>
-                                        <input class="block-inp" type="text" name="position[]" required>
-                                    </div>
-																	</div>
-                                    <div class="block-inp-wrap">
-                                        <label for="">Period of Employment</label>
-																			<div class="row">
-																				<div class="col-lg-6 mb-3">
-																				
-																			
-                                        <div class="block-inp-wrap">
-                                            <select class="block-inp" name="period_of_employment[]" required>
-                                                <option value="">Start Year</option>
-                                                <?php
-                                                $firstYear = (int) date('Y') - 43;
-                                                $lastYear = $year = date('Y');
-                                                for ($i = $firstYear; $i <= $lastYear; $i++) {
-                                                    echo '<option value=' . $i . '>' . $i . '</option>';
-                                                }
-                                                ?>
-                                            </select>
-                                        </div>
-																			</div>
-																			<div class="col-lg-6 mb-3">
-                                        <div class="block-inp-wrap">
-                                            <select class="block-inp" name="period_of_employment_end[]" required>
-                                                <option value="">End Year</option>
-                                                <?php
-                                                $firstYear = (int) date('Y') - 43;
-                                                $lastYear = $year = date('Y');
-                                                for ($i = $firstYear; $i <= $lastYear; $i++) {
-                                                    echo '<option value=' . $i . '>' . $i . '</option>';
-                                                }
-                                                ?>
-                                            </select>
-                                        </div>
-																			</div>
-																			</div>
 
-                                    
-                                </div>
-															</div>
-														</div>
-														<div class="add-btn add_button_experience"><i class="fa-solid fa-circle-plus"></i> Add another Experience</div>
-														<div class="tab-next text-center">
-																<a class="site-link btnNext move" id="nextVideoBtn"
-																		onclick="document.getElementById('videoDisabled').classList.remove('menuDisabled');document.getElementById('lastDisabled').classList.remove('menuDisabled')">Next</a>
-														</div>
+                        <div class="d-flex justify-content-between align-items-center flex-wrap mb-3">
+                            <div class="h3">Work Experiences</div>
+                            <button type="button" class="site-link" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Add</button>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-stripped">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>Sr.No</th>
+                                        <th>Company</th>
+                                        <th>Position</th>
+                                        <th>Session</th>
+                                        
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="educationalTableBody">
+                                    <tr style="vertical-align: middle;">
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        
+                                        
+                                        <td style="min-width: 200px">
+                                            <button type="button" class="site-link">Edit</button>
+                                            <button type="button" class="site-link">Delete</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="tab-next text-center">
+                            <a class="site-link btnNext move" id="nextVideoBtn"
+                                onclick="document.getElementById('videoDisabled').classList.remove('menuDisabled');document.getElementById('lastDisabled').classList.remove('menuDisabled')">Next</a>
+                        </div>
                     </div>
                     <div class="tab-pane fade" id="tab-5">
                         <div class="success">
@@ -740,235 +863,255 @@
         }
     });
 
-// 		var placeholder = "select";
-// $(".nativeLanguage").select2({
-//     data: data,
-//     placeholder: placeholder,
-//     allowClear: false,
-//     minimumResultsForSearch: 5
-// });
-
-
-
-
-				
+    // 		var placeholder = "select";
+    // $(".nativeLanguage").select2({
+    //     data: data,
+    //     placeholder: placeholder,
+    //     allowClear: false,
+    //     minimumResultsForSearch: 5
+    // });
 </script>
 <script type="text/javascript">
-	$(document).ready(function(){
-    var maxField = 10; //Input fields increment limitation
-    var addButton = $('.add_button'); //Add button selector
-    var wrapper = $('.field_wrapper'); //Input field wrapper 
-    var x = 1; //Initial field counter is 1
-    
-    //Once add button is clicked
-    $(addButton).click(function(){
-        //Check maximum number of input fields
-        if(x < maxField){ 
-            x++; //Increment field counter
-            $("body").delegate(".degree_verification_pic_"+x+"", "change", function(){
-            	$(".degree_verification_pic_out_"+x+"").html('');
-            	for (var i = 0; i < $(this)[0].files.length; i++) {
-            		$(".degree_verification_pic_out_"+x+"").append('<img src="'+window.URL.createObjectURL(this.files[i])+'" style="width:100%;height:200px;"/>');
-            	}
-            });
-            $(wrapper).append('<div class="field_wrapper"><div class="row p-3"><div class="col-lg-6 p-2 mb-3"><div class="block-inp-wrap"><label for="">University</label><input class="block-inp" name="university_name[]" required type="text"></div></div><div class="col-lg-6 p-2 mb-3"><div class="block-inp-wrap"><label for="">Degree</label><input class="block-inp" name="degree_name[]" type="text" required></div></div><div class="col-lg-6 p-2 mb-3"><div class="block-inp-wrap"><label for="">Degree Type</label><input type="text" name="degree_type[]" class="block-inp" required></div></div><div class="col-lg-6 p-2 mb-3"><div class="block-inp-wrap"><label for="">Specialization</label><input class="block-inp" name="specialization[]" type="text" required></div></div></div><div class="block-inp-wrap"><label for="">Year of Study</label><div class="row"><div class="col-6"><select class="block-inp" name="year_of_study[]" required><option value="">Start Year</option><?php 
-            	$firstYear = (int)date('Y') - 43;
-            	$lastYear = $year = date("Y"); 
-            	for($i=$firstYear;$i<=$lastYear;$i++)
-            	{
-            		echo '<option value='.$i.'>'.$i.'</option>';
-            	}
-            	?></select></div><div class="col-6"><select class="block-inp" name="year_of_study_end[]"  required><option value="">End Year</option><?php 
-            	$firstYear = (int)date('Y') - 43;
-            	$lastYear = $year = date("Y"); 
-            	for($i=$firstYear;$i<=$lastYear;$i++)
-            	{
-            		echo '<option value='.$i.'>'.$i.'</option>';
-            	}
-    ?></select></div></div></div><div class="block-inp-wrap"><div class="verify-stat gery"><div class="verify-stat-icon"><i class="fa-solid fa-file-lines"></i></div><div class="verify-stat-txt"><h5>Degree Verification</h5><p>Upload most recent degree/certificate for profile verification</p></div></div></div><div class="up-image"><p class="txt-blue"><i class="fa-solid fa-upload"></i></p><p class="txt-green">JPG or PNG format maximum size of 20MB <br> <span>UPLOAD IMAGE</span></p><input type="file" name="degree_verification_pic[]" class="degree_verification_pic_'+x+'" required></div><div class="degree_verification_pic_out_'+x+'" > </div><button class="remove_button_education btn btn-danger btn-sm" style="float: right;margin: 10px;">Remove</button></div>'); //Add field html
-        }
-    });
-    
-    //Once remove button is clicked
-    $(wrapper).on('click', '.remove_button_education', function(e){
-    	e.preventDefault();
-        $(this).parent('div').remove(); //Remove field html
-        x--; //Decrement field counter
-    }); 
+    $(document).ready(function() {
+                var maxField = 10; //Input fields increment limitation
+                var addButton = $('.add_button'); //Add button selector
+                var wrapper = $('.field_wrapper'); //Input field wrapper 
+                var x = 1; //Initial field counter is 1
+
+                //Once add button is clicked
+                $(addButton).click(function() {
+                    //Check maximum number of input fields
+                    if (x < maxField) {
+                        x++; //Increment field counter
+                        $("body").delegate(".degree_verification_pic_" + x + "", "change", function() {
+                            $(".degree_verification_pic_out_" + x + "").html('');
+                            for (var i = 0; i < $(this)[0].files.length; i++) {
+                                $(".degree_verification_pic_out_" + x + "").append('<img src="' + window
+                                    .URL.createObjectURL(this.files[i]) +
+                                    '" style="width:100%;height:200px;"/>');
+                            }
+                        });
+                        $(wrapper).append(
+                            '<div class="field_wrapper"><div class="row p-3"><div class="col-lg-6 p-2 mb-3"><div class="block-inp-wrap"><label for="">University</label><input class="block-inp" name="university_name[]" required type="text"></div></div><div class="col-lg-6 p-2 mb-3"><div class="block-inp-wrap"><label for="">Degree</label><input class="block-inp" name="degree_name[]" type="text" required></div></div><div class="col-lg-6 p-2 mb-3"><div class="block-inp-wrap"><label for="">Degree Type</label><input type="text" name="degree_type[]" class="block-inp" required></div></div><div class="col-lg-6 p-2 mb-3"><div class="block-inp-wrap"><label for="">Specialization</label><input class="block-inp" name="specialization[]" type="text" required></div></div></div><div class="block-inp-wrap"><label for="">Year of Study</label><div class="row"><div class="col-6"><select class="block-inp" name="year_of_study[]" required><option value="">Start Year</option><?php
+                            $firstYear = (int) date('Y') - 43;
+                            $lastYear = $year = date('Y');
+                            for ($i = $firstYear; $i <= $lastYear; $i++) {
+                                echo '<option value=' . $i . '>' . $i . '</option>';
+                            }
+                            ?></select></div><div class="col-6"><select class="block-inp" name="year_of_study_end[]"  required><option value="">End Year</option><?php
+                            $firstYear = (int) date('Y') - 43;
+                            $lastYear = $year = date('Y');
+                            for ($i = $firstYear; $i <= $lastYear; $i++) {
+                                echo '<option value=' . $i . '>' . $i . '</option>';
+                            }
+                            ?></select></div></div></div><div class="block-inp-wrap"><div class="verify-stat gery"><div class="verify-stat-icon"><i class="fa-solid fa-file-lines"></i></div><div class="verify-stat-txt"><h5>Degree Verification</h5><p>Upload most recent degree/certificate for profile verification</p></div></div></div><div class="up-image"><p class="txt-blue"><i class="fa-solid fa-upload"></i></p><p class="txt-green">JPG or PNG format maximum size of 20MB <br> <span>UPLOAD IMAGE</span></p><input type="file" name="degree_verification_pic[]" class="degree_verification_pic_' +
+                            x + '" required></div><div class="degree_verification_pic_out_' + x +
+                            '" > </div><button class="remove_button_education btn btn-danger btn-sm" style="float: right;margin: 10px;">Remove</button></div>'
+                            ); //Add field html
+                    }
+                });
+
+                //Once remove button is clicked
+                $(wrapper).on('click', '.remove_button_education', function(e) {
+                    e.preventDefault();
+                    $(this).parent('div').remove(); //Remove field html
+                    x--; //Decrement field counter
+                });
 
 
-    var maxField2 = 10; //Input fields increment limitation
-    var addButton2 = $('.add_button_certificate'); //Add button selector
-    var wrapper2 = $('.field_wrapper_certificate'); //Input field wrapper
-    
-    var y = 1; 
+                var maxField2 = 10; //Input fields increment limitation
+                var addButton2 = $('.add_button_certificate'); //Add button selector
+                var wrapper2 = $('.field_wrapper_certificate'); //Input field wrapper
 
-    $(addButton2).click(function(){
-    	if(y < maxField2){ 
-    		y++; 
+                var y = 1;
 
-    		$("body").delegate(".certificate_verified_pic_"+y+"", "change", function(){
-    			$("#certificate_verified_pic_out_"+y+"").html('');
-    			for (var i = 0; i < $(this)[0].files.length; i++) {
-    				$("#certificate_verified_pic_out_"+y+"").append('<img src="'+window.URL.createObjectURL(this.files[i])+'" style="width:100%;height:200px;" />');
-    			}
-    		}); 
-    		$(wrapper2).append('<div class="field_wrapper_certificate"><div class="block-inp-wrap"><label for="">Certificate</label><input class="block-inp" type="text" name="certificate_name[]" required></div><div class="block-inp-wrap"><label for="">Description</label><input class="block-inp" type="text" name="description[]" required></div><div class="block-inp-wrap"><label for="">Issued By</label><input class="block-inp" type="text" name="issued_by[]" required></div><div class="block-inp-wrap"><label for="">Year of Study</label><div class="row"><div class="col-6"><select class="block-inp" name="year_of_study[]" required><option value="">Start Year</option><?php 
-    			$firstYear = (int)date('Y') - 43;
-    			$lastYear = $year = date("Y"); 
-    			for($i=$firstYear;$i<=$lastYear;$i++)
-    			{
-    				echo '<option value='.$i.'>'.$i.'</option>';
-    			}
-    			?></select></div><div class="col-6"><select class="block-inp" name="year_of_study_end[]" required><option value="">End Year</option><?php 
-    			$firstYear = (int)date('Y') - 43;
-    			$lastYear = $year = date("Y"); 
-    			for($i=$firstYear;$i<=$lastYear;$i++)
-    			{
-    				echo '<option value='.$i.'>'.$i.'</option>';
-    			}
-    			?></select></div></div></div><div class="block-inp-wrap"><div class="verify-stat gery"><div class="verify-stat-icon"><i class="fa-solid fa-file-lines"></i></div><div class="verify-stat-txt"><h5>Get a "Certificate Verified" Badge</h5><p>Upload your certificate to increase the credibility of your profile. </p></div></div></div><div class="up-image"><p class="txt-blue"><i class="fa-solid fa-upload"></i></p><p class="txt-green">JPG or PNG format maximum size of 20MB <br> <span>UPLOAD Certificate</span></p><input type="file" name="certificate_verified_pic[]" class="certificate_verified_pic_'+y+'" required></div><div id="certificate_verified_pic_out_'+y+'" style="100%;250px!important;"></div><button class="remove_button_certificate btn btn-danger btn-sm" style="float: right;margin: 10px;">Remove</button></div>'); 
-    	}
-    });
-    $(wrapper2).on('click', '.remove_button_certificate', function(e){
-    	e.preventDefault();
-    	$(this).parent('div').remove();
-    	y--; 
-    }); 
+                $(addButton2).click(function() {
+                    if (y < maxField2) {
+                        y++;
 
-    var maxField1 = 10; //Input fields increment limitation
-    var addButton1 = $('.add_button_experience'); //Add button selector
-    var wrapper1 = $('.field_wrapper_experience'); //Input field wrapper
-    var fieldHTML1 = '<div class="field_wrapper_experience"><div class="block-inp-wrap"><label for="">Company</label><input class="block-inp" type="text" name="company_name[]" required></div><div class="block-inp-wrap"><label for="">Position</label><input class="block-inp" type="text" name="position[]" required></div><div class="block-inp-wrap"><label for="">Period of Employment</label><div class="row"><div class="col-6"><select class="block-inp" name="period_of_employment[]" required><option value="">Start Year</option><?php 
-    $firstYear = (int)date('Y') - 43;
-    $lastYear = $year = date("Y"); 
-    for($i=$firstYear;$i<=$lastYear;$i++)
-    {
-    	echo '<option value='.$i.'>'.$i.'</option>';
-    }
-    ?></select></div><div class="col-6"><select class="block-inp" name="period_of_employment_end[]" required><option value="">End Year</option><?php 
-    $firstYear = (int)date('Y') - 43;
-    $lastYear = $year = date("Y"); 
-    for($i=$firstYear;$i<=$lastYear;$i++)
-    {
-    	echo '<option value='.$i.'>'.$i.'</option>';
-    }
-    ?></select></div></div></div> <button class="remove_button_experience btn btn-danger btn-sm" style="float: right;margin: 10px;">Remove</button></div>';
+                        $("body").delegate(".certificate_verified_pic_" + y + "", "change", function() {
+                            $("#certificate_verified_pic_out_" + y + "").html('');
+                            for (var i = 0; i < $(this)[0].files.length; i++) {
+                                $("#certificate_verified_pic_out_" + y + "").append('<img src="' +
+                                    window.URL.createObjectURL(this.files[i]) +
+                                    '" style="width:100%;height:200px;" />');
+                            }
+                        });
+                        $(wrapper2).append(
+                            '<div class="field_wrapper_certificate"><div class="block-inp-wrap"><label for="">Certificate</label><input class="block-inp" type="text" name="certificate_name[]" required></div><div class="block-inp-wrap"><label for="">Description</label><input class="block-inp" type="text" name="description[]" required></div><div class="block-inp-wrap"><label for="">Issued By</label><input class="block-inp" type="text" name="issued_by[]" required></div><div class="block-inp-wrap"><label for="">Year of Study</label><div class="row"><div class="col-6"><select class="block-inp" name="year_of_study[]" required><option value="">Start Year</option><?php
+                            $firstYear = (int) date('Y') - 43;
+                            $lastYear = $year = date('Y');
+                            for ($i = $firstYear; $i <= $lastYear; $i++) {
+                                echo '<option value=' . $i . '>' . $i . '</option>';
+                            }
+                            ?></select></div><div class="col-6"><select class="block-inp" name="year_of_study_end[]" required><option value="">End Year</option><?php
+                            $firstYear = (int) date('Y') - 43;
+                            $lastYear = $year = date('Y');
+                            for ($i = $firstYear; $i <= $lastYear; $i++) {
+                                echo '<option value=' . $i . '>' . $i . '</option>';
+                            }
+                            ?></select></div></div></div><div class="block-inp-wrap"><div class="verify-stat gery"><div class="verify-stat-icon"><i class="fa-solid fa-file-lines"></i></div><div class="verify-stat-txt"><h5>Get a "Certificate Verified" Badge</h5><p>Upload your certificate to increase the credibility of your profile. </p></div></div></div><div class="up-image"><p class="txt-blue"><i class="fa-solid fa-upload"></i></p><p class="txt-green">JPG or PNG format maximum size of 20MB <br> <span>UPLOAD Certificate</span></p><input type="file" name="certificate_verified_pic[]" class="certificate_verified_pic_' +
+                            y + '" required></div><div id="certificate_verified_pic_out_' + y +
+                            '" style="100%;250px!important;"></div><button class="remove_button_certificate btn btn-danger btn-sm" style="float: right;margin: 10px;">Remove</button></div>'
+                            );
+                    }
+                });
+                $(wrapper2).on('click', '.remove_button_certificate', function(e) {
+                    e.preventDefault();
+                    $(this).parent('div').remove();
+                    y--;
+                });
 
-    var z = 1; 
-    $(addButton1).click(function(){
-    	if(z < maxField1){ 
-    		z++; 
-    		$(wrapper1).append(fieldHTML1); 
-    	}
-    });
-    $(wrapper1).on('click', '.remove_button_experience', function(e){
-    	e.preventDefault();
-    	$(this).parent('div').remove();
-    	z--; 
-    });
+                var maxField1 = 10; //Input fields increment limitation
+                var addButton1 = $('.add_button_experience'); //Add button selector
+                var wrapper1 = $('.field_wrapper_experience'); //Input field wrapper
+                var fieldHTML1 =
+                    '<div class="field_wrapper_experience"><div class="block-inp-wrap"><label for="">Company</label><input class="block-inp" type="text" name="company_name[]" required></div><div class="block-inp-wrap"><label for="">Position</label><input class="block-inp" type="text" name="position[]" required></div><div class="block-inp-wrap"><label for="">Period of Employment</label><div class="row"><div class="col-6"><select class="block-inp" name="period_of_employment[]" required><option value="">Start Year</option><?php
+                    $firstYear = (int) date('Y') - 43;
+                    $lastYear = $year = date('Y');
+                    for ($i = $firstYear; $i <= $lastYear; $i++) {
+                        echo '<option value=' . $i . '>' . $i . '</option>';
+                    }
+                    ?></select></div><div class="col-6"><select class="block-inp" name="period_of_employment_end[]" required><option value="">End Year</option><?php
+                    $firstYear = (int) date('Y') - 43;
+                    $lastYear = $year = date('Y');
+                    for ($i = $firstYear; $i <= $lastYear; $i++) {
+                        echo '<option value=' . $i . '>' . $i . '</option>';
+                    }
+                    ?></select></div></div></div> <button class="remove_button_experience btn btn-danger btn-sm" style="float: right;margin: 10px;">Remove</button></div>';
 
-
-    var maxField3 = 10; //Input fields increment limitation
-    var addButton3 = $('.add_button_identity'); //Add button selector
-    var wrapper3 = $('.field_wrapper_identity'); //Input field wrapper
-    var j = 1; 
-    $(addButton3).click(function(){
-    	if(j < maxField3){ 
-    		j++; 
-    		$("body").delegate(".identity_document_front_"+j+"", "change", function(){
-    			$(".identity_document_front_out_"+j+"").html('');
-    			for (var i = 0; i < $(this)[0].files.length; i++) {
-    				$(".identity_document_front_out_"+j+"").append('<img src="'+window.URL.createObjectURL(this.files[i])+'" style="width:100%;height:200px;"/>');
-    			}
-    		});
-
-    		$("body").delegate(".identity_document_back_"+j+"", "change", function(){
-    			$(".identity_document_back_out_"+j+"").html('');
-    			for (var i = 0; i < $(this)[0].files.length; i++) {
-    				$(".identity_document_back_out_"+j+"").append('<img src="'+window.URL.createObjectURL(this.files[i])+'" style="width:100%;height:200px;"/>');
-    			}
-    		});
-
-    		$(wrapper3).append('<div class="field_wrapper_identity"><div class="block-inp-wrap"><label for="">Issued by Country</label><input class="block-inp" type="text" name="issued_by_country[]" required></div><div class="block-inp-wrap"><label for="">Type of Document</label><select class="block-inp" id="type_of_document" name="type_of_document[]" required><option value="">Type of Document</option><option value="1">Pan Card</option><option value="2" >Adhar Card</option><option value="3" >Driving License</option><option value="4" >Passport</option></select></div><div class="block-inp-wrap"><label for="">Document identification number</label><input class="block-inp" type="text" name="identification_number[]" required></div><div class="block-inp-wrap"><label for="">Document expiry date</label><div class="row"><div class="col-6"><select class="block-inp" name="expiry_date[]" required><option value="">Select Day</option><?php 
-    			for($i=1;$i<=30;$i++)
-    			{
-    				echo '<option value='.$i.'>'.$i.'</option>';
-    			}
-    			?>
-    			</select></div><div class="col-6"><select class="block-inp" name="expiry_date_end[]" required><option value="">Select Year</option><?php 
-    			$firstYear = (int)date('Y') - 43;
-    			$lastYear = $year = date("Y"); 
-    			for($i=$firstYear;$i<=$lastYear;$i++)
-    			{
-    				echo '<option value='.$i.' >'.$i.'</option>';
-    			}
-    			?>
-    			</select></div></div></div><div class="block-inp-wrap"><div class="verify-stat gery"><div class="verify-stat-icon"><i class="fa-solid fa-file-lines"></i></div><div class="verify-stat-txt"><h5>Identity Document</h5><p>Upload Identity Document for profile verification</p></div></div></div><div class="row"><div class="col-lg-6"><div class="up-image"><p class="txt-blue"><i class="fa-solid fa-upload"></i></p><p class="txt-green">JPG or PNG format maximum size of 20MB <br> <span>UPLOAD Front</span></p><input type="file" name="identity_document_front[]"  class="identity_document_front_'+j+'" required></div><br> <div class="identity_document_front_out_'+j+'"></div> </div><div class="col-lg-6"><div class="up-image"><p class="txt-blue"><i class="fa-solid fa-upload"></i></p><p class="txt-green">JPG or PNG format maximum size of 20MB <br> <span>UPLOAD Back</span></p><input type="file" name="identity_document_back[]" class="identity_document_back_'+j+'" required></div><br><div class="identity_document_back_out_'+j+'"></div></div></div><button class="remove_button_identity btn btn-danger btn-sm" style="float: right;margin: 10px;">Remove</button></div>'); 
-    	}
-    });
-    $(wrapper3).on('click', '.remove_button_identity', function(e){
-    	e.preventDefault();
-    	$(this).parent('div').remove();
-    	j--; 
-    });
-});
-
-var isClicked = false;
-var isClicked1 = false;
-$('.educationBtn').on('click',function(){
-	$('.educationDiv').toggle();
-	if(isClicked == false){
-		isClicked = true;
-		$('.educationBtn').text('X');
-	} else {
-		isClicked = false;
-		$('.educationBtn').text('Add Education');
-	} 
-})
-$('.certificateBtn').on('click',function(){
-	$('.certificateDiv').toggle();
-	if(isClicked1 == false){
-		isClicked1 = true;
-		$('.certificateBtn').text('X');
-	} else {
-		isClicked1 = false;
-		$('.certificateBtn').text('Add Certificate');
-	} 
-})
-isClicked2 = false;
-$('.experienceBtn').on('click',function(){
-	$('.experienceDiv').toggle();
-	if(isClicked2 == false){
-		isClicked2 = true;
-		$('.experienceBtn').text('X');
-	} else {
-		isClicked2 = false;
-		$('.experienceBtn').text('Add Experience');
-	} 
-})
-isClicked3 = false;
-$('.identityBtn').on('click',function(){
-	$('.identityDiv').toggle();
-	if(isClicked3 == false){
-		isClicked3 = true;
-		$('.identityBtn').text('X');
-	} else {
-		isClicked3 = false;
-		$('.identityBtn').text('Add Identity');
-	} 
-})
+                var z = 1;
+                $(addButton1).click(function() {
+                    if (z < maxField1) {
+                        z++;
+                        $(wrapper1).append(fieldHTML1);
+                    }
+                });
+                $(wrapper1).on('click', '.remove_button_experience', function(e) {
+                    e.preventDefault();
+                    $(this).parent('div').remove();
+                    z--;
+                });
 
 
+                var maxField3 = 10; //Input fields increment limitation
+                var addButton3 = $('.add_button_identity'); //Add button selector
+                var wrapper3 = $('.field_wrapper_identity'); //Input field wrapper
+                var j = 1;
+                $(addButton3).click(function() {
+                        if (j < maxField3) {
+                            j++;
+                            $("body").delegate(".identity_document_front_" + j + "", "change", function() {
+                                $(".identity_document_front_out_" + j + "").html('');
+                                for (var i = 0; i < $(this)[0].files.length; i++) {
+                                    $(".identity_document_front_out_" + j + "").append('<img src="' + window
+                                        .URL.createObjectURL(this.files[i]) +
+                                        '" style="width:100%;height:200px;"/>');
+                                }
+                            });
+
+                            $("body").delegate(".identity_document_back_" + j + "", "change", function() {
+                                $(".identity_document_back_out_" + j + "").html('');
+                                for (var i = 0; i < $(this)[0].files.length; i++) {
+                                    $(".identity_document_back_out_" + j + "").append('<img src="' + window
+                                        .URL.createObjectURL(this.files[i]) +
+                                        '" style="width:100%;height:200px;"/>');
+                                }
+                            });
+
+                            $(wrapper3).append(
+                                '<div class="field_wrapper_identity"><div class="block-inp-wrap"><label for="">Issued by Country</label><input class="block-inp" type="text" name="issued_by_country[]" required></div><div class="block-inp-wrap"><label for="">Type of Document</label><select class="block-inp" id="type_of_document" name="type_of_document[]" required><option value="">Type of Document</option><option value="1">Pan Card</option><option value="2" >Adhar Card</option><option value="3" >Driving License</option><option value="4" >Passport</option></select></div><div class="block-inp-wrap"><label for="">Document identification number</label><input class="block-inp" type="text" name="identification_number[]" required></div><div class="block-inp-wrap"><label for="">Document expiry date</label><div class="row"><div class="col-6"><select class="block-inp" name="expiry_date[]" required><option value="">Select Day</option><?php
+                                for ($i = 1; $i <= 30; $i++) {
+                                    echo '<option value=' . $i . '>' . $i . '</option>';
+                                }
+                                ?> <
+                                /select></div > < div class = "col-6" > < select class = "block-inp"
+                                name = "expiry_date_end[]"
+                                required > < option value = "" > Select Year < /option><?php
+                                $firstYear = (int) date('Y') - 43;
+                                $lastYear = $year = date('Y');
+                                for ($i = $firstYear; $i <= $lastYear; $i++) {
+                                    echo '<option value=' . $i . ' >' . $i . '</option>';
+                                }
+                                ?> <
+                                /select></div > < /div></div > < div class = "block-inp-wrap" > < div class =
+                                "verify-stat gery" > < div class = "verify-stat-icon" > < i class =
+                                "fa-solid fa-file-lines" > < /i></div > < div class = "verify-stat-txt" > < h5 >
+                                Identity Document <
+                                /h5><p>Upload Identity Document for profile verification</p > < /div></div > <
+                                /div><div class="row"><div class="col-lg-6"><div class="up-image"><p class="txt-blue"><i class="fa-solid fa-upload"></i >
+                                <
+                                /p><p class="txt-green">JPG or PNG format maximum size of 20MB <br> <span>UPLOAD Front</span >
+                                <
+                                /p><input type="file" name="identity_document_front[]"  class="identity_document_front_'+j+'" required></div >
+                                < br > < div class = "identity_document_front_out_'+j+'" > < /div> </div > <
+                                div class = "col-lg-6" > < div class = "up-image" > < p class = "txt-blue" > <
+                                i class = "fa-solid fa-upload" > < /i></p > < p class = "txt-green" >
+                                JPG or PNG format maximum size of 20 MB < br > < span > UPLOAD Back <
+                                /span></p > < input type = "file"
+                                name = "identity_document_back[]"
+                                class = "identity_document_back_'+j+'"
+                                required > < /div><br><div class="identity_document_back_out_'+j+'"></div > <
+                                /div></div > < button class = "remove_button_identity btn btn-danger btn-sm"
+                                style = "float: right;margin: 10px;" > Remove < /button></div > '); 
+                            }
+                        }); $(wrapper3).on('click', '.remove_button_identity', function(e) {
+                        e.preventDefault();
+                        $(this).parent('div').remove();
+                        j--;
+                    });
+                });
+
+            var isClicked = false;
+            var isClicked1 = false; $('.educationBtn').on('click', function() {
+                $('.educationDiv').toggle();
+                if (isClicked == false) {
+                    isClicked = true;
+                    $('.educationBtn').text('X');
+                } else {
+                    isClicked = false;
+                    $('.educationBtn').text('Add Education');
+                }
+            }) $('.certificateBtn').on('click', function() {
+                $('.certificateDiv').toggle();
+                if (isClicked1 == false) {
+                    isClicked1 = true;
+                    $('.certificateBtn').text('X');
+                } else {
+                    isClicked1 = false;
+                    $('.certificateBtn').text('Add Certificate');
+                }
+            }) isClicked2 = false; $('.experienceBtn').on('click', function() {
+                $('.experienceDiv').toggle();
+                if (isClicked2 == false) {
+                    isClicked2 = true;
+                    $('.experienceBtn').text('X');
+                } else {
+                    isClicked2 = false;
+                    $('.experienceBtn').text('Add Experience');
+                }
+            }) isClicked3 = false; $('.identityBtn').on('click', function() {
+                $('.identityDiv').toggle();
+                if (isClicked3 == false) {
+                    isClicked3 = true;
+                    $('.identityBtn').text('X');
+                } else {
+                    isClicked3 = false;
+                    $('.identityBtn').text('Add Identity');
+                }
+            })
 
 
-  /*$('document').ready(function(){
+
+
+            /*$('document').ready(function(){
     $('.edit').on('click', function(event) {
      event.preventDefault();
      var post_id = $(this).data('id'); 
      $.ajax({
       headers: {
-        'X-CSRF-TOKEN': '<?php //echo csrf_token() ?>'
+        'X-CSRF-TOKEN': '<?php //echo csrf_token()
+        ?>'
       },
       type : 'POST',
       url : "{{ url('/admin/spoken_language/get_spoken_language') }}",
@@ -981,8 +1124,36 @@ $('.identityBtn').on('click',function(){
       }
     });     
    });
-});*/ 
+});*/
 
+            // Initialize Select2 with tagging and custom createTag function
+            $(document).ready(function() {
+                $('.customDropdown').select2({
+                    tags: true,
+                    tokenSeparators: [','],
+                    createTag: function(params) {
+                        var term = $.trim(params.term);
 
+                        if (term === '') {
+                            return null;
+                        }
 
+                        return {
+                            id: term,
+                            text: term,
+                            newTag: true // add a flag to indicate that this is a new tag
+                        };
+                    }
+                });
+
+                // Event listener for when a new tag is created
+                $('#multiSelect').on('select2:select', function(e) {
+                    if (e.params.data.newTag) {
+                        // Perform any additional actions for a new tag
+                        console.log(e.params.data);
+                    }
+                });
+            });
+
+            
 </script>

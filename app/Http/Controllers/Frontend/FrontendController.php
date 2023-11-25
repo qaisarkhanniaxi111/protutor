@@ -350,6 +350,51 @@ class FrontendController extends Controller
     public function submit_tutor_signup(Request $req)
     {
 
+        
+        // $nativeLanguages=$req->native_language;
+        // foreach ($nativeLanguages as $key => $value) {
+        //     if(intval($value)== 0){
+        //         $nativeLanguage=Spoken_language::create([
+        //             'spoken_language'=>$value,
+        //             'user_status'=>1
+        //         ]);
+        //         $nativeLanguages[$key]=$nativeLanguage->id;
+        //     }
+        // }
+        // $spokenLanguages=$req->languages;
+        // foreach ($spokenLanguages as $key => $value) {
+        //     if(intval($value)== 0){
+        //         $nativeLanguage=Spoken_language::create([
+        //             'spoken_language'=>$value,
+        //             'user_status'=>1
+        //         ]);
+        //         $spokenLanguages[$key]=$nativeLanguage->id;
+        //     }
+        // }
+        // $subjects=$req->subject;
+        // foreach ($subjects as $key => $value) {
+        //     if(intval($value)== 0){
+        //         $nativeLanguage=Subject::create([
+        //             'subject'=>$value,
+        //         ]);
+        //         $subjects[$key]=$nativeLanguage->id;
+        //     }
+        // }
+        // $levels=$req->level;
+        // foreach ($levels as $key => $value) {
+        //     if(intval($value)== 0){
+        //         $nativeLanguage=Teaches_level::create([
+        //             'teaches_level'=>$value,
+        //         ]);
+        //         $levels[$key]=$nativeLanguage->id;
+        //     }
+        // }
+        // echo "<pre>";
+        // print_r($nativeLanguages);
+        // print_r($spokenLanguages);
+        // print_r($subjects);
+        // print_r($levels);
+        // die;
         if($req->post()){
             $req->validate([
                 'first_name' => ['required'],
@@ -365,18 +410,57 @@ class FrontendController extends Controller
                 'desc_about' => 'required',
                 'your_picture' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
                 'upload_video' => 'required',
-                'university_name' => 'required',
-                'degree_name' => 'required',
-                'degree_type' => 'required',
-                'specialization' => 'required',
-                'year_of_study' => 'required',
-                'year_of_study_end' => 'required',
-                'degree_verification_pic' => 'required',
-                'company_name' => 'required',
-                'position' => 'required',
-                'period_of_employment' => 'required',
-                'period_of_employment_end' => 'required',
+                // 'university_name' => 'required',
+                // 'degree_name' => 'required',
+                // 'degree_type' => 'required',
+                // 'specialization' => 'required',
+                // 'year_of_study' => 'required',
+                // 'year_of_study_end' => 'required',
+                // 'degree_verification_pic' => 'required',
+                // 'company_name' => 'required',
+                // 'position' => 'required',
+                // 'period_of_employment' => 'required',
+                // 'period_of_employment_end' => 'required',
             ]);
+            $nativeLanguages=$req->native_language;
+            foreach ($nativeLanguages as $key => $value) {
+                if(intval($value)== 0){
+                    $nativeLanguage=Spoken_language::create([
+                        'spoken_language'=>$value,
+                        'user_status'=>1
+                    ]);
+                    $nativeLanguages[$key]=$nativeLanguage->id;
+                }
+            }
+            $spokenLanguages=$req->languages;
+            foreach ($spokenLanguages as $key => $value) {
+                if(intval($value)== 0){
+                    $nativeLanguage=Spoken_language::create([
+                        'spoken_language'=>$value,
+                        'user_status'=>1
+                    ]);
+                    $spokenLanguages[$key]=$nativeLanguage->id;
+                }
+            }
+            $subjects=$req->subject;
+            foreach ($subjects as $key => $value) {
+                if(intval($value)== 0){
+                    $nativeLanguage=Subject::create([
+                        'subject'=>$value,
+                    ]);
+                    $subjects[$key]=$nativeLanguage->id;
+                }
+            }
+            $levels=$req->level;
+            foreach ($levels as $key => $value) {
+                if(intval($value)== 0){
+                    $nativeLanguage=Teaches_level::create([
+                        'teaches_level'=>$value,
+                    ]);
+                    $levels[$key]=$nativeLanguage->id;
+                }
+            }
+
 
             $image = $req->file('your_picture');
             $imageName = time().'_'.$image->getClientOriginalName();
@@ -399,11 +483,11 @@ class FrontendController extends Controller
                 "country"=>  $req->country,
                 "email"=>  $req->email,
                 "phone"=>  $req->phone_number,
-                "languages"=> implode(',', $req->languages),
-                "native_language"=> implode(',',$req->native_language),
+                "languages"=> implode(',', $spokenLanguages),
+                "native_language"=> implode(',',$nativeLanguages),
                 "over_18"=>  $req->over_18,
-                "level"=> implode(',',$req->level) ,
-                "subject"=> implode(',', $req->subject),
+                "level"=> implode(',',$levels) ,
+                "subject"=> implode(',', $subjects),
                 "hourly_rate"=>  $req->hourly_rate,
                 "desc_first_last"=>  $req->desc_first_last,
                 "desc_about"=>  $req->desc_about,
